@@ -29,3 +29,9 @@ then
 ```
 ng serve
 ```
+
+after view in
+
+```
+http://localhost:4200/
+```
