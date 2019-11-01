@@ -6,7 +6,7 @@
       <div class="row align-items-center">
         <div class="col-lg-3">
           <div class="logo">
-            <a href="index.html">
+            <a href="/">
               <img src="assets/img/logo/logo.png" alt="Brand Logo">
             </a>
           </div>
@@ -56,9 +56,9 @@
                 </form>
               </div>
               <div class="mini-cart-wrap">
-                <button><i class="ion-bag"></i>
+                <a href="/cart"><i class="ion-bag"></i>
                   <span class="notification">2</span>
-                </button>
+                </a>
                 <ul class="cart-list">
                   <li>
                     <div class="cart-img">
@@ -113,15 +113,15 @@
         <div class="col-12">
           <div class="main-menu">
             <div class="sticky-logo">
-              <a href="index.html">
+              <a href="/">
                 <img src="assets/img/logo/logo_sticky.png" alt="brand logo">
               </a>
             </div>
             <!-- main menu navbar start -->
             <nav id="mobile-menu">
               <ul>
-                <li class="active">
-                  <a href="/">Home</a>
+                <li>
+                  <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">Home</a>
                 </li>
                 <li><a href="javascript:void(0)">pages <i class="fa fa-angle-down"></i></a>
                   <ul class="megamenu dropdown">
@@ -223,8 +223,8 @@
                     <li><a href="blog-details-image.html">blog details image</a></li>
                   </ul>
                 </li>
-                <li><a href="/about">about us</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['about']">about us</a></li>
+                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['contact']">Contact</a></li>
               </ul>
             </nav>
             <!-- main menu navbar end -->

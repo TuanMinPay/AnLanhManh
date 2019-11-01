@@ -797,19 +797,19 @@ only screen and (max-width: 767.98px) {
 	position: relative;
 }
 
-.mini-cart-wrap button {
+.mini-cart-wrap a {
 	color: #333333;
 	font-size: 45px;
 	position: relative;
 }
 
 @media only screen and (max-width: 575.98px) {
-	.mini-cart-wrap button {
+	.mini-cart-wrap a {
 		font-size: 40px;
 	}
 }
 
-.mini-cart-wrap button .notification {
+.mini-cart-wrap a .notification {
 	font-size: 16px;
 	color: #fff;
 	width: 22px;
@@ -819,7 +819,7 @@ only screen and (max-width: 767.98px) {
 	text-align: center;
 	font-weight: 600;
 	right: -8px;
-	bottom: 8px;
+	bottom: 0;
 	position: absolute;
 	background-color: #62d2a2;
 }
@@ -1004,7 +1004,7 @@ only screen and (max-width: 767.98px) {
 }
 
 .main-menu ul li:hover>a,
-.main-menu ul li.active>a {
+.main-menu ul li>a.active {
 	color: #62d2a2;
 }
 
@@ -2434,7 +2434,6 @@ only screen and (max-width: 767.98px) {
 	color: #333333;
 	font-size: 15px;
 	cursor: pointer;
-	text-transform: capitalize;
 	position: relative;
 	-webkit-transition: 0.5s;
 	-o-transition: 0.5s;
