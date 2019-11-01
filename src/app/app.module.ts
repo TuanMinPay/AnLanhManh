@@ -9,6 +9,9 @@ import { ContacusComponent } from './contacus/contacus.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { OrderComponent } from './order/order.component';
     ContacusComponent,
     ProductComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,9 @@ import { AboutComponent } from './about/about.component';
 import { ContacusComponent } from './contacus/contacus.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -15,6 +18,9 @@ const routes: Routes = [
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },
   { path: 'order/:id', component: OrderComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: HomeComponent }
 ];
 
