@@ -8,7 +8,7 @@
                         <h2>Sign In</h2>
                         <form action="#" method="post">
                             <div class="single-input-item">
-                                <input type="email" #username placeholder="Phone or Username" required />
+                                <input type="email" #username #phone placeholder="Phone or Username" required />
                             </div>
                             <div class="single-input-item">
                                 <input type="password" #password placeholder="Enter your Password" required />
@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                             <div class="single-input-item">
-                                <button class="btn btn__bg btn__sqr" (click)="handleLogin(username.value, password.value)">Login</button>
+                                <button class="btn btn__bg btn__sqr" (click)="handleLogin(username.value, phone.value, password.value)">Login</button>
                             </div>
                         </form>
                     </div>
