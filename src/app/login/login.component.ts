@@ -13,16 +13,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  public handleLogin: Function = async (account, password) => {
-    await axios.post('http://localhost:8080/api/auth/signin',  {
-      "account": account,
-      "password": password
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  public handleLogin: Function = async (account: any, password: any) => {
+    console.log(account, password);
+    
+    // await axios.post('http://localhost:8080/api/auth/signin', {
+    //   account: account,
+    //   password: password
+    // }).then(function (response) {
+    //   //success
+    //   console.log(response);
+    // }).catch(function (error) {
+    //   //error
+    //   console.log(error);
+    // });
   }
 }
