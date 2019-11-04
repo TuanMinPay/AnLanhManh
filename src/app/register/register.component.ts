@@ -15,19 +15,17 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  public handleRegister: Function = async (name, username, email, password, phone) => {
-    await axios.post('http://localhost:8080/api/auth/signup',  {
-      "name": name,
-      "username": username,
-      "email": email,
-      "password": password,
-      "phone": phone
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  public handleRegister: Function = async (name: any, username: any, email: any, password: any, phone: any) => {
+    await axios.post('http://localhost:8080/api/auth/signup', {
+      name: name,
+      username: username,
+      email: email,
+      password: password,
+      phone: phone
+    }).then(function (response) {
+      console.log(response);
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 }

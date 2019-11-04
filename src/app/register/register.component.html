@@ -5,7 +5,7 @@
         <div class="col-lg-12">
           <div class="login-reg-form-wrap mt-md-60 mt-sm-60">
             <h2>Singup Form</h2>
-            <form action="#">
+            <form>
               <div class="single-input-item">
                 <input type="text" #name placeholder="Enter your Name" required />
               </div>
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class="single-input-item">
-                <button class="btn btn__bg btn__sqr" (click)="handleRegister(name.value,username.value,email.value,password.value,phone.value)">Register</button>
+                <button type="button" class="btn btn__bg btn__sqr" (click)="handleRegister(name.value,username.value,email.value,password.value,phone.value)">Register</button>
               </div>
             </form>
           </div>
