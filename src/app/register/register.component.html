@@ -1,1 +1,43 @@
-<p>register works!</p>
+<div class="login-register-wrapper pt-60 pb-60">
+  <div class="container">
+    <div class="member-area-from-wrap">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="login-reg-form-wrap mt-md-60 mt-sm-60">
+            <h2>Singup Form</h2>
+            <form action="#">
+              <div class="single-input-item">
+                <input type="text" #name placeholder="Enter your Name" required />
+              </div>
+              
+              <div class="single-input-item">
+                <input type="text" #username placeholder="User Name" required />
+              </div>
+
+              <div class="single-input-item">
+                <input type="email" #email placeholder="Enter your email" required />
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="single-input-item">
+                    <input type="password" #password placeholder="Enter your password" required />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="single-input-item">
+                  <input type="phone" #phone placeholder="Enter your Phone Number " required />
+                </div>
+              </div>
+              <div class="single-input-item">
+                <button class="btn btn__bg btn__sqr" (click)="handleRegister(name.value,username.value,email.value,password.value,phone.value)">Register</button>
+                <span id="erroMsg" >Register Success</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
