@@ -13,10 +13,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  public handleLogin: Function = async (username, password) => {
-    await axios.post('', {
-      userName: username,
-      password: password
+  public handleLogin: Function = async (account, password) => {
+    await axios.post('http://localhost:8080/api/auth/signin',  {
+      "account": account,
+      "password": password
     })
       .then(function (response) {
         console.log(response);
