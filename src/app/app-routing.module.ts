@@ -13,7 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product/:id', component: ProductComponent },
+  { path: 'product', component: ProductComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },
