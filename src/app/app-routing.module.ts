@@ -9,11 +9,13 @@ import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SetComponent } from './set/set.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product', component: ProductComponent },
+  { path: 'product/food', component: ProductComponent },
+  { path: 'product/set', component: SetComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },
