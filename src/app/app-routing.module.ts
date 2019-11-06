@@ -14,8 +14,8 @@ import { SetComponent } from './set/set.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product/food', component: ProductComponent },
-  { path: 'product/set', component: SetComponent },
+  { path: 'product/food/:id', component: ProductComponent },
+  { path: 'product/set/:id', component: SetComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 
 @NgModule({
