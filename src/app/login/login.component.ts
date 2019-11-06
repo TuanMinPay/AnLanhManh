@@ -16,14 +16,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  forgot = true;
   public handleLogin: Function = async (account: any, password: any) => {
     const that = this;
-    await axios.post('http://localhost:8080/api/auth/signin', {
+    if(password.length == 0 || account.length == 0 ){
+      that.forgot = false;
+    }else{
+      that.forgot = true;
+      await axios.post('http://localhost:8080/api/auth/signin', {
       account: account,
       password: password
     }).then(function (response) {
       //success
-      console.log(response);
       if(response.data.status == 200){
         localStorage.setItem("token", response.data.accessToken);
         //console.log(localStorage.getItem("token"));
@@ -32,6 +36,10 @@ export class LoginComponent implements OnInit {
     }).catch(function (error) {
       //error
       console.log(error);
+      // if(error.data.status == 401){
+      //   document.getElementById("errorResponse").innerHTML = error.data.message;
+      // }
     });
+    }
   }
 }

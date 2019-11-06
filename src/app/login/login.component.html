@@ -6,13 +6,15 @@
                 <div class="col-lg-6 loginForm">
                     <div class="login-reg-form-wrap  pr-lg-50">
                         <h2>Sign In</h2>
-                        <form>
+                        <form name="loginForm">
                             <div class="single-input-item">
                                 <input type="text" #account placeholder="Phone or Username" required />
                             </div>
                             <div class="single-input-item">
                                 <input type="password" #password placeholder="Enter your password" required />
                             </div>
+                            <p #errors [hidden]="forgot" class="error">Please enter full infomation !</p>
+                            <span [hidden]='forgot' class="error" id="errorResponse"></span>
                             <div class="single-input-item">
                                 <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                     <div class="remember-meta">
