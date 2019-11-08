@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   forgot = true;
+  forgot2 = true;
   public handleLogin: Function = async (account: any, password: any) => {
     const that = this;
     if(password.length == 0 || account.length == 0 ){
@@ -36,10 +37,12 @@ export class LoginComponent implements OnInit {
     }).catch(function (error) {
       //error
       console.log(error.response.data);
-      // if(error.data.status == 401){
-      //   document.getElementById("errorResponse").innerHTML = error.data.message;
-      // }
+      if(error.response.data.status == 401){
+        document.getElementById("errorResponse").innerHTML = error.response.data.message;
+      }
+      that.forgot2 = false;
     });
     }
   }
 }
+
