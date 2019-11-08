@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit  {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   isLogin: boolean = false;
 
+  
   logout() {
-    // handle logout
+    const that = this;
+    var token = localStorage.getItem('token');
+    if (token !=null || token != undefined || token != ''){
+      this.isLogin = true;
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+      //that.router.navigate(['/login'])
+    }
   }
 
   ngOnInit() {
