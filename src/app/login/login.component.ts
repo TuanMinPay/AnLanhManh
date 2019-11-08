@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
       if(response.data.status == 200){
         localStorage.setItem("token", response.data.accessToken);
         //console.log(localStorage.getItem("token"));
-        that.router.navigate(['/'])
+        window.location.href = '/';
+        //that.router.navigate(['/'])
       }
     }).catch(function (error) {
       //error
