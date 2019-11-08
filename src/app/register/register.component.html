@@ -38,9 +38,19 @@
                     <input type="password" formControlName="password" placeholder="Enter your password" #password [ngClass]="{'is-invalid': submitted && registerForm.controls.password.errors}" />
                     <div *ngIf="submitted && registerForm.controls.password.errors" class="text-danger">
                       <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+                      <div *ngIf="registerForm.controls.password.errors.minlength">Password have at least 6 characters</div>
                       <div *ngIf="registerForm.controls.password.errors.maxlength">Password have at most 100 characters</div>
                     </div>
                   </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-input-item">
+                        <input type="password" formControlName="confirmPassword" placeholder="Confirm your password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors}" appConfirmEqualValidator='password'/>
+                        <div *ngIf="submitted && registerForm.controls.confirmPassword.errors" class="text-danger">
+                          <div *ngIf="registerForm.controls.confirmPassword.errors.required">Confirm password is required</div>
+                          <div *ngIf="registerForm.controls.confirmPassword.errors?.notEqual">Password Mismatch</div>
+                        </div>
+                    </div>
                 </div>
               </div>
               <div>
@@ -48,7 +58,8 @@
                   <input type="phone" formControlName="phone" placeholder="Enter your Phone Number " #phone [ngClass]="{'is-invalid': submitted && registerForm.controls.phone.errors}" />
                   <div *ngIf="submitted && registerForm.controls.phone.errors" class="text-danger">
                     <div *ngIf="registerForm.controls.phone.errors.required">Phone is required</div>
-                    <div *ngIf="registerForm.controls.phone.errors.maxlength">Password have at most 40 characters</div>
+                    <div *ngIf="registerForm.controls.phone.errors.pattern">Phone must be a number</div>
+                    <div *ngIf="registerForm.controls.phone.errors.maxlength">Phone have at most 40 characters</div>
                   </div>
                 </div>
               </div>
