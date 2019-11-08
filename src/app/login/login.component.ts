@@ -14,6 +14,12 @@ export class LoginComponent implements OnInit {
    ) {}
 
   ngOnInit() {
+    const that = this;
+    var token = localStorage.getItem('token');
+    console.log(token);
+    if (token != null || token != undefined || token != ''){
+      window.location.href = '/';
+    }
   }
 
   forgot = true;
