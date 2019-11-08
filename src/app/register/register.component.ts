@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
+      confirmPassword: ['', Validators.required],
       phone: ['', [Validators.required, Validators.maxLength(20)]]
     }); 
   } 
@@ -51,7 +52,7 @@ export class RegisterComponent implements OnInit {
       //   this.errorMessage = error.response.message;
       // }
 
-      console.log(error.response);
+      console.log(error.response.data);
       
 
       
