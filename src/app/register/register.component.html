@@ -55,10 +55,10 @@
               </div>
               <div>
                 <div class="single-input-item">
-                  <input type="phone" formControlName="phone" placeholder="Enter your Phone Number " #phone [ngClass]="{'is-invalid': submitted && registerForm.controls.phone.errors}" />
+                  <input type="phone" [pattern]="mobNumberPattern" formControlName="phone" placeholder="Enter your Phone Number " #phone [ngClass]="{'is-invalid': submitted && registerForm.controls.phone.errors}" />
                   <div *ngIf="submitted && registerForm.controls.phone.errors" class="text-danger">
                     <div *ngIf="registerForm.controls.phone.errors.required">Phone is required</div>
-                    <div *ngIf="registerForm.controls.phone.errors.pattern">Phone must be a number</div>
+                    <div *ngIf="registerForm.controls.phone.errors.pattern">Phone numbers can only be 10 or 11 numbers</div>
                     <div *ngIf="registerForm.controls.phone.errors.maxlength">Phone have at most 40 characters</div>
                   </div>
                 </div>

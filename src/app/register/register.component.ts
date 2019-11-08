@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from "axios";
 import {Router} from "@angular/router"
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, PatternValidator } from '@angular/forms';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
-  
+  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   constructor(
     private router: Router,
     private formBuilder: FormBuilder) { }
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
       confirmPassword: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.maxLength(20)]]
+      phone: ['', [Validators.required, Validators.maxLength(20), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]]
     }); 
   } 
 
