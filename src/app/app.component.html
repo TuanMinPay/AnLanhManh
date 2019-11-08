@@ -24,9 +24,10 @@
                         <i class="fa fa-angle-down"></i>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="myaccount">
-                        <a class="dropdown-item" href="/profile">my account</a>
-                        <a class="dropdown-item" href="/login"> login</a>
-                        <a class="dropdown-item" href="/register">register</a>
+                        <a class="dropdown-item" href="/login" *ngIf="!isLogin"> login</a>
+                        <a class="dropdown-item" href="/register" *ngIf="!isLogin">register</a>
+                        <a class="dropdown-item" href="/profile" *ngIf="isLogin">my account</a>
+                        <a class="dropdown-item" href="javascript:void(0)" *ngIf="isLogin" (click)="logout()">logout</a>
                       </div>
                     </div>
                   </li>
@@ -121,7 +122,8 @@
             <nav id="mobile-menu">
               <ul>
                 <li>
-                  <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">Home</a>
+                  <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+                    [routerLink]="['']">Home</a>
                 </li>
                 <li><a href="javascript:void(0)">pages <i class="fa fa-angle-down"></i></a>
                   <ul class="megamenu dropdown">
@@ -190,8 +192,10 @@
                     <li><a href="blog-details-image.html">blog details image</a></li>
                   </ul>
                 </li>
-                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['about']">about us</a></li>
-                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['contact']">Contact</a></li>
+                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+                    [routerLink]="['about']">about us</a></li>
+                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+                    [routerLink]="['contact']">Contact</a></li>
               </ul>
             </nav>
             <!-- main menu navbar end -->
