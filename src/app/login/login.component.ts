@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       }
     }).catch(function (error) {
       //error
-      console.log(error);
+      console.log(error.response.data);
       // if(error.data.status == 401){
       //   document.getElementById("errorResponse").innerHTML = error.data.message;
       // }
