@@ -14,7 +14,7 @@ import { SetComponent } from './set/set.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product/food/:id', component: ProductComponent },
+  { path: 'product/food/:{id}', component: ProductComponent },
   { path: 'product/set/:id', component: SetComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },

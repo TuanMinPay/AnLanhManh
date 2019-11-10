@@ -24,7 +24,7 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="product-large-slider img-zoom mb-20 slider-arrow-style slider-arrow-style__style-2">
                         <div class="pro-large-img">
-                            <img src="assets/img/product/product-details-img1.jpg" alt="" />
+                            <img src="{{linkImage}}" alt="" />
                         </div>
                         <!-- <div class="pro-large-img">
                             <img src="assets/img/product/product-details-img2.jpg" alt="" />
@@ -57,17 +57,14 @@
                                 <span><i class="ion-android-star"></i></span>
                                 <span><i class="ion-android-star"></i></span>
                             </div>
-                            <div class="product-name">
-                                <h4><a href="#">Condimentum organic vegetables</a></h4>
+                            <div class="product-name" >
+                                <h4 id="foodName"><a href="#">{{textName}}</a></h4>
                             </div>
                             <div class="price-box">
-                                <span class="regular-price">$160.00</span>
-                                <span class="old-price"><del>$130.00</del></span>
+                                <span>Price : <span class="regular-price"> {{textPrice}} VND</span></span>
+                                <span class="old-price"><del></del></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                                tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus
-                                quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu,
-                                suscipit id nulla.</p>
+                            <p>{{textDescription}}</p>
                             <div class="action-link mb-20">
                                 <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add to
                                     cart</a>
@@ -112,16 +109,7 @@
                                     <div class="tab-content reviews-tab">
                                         <div class="tab-pane fade show active" id="tab_one">
                                             <div class="tab-one">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                    fringilla augue nec est tristique auctor. Ipsum metus feugiat
-                                                    sem, quis fermentum turpis eros eget velit. Donec ac tempus
-                                                    ante. Fusce ultricies massa massa. Fusce aliquam, purus eget
-                                                    sagittis vulputate, sapien libero hendrerit est, sed commodo
-                                                    augue nisi non neque
-                                                    Cras neque metus, consequat et blandit et, luctus a nunc. Etiam
-                                                    gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                                    Pellentesque habitant morbi tristique senectus et netus et
-                                                    malesuada fames ac turpis egestas</p>
+                                                <p>{{textDescription}}</p>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab_three">
