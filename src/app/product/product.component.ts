@@ -1,34 +1,55 @@
 import { Component, OnInit, Input } from '@angular/core';
-import axios from "axios";
+import { ActivatedRoute, Route } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+ 
+  dataFood: any ={
+    id: null,
+    name: null,
+    description: null,
+    image: null,
+    price: null,
+    carbonhydrates: null,
+    protein: null,
+    lipid: null,
+    xenluloza: null,
+    canxi: null,
+    iron: null,
+    zinc: null,
+    vitaminA: null,
+    vitaminB: null,
+    vitaminC: null,
+    vitaminD: null,
+    vitaminE: null,
+    calorie: null,
+    cateId: null
+  };
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    
+   }
 
-  textName: any = null;
-  textPrice: any = null;
-  textDescription: any = null;
-  linkImage: any = null;
+  
   ngOnInit() {
     const that = this;
     const axios = require('axios');
-    axios.get('http://localhost:8080/api/food/6', )
-      .then(function (response) {
-        if(response.data.status == 200){
-          that.textName = response.data.data.name;
-          that.textPrice = response.data.data.price;
-          that.textDescription = response.data.data.description;
-          that.linkImage = response.data.data.image;
-        }
-        console.log(response.data.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-    }  
+
+    axios.get('http://localhost:8080/api/food/2'  )
+    .then(function (response: any) {
+      if(response.data.status == 200){
+        that.dataFood = response.data.data;
+      }
+      console.log(response.data.data);
+    })
+    .catch(function (error: any) {
+      // handle error
+      console.log(error);
+    });
+  }  
 }
