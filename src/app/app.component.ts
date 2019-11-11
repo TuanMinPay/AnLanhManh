@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit  {
 
-  constructor(
+  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, 
   ) { }
 
   isLogin: boolean = false;
 
   logout() {
-    var token = localStorage.getItem('token');
+    var token = this.localStorage.getItem('token');
     if (token != null || token != undefined){
       this.isLogin = true;
-      localStorage.removeItem('token');
+      this.localStorage.removeItem('token');
       this.isLogin = false;
-      window.location.href = window.location.href;
+      this.window.location.href = this.window.location.href;
     }
   }
 
   ngOnInit() {
-    var token = localStorage.getItem('token');
+    var token = this.localStorage.getItem('token');
     if (token == null || token == undefined) {
       this.isLogin = false;
     } else {

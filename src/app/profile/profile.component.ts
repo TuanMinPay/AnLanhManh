@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { async } from '@angular/core/testing';
 import axios from 'axios';
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +10,7 @@ import axios from 'axios';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, ) { }
 
   ngOnInit() {
     this.getProfile();
@@ -32,10 +33,10 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-    var token = localStorage.getItem('token');
+    var token = this.localStorage.getItem('token');
     if (token != null || token != undefined){
-      localStorage.removeItem('token');
-      window.location.href = '/login';
+      this.localStorage.removeItem('token');
+      this.window.location.href = '/login';
     }
   } 
 }

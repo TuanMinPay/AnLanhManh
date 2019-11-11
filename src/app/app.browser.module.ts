@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
@@ -15,36 +15,19 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
 import { ConfirmEqualValidatorDirective } from './confirm-equal-validator.directive';
-import { CommonModule } from '@angular/common';
-import { TransferHttpCacheModule } from '@nguniversal/common';
-import { HttpClientModule } from '@angular/common/http';
-import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { AppModule } from './app.module';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,ConfirmEqualValidatorDirective,
-    HomeComponent,
-    AboutComponent,
-    ContacusComponent,
-    ProductComponent,
-    CartComponent,
-    OrderComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
-    SetComponent
-  ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule,
-    TransferHttpCacheModule,
-    HttpClientModule,
-    NgtUniversalModule,
+    AppModule,
+    BrowserTransferStateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppBrowserModule { }
