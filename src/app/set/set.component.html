@@ -29,60 +29,79 @@
                             <tbody>
                                 <tr>
                                     <td class="first-column">Product</td>
-                                    <td class="product-image-title">
-                                        <a href="product-details.html" class="image">
-                                            <img class="img-fluid" src="assets/img/product/product-1.jpg" alt="Compare Product">
+                                    <td class="product-image-title" *ngFor="let product of listProduct">
+                                        <a href="#" class="image">
+                                            <img class="img-fluid" [src]="product?.image" alt="Compare Product">
                                         </a>
-                                        <a href="#" class="category">Daimond</a>
-                                        <a href="product-details.html" class="title">Endeavor Daytrip</a>
-                                    </td>
-                                    <td class="product-image-title">
-                                        <a href="product-details.html" class="image">
-                                            <img class="img-fluid" src="assets/img/product/product-2.jpg" alt="Compare Product">
-                                        </a>
-                                        <a href="#" class="category">Gold</a>
-                                        <a href="product-details.html" class="title">Compete Track Totes</a>
-                                    </td>
-                                    <td class="product-image-title">
-                                        <a href="product-details.htmll" class="image">
-                                            <img class="img-fluid" src="assets/img/product/product-3.jpg" alt="Compare Product">
-                                        </a>
-                                        <a href="#" class="category">Ring</a>
-                                        <a href="product-details.html" class="title">Bess Yoga Shorts</a>
+                                        <a href="#" class="category">{{product?.categories.name}}</a>
+                                        <a href="#" class="title">{{product?.name}}</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Description</td>
-                                    <td class="pro-desc">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-                                            nulla, explicabo iste a rerum pariatur.</p>
-                                    </td>
-                                    <td class="pro-desc">
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-                                            commodi obcaecati cumque consectetur alias incidunt?</p>
-                                    </td>
-                                    <td class="pro-desc">
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
-                                            facere. Fuga asperiores inventore iste tempora.</p>
+                                    <td class="pro-desc" *ngFor="let product of listProduct"> 
+                                        <p>{{product?.description}}</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Price</td>
-                                    <td class="pro-price">$295</td>
-                                    <td class="pro-price">$275</td>
-                                    <td class="pro-price">$395</td>
+                                    <td class="pro-price" *ngFor="let product of listProduct">{{product?.price}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="first-column">Kcal</td>
-                                    <td class="pro-color">127</td>
-                                    <td class="pro-color">160</td>
-                                    <td class="pro-color">30</td>
+                                    <td class="first-column">Carbonhydrates</td>
+                                    <td class="pro-color" *ngFor="let product of listProduct">{{product?.carbonhydrates}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="first-column">Stock</td>
-                                    <td class="pro-stock">In Stock</td>
-                                    <td class="pro-stock">Stock Out</td>
-                                    <td class="pro-stock">In Stock</td>
+                                    <td class="first-column">Protein</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.protein}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Lipid</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.lipid}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Xenluloza</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.xenluloza}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Canxi</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.canxi}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Iron</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.iron}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Zinc</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.zinc}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminA</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminA}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminB</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminB}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminC</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminC}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminD</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminB}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminE</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminB}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Calorie</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.calorie}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Weight</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.weight}}</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Add to cart</td>

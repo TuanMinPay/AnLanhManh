@@ -1,0 +1,9 @@
+.image img {
+    width: 270px;
+    height: 270px;
+}
+
+.product-image-title{
+    max-width: 300px;
+    max-height: 370px;
+}
