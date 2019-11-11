@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
 import { ConfirmEqualValidatorDirective } from './confirm-equal-validator.directive';
 
+
 @NgModule({
   declarations: [
     AppComponent,ConfirmEqualValidatorDirective,
