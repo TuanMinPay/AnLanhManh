@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
+import axios from "axios";
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -32,15 +33,16 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute
   ) {
-    
    }
+
+   id:number;
 
   
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
     const that = this;
-    const axios = require('axios');
 
-    axios.get('http://localhost:8080/api/food/2'  )
+    axios.get('http://localhost:8080/api/food/' + this.id  )
     .then(function (response: any) {
       if(response.data.status == 200){
         that.dataFood = response.data.data;
