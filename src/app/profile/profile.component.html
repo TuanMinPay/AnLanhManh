@@ -221,30 +221,32 @@
                                                     <fieldset>
                                                         <legend>Password change</legend>
                                                         <div class="single-input-item">
-                                                            <label for="current-pwd" class="required">Current
+                                                            <label for="current-pwd" class="required" >Current
                                                                 Password</label>
-                                                            <input type="password" id="current-pwd" placeholder="Current Password" />
+                                                            <input type="password" id="current-pwd" #oldPassword placeholder="Current Password" />
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="new-pwd" class="required">New
                                                                         Password</label>
-                                                                    <input type="password" id="new-pwd" placeholder="New Password" />
+                                                                    <input type="password" #password id="new-pwd" placeholder="New Password" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="confirm-pwd" class="required">Confirm
                                                                         Password</label>
-                                                                    <input type="password" id="confirm-pwd"
+                                                                    <input type="password" #confirmPassword id="confirm-pwd"
                                                                         placeholder="Confirm Password" />
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <span *ngIf="textError != null" class="error">{{textError}}</span>
                                                     </fieldset>
                                                     <div class="single-input-item">
-                                                        <button class="btn btn__bg btn__sqr">Save Changes</button>
+                                                        <button class="btn btn__bg btn__sqr" 
+                                                        (click)="changePassword(oldPassword.value, password.value, confirmPassword.value)">Save Changes</button>
                                                     </div>
                                                 </form>
                                             </div>
