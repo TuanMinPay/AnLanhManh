@@ -20,9 +20,13 @@ export class ProfileComponent implements OnInit {
 
   myInfo: any;
 
+  textError: any = null;
+
   API_PROFILE = 'http://localhost:8080/api/user-profile';
 
   API_GETME = "http://localhost:8080/api/auth/me";
+
+  API_CHANGEPASSWORD = "http://localhost:8080/api/auth/password/change";
 
   public getMe: Function = async => {
     const that = this;
@@ -49,6 +53,42 @@ export class ProfileComponent implements OnInit {
       // handle error
       console.log(error);
     });
+  }
+  
+
+  public changePassword: Function = async (oldPassword: any, password: any, confirmPassword: any) => {
+    const that = this;
+    if(oldPassword.length == 0 || password.length == 0 || confirmPassword.length == 0){
+      that.textError = "Please enter full infomation !"
+    }else if(password.length < 6 ){
+      that.textError = "Password must be greater than 6 characters !"
+    }else if(password.length != confirmPassword.length){
+      that.textError = "Password And Confirm Password Dissimilar !"
+    }else{
+      that.textError = null;
+      axios.put("http://localhost:8080/api/auth/password/change",
+    {
+      oldPassword: oldPassword,
+      password: password,
+      confirmPassword: confirmPassword
+    },
+    { headers: { Authorization: that.token } }
+    )
+    .then(function (response){
+      if(response.data.status == 200){
+        that.window.location.href = '/profile';
+      }
+        console.log(response)
+    })
+    .catch(function (error) {
+      if (error.response.data.status == 401) {
+        that.textError = error.response.data.message;
+      } else {
+        that.textError = null;
+      }
+    });
+    }
+    
   }
 
   logout() {
