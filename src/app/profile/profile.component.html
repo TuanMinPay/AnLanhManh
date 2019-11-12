@@ -56,7 +56,7 @@
                                         <div class="myaccount-content">
                                             <h3>Dashboard</h3>
                                             <div class="welcome">
-                                                    <p>Hello, <strong>{{myInfo.username}}</strong> (If Not <strong>{{myInfo.name}} !</strong><a
+                                                    <p>Hello, <strong>{{myInfo?.username}}</strong> (If Not <strong>{{myInfo?.name}} !</strong><a
                                                         (click)="logout()" class="logout"> Logout</a>)</p>
                                                 </div>
                                                 <p class="mb-0">From your account dashboard. you can easily check &
@@ -181,23 +181,23 @@
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
                                                                 <label for="first-name" class="required">Name</label>
-                                                                <input type="text" id="first-name" value={{myInfo.name}} />
+                                                                <input type="text" id="first-name" value={{myInfo?.name}} />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
                                                                 <label for="last-name" class="required">UserName</label>
-                                                                <input type="text" id="last-name" value={{myInfo.username}} />
+                                                                <input type="text" id="last-name" value={{myInfo?.username}} />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="single-input-item">
                                                         <label for="display-name" class="required">Email</label>
-                                                        <input type="text" id="display-name" value={{myInfo.email}} />
+                                                        <input type="text" id="display-name" value={{myInfo?.email}} />
                                                     </div>
                                                     <div class="single-input-item">
                                                         <label for="email" class="required">Phone</label>
-                                                        <input type="email" id="email" value={{myInfo.phone}} />
+                                                        <input type="email" id="email" value={{myInfo?.phone}} />
                                                     </div>
                                                     <div class="myaccount-table table-responsive text-center">
                                                             <h3>Body Mass Index</h3>
@@ -211,9 +211,9 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td>{{userDetails.height}}</td>
-                                                                        <td>{{userDetails.weight}}</td>
-                                                                        <td>{{userDetails.age}}</td>
+                                                                        <td>{{userDetails?.height}}</td>
+                                                                        <td>{{userDetails?.weight}}</td>
+                                                                        <td>{{userDetails?.age}}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
