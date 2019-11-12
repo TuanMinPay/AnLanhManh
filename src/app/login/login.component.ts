@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, 
     private router: Router,
-  ) { }
+  ) {
+    
+   }
 
   textError: any = null;
   public handleLogin: Function = async (account: any, password: any) => {

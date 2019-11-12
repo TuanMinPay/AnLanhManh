@@ -31,6 +31,8 @@
                                 <div class="myaccount-tab-menu nav" role="tablist">
                                     <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
                                         Dashboard</a>
+                                    <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account
+                                        Details</a>
                                     <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                         Orders</a>
                                     <a href="#download" data-toggle="tab"><i class="fa fa-cloud-download"></i>
@@ -40,8 +42,7 @@
                                         Method</a>
                                     <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i>
                                         address</a>
-                                    <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account
-                                        Details</a>
+                                    
                                     <a (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
                                 </div>
                             </div>
@@ -55,13 +56,13 @@
                                         <div class="myaccount-content">
                                             <h3>Dashboard</h3>
                                             <div class="welcome">
-                                                <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a
-                                                        href="login-register.html" class="logout"> Logout</a>)</p>
+                                                    <p>Hello, <strong>{{myInfo.username}}</strong> (If Not <strong>{{myInfo.name}} !</strong><a
+                                                        (click)="logout()" class="logout"> Logout</a>)</p>
+                                                </div>
+                                                <p class="mb-0">From your account dashboard. you can easily check &
+                                                    view your recent orders, manage your shipping and billing addresses
+                                                    and edit your password and account details.</p>
                                             </div>
-                                            <p class="mb-0">From your account dashboard. you can easily check &
-                                                view your recent orders, manage your shipping and billing addresses
-                                                and edit your password and account details.</p>
-                                        </div>
                                     </div>
                                     <!-- Single Tab Content End -->
 
@@ -179,25 +180,44 @@
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="first-name" class="required">First Name</label>
-                                                                <input type="text" id="first-name" placeholder="First Name" />
+                                                                <label for="first-name" class="required">Name</label>
+                                                                <input type="text" id="first-name" value={{myInfo.name}} />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="last-name" class="required">Last Name</label>
-                                                                <input type="text" id="last-name" placeholder="Last Name" />
+                                                                <label for="last-name" class="required">UserName</label>
+                                                                <input type="text" id="last-name" value={{myInfo.username}} />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="single-input-item">
-                                                        <label for="display-name" class="required">Display Name</label>
-                                                        <input type="text" id="display-name" placeholder="Display Name" />
+                                                        <label for="display-name" class="required">Email</label>
+                                                        <input type="text" id="display-name" value={{myInfo.email}} />
                                                     </div>
                                                     <div class="single-input-item">
-                                                        <label for="email" class="required">Email Addres</label>
-                                                        <input type="email" id="email" placeholder="Email Address" />
+                                                        <label for="email" class="required">Phone</label>
+                                                        <input type="email" id="email" value={{myInfo.phone}} />
                                                     </div>
+                                                    <div class="myaccount-table table-responsive text-center">
+                                                            <h3>Body Mass Index</h3>
+                                                            <table class="table table-bordered">
+                                                                <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th>Height</th>
+                                                                        <th>Weight</th>
+                                                                        <th>Age</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>{{userDetails.height}}</td>
+                                                                        <td>{{userDetails.weight}}</td>
+                                                                        <td>{{userDetails.age}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     <fieldset>
                                                         <legend>Password change</legend>
                                                         <div class="single-input-item">
