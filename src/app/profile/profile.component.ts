@@ -13,7 +13,14 @@ export class ProfileComponent implements OnInit {
   constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, ) {
    }
 
-  
+   isShow:boolean = false;
+
+   showCate:boolean = false;
+
+   showWis :boolean = false;
+
+   forgot = false;
+
   token: any = this.localStorage.getItem('token');
 
   userDetails: any;
@@ -97,6 +104,25 @@ export class ProfileComponent implements OnInit {
       this.localStorage.removeItem('token');
       this.window.location.href = '/login';
     }
+  }
+
+  bodyInput(){
+    const that = this;
+    that.isShow = true;
+    that.forgot = true;
+    that.showCate = false;
+  }
+
+  showCategory(){
+    const that = this;
+    that.isShow = false;
+    that.showCate = true;
+  }
+
+  showWishes(){
+    const that = this;
+    that.showCate = false;
+    that.showWis = true;
   }
 
   ngOnInit() {
