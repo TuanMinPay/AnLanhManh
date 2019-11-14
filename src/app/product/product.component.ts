@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 import * as _ from 'underscore';
-import { parseLazyRoute } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
   selector: 'app-product',
