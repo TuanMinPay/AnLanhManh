@@ -1,0 +1,11 @@
+.wrapper {
+    background-image: url("../../assets/images/form-wizard-bg.jpg")
+}
+
+select{
+    background: white
+}
+
+.single-input-item button{
+    margin-left: 40%;
+}

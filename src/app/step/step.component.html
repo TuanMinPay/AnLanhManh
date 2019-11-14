@@ -1,0 +1,105 @@
+<div class="wrapper">
+        <form action="" id="wizard">
+            <!-- SECTION 1 -->
+            <h4></h4>
+            <section>
+                <fieldset>
+                    <legend>Chỉ số cơ thể</legend>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="single-input-item">
+                                <label for="new-pwd" class="required">Chiều cao</label>
+                                <input type="text" #height id="new-pwd" placeholder="Chiều cao" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-input-item">
+                                <label for="confirm-pwd" class="required">Cân nặng</label>
+                                <input type="text" #weight id="confirm-pwd"
+                                    placeholder="Cân nặng" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-input-item">
+                                <label for="confirm-pwd" class="required">Tuổi</label>
+                                <input type="text" #age
+                                    placeholder="Your Age" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-input-item">
+                        <label for="current-pwd" class="required" >Giới tính</label>
+                        <select id="new-pwd" class="form-control col-lg-6">
+                            <option>Nam</option>
+                            <option>Nữ</option>
+                          </select>
+                    </div>
+                    <span *ngIf="textError != null" class="error">{{textError}}</span>
+                    <!-- <div class="single-input-item">
+                        <button (click)="showCategory()" class="btn btn__bg btn__sqr">Submit</button>
+                    </div> -->
+                </fieldset>
+            </section>
+
+            <!-- SECTION 2 -->
+            <h4></h4>
+            <section>
+                <div class="myaccount-content">
+                    <h3>Mức độ vận động và bệnh lí</h3>
+                    <br>
+                    <div class="single-input-item">
+                        <label class="required" >Cường độ vận động</label>
+                        <select class="form-control col-lg-8">
+                            <option value="Sedentary">Ít Vận Động</option>
+                            <option value="Light activity">Vận động nhẹ</option>
+                            <option value="Nomarl activity">Bình thường</option>
+                            <option value="Activity much">Vận động nhiều</option>
+                            <option value="Activiti a lot">Vận động rất nhiều</option>
+                          </select>
+                    </div>
+                    <div class="single-input-item">
+                        <label class="required" >Danh mục vận động</label>
+                        <select class="form-control col-lg-8">
+                            <option>Lấy từ api về!</option>
+                          </select>
+                    </div>
+                    <div class="single-input-item">
+                        <label class="required" >Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
+                        <select class="form-control col-lg-8">
+                            <option value="Sedentary">Chỗ này lấy từ api về</option>
+                            <option value="Light activity">Xàm lồn bệnh</option>
+                          </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <h4></h4>
+            <section>
+                <div class="myaccount-content">
+                    <h3>Mục tiêu</h3>
+                    <br>
+                    <div class="single-input-item">
+                        <label class="required" >Mục tiêu cân nặng muốn đạt được</label>
+                        <br>
+                        <input class="col-lg-8" type="text" placeholder="">
+                    </div>
+                    <div class="single-input-item">
+                            <label class="required" >Trong bao lâu ?</label>
+                            <br>
+                            <input class="col-lg-8" type="text" placeholder="">
+                        </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4 -->
+            <h4></h4>
+            <section>
+                <h3>Chỗ này show ra chỉ số BMI thể trạng cơ thể gợi ý nên ăn gì để cải thiện cơ thể</h3>
+                <div class="single-input-item">
+                        <button class="btn btn__bg btn__sqr">Trang chủ</button>
+                    </div>
+            </section>
+            
+        </form>
+    </div>
