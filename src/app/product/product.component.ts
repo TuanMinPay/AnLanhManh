@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 @Component({
   selector: 'app-product',
@@ -8,7 +8,7 @@ import axios from "axios";
 })
 export class ProductComponent implements OnInit {
  
-  dataFood: any ={
+  dataFood: any =[{
     id: null,
     name: null,
     description: null,
@@ -28,30 +28,51 @@ export class ProductComponent implements OnInit {
     vitaminE: null,
     calorie: null,
     cateId: null
-  };
+  }];
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute
   ) {
    }
+  
+  pager: any = [{
+    limit: null,
+    page: null,
+    totalItems: null,
+    totalPages: null
+  }];
 
-   id:number;
-
+  pageOfItems = [];
+  
+  page : number;
   
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
     const that = this;
+    that.page = that.route.snapshot.params['page'];
+    that.route.queryParams.subscribe(x => that.loadPage(x.page || 1));
+    
+  }  
 
-    axios.get('http://localhost:8080/api/food/' + this.id  )
-    .then(function (response: any) {
+  private loadPage(page: any){
+    const that = this;
+    axios.get<any>('http://localhost:8080/api/food/' + that.page)
+    .then(function (response) {
       if(response.data.status == 200){
-        that.dataFood = response.data.data;
+        that.dataFood = response.data.data.content;
+        that.pager = response.data.restPagination;
+        // that.pageOfItems = response.data.restPagination
       }
-      console.log(response.data.data);
+      console.log(response.data.data.content);
+      console.log(response.data.restPagination);
     })
     .catch(function (error: any) {
       // handle error
       console.log(error);
     });
-  }  
+  }
+
+   foodDetail(id: number){
+    this.router.navigate(["/product-detail/food", id]);
+  }
 }

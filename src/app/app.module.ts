@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContacusComponent } from './contacus/contacus.component';
 import { ProductComponent } from './product/product.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +28,6 @@ import { StepComponent } from './step/step.component';
     HomeComponent,
     AboutComponent,
     ContacusComponent,
-    ProductComponent,
     CartComponent,
     OrderComponent,
     LoginComponent,
@@ -35,6 +35,8 @@ import { StepComponent } from './step/step.component';
     ProfileComponent,
     SetComponent,
     StepComponent
+    ProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
