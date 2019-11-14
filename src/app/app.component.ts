@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',

@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { StepComponent } from './step/step.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    SetComponent
+    SetComponent,
+    StepComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

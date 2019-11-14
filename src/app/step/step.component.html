@@ -1,0 +1,216 @@
+<div class="wrapper">
+        <form action="" id="wizard">
+            <!-- SECTION 1 -->
+            <h4></h4>
+            <section>
+                <fieldset>
+                    <legend>Body Mass Index</legend>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="single-input-item">
+                                <label for="new-pwd" class="required">Height</label>
+                                <input type="text" #height id="new-pwd" placeholder="Your Height" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-input-item">
+                                <label for="confirm-pwd" class="required">Weight</label>
+                                <input type="text" #weight id="confirm-pwd"
+                                    placeholder="Your Weight" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-input-item">
+                                <label for="confirm-pwd" class="required">Age</label>
+                                <input type="text" #age
+                                    placeholder="Your Age" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-input-item">
+                        <label for="current-pwd" class="required" >Gender</label>
+                        <select id="new-pwd" class="form-control col-lg-6">
+                            <option>Male</option>
+                            <option>Female</option>
+                          </select>
+                    </div>
+                    <div class="single-input-item">
+                        <label for="current-pwd" class="required" >level of exercise</label>
+                        <select class="form-control col-lg-6">
+                            <option value="Sedentary">Sedentary</option>
+                            <option value="Light activity">Light activity</option>
+                            <option value="Nomarl activity">Nomarl activity</option>
+                            <option value="Activity much">Activity much</option>
+                            <option value="Activiti a lot">Activiti a lot</option>
+                          </select>
+                    </div>
+                    <span *ngIf="textError != null" class="error">{{textError}}</span>
+                    <!-- <div class="single-input-item">
+                        <button (click)="showCategory()" class="btn btn__bg btn__sqr">Submit</button>
+                    </div> -->
+                </fieldset>
+            </section>
+
+            <!-- SECTION 2 -->
+            <h4></h4>
+            <section>
+                <h3>Password change</h3>
+                <div class="form-row">
+                    <div class="form-holder w-100">
+                        <input type="password" class="form-control" placeholder="Current Password">
+                        <i class="zmdi zmdi-lock-open"></i>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-holder w-100">
+                        <input type="password" class="form-control" placeholder="Enter the Current Password">
+                        <i class="zmdi zmdi-lock-open"></i>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-holder w-100">
+                        <input type="password" class="form-control" placeholder="New Password">
+                        <i class="zmdi zmdi-lock-open"></i>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-holder w-100">
+                        <input type="password" class="form-control" placeholder="Confirm New Password">
+                        <i class="zmdi zmdi-lock-open"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <h4></h4>
+            <section>
+                <h3 style="margin-bottom: 16px;">My Cart</h3>
+                <table cellspacing="0" class="table-cart shop_table shop_table_responsive cart woocommerce-cart-form__contents table" id="shop_table">
+                    <thead>
+                        <th >&nbsp;</th>
+                        <th style="text-align: left;">Product Detail</th>
+                        <th >Quantity</th>
+                        <th >Total Price</th>
+                        <th >&nbsp;</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="product-thumb">
+                                <a href="#" class="item-thumb">
+                                    <img src="/assets/images/item-1.jpg" alt="">
+                                </a>
+                            </td>
+                            <td class="product-detail" data-title="Product Detail">
+                                <div>
+                                    <a href="#">Cherry</a>
+                                    <span>$</span>
+                                    <span>35</span>
+                                </div>
+                            </td>
+                            <td class="product-quantity" data-title="Quantity">
+                                <div class="quantity">
+                                    <span class="plus">+</span>
+                                    <input type="number" class="input-text qty text" step="1" min="0" max="" name="cart[5934c1ec0cd31e12bd9084d106bc2e32][qty]" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
+                                    <span class="minus">-</span>
+                                </div>
+                            </td>
+                            <td class="total-price" data-title="Total Price">
+                                <span class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">$</span>
+                                    70
+                                </span>
+                            </td>
+                            <td class="product-remove">
+                                <a href="#">
+                                    <i class="zmdi zmdi-close-circle-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-thumb">
+                                <a href="#" class="item-thumb">
+                                    <img src="/assets/images/item-2.jpg" alt="">
+                                </a>
+                            </td>
+                            <td class="product-detail" data-title="Product Detail">
+                                <div>
+                                     <a href="#">Mango</a>
+                                    <span>$</span>
+                                    <span>2035</span>
+                                </div>
+                            </td>
+                            <td class="product-quantity" data-title="Quantity">
+                                <div class="quantity">
+                                    <span class="plus">+</span>
+                                    <input type="number" class="input-text qty text" step="1" min="0" max="" name="cart[5934c1ec0cd31e12bd9084d106bc2e32][qty]" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
+                                    <span class="minus">-</span>
+                                </div>
+                            </td>
+                            <td class="total-price" data-title="Total Price">
+                                <span class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">$</span>
+                                    20
+                                </span>
+                            </td>
+                            <td class="product-remove">
+                                <a href="#">
+                                    <i class="zmdi zmdi-close-circle-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- SECTION 4 -->
+            <h4></h4>
+            <section>
+                <h3>Cart Totals</h3>
+                <div class="cart_totals">
+                    <table cellspacing="0" class="shop_table shop_table_responsive">
+                        <tr class="cart-subtotal">
+                            <th>Subtotal</th>
+                            <td data-title="Subtotal">
+                                <span class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">$</span>110.00
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="cart-subtotal shipping">
+                            <th>Shipping:</th>
+                            <td data-title="Subtotal">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" name="shipping" checked> Free Shipping
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="shipping"> Local pickup: <span>$</span><span>0.00</span>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <span>Calculate shipping</span>
+                            </td>
+                        </tr>
+                        <tr class="cart-subtotal">
+                            <th>Service <span>(estimated for Vietnam)</span></th>
+                            <td data-title="Subtotal">
+                                <span class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">$</span>5.60
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="order-total border-0">
+                            <th>Total</th>
+                            <td data-title="Total">
+                                <span class="woocommerce-Price-amount amount">
+                                    <span class="woocommerce-Price-currencySymbol">$</span>64.69
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </section>
+        </form>
+    </div>
