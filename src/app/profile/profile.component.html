@@ -66,86 +66,6 @@
                                                     <p class="mb-0">
                                                         - Please fill in the information below.
                                                         We will help you calculate the BMI to help you and make a reasonable diet for you.</p>
-                                                
-                                                <!-- demo step -->
-                                                <div class="single-input-item">
-                                                    <button (click)="bodyInput()" [hidden]="forgot" class="btn btn__bg btn__sqr">Begin</button>
-                                                </div>
-                                                <fieldset *ngIf="isShow">
-                                                    <legend>Body Mass Index</legend>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="single-input-item">
-                                                                <label for="new-pwd" class="required">Height</label>
-                                                                <input type="text" #height id="new-pwd" placeholder="Your Height" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="single-input-item">
-                                                                <label for="confirm-pwd" class="required">Weight</label>
-                                                                <input type="text" #weight id="confirm-pwd"
-                                                                    placeholder="Your Weight" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="single-input-item">
-                                                                <label for="confirm-pwd" class="required">Age</label>
-                                                                <input type="text" #age
-                                                                    placeholder="Your Age" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single-input-item">
-                                                        <label for="current-pwd" class="required" >Gender</label>
-                                                        <select id="new-pwd" class="form-control col-lg-6">
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                          </select>
-                                                    </div>
-                                                    <div class="single-input-item">
-                                                        <label for="current-pwd" class="required" >level of exercise</label>
-                                                        <select class="form-control col-lg-6">
-                                                            <option value="Sedentary">Sedentary</option>
-                                                            <option value="Light activity">Light activity</option>
-                                                            <option value="Nomarl activity">Nomarl activity</option>
-                                                            <option value="Activity much">Activity much</option>
-                                                            <option value="Activiti a lot">Activiti a lot</option>
-                                                          </select>
-                                                    </div>
-                                                    <span *ngIf="textError != null" class="error">{{textError}}</span>
-                                                    <div class="single-input-item">
-                                                        <button (click)="showCategory()" class="btn btn__bg btn__sqr">Submit</button>
-                                                    </div>
-                                                </fieldset>
-    
-                                                <div *ngIf="showCate" class="myaccount-content">
-                                                    <h3>We can help you do?</h3>
-                                                    <br>
-                                                    <h4>Please select the item you need!</h4>
-                                                    <div class="single-input-item">
-                                                        <label for="current-pwd" class="required" >Category</label>
-                                                        <select class="form-control col-lg-6">
-                                                            <option value="Sedentary">Sedentary</option>
-                                                            <option value="Light activity"></option>
-                                                            <option value="Nomarl activity"></option>
-                                                            <option value="Activity much"></option>
-                                                            <option value="Activiti a lot"></option>
-                                                          </select>
-                                                    </div>
-                                                    <div class="single-input-item">
-                                                        <button (click)="showWishes()" class="btn btn__bg btn__sqr">Submit</button>
-                                                    </div>
-                                                </div>
-    
-                                                <div *ngIf="showWis" class="myaccount-content">
-                                                    <h3>Enter your wishes</h3>
-                                                    <div class="single-input-item">
-                                                        <input type="text" #weight placeholder="Your wishes" />
-                                                    </div>
-                                                    <div class="single-input-item">
-                                                        <button class="btn btn__bg btn__sqr">Submit</button>
-                                                    </div>
-                                                </div>
                                             </div>
                                             
                                     </div>
@@ -292,9 +212,9 @@
                                                             <table class="table table-bordered">
                                                                 <thead class="thead-light">
                                                                     <tr>
-                                                                        <th>Height</th>
-                                                                        <th>Weight</th>
-                                                                        <th>Age</th>
+                                                                        <th>Chiều Cao</th>
+                                                                        <th>Cân Nặng</th>
+                                                                        <th>Tuổi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>

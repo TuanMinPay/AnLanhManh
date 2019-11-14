@@ -6,9 +6,9 @@ $(function(){
         enableAllSteps: true,
         transitionEffectSpeed: 300,
         labels: {
-            next: "Continue",
-            previous: "Back",
-            finish: 'Proceed to checkout'
+            next: "Sau",
+            previous: "Trước",
+            finish: "Hoàn Thành"
         },
         onStepChanging: function (event, currentIndex, newIndex) { 
             if ( newIndex >= 1 ) {
@@ -46,14 +46,6 @@ $(function(){
     $('.backward').click(function(){
         $("#wizard").steps('previous');
     })
-    // Click to see password 
-    $('.password i').click(function(){
-        if ( $('.password input').attr('type') === 'password' ) {
-            $(this).next().attr('type', 'text');
-        } else {
-            $('.password input').attr('type', 'password');
-        }
-    }) 
     // Create Steps Image
     $('.steps ul li:first-child').append('<img src="/assets/images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="/assets/images/step-1-active.png" alt=""> ').append('<span class="step-order">Step 01</span>');
     $('.steps ul li:nth-child(2').append('<img src="/assets/images/step-arrow.png" alt="" class="step-arrow">').find('a').append('<img src="/assets/images/step-2.png" alt="">').append('<span class="step-order">Step 02</span>');
