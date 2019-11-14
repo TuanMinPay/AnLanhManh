@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="breadcrumb-wrap text-center">
+                <div class="breadcrumb-wrap text-center" #target>
                     <nav aria-label="breadcrumb">
                         <h2>shop</h2>
                         <ul class="breadcrumb">
@@ -97,7 +97,7 @@
                                         </select>
                                     </div>
                                     <div class="product-amount">
-                                        <p>Showing {{pager.page}} - {{pager.limit}} of {{pager.totalItems}} results</p>
+                                        <p>Showing page {{pager.page}} of {{pager.totalItems}} results</p>
                                     </div>
                                 </div>
                             </div>
@@ -151,13 +151,11 @@
                     <!-- product item list end -->
 
                     <!-- start pagination area -->
-                    <div class="paginatoin-area text-center mt-30" >
+                    <div class="paginatoin-area text-center mt-30">
                         <ul class="pagination-box">
-                            <li><a class="Previous" href="#"><i class="ion-ios-arrow-left"></i></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a class="Next" href="#"><i class="ion-ios-arrow-right"></i></a></li>
+                            <li [ngClass]="{disabled:pages.currentPage === 1}"><a class="Previous" (click)="setPage(pages.currentPage - 1)"><i class="ion-ios-arrow-left"></i></a></li>
+                            <li *ngFor="let item of pages"> <a (click)="setPage(item)" class="{{currentPage == item ? 'active-page' : ''}}">{{item}}</a></li>
+                            <li [ngClass]="{disabled:currentPage === pages.totalPages}"><a class="Next" (click)="setPage(pagescurrentPage + 1)"><i class="ion-ios-arrow-right"></i></a></li> 
                         </ul>
                     </div>
                     <!-- end pagination area -->
