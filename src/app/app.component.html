@@ -126,7 +126,7 @@
                     [routerLink]="['']">Home</a>
                 </li>
                 <li><a href="javascript:void(0)">pages <i class="fa fa-angle-down"></i></a>
-                  <ul class="megamenu dropdown">
+                  <!-- <ul class="megamenu dropdown">
                     <li class="mega-title"><a href="javascript:void(0)">column 01</a>
                       <ul>
                         <li><a href="shop.html">shop grid left
@@ -165,23 +165,26 @@
                         <li><a href="/contact">contact us</a></li>
                       </ul>
                     </li>
-                  </ul>
+                  </ul> -->
                 </li>
                 <li><a href="javascript:void(0)">shop <i class="fa fa-angle-down"></i></a>
                   <ul class="dropdown">
+                    <!-- <li>
+                      <a href="javascript:void(0)" [routerLink]="['/product-detail/food']" [queryParams]="{ page: 1}">products details</a>
+                    </li> -->
                     <li>
-                      <a href="/product-detail/food/:id" [routerLink]="['/product-detail/food/1']">products details</a>
+                      <a href="javascript:void(0)" [routerLink]="['/product/food/list']" [queryParams]="{ page: 1}">products</a>
                     </li>
                     <li>
-                      <a href="/product/food/page" routerLink="/product/food/list?page=1">products</a>
+                      <a href="/product/set-detail/:id">set details</a>
                     </li>
                     <li>
-                      <a href="/product/set/:id">set details</a>
+                      <a href="/product/set/:id">set</a>
                     </li>
                   </ul>
                 </li>
                 <li><a href="javascript:void(0)">Blog <i class="fa fa-angle-down"></i></a>
-                  <ul class="dropdown">
+                  <!-- <ul class="dropdown">
                     <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
                     <li><a href="blog-left-sidebar-2-col.html">blog left sidebar 2 col</a></li>
                     <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
@@ -193,7 +196,7 @@
                     <li><a href="blog-details-audio.html">blog details audio</a></li>
                     <li><a href="blog-details-video.html">blog details video</a></li>
                     <li><a href="blog-details-image.html">blog details image</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
                     [routerLink]="['about']">about us</a></li>

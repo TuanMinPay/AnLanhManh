@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
+import { SetDetailsComponent} from './set-details/set-details.component';
 import { StepComponent } from './step/step.component';
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'product/food/:page', component: ProductComponent },
   { path: 'product-detail/food/:id', component: ProductDetailsComponent },
-  { path: 'product/set/:id', component: SetComponent },
+  { path: 'product/set/:page', component: SetComponent },
+  { path: 'product/set-detail/:id', component: SetDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },
