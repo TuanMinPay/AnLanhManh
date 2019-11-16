@@ -13,14 +13,6 @@ export class ProfileComponent implements OnInit {
   constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, ) {
    }
 
-   isShow:boolean = false;
-
-   showCate:boolean = false;
-
-   showWis :boolean = false;
-
-   forgot = false;
-
   token: any = this.localStorage.getItem('token');
 
   userDetails: any;
@@ -66,11 +58,11 @@ export class ProfileComponent implements OnInit {
   public changePassword: Function = async (oldPassword: any, password: any, confirmPassword: any) => {
     const that = this;
     if(oldPassword.length == 0 || password.length == 0 || confirmPassword.length == 0){
-      that.textError = "Please enter full infomation !"
+      that.textError = "Vui lòng nhập thông tin"
     }else if(password.length < 6 ){
-      that.textError = "Password must be greater than 6 characters !"
+      that.textError = "Mật khẩu phải lớn hơn 6 kí tự!"
     }else if(password.length != confirmPassword.length){
-      that.textError = "Password And Confirm Password Dissimilar !"
+      that.textError = "Mật khẩu không trùng nhau !"
     }else{
       that.textError = null;
       axios.put("http://localhost:8080/api/auth/password/change",
@@ -104,25 +96,6 @@ export class ProfileComponent implements OnInit {
       this.localStorage.removeItem('token');
       this.window.location.href = '/login';
     }
-  }
-
-  bodyInput(){
-    const that = this;
-    that.isShow = true;
-    that.forgot = true;
-    that.showCate = false;
-  }
-
-  showCategory(){
-    const that = this;
-    that.isShow = false;
-    that.showCate = true;
-  }
-
-  showWishes(){
-    const that = this;
-    that.showCate = false;
-    that.showWis = true;
   }
 
   ngOnInit() {

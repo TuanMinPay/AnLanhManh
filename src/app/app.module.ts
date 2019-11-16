@@ -34,7 +34,7 @@ import { StepComponent } from './step/step.component';
     RegisterComponent,
     ProfileComponent,
     SetComponent,
-    StepComponent
+    StepComponent,
     ProductComponent,
     ProductDetailsComponent
   ],
