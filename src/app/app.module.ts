@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
+import { SetDetailsComponent} from './set-details/set-details.component';
 import { ConfirmEqualValidatorDirective } from './confirm-equal-validator.directive';
 import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
@@ -34,6 +35,7 @@ import { StepComponent } from './step/step.component';
     RegisterComponent,
     ProfileComponent,
     SetComponent,
+    SetDetailsComponent,
     StepComponent,
     ProductComponent,
     ProductDetailsComponent

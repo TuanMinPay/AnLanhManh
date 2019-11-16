@@ -1,0 +1,157 @@
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap text-center">
+                    <nav aria-label="breadcrumb">
+                        <h2>shop</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Set Details</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- compare main wrapper start -->
+<div class="compare-page-wrapper pt-60 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Compare Page Content Start -->
+                <div class="compare-page-content-wrap">
+                    <div class="compare-table table-responsive">
+                        <table class="table table-bordered mb-0">
+                            <tbody>
+                                <tr>
+                                    <td class="first-column">Product</td>
+                                    <td class="product-image-title" *ngFor="let product of listProduct">
+                                        <a href="#" class="image">
+                                            <img class="img-fluid" [src]="product?.image" alt="Compare Product">
+                                        </a>
+                                        <a href="#" class="category">{{product?.categories.name}}</a>
+                                        <a href="#" class="title">{{product?.name}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Description</td>
+                                    <td class="pro-desc" *ngFor="let product of listProduct"> 
+                                        <p>{{product?.description}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Price</td>
+                                    <td class="pro-price" *ngFor="let product of listProduct">{{product?.price}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Carbonhydrates</td>
+                                    <td class="pro-color" *ngFor="let product of listProduct">{{product?.carbonhydrates}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Protein</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.protein}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Lipid</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.lipid}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Xenluloza</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.xenluloza}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Canxi</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.canxi}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Iron</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.iron}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Zinc</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.zinc}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminA</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminA}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminB</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminB}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminC</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminC}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminD</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminB}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">VitaminE</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.vitaminB}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Calorie</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.calorie}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Weight</td>
+                                    <td class="pro-stock" *ngFor="let product of listProduct">{{product?.weight}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Add to cart</td>
+                                    <td><a href="cart.html" class="btn btn__bg btn__sqr">Add to Cart</a></td>
+                                    <td><a href="cart.html" class="btn btn__bg btn__sqr disabled">Add to Cart</a></td>
+                                    <td><a href="cart.html" class="btn btn__bg btn__sqr">Add to Cart</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Rating</td>
+                                    <td class="pro-ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </td>
+                                    <td class="pro-ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </td>
+                                    <td class="pro-ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="first-column">Remove</td>
+                                    <td class="pro-remove">
+                                        <button><i class="fa fa-trash-o"></i></button>
+                                    </td>
+                                    <td class="pro-remove">
+                                        <button><i class="fa fa-trash-o"></i></button>
+                                    </td>
+                                    <td class="pro-remove">
+                                        <button><i class="fa fa-trash-o"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Compare Page Content End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- compare main wrapper end -->
