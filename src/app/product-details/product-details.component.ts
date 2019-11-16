@@ -9,7 +9,7 @@ import axios from "axios";
 })
 export class ProductDetailsComponent implements OnInit {
 
-  dataFood: any ={
+  dataFood: any = {
     id: null,
     name: null,
     description: null,
@@ -34,26 +34,24 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute
   ) {
-   }
+  }
 
-   id:number;
+  id: number;
 
-  
+
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     const that = this;
 
-    axios.get('http://localhost:8080/api/food/' + this.id  )
-    .then(function (response: any) {
-      if(response.data.status == 200){
+    axios.get('http://localhost:8080/api/food/' + this.id).then(function (response: any) {
+      if (response.data.status == 200) {
         that.dataFood = response.data.data;
       }
       console.log(response.data.data);
-    })
-    .catch(function (error: any) {
+    }).catch(function (error: any) {
       // handle error
       console.log(error);
     });
-  }  
+  }
 
 }

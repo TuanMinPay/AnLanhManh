@@ -2666,6 +2666,10 @@ only screen and (max-width: 767.98px) {
 
 .product-content .product-name h4 a {
 	color: #333333;
+	white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .product-content .product-name h4 a:hover {
@@ -4714,10 +4718,10 @@ only screen and (max-width: 767.98px) {
 
 .shop-product-wrap.grid-view .product-item {
 	display: block;
-	-webkit-animation-name: zoomIn;
+	/* -webkit-animation-name: zoomIn;
 	animation-name: zoomIn;
 	-webkit-animation-duration: 1s;
-	animation-duration: 1s;
+	animation-duration: 1s; */
 }
 
 .shop-product-wrap.grid-view .product-list-item {
@@ -4765,7 +4769,7 @@ only screen and (max-width: 767.98px) {
 	border-radius: 4px;
 }
 
-.paginatoin-area .pagination-box li a:hover {
+.paginatoin-area .pagination-box li a:hover, .active-page {
 	color: #fff;
 	border-color: #62d2a2;
 	background-color: #62d2a2;

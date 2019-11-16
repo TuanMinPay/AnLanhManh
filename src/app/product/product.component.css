@@ -1,3 +1,6 @@
 div.product-thumb{
     height: 170px;
 }
+a :hover{
+    cursor: pointer;
+}
