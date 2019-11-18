@@ -7,8 +7,8 @@
                         <nav aria-label="breadcrumb">
                             <h2>shop</h2>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">my account</li>
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Tài khoản của tôi/li>
                             </ul>
                         </nav>
                     </div>
@@ -31,19 +31,17 @@
                                 <div class="myaccount-tab-menu nav" role="tablist">
                                     <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
                                         Dashboard</a>
-                                    <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account
-                                        Details</a>
+                                    <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Chi tiết tài khoản</a>
                                     <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-                                        Orders</a>
+                                        Giỏ hàng</a>
                                     <a href="#changepassword" data-toggle="tab"><i class="fa fa-key"></i>
-                                        Change Password</a>
+                                        Thay đổi mật khẩu</a>
                                     <a href="#payment-method" data-toggle="tab"><i class="fa fa-credit-card"></i>
-                                        Payment
-                                        Method</a>
+                                        Thanh toán</a>
                                     <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i>
-                                        address</a>
+                                        Địa chỉ</a>
                                     
-                                    <a (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
+                                    <a (click)="logout()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
                                 </div>
                             </div>
                             <!-- My Account Tab Menu End -->
@@ -59,13 +57,9 @@
                                                     <p>Hello, <strong>{{myInfo?.username}}</strong> (If Not <strong>{{myInfo?.name}} !</strong><a
                                                         (click)="logout()" class="logout"> Logout</a>)</p>
                                                 </div>
-                                                <p class="mb-0">- From your account dashboard. you can easily check &
-                                                    view your recent orders, manage your shipping and billing addresses
-                                                    and edit your password and account details.</p>
-
-                                                    <p class="mb-0">
-                                                        - Please fill in the information below.
-                                                        We will help you calculate the BMI to help you and make a reasonable diet for you.</p>
+                                                <p class="mb-0">- Từ bảng điều khiển tài khoản của bạn. bạn có thể dễ dàng kiểm tra &
+                                                    xem các đơn đặt hàng gần đây của bạn, quản lý địa chỉ giao hàng và thanh toán của bạn
+                                                    và chỉnh sửa mật khẩu và chi tiết tài khoản của bạn.</p>
                                             </div>
                                             
                                     </div>
@@ -79,7 +73,7 @@
                                                 <table class="table table-bordered">
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th>Order</th>
+                                                            <th>Giỏ hàng</th>
                                                             <th>Date</th>
                                                             <th>Status</th>
                                                             <th>Total</th>
@@ -120,26 +114,23 @@
                                         <div class="myaccount-content">
                                             <div class="account-details-form">
                                                 <fieldset>
-                                                    <legend>Password change</legend>
+                                                    <legend>Thay đổi mật khẩu</legend>
                                                     <div class="single-input-item">
-                                                        <label for="current-pwd" class="required" >Current
-                                                            Password</label>
-                                                        <input type="password" id="current-pwd" #oldPassword placeholder="Current Password" />
+                                                        <label for="current-pwd" class="required" >Mật khẩu cũ</label>
+                                                        <input type="password" id="current-pwd" #oldPassword placeholder="Mật khẩu cũ" />
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="new-pwd" class="required">New
-                                                                    Password</label>
-                                                                <input type="password" #password id="new-pwd" placeholder="New Password" />
+                                                                <label for="new-pwd" class="required">Mật khẩu mới</label>
+                                                                <input type="password" #password id="new-pwd" placeholder="Mật khẩu mới" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="confirm-pwd" class="required">Confirm
-                                                                    Password</label>
+                                                                <label for="confirm-pwd" class="required">Nhập lại mật khẩu</label>
                                                                 <input type="password" #confirmPassword id="confirm-pwd"
-                                                                    placeholder="Confirm Password" />
+                                                                    placeholder="Nhập lại mật khẩu" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -147,7 +138,7 @@
                                                 </fieldset>
                                                 <div class="single-input-item">
                                                     <button class="btn btn__bg btn__sqr" 
-                                                    (click)="changePassword(oldPassword.value, password.value, confirmPassword.value)">Save Changes</button>
+                                                    (click)="changePassword(oldPassword.value, password.value, confirmPassword.value)">Lưu thay đổi</button>
                                                 </div>
                                             </div>
                                         </div>

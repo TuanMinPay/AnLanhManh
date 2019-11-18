@@ -12,7 +12,7 @@ export class SetDetailsComponent implements OnInit {
 
   listProduct: any = [];
 
-  API_COMBO = "http://localhost:8080/api/combo/1";
+  API_COMBO = "http://localhost:9000/api/combo/1";
 
   public getSet: Function = async => {
     const that = this;

@@ -43,7 +43,7 @@ export class ProductDetailsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     const that = this;
 
-    axios.get('http://localhost:8080/api/food/' + this.id).then(function (response: any) {
+    axios.get('http://localhost:9000/api/food/' + this.id).then(function (response: any) {
       if (response.data.status == 200) {
         that.dataFood = response.data.data;
       }

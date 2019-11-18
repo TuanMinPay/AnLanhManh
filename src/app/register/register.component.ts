@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    await axios.post('http://localhost:8080/api/auth/signup', {
+    await axios.post('http://localhost:9000/api/auth/signup', {
       name: name,
       username: username,
       email: email,

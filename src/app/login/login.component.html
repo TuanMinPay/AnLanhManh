@@ -8,10 +8,10 @@
                         <h2>Sign In</h2>
                         <form name="loginForm">
                             <div class="single-input-item">
-                                <input type="text" #account placeholder="Phone or Username" required (keyup.enter)="handleLogin(account.value, password.value)"/>
+                                <input type="text" #account placeholder="Tên người dùng hoặc số điện thoại" required (keyup.enter)="handleLogin(account.value, password.value)"/>
                             </div>
                             <div class="single-input-item">
-                                <input type="password" #password placeholder="Enter your password" required (keyup.enter)="handleLogin(account.value, password.value)"/>
+                                <input type="password" #password placeholder="Mật khẩu" required (keyup.enter)="handleLogin(account.value, password.value)"/>
                             </div>
                             <span *ngIf="textError != null" class="error">{{textError}}</span>
                             <div class="single-input-item">
@@ -19,15 +19,15 @@
                                     <div class="remember-meta">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                            <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                            <label class="custom-control-label" for="rememberMe">Lưu mật khẩu</label>
                                         </div>
                                     </div>
-                                    <a href="#" class="forget-pwd">Forget Password?</a>
+                                    <a href="#" class="forget-pwd">Quên mật khẩu?</a>
                                 </div>
                             </div>
                             <div class="single-input-item">
                                 <button type="button" class="btn btn__bg btn__sqr"
-                                    (click)="handleLogin(account.value, password.value)">Login</button>
+                                    (click)="handleLogin(account.value, password.value)">Đăng nhập</button>
                             </div>
                         </form>
                     </div>

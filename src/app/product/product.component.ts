@@ -73,7 +73,7 @@ export class ProductComponent implements OnInit {
 
   private loadPage(page: number) {
     const that = this;
-    axios.get('http://localhost:8080/api/food/list?page=' + page)
+    axios.get('http://localhost:9000/api/food/list?page=' + page)
       .then(function (response) {
         if (response.data.status == 200) {
           that.dataFood = response.data.data;
