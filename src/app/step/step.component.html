@@ -3,41 +3,38 @@
             <!-- SECTION 1 -->
             <h4></h4>
             <section>
-                <fieldset>
+                <fieldset id="bodyIndex">
                     <legend>Chỉ số cơ thể</legend>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="single-input-item">
                                 <label for="new-pwd" class="required">Chiều cao</label>
-                                <input type="text" #height id="new-pwd" placeholder="Chiều cao" />
+                                <input name="height" type="text" #height placeholder="Chiều cao" required/>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="single-input-item">
                                 <label for="confirm-pwd" class="required">Cân nặng</label>
-                                <input type="text" #weight id="confirm-pwd"
-                                    placeholder="Cân nặng" />
+                                <input name="weight" type="text" #weight id="confirm-pwd"
+                                    placeholder="Cân nặng" required/>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="single-input-item">
-                                <label for="confirm-pwd" class="required">Tuổi</label>
-                                <input type="text" #age
-                                    placeholder="Your Age" />
+                                <label for="confirm-pwd" class="required" required>Tuổi</label>
+                                <input name="age" type="text" #age
+                                    placeholder="Tuổi" required/>
                             </div>
                         </div>
                     </div>
                     <div class="single-input-item">
-                        <label for="current-pwd" class="required" >Giới tính</label>
-                        <select id="new-pwd" class="form-control col-lg-6">
-                            <option>Nam</option>
-                            <option>Nữ</option>
+                        <label for="current-pwd" class="required" required>Giới tính</label>
+                        <select class="form-control col-lg-6">
+                            <option value="male" selected>Nam</option>
+                            <option value="female" >Nữ</option>
                           </select>
                     </div>
-                    <span *ngIf="textError != null" class="error">{{textError}}</span>
-                    <!-- <div class="single-input-item">
-                        <button (click)="showCategory()" class="btn btn__bg btn__sqr">Submit</button>
-                    </div> -->
+                    <span class="error">{{textError}}</span>
                 </fieldset>
             </section>
 
@@ -67,7 +64,6 @@
                         <label class="required" >Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
                         <select class="form-control col-lg-8">
                             <option value="Sedentary">Chỗ này lấy từ api về</option>
-                            <option value="Light activity">Xàm lồn bệnh</option>
                           </select>
                     </div>
                 </div>

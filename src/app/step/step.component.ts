@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class StepComponent implements OnInit {
 
   constructor() { }
+  textError: boolean = false;
 
   ngOnInit() {
   }
