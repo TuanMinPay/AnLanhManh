@@ -29,6 +29,8 @@ export class ProductComponent implements OnInit {
     vitaminD: null,
     vitaminE: null,
     calorie: null,
+    weight: null,
+    categories: null,
     cateId: null
   }];
 
@@ -51,6 +53,12 @@ export class ProductComponent implements OnInit {
   pages: any = [];
   startPage: number; endPage: number;
 
+  dataCate: any = [{
+    id: null,
+    name: null,
+    parentId: null
+  }];
+
   @ViewChild("target", { static: false }) target: ElementRef;
 
   setPage(page: number) {
@@ -69,6 +77,16 @@ export class ProductComponent implements OnInit {
     }
     this.currentPage = this.page;
     this.loadPage(this.page);
+
+    const that = this;
+    axios.get('http://localhost:8080/api/category')
+    .then(function(response){
+      that.dataCate = response.data.data;
+      console.log(response.data.data);
+    })
+    .catch(function (error){
+      console.log(error);
+    });
   }
 
   private loadPage(page: number) {
