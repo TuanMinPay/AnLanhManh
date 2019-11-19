@@ -21,11 +21,11 @@ export class ProfileComponent implements OnInit {
 
   textError: any = null;
 
-  API_PROFILE = 'http://localhost:8080/api/user-profile';
+  API_PROFILE = 'http://localhost:9000/api/user-profile';
 
-  API_GETME = "http://localhost:8080/api/auth/me";
+  API_GETME = "http://localhost:9000/api/auth/me";
 
-  API_CHANGEPASSWORD = "http://localhost:8080/api/auth/password/change";
+  API_CHANGEPASSWORD = "http://localhost:9000/api/auth/password/change";
 
   public getMe: Function = async => {
     const that = this;
@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
       that.textError = "Mật khẩu không trùng nhau !"
     }else{
       that.textError = null;
-      axios.put("http://localhost:8080/api/auth/password/change",
+      axios.put("http://localhost:9000/api/auth/password/change",
     {
       oldPassword: oldPassword,
       password: password,

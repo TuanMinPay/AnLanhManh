@@ -4,68 +4,79 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="login-reg-form-wrap mt-md-60 mt-sm-60">
-            <h2>Singup Form</h2>
+            <h2>Đăng kí</h2>
             <form [formGroup]="registerForm"> 
               <div class="single-input-item">
-                <input type="text" formControlName="name" placeholder="Enter your name" #name [ngClass]="{'is-invalid': submitted && registerForm.controls.name.errors}"/>
+                <input type="text" formControlName="name" placeholder="Tên của bạn" #name [ngClass]="{'is-invalid': submitted && registerForm.controls.name.errors}"/>
                 <div *ngIf="submitted && registerForm.controls.name.errors" class="text-danger">
-                  <div *ngIf="registerForm.controls.name.errors.required">Name is required</div>
-                  <div *ngIf="registerForm.controls.name.errors.minlength">Name have at least 6 characters</div>
-                  <div *ngIf="registerForm.controls.name.errors.maxlength">Name have at most 40 characters</div>
+                  <div *ngIf="registerForm.controls.name.errors.required">Tên của bạn không được để trống</div>
+                  <div *ngIf="registerForm.controls.name.errors.minlength">Tên của bạn phải lớn hơn 6 kí tự</div>
+                  <div *ngIf="registerForm.controls.name.errors.maxlength">Tên tối đa 40 kí tự</div>
                 </div>
               </div>
               
               <div class="single-input-item">
-                <input type="text" formControlName="username" placeholder="Enter your username" #username [ngClass]="{'is-invalid': submitted && registerForm.controls.username.errors}"/>
+                <input type="text" formControlName="username" placeholder="Tên người dùng" #username [ngClass]="{'is-invalid': submitted && registerForm.controls.username.errors}"/>
                 <div *ngIf="submitted && registerForm.controls.username.errors" class="text-danger">
-                  <div *ngIf="registerForm.controls.username.errors.required">Username is required</div>
-                  <div *ngIf="registerForm.controls.username.errors.minlength">Username have at least 6 characters</div>
-                  <div *ngIf="registerForm.controls.username.errors.maxlength">Username have at most 15 characters</div>
+                  <div *ngIf="registerForm.controls.username.errors.required">Tên người dùng không được để trống!</div>
+                  <div *ngIf="registerForm.controls.username.errors.minlength">Tên người dùng không được ít hơn 6 kí tự!</div>
+                  <div *ngIf="registerForm.controls.username.errors.maxlength">Tên người dùng không được lớn hơn 15 kí tự<!DOCTYPE html>
+                  <html lang="en">
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                  </head>
+                  <body>
+                    
+                  </body>
+                  </html></div>
                 </div>
               </div>
 
               <div class="single-input-item">
-                <input type="email" formControlName="email" placeholder="Enter your email" #email [ngClass]="{'is-invalid': submitted && registerForm.controls.email.errors}"/>
+                <input type="email" formControlName="email" placeholder="Email" #email [ngClass]="{'is-invalid': submitted && registerForm.controls.email.errors}"/>
                 <div *ngIf="submitted && registerForm.controls.email.errors" class="text-danger">
-                    <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
-                    <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+                    <div *ngIf="registerForm.controls.email.errors.required">Email không được để trống!</div>
+                    <div *ngIf="registerForm.controls.email.errors.email">Email không hợp lệ</div>
                   </div>
               </div>
 
               <div class="row">
                 <div class="col-lg-6">
                   <div class="single-input-item">
-                    <input type="password" formControlName="password" placeholder="Enter your password" #password [ngClass]="{'is-invalid': submitted && registerForm.controls.password.errors}" />
+                    <input type="password" formControlName="password" placeholder="Mật khẩu" #password [ngClass]="{'is-invalid': submitted && registerForm.controls.password.errors}" />
                     <div *ngIf="submitted && registerForm.controls.password.errors" class="text-danger">
-                      <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
-                      <div *ngIf="registerForm.controls.password.errors.minlength">Password have at least 6 characters</div>
-                      <div *ngIf="registerForm.controls.password.errors.maxlength">Password have at most 100 characters</div>
+                      <div *ngIf="registerForm.controls.password.errors.required">Mật khẩu không được để trống!</div>
+                      <div *ngIf="registerForm.controls.password.errors.minlength">Mật khẩu không được ít hơn 6 kí tự!</div>
+                      <div *ngIf="registerForm.controls.password.errors.maxlength">Mật khẩu tối đa 100 kí tự!</div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="single-input-item">
-                        <input type="password" formControlName="confirmPassword" placeholder="Confirm your password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors}" appConfirmEqualValidator='password'/>
+                        <input type="password" formControlName="confirmPassword" placeholder="Nhập lại mật khẩu" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors}" appConfirmEqualValidator='password'/>
                         <div *ngIf="submitted && registerForm.controls.confirmPassword.errors" class="text-danger">
-                          <div *ngIf="registerForm.controls.confirmPassword.errors.required">Confirm password is required</div>
-                          <div *ngIf="registerForm.controls.confirmPassword.errors?.notEqual">Password Mismatch</div>
+                          <div *ngIf="registerForm.controls.confirmPassword.errors.required"> Nhập lại mật khẩu không được để trống!</div>
+                          <div *ngIf="registerForm.controls.confirmPassword.errors?.notEqual">Mật khẩu không khớp!</div>
                         </div>
                     </div>
                 </div>
               </div>
               <div>
                 <div class="single-input-item">
-                  <input type="phone" [pattern]="mobNumberPattern" formControlName="phone" placeholder="Enter your Phone Number " #phone [ngClass]="{'is-invalid': submitted && registerForm.controls.phone.errors}" />
+                  <input type="phone" [pattern]="mobNumberPattern" formControlName="Số điện thoại" placeholder="Enter your Phone Number " #phone [ngClass]="{'is-invalid': submitted && registerForm.controls.phone.errors}" />
                   <div *ngIf="submitted && registerForm.controls.phone.errors" class="text-danger">
-                    <div *ngIf="registerForm.controls.phone.errors.required">Phone is required</div>
-                    <div *ngIf="registerForm.controls.phone.errors.pattern">Phone numbers can only be 10 or 11 numbers</div>
-                    <div *ngIf="registerForm.controls.phone.errors.maxlength">Phone have at most 40 characters</div>
+                    <div *ngIf="registerForm.controls.phone.errors.required">Số điện thoại không được để trống!</div>
+                    <div *ngIf="registerForm.controls.phone.errors.pattern">Số điện thoại không hợp lệ!</div>
+                    <div *ngIf="registerForm.controls.phone.errors.maxlength">Số điện thoạt tối đa 40 kí tự!</div>
                   </div>
                 </div>
               </div>
               <div class="single-input-item">
                 <button  type="button" class="btn btn__bg btn__sqr" (click)="handleRegister(name.value,username.value,email.value,password.value,phone.value)">
-                  Register</button>
+                  Đăng kí</button>
               </div>
             </form>
           </div>
