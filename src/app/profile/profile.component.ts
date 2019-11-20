@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
       that.textError = "Mật khẩu không trùng nhau !"
     }else{
       that.textError = null;
-      axios.put("http://localhost:8080/api/auth/password/change",
+      axios.put("http://localhost:9000/api/auth/password/change",
     {
       oldPassword: oldPassword,
       password: password,

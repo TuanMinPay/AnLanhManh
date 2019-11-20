@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
       that.textError = "Please enter full infomation !";
     } else {
       that.textError = null;
-      await axios.post('http://localhost:8080/api/auth/signin', {
+      await axios.post('http://localhost:9000/api/auth/signin', {
         account: account,
         password: password
       }).then(function (response) {
         if (response.data.status == 200) {
           that.localStorage.setItem("token", response.data.accessToken);
-          that.window.location.href = '/';
+          that.window.location.href = '/step';
         }
       }).catch(function (error) {
         if (error.response.data.status == 401) {

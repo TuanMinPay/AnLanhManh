@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import axios from 'axios';
-import { Router } from '@angular/router'
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
@@ -12,9 +11,9 @@ export class StepComponent implements OnInit {
 
   constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any
   ) { }
+  textError: any = null;
 
   API_PROFILE = 'http://localhost:9000/api/user-profile/create';
-  textError: any = null;
 
   currentStep: any = 1;
 
@@ -95,5 +94,4 @@ export class StepComponent implements OnInit {
   ngOnInit() {
     //console.log(localStorage.getItem('token'));
   }
-
 }
