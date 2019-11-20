@@ -6968,10 +6968,6 @@ only screen and (max-width: 767.98px) {
 	  border-radius: 3px; }
 	  .actions li a:hover {
 		background: #a1d15e; }
-	.actions li:first-child a {
-	  width: 97px; }
-	.actions li:last-child a {
-	  width: 234px; }
   
   table.cart {
 	width: 100%;

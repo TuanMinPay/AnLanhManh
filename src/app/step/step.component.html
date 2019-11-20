@@ -1,101 +1,167 @@
 <div class="wrapper">
-        <form action="" id="wizard">
-            <!-- SECTION 1 -->
-            <h4></h4>
-            <section>
-                <fieldset id="bodyIndex">
-                    <legend>Chỉ số cơ thể</legend>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="single-input-item">
-                                <label for="new-pwd" class="required">Chiều cao</label>
-                                <input name="height" type="text" #height placeholder="Chiều cao" required/>
-                            </div>
+    <form action="" id="wizard" class="ng-untouched ng-pristine ng-valid wizard clearfix">
+        <div class="steps clearfix">
+            <ul role="tablist">
+                <li role="tab">
+                    <a href="javascript:void(0)">
+                        <img [src]="(currentStep == 1) ? '/assets/images/step-1-active.png' : '/assets/images/step-1.png'"
+                            alt="">
+                        <span class="step-order">Step 01</span>
+                    </a>
+                    <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
+                </li>
+                <li role="tab">
+                    <a href="javascript:void(0)" (click)="changeStep(2)">
+                        <img [src]="(currentStep == 2) ? '/assets/images/step-2-active.png' : '/assets/images/step-2.png'"
+                            alt="">
+                        <span class="step-order">Step 02</span>
+                    </a>
+                    <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
+                </li>
+                <li role="tab">
+                    <a href="javascript:void(0)">
+                        <img [src]="(currentStep == 3) ? '/assets/images/step-3-active.png' : '/assets/images/step-3.png'"
+                            alt="">
+                        <span class="step-order">Step 03</span>
+                    </a>
+                    <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
+                </li>
+                <li role="tab">
+                    <a href="javascript:void(0)">
+                        <img [src]="(currentStep == 4) ? '/assets/images/step-4-active.png' : '/assets/images/step-4.png'"
+                            alt="">
+                        <span class="step-order">Step 04</span>
+                    </a>
+                    <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
+                </li>
+            </ul>
+        </div>
+        <!-- SECTION 1 -->
+        <section *ngIf="currentStep == 1">
+            <fieldset id="bodyIndex">
+                <legend>Chỉ số cơ thể</legend>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="single-input-item">
+                            <label for="new-pwd" class="required">Chiều cao</label>
+                            <input name="height" [(ngModel)]="dataStep1.height" type="text" #height
+                                placeholder="Chiều cao (cm)" required />
                         </div>
-                        <div class="col-lg-6">
-                            <div class="single-input-item">
-                                <label for="confirm-pwd" class="required">Cân nặng</label>
-                                <input name="weight" type="text" #weight id="confirm-pwd"
-                                    placeholder="Cân nặng" required/>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="single-input-item">
-                                <label for="confirm-pwd" class="required" required>Tuổi</label>
-                                <input name="age" type="text" #age
-                                    placeholder="Tuổi" required/>
-                            </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="single-input-item">
+                            <label for="confirm-pwd" class="required">Cân nặng</label>
+                            <input name="weight" [(ngModel)]="dataStep1.weight" type="text" #weight id="confirm-pwd"
+                                placeholder="Cân nặng (kg)" required />
                         </div>
                     </div>
-                    <div class="single-input-item">
-                        <label for="current-pwd" class="required" required>Giới tính</label>
-                        <select class="form-control col-lg-6">
-                            <option value="male" selected>Nam</option>
-                            <option value="female" >Nữ</option>
-                          </select>
-                    </div>
-                    <span class="error">{{textError}}</span>
-                </fieldset>
-            </section>
-
-            <!-- SECTION 2 -->
-            <h4></h4>
-            <section>
-                <div class="myaccount-content">
-                    <h3>Mức độ vận động và bệnh lí</h3>
-                    <br>
-                    <div class="single-input-item">
-                        <label class="required" >Cường độ vận động</label>
-                        <select class="form-control col-lg-8">
-                            <option value="Sedentary">Ít Vận Động</option>
-                            <option value="Light activity">Vận động nhẹ</option>
-                            <option value="Nomarl activity">Bình thường</option>
-                            <option value="Activity much">Vận động nhiều</option>
-                            <option value="Activiti a lot">Vận động rất nhiều</option>
-                          </select>
-                    </div>
-                    <div class="single-input-item">
-                        <label class="required" >Danh mục vận động</label>
-                        <select class="form-control col-lg-8">
-                            <option>Lấy từ api về!</option>
-                          </select>
-                    </div>
-                    <div class="single-input-item">
-                        <label class="required" >Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
-                        <select class="form-control col-lg-8">
-                            <option value="Sedentary">Chỗ này lấy từ api về</option>
-                          </select>
+                    <div class="col-lg-6">
+                        <div class="single-input-item">
+                            <label for="confirm-pwd" class="required" required>Tuổi</label>
+                            <input name="age" [(ngModel)]="dataStep1.age" type="text" #age placeholder="Tuổi"
+                                required />
+                        </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- SECTION 3 -->
-            <h4></h4>
-            <section>
-                <div class="myaccount-content">
-                    <h3>Mục tiêu</h3>
-                    <br>
-                    <div class="single-input-item">
-                        <label class="required" >Mục tiêu cân nặng muốn đạt được</label>
-                        <br>
-                        <input class="col-lg-8" type="text" placeholder="">
-                    </div>
-                    <div class="single-input-item">
-                            <label class="required" >Trong bao lâu ?</label>
-                            <br>
-                            <input class="col-lg-8" type="text" placeholder="">
-                        </div>
-                </div>
-            </section>
-
-            <!-- SECTION 4 -->
-            <h4></h4>
-            <section>
-                <h3>Chỗ này show ra chỉ số BMI thể trạng cơ thể gợi ý nên ăn gì để cải thiện cơ thể</h3>
                 <div class="single-input-item">
-                        <button class="btn btn__bg btn__sqr">Trang chủ</button>
-                    </div>
-            </section>
-            
-        </form>
+                    <label for="current-pwd" class="required" required>Giới tính</label>
+                    <select class="form-control col-lg-6" name="gender" [(ngModel)]="dataStep1.gender">
+                        <option value="1">Nam</option>
+                        <option value="2">Nữ</option>
+                    </select>
+                </div>
+                <div class="error">
+                    <span>{{textError}}</span>
+                </div>
+            </fieldset>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section *ngIf="currentStep == 2">
+            <div class="myaccount-content">
+                <h3>Mức độ vận động và bệnh lí</h3>
+                <br>
+                <div class="single-input-item">
+                    <label class="required">Cường độ vận động</label>
+                    <select class="form-control col-lg-8">
+                        <option value="Sedentary">Ít Vận Động</option>
+                        <option value="Light activity">Hoạt động rất nhẹ</option>
+                        <option value="Light activity">Hoạt động nhẹ</option>
+                        <option value="Nomarl activity">Hoạt động vừa phải</option>
+                        <option value="Activity much">Hoạt động nhiều</option>
+                        <option value="Activiti a lot">Hoạt động rất nhiều</option>
+                    </select>
+                </div>
+                <div class="single-input-item">
+                    <fieldset>
+                        <legend>
+                            Gợi ý
+                        </legend>
+                        <ul>
+                            <li>Ít Hoạt động : Không vận đông nhiều</li>
+                            <li>Hoạt động rất nhẹ: Công việc bàn giấy, không tập thể thao, đi bộ nhẹ.</li>
+                            <li>Hoạt động nhẹ: Không vận động thể thao, công việc cần 1 số vận đông thể chất nhẹ.</li>
+                            <li>Hoạt động vừa phải: 1 công việc không yêu cầu quá nhiều thể chất, nhưng tập gym thường xuyên.</li>
+                            <li>Hoạt động nhiều: Tập gym hàng ngày, 1 công việc hơi thiên về hoạt động thể chất.</li>
+                            <li>Hoạt động rất nhiều: Tập gym + chơi thể thao hoặc tập gym và công việc đòi hỏi về thể chất.</li>
+                        </ul>
+                    </fieldset>
+                </div>
+                <div class="single-input-item">
+                    <label class="required">Danh mục vận động</label>
+                    <select class="form-control col-lg-8">
+                        <option>Lấy từ api về!</option>
+                    </select>
+                </div>
+                <div class="single-input-item">
+                    <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
+                    <select class="form-control col-lg-8">
+                        <option value="Sedentary">Chỗ này lấy từ api về</option>
+                    </select>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 3 -->
+        <section *ngIf="currentStep == 3">
+            <div class="myaccount-content">
+                <h3>Mục tiêu</h3>
+                <br>
+                <div class="single-input-item">
+                    <label class="required">Mục tiêu cân nặng muốn đạt được</label>
+                    <br>
+                    <input #target name="target" [(ngModel)]="dataStep3.target" class="col-lg-8" type="text"
+                        placeholder="">
+                </div>
+                <div class="single-input-item">
+                    <label class="required">Trong bao lâu ?</label>
+                    <br>
+                    <input #time name="time" [(ngModel)]="dataStep3.time" class="col-lg-8" type="text" placeholder="">
+                </div>
+                <div class="error">
+                    <span>{{textError}}</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 4 -->
+        <section *ngIf="currentStep == 4">
+            <h3>Chỗ này show ra chỉ số BMI thể trạng cơ thể gợi ý nên ăn gì để cải thiện cơ thể</h3>
+            <div class="single-input-item">
+                <button (click)="goHome()" class="btn btn__bg btn__sqr">Trang chủ</button>
+            </div>
+        </section>
+
+    </form>
+    <div class="actions clearfix">
+        <ul role="menu">
+            <li><a href="javascript:void(0)"
+                    (click)="(currentStep == 1) ? '' : (currentStep = currentStep - 1)">Trước</a></li>
+            <li><a href="javascript:void(0)"
+                    (click)="(currentStep == 4) ? endStep() : validateStep()">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
+            </li>
+        </ul>
     </div>
+</div>

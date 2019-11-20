@@ -35,10 +35,7 @@ import { StepComponent } from './step/step.component';
     RegisterComponent,
     ProfileComponent,
     SetComponent,
-<<<<<<< HEAD
-=======
     SetDetailsComponent,
->>>>>>> 0c008cc61cef94b64da4cc10174c5164b5d6361a
     StepComponent,
     ProductComponent,
     ProductDetailsComponent
