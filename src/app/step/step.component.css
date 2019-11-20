@@ -9,3 +9,8 @@ select{
 .single-input-item button{
     margin-left: 40%;
 }
+
+.error {
+    color: red;
+    margin-top: 25px;
+}
