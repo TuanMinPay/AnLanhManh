@@ -29,11 +29,10 @@
                             <tbody>
                                 <tr>
                                     <td class="first-column">Product</td>
-                                    <td class="product-image-title" *ngFor="let product of listProduct">
+                                    <td class="product-image-title" style="vertical-align: inherit" *ngFor="let product of listProduct">
                                         <a href="#" class="image">
-                                            <img class="img-fluid" [src]="product?.image" alt="Compare Product">
+                                            <img class="img-fluid" style="vertical-align: inherit" [src]="product.image" alt="Compare Product">
                                         </a>
-                                        <a href="#" class="category">{{product?.categories.name}}</a>
                                         <a href="#" class="title">{{product?.name}}</a>
                                     </td>
                                 </tr>
