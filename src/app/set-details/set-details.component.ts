@@ -11,15 +11,14 @@ export class SetDetailsComponent implements OnInit {
   constructor() { }
 
   listProduct: any = [];
-
   API_COMBO = "http://localhost:9000/api/combo/4";
 
   public getSet: Function = async => {
     const that = this;
     axios.get(that.API_COMBO)
     .then(function (response) {
-      console.log(response);
-      that.listProduct = response.data.data.foodSet;
+      console.log(response.data.data);
+      that.listProduct = response.data.data.foods;
     })
     .catch(function (error) {
       // handle error
