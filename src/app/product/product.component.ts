@@ -79,7 +79,7 @@ export class ProductComponent implements OnInit {
     this.loadPage(this.page);
 
     const that = this;
-    axios.get('http://localhost:8080/api/category')
+    axios.get('http://localhost:9000/api/category')
     .then(function(response){
       that.dataCate = response.data.data;
       console.log(response.data.data);
