@@ -42,7 +42,7 @@
                             <h4 id="foodName" name="name"><a href="#">{{dataFood.name}}</a></h4>
                         </div>
                         <div class="price-box">
-                            <span>Price : <span class="regular-price"> {{dataFood.price}} VND</span></span>
+                            <span>Price : <span class="regular-price"> {{formatter.format(dataFood.price)}} VND</span></span>
                             <span class="old-price"><del></del></span>
                         </div>
                         <p>{{dataFood.description}}</p>
@@ -90,7 +90,6 @@
                                 <div class="tab-content reviews-tab">
                                     <div class="tab-pane fade show active" id="tab_one">
                                         <div class="tab-one">
-                                            <p>Description: {{dataFood.description}}</p>
                                             <p>Chất bột đường (carbonhydrates): {{dataFood.carbonhydrates}} g</p>
                                             <p>Chất đạm (protein): {{dataFood.protein}} g</p>
                                             <p>Chất béo (lipid): {{dataFood.lipid}} g</p>   

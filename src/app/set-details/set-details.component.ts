@@ -11,8 +11,7 @@ export class SetDetailsComponent implements OnInit {
   constructor() { }
 
   listProduct: any = [];
-
-  API_COMBO = "http://localhost:9000/api/combo/5";
+  API_COMBO = "http://localhost:9000/api/combo/4";
 
   public getSet: Function = async => {
     const that = this;

@@ -9,6 +9,12 @@ import axios from "axios";
 })
 export class ProductDetailsComponent implements OnInit {
 
+  formatter = new Intl.NumberFormat('en-VN', {
+    style: 'currency',
+    currency: 'VND',
+    minimumFractionDigits: 0
+  });
+  
   dataFood: any = {
     id: null,
     name: null,
