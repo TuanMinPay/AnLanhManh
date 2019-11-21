@@ -16,7 +16,7 @@ export class StepComponent implements OnInit {
 
   API_PROFILE = 'http://localhost:9000/api/user-profile/create';
 
-  API_BENHLY = "localhost:9000/api/category/parent/5";
+  API_Benhly = "http://localhost:9000/api/category/parent/5";
 
   currentStep: any = 1;
 
@@ -42,7 +42,7 @@ export class StepComponent implements OnInit {
 
   public getBenhly: Function = async => {
     const that = this;
-    axios.get("localhost:9000/api/category/parent/5")
+    axios.get(that.API_Benhly)
     .then(function(response){
       that.listBenhly = response.data.data;
       console.log(response.data.data);

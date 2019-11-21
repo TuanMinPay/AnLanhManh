@@ -110,9 +110,8 @@
                 <div class="single-input-item">
                     <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
                     <select class="form-control col-lg-8">
-                        <div *ngFor="let benhly of listBenhly">
-                            <option value="Sedentary">{{benhly?.name}}</option>
-                        </div>
+                            <option value="none">Không</option>
+                            <option *ngFor="let benhly of listBenhly" value="Sedentary">{{benhly?.name}}</option>
                     </select>
                 </div>
             </div>
