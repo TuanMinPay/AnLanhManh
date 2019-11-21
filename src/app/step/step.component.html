@@ -19,21 +19,21 @@
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
                 <li role="tab">
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" (click)="changeStep(3)">
                         <img [src]="(currentStep == 3) ? '/assets/images/step-3-active.png' : '/assets/images/step-3.png'"
                             alt="">
                         <span class="step-order">Step 03</span>
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
-                <li role="tab">
+                <!-- <li role="tab">
                     <a href="javascript:void(0)">
                         <img [src]="(currentStep == 4) ? '/assets/images/step-4-active.png' : '/assets/images/step-4.png'"
                             alt="">
                         <span class="step-order">Step 04</span>
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- SECTION 1 -->
@@ -84,12 +84,12 @@
                 <div class="single-input-item">
                     <label class="required">Cường độ vận động</label>
                     <select class="form-control col-lg-8">
-                        <option value="Sedentary">Ít Vận Động</option>
-                        <option value="Light activity">Hoạt động rất nhẹ</option>
-                        <option value="Light activity">Hoạt động nhẹ</option>
-                        <option value="Nomarl activity">Hoạt động vừa phải</option>
-                        <option value="Activity much">Hoạt động nhiều</option>
-                        <option value="Activiti a lot">Hoạt động rất nhiều</option>
+                        <option value="1">Ít Vận Động</option>
+                        <option value="2">Hoạt động rất nhẹ</option>
+                        <option value="3">Hoạt động nhẹ</option>
+                        <option value="4">Hoạt động vừa phải</option>
+                        <option value="5">Hoạt động nhiều</option>
+                        <option value="6">Hoạt động rất nhiều</option>
                     </select>
                 </div>
                 <div class="single-input-item">
@@ -108,15 +108,11 @@
                     </fieldset>
                 </div>
                 <div class="single-input-item">
-                    <label class="required">Danh mục vận động</label>
-                    <select class="form-control col-lg-8">
-                        <option>Lấy từ api về!</option>
-                    </select>
-                </div>
-                <div class="single-input-item">
                     <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
                     <select class="form-control col-lg-8">
-                        <option value="Sedentary">Chỗ này lấy từ api về</option>
+                        <div *ngFor="let benhly of listBenhly">
+                            <option value="Sedentary">{{benhly?.name}}</option>
+                        </div>
                     </select>
                 </div>
             </div>
@@ -125,34 +121,19 @@
 
         <!-- SECTION 3 -->
         <section *ngIf="currentStep == 3">
-            <div class="myaccount-content">
-                <h3>Mục tiêu</h3>
-                <br>
-                <div class="single-input-item">
-                    <label class="required">Mục tiêu cân nặng muốn đạt được</label>
-                    <br>
-                    <input #target name="target" [(ngModel)]="dataStep3.target" class="col-lg-8" type="text"
-                        placeholder="">
-                </div>
-                <div class="single-input-item">
-                    <label class="required">Trong bao lâu ?</label>
-                    <br>
-                    <input #time name="time" [(ngModel)]="dataStep3.time" class="col-lg-8" type="text" placeholder="">
-                </div>
-                <div class="error">
-                    <span>{{textError}}</span>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- SECTION 4 -->
-        <section *ngIf="currentStep == 4">
             <h3>Chỗ này show ra chỉ số BMI thể trạng cơ thể gợi ý nên ăn gì để cải thiện cơ thể</h3>
             <div class="single-input-item">
                 <button (click)="goHome()" class="btn btn__bg btn__sqr">Trang chủ</button>
             </div>
         </section>
+
+        <!-- SECTION 4
+        <section *ngIf="currentStep == 4">
+            <h3>Chỗ này show ra chỉ số BMI thể trạng cơ thể gợi ý nên ăn gì để cải thiện cơ thể</h3>
+            <div class="single-input-item">
+                <button (click)="goHome()" class="btn btn__bg btn__sqr">Trang chủ</button>
+            </div>
+        </section> -->
 
     </form>
     <div class="actions clearfix">

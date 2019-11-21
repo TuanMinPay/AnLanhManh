@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import axios from 'axios';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { async } from 'q';
 
 @Component({
   selector: 'app-step',
@@ -15,9 +16,13 @@ export class StepComponent implements OnInit {
 
   API_PROFILE = 'http://localhost:9000/api/user-profile/create';
 
+  API_BENHLY = "localhost:9000/api/category/parent/5";
+
   currentStep: any = 1;
 
   token = this.localStorage.getItem('token');
+
+  listBenhly: any;
 
   changeStep(step) {
     this.currentStep = step;
@@ -33,6 +38,18 @@ export class StepComponent implements OnInit {
   dataStep3 = {
     target: null,
     time: null
+  }
+
+  public getBenhly: Function = async => {
+    const that = this;
+    axios.get("localhost:9000/api/category/parent/5")
+    .then(function(response){
+      that.listBenhly = response.data.data;
+      console.log(response.data.data);
+    })
+    .catch(function (error){
+      console.log(error);
+    });
   }
 
   validateStep(s) {
@@ -58,20 +75,6 @@ export class StepComponent implements OnInit {
         return;
       }
     }
-    
-
-    // validate step 3
-    if(this.currentStep == 3){
-      if(this.dataStep3.target && this.dataStep3.time){
-        that.textError = null;
-        invalid = true;
-      }
-      else{
-        that.textError = "Vui lòng nhập đầy đủ thông tin !"
-        return;
-      }
-    }
-      
 
     if (invalid) {
       if (this.currentStep == 4) {
@@ -91,7 +94,8 @@ export class StepComponent implements OnInit {
   goHome() {
     this.window.location.href = '/';
   }
+
   ngOnInit() {
-    //console.log(localStorage.getItem('token'));
+    this.getBenhly();
   }
 }
