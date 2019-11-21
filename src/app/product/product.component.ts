@@ -10,6 +10,12 @@ import * as _ from 'underscore';
 })
 export class ProductComponent implements OnInit {
 
+  formatter = new Intl.NumberFormat('en-VN', {
+    style: 'currency',
+    currency: 'VND',
+    minimumFractionDigits: 0
+  });
+
   dataFood: any = [{
     id: null,
     name: null,

@@ -104,7 +104,7 @@
                             <div class="product-list-item mb-30">
                                 <div class="product-thumb">
                                     <a href="product-details.html">
-                                        <img src="assets/img/product/product-1.jpg" alt="">
+                                        <img src="{{dataCate.image}}" alt="">
                                     </a>
                                     <div class="quick-view-link">
                                         <a href="#" data-toggle="modal" data-target="#quick_view"> <span
@@ -121,15 +121,12 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
+                                        <h4><a href="product-details.html">{{dataCate.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$130.00</del></span>
+                                        <span class="regular-price">{{formatter.format(dataCate.price)}} VND</span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                        metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-                                        sem vitae urna fringilla tempus.</p>
+                                    <p>{{dataCate.description}}</p>
                                     <div class="action-link">
                                         <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
                                             to cart</a>
@@ -140,211 +137,7 @@
                             </div>
                             <!-- product list item start -->
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <!-- product list item start -->
-                            <div class="product-list-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-2.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content-list">
-                                    <div class="ratings">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$130.00</del></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                        metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-                                        sem vitae urna fringilla tempus.</p>
-                                    <div class="action-link">
-                                        <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
-                                            to cart</a>
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product list item start -->
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <!-- product list item start -->
-                            <div class="product-list-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-3.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content-list">
-                                    <div class="ratings">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$130.00</del></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                        metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-                                        sem vitae urna fringilla tempus.</p>
-                                    <div class="action-link">
-                                        <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
-                                            to cart</a>
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product list item start -->
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <!-- product list item start -->
-                            <div class="product-list-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content-list">
-                                    <div class="ratings">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$130.00</del></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                        metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-                                        sem vitae urna fringilla tempus.</p>
-                                    <div class="action-link">
-                                        <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
-                                            to cart</a>
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product list item start -->
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <!-- product list item start -->
-                            <div class="product-list-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-5.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content-list">
-                                    <div class="ratings">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$130.00</del></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                        metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-                                        sem vitae urna fringilla tempus.</p>
-                                    <div class="action-link">
-                                        <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
-                                            to cart</a>
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product list item start -->
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <!-- product list item start -->
-                            <div class="product-list-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-6.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content-list">
-                                    <div class="ratings">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$130.00</del></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                        metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet
-                                        sem vitae urna fringilla tempus.</p>
-                                    <div class="action-link">
-                                        <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
-                                            to cart</a>
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product list item start -->
-                        </div>
+                        
                     </div>
                     <!-- product item list end -->
 
