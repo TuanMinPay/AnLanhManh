@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'product/food/:page', component: ProductComponent },
   { path: 'product-detail/food/:id', component: ProductDetailsComponent },
-  { path: 'product/set/:page', component: SetComponent },
+  { path: 'product/combo', component: SetComponent },
   { path: 'product/set-detail/:id', component: SetDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
