@@ -3,12 +3,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="breadcrumb-wrap text-center">
+                <div class="breadcrumb-wrap text-center" #target>
                     <nav aria-label="breadcrumb">
                         <h2>shop</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Set</li>
+                            <li class="breadcrumb-item active" aria-current="page">Combo Food</li>
                         </ul>
                     </nav>
                 </div>
@@ -71,40 +71,17 @@
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="shop-product-wrapper">
                     <!-- shop product top wrap start -->
-                    <div class="shop-top-bar">
-                        <div class="row">
-                            
-                            <div class="col-xl-7 col-lg-8 col-md-9 order-1 order-md-2">
-                                <div class="top-bar-right">
-                                    <div class="product-short">
-                                        <p>Sort By : </p>
-                                        <select class="nice-select" name="sortby">
-                                            <option value="trending">Relevance</option>
-                                            <option value="sales">Name (A - Z)</option>
-                                            <option value="sales">Name (Z - A)</option>
-                                            <option value="rating">Price (Low &gt; High)</option>
-                                            <option value="date">Rating (Lowest)</option>
-                                            <option value="price-asc">Model (A - Z)</option>
-                                            <option value="price-asc">Model (Z - A)</option>
-                                        </select>
-                                    </div>
-                                    <div class="product-amount">
-                                        <p>Showing 1–16 of 21 results</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <!-- shop product top wrap start -->
 
                     <!-- product item list start -->
                     <div class="shop-product-wrap list-view row">
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <!-- product list item start -->
-                            <div class="product-list-item mb-30">
+                            <div class="product-list-item mb-30" *ngFor="let cate of dataCate">
                                 <div class="product-thumb">
                                     <a href="product-details.html">
-                                        <img src="{{dataCate.image}}" alt="">
+                                        <img src="{{cate.image}}" alt="">
                                     </a>
                                     <div class="quick-view-link">
                                         <a href="#" data-toggle="modal" data-target="#quick_view"> <span
@@ -121,12 +98,15 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a href="product-details.html">{{dataCate.name}}</a></h4>
+                                        <h4><a href="product-details.html">{{cate.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{formatter.format(dataCate.price)}} VND</span>
+                                        <span class="regular-price">{{formatter.format(cate.price)}} VND</span>
                                     </div>
-                                    <p>{{dataCate.description}}</p>
+                                    <div class="price-box">
+                                        <span class="regular-price">{{cate.calorie}}calo / {{cate.weight}}g</span>
+                                    </div>
+                                    <p>{{cate.description}}</p>
                                     <div class="action-link">
                                         <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
                                             to cart</a>

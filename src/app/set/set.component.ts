@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import axios from 'axios'
-import { async } from 'q';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import axios from "axios";
+import * as _ from 'underscore';
 @Component({
   selector: 'app-set',
   templateUrl: './set.component.html',
@@ -16,7 +17,10 @@ export class SetComponent implements OnInit {
     minimumFractionDigits: 0
   });
   
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   dataCate: any = [{
     id: null,
@@ -42,16 +46,57 @@ export class SetComponent implements OnInit {
     cateId: null
   }];
 
-  API_COMBO = "http://localhost:9000/api/combo";
+  // API_COMBO = "http://localhost:9000/api/combo";
+
+  pager: any = [{
+    limit: null,
+    page: null,
+    totalItems: null,
+    totalPages: null
+  }];
 
   id: number;
+  pageOfItems: any = [];
+  currentPage: number = 1;
+  page: any;
+  pages: any = [];
+  startPage: number; endPage: number;
 
-  public getSet: Function = async => {
+  @ViewChild("target", { static: false }) target: ElementRef;
+
+  setCombo(page: number) {
+    this.currentPage = page;
+    this.router.navigate( ['/product/combo'],  { queryParams: { page: page } });
+    this.loadCombo(page);
+    this.target.nativeElement.scrollIntoView({ block: 'start',  behavior: 'smooth', inline: 'nearest' });
+  }
+
+  public loadCombo(page: number){
     const that = this;
-    axios.get(that.API_COMBO + that.id)
+    axios.get('http://localhost:9000/api/combo?page=' + page)
     .then(function (response) {
-      console.log(response);
-      that.dataCate = response.data.data;
+      if(response.data.status = 200){
+        that.dataCate = response.data.data;
+        // that.pager = response.data.restPagination;
+        // that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
+        // if (that.pageOfItems <= 10) {
+        //   that.startPage = 1;
+        //   that.endPage = that.pageOfItems;
+        // } else {
+        //   if (that.currentPage <= 6) {
+        //     that.startPage = 1;
+        //     that.endPage = 10;
+        //   } else if (that.currentPage + 4 >= that.pageOfItems) {
+        //     that.startPage = that.pageOfItems - 9;
+        //     that.endPage = that.pageOfItems;
+        //   } else {
+        //     that.startPage = that.currentPage - 5;
+        //     that.endPage = that.currentPage + 4;
+        //   }
+        // }
+        // that.pages = _.range(that.startPage, that.endPage + 1);
+      }  
+      console.log(response.data.data);
     })
     .catch(function (error) {
       // handle error
@@ -60,6 +105,13 @@ export class SetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getSet();
+    this.page = this.route.snapshot.queryParamMap.get('page');
+    if (this.page == null) {
+      this.page = 1;
+    } else {
+      this.page = parseInt(this.page);
+    }
+    this.currentPage = this.page;
+    this.loadCombo(this.page);
   }
 }
