@@ -44,28 +44,28 @@
                     <div class="col-lg-6">
                         <div class="single-input-item">
                             <label for="new-pwd" class="required">Chiều cao</label>
-                            <input name="height" [(ngModel)]="dataStep1.height" type="text" #height
+                            <input name="height" [(ngModel)]="data.height" type="text" #height
                                 placeholder="Chiều cao (cm)" required />
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="single-input-item">
                             <label for="confirm-pwd" class="required">Cân nặng</label>
-                            <input name="weight" [(ngModel)]="dataStep1.weight" type="text" #weight id="confirm-pwd"
+                            <input name="weight" [(ngModel)]="data.weight" type="text" #weight id="confirm-pwd"
                                 placeholder="Cân nặng (kg)" required />
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="single-input-item">
                             <label for="confirm-pwd" class="required" required>Tuổi</label>
-                            <input name="age" [(ngModel)]="dataStep1.age" type="text" #age placeholder="Tuổi"
+                            <input name="age" [(ngModel)]="data.age" type="text" #age placeholder="Tuổi"
                                 required />
                         </div>
                     </div>
                 </div>
                 <div class="single-input-item">
                     <label for="current-pwd" class="required" required>Giới tính</label>
-                    <select class="form-control col-lg-6" name="gender" [(ngModel)]="dataStep1.gender">
+                    <select class="form-control col-lg-6" name="gender" [(ngModel)]="data.gender">
                         <option value="1">Nam</option>
                         <option value="2">Nữ</option>
                     </select>
@@ -83,13 +83,12 @@
                 <br>
                 <div class="single-input-item">
                     <label class="required">Cường độ vận động</label>
-                    <select class="form-control col-lg-8">
-                        <option value="1">Ít Vận Động</option>
-                        <option value="2">Hoạt động rất nhẹ</option>
-                        <option value="3">Hoạt động nhẹ</option>
-                        <option value="4">Hoạt động vừa phải</option>
-                        <option value="5">Hoạt động nhiều</option>
-                        <option value="6">Hoạt động rất nhiều</option>
+                    <select [(ngModel)]="data.exerciseIntensity" name="exerciseIntensity" class="form-control col-lg-8">
+                        <option value="1.2">Ít Vận Động</option>
+                        <option value="1.4">Hoạt động nhẹ</option>
+                        <option value="1.6">Hoạt động vừa phải</option>
+                        <option value="1.8">Hoạt động nhiều</option>
+                        <option value="2.0">Hoạt động rất nhiều</option>
                     </select>
                 </div>
                 <div class="single-input-item">

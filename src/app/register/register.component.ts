@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
-  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   constructor(
     private router: Router,
     private formBuilder: FormBuilder) { }
