@@ -17,11 +17,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
 import { SetDetailsComponent} from './set-details/set-details.component';
 import { ConfirmEqualValidatorDirective } from './confirm-equal-validator.directive';
-import { CommonModule } from '@angular/common';
+import { CommonModule, AsyncPipe } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { StepComponent } from './step/step.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { MessagingService } from './services/messaging.service';
 
 @NgModule({
   declarations: [
@@ -49,8 +55,12 @@ import { StepComponent } from './step/step.component';
     TransferHttpCacheModule,
     HttpClientModule,
     NgtUniversalModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [MessagingService, AsyncPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,16 +28,12 @@ export class StepComponent implements OnInit {
     this.currentStep = step;
   }
 
-  dataStep1 = {
+  data = {
     height: null,
     weight: null,
     age: null,
+    exerciseIntensity: null,
     status: 1
-  }
-
-  dataStep3 = {
-    target: null,
-    time: null
   }
 
   public getBenhly: Function = async => {
@@ -60,15 +56,7 @@ export class StepComponent implements OnInit {
 
     // validate step 1
     if(this.currentStep == 1){
-      if (this.dataStep1.height && this.dataStep1.weight && this.dataStep1.age) {
-        axios.put(that.API_PROFILE, that.dataStep1, { headers: { Authorization: that.token } })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          });
+      if (this.data.height && this.data.weight && this.data.age) {
         that.textError = null;
       } else {
         that.textError = "Vui lòng nhập đầy đủ thông tin !";
@@ -76,11 +64,21 @@ export class StepComponent implements OnInit {
       }
     }
 
+    if(this.currentStep == 2){
+      axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          });
+    }
     if (invalid) {
       if (this.currentStep == 4) {
         return;
       } else {
-        console.log(this.dataStep3);
+        console.log(this.data);
         this.currentStep = this.currentStep + 1;
         invalid = false;
       }
@@ -97,5 +95,6 @@ export class StepComponent implements OnInit {
 
   ngOnInit() {
     this.getBenhly();
+    console.log(this.token)
   }
 }
