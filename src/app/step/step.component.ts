@@ -87,7 +87,8 @@ export class StepComponent implements OnInit {
   }
 
   endStep() {
-    alert(1)
+    alert(1);
+    return;
   }
 
   goHome() {
