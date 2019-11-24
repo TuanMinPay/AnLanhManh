@@ -26,14 +26,6 @@
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
-                <!-- <li role="tab">
-                    <a href="javascript:void(0)">
-                        <img [src]="(currentStep == 4) ? '/assets/images/step-4-active.png' : '/assets/images/step-4.png'"
-                            alt="">
-                        <span class="step-order">Step 04</span>
-                    </a>
-                    <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
-                </li> -->
             </ul>
         </div>
         <!-- SECTION 1 -->
@@ -81,7 +73,7 @@
                 <h3>Mức độ vận động và bệnh lí</h3>
                 <br>
                 <div class="single-input-item">
-                    <label class="required">Cường độ vận động</label>
+                    <h4 class="required">Cường độ vận động</h4>
                     <select [(ngModel)]="data.exerciseIntensity" name="exerciseIntensity" class="form-control col-lg-8">
                         <option value="1.2">Ít Vận Động</option>
                         <option value="1.4">Hoạt động nhẹ</option>
@@ -108,11 +100,20 @@
                     </fieldset>
                 </div>
                 <div class="single-input-item">
-                    <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
+                    <!-- <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
                     <select class="form-control col-lg-8">
                         <option value="none">Không</option>
                         <option *ngFor="let benhly of listBenhly" value="Sedentary">{{benhly?.name}}</option>
-                    </select>
+                    </select> -->
+                    <h4 class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</h4>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label" for="materialChecked2">Không</label>
+                      </div>
+                    <div *ngFor="let benhly of listBenhly" class="form-check">
+                        <input value="{{benhly?.name}}" type="checkbox" class="form-check-input">
+                        <label name="diseases" class="form-check-label" for="materialChecked2">{{benhly?.name}}</label>
+                      </div>
                 </div>
             </div>
 
@@ -126,24 +127,16 @@
             </div>
         </section>
 
-        <!-- SECTION 4
-        <section *ngIf="currentStep == 4">
-            <h3>Chỗ này show ra chỉ số BMI thể trạng cơ thể gợi ý nên ăn gì để cải thiện cơ thể</h3>
-            <div class="single-input-item">
-                <button (click)="goHome()" class="btn btn__bg btn__sqr">Trang chủ</button>
-            </div>
-        </section> -->
-
     </form>
     <div class="actions clearfix">
         <ul role="menu">
             <li>
                 <a href="javascript:void(0)"
-                    (click)="(currentStep == 1) ? '' : (currentStep = currentStep - 1)">Trước</a>
+                    (click)="(currentStep == 1) ? 'validateStep()' : (currentStep = currentStep - 1)">Trước</a>
             </li>
             <li>
                 <a href="javascript:void(0)"
-                    (click)="(currentStep == 4) ? endStep() : validateStep()">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
+                    (click)="(currentStep == 3) ? endStep() : validateStep()">{{(currentStep == 3) ? 'Hoàn Thành' : 'Sau'}}</a>
             </li>
         </ul>
     </div>
