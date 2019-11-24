@@ -58,8 +58,7 @@
                     <div class="col-lg-6">
                         <div class="single-input-item">
                             <label for="confirm-pwd" class="required" required>Tuổi</label>
-                            <input name="age" [(ngModel)]="data.age" type="text" #age placeholder="Tuổi"
-                                required />
+                            <input name="age" [(ngModel)]="data.age" type="text" #age placeholder="Tuổi" required />
                         </div>
                     </div>
                 </div>
@@ -100,17 +99,19 @@
                             <li>Ít Hoạt động : Không vận đông nhiều</li>
                             <li>Hoạt động rất nhẹ: Công việc bàn giấy, không tập thể thao, đi bộ nhẹ.</li>
                             <li>Hoạt động nhẹ: Không vận động thể thao, công việc cần 1 số vận đông thể chất nhẹ.</li>
-                            <li>Hoạt động vừa phải: 1 công việc không yêu cầu quá nhiều thể chất, nhưng tập gym thường xuyên.</li>
+                            <li>Hoạt động vừa phải: 1 công việc không yêu cầu quá nhiều thể chất, nhưng tập gym thường
+                                xuyên.</li>
                             <li>Hoạt động nhiều: Tập gym hàng ngày, 1 công việc hơi thiên về hoạt động thể chất.</li>
-                            <li>Hoạt động rất nhiều: Tập gym + chơi thể thao hoặc tập gym và công việc đòi hỏi về thể chất.</li>
+                            <li>Hoạt động rất nhiều: Tập gym + chơi thể thao hoặc tập gym và công việc đòi hỏi về thể
+                                chất.</li>
                         </ul>
                     </fieldset>
                 </div>
                 <div class="single-input-item">
                     <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
                     <select class="form-control col-lg-8">
-                            <option value="none">Không</option>
-                            <option *ngFor="let benhly of listBenhly" value="Sedentary">{{benhly?.name}}</option>
+                        <option value="none">Không</option>
+                        <option *ngFor="let benhly of listBenhly" value="Sedentary">{{benhly?.name}}</option>
                     </select>
                 </div>
             </div>
@@ -136,9 +137,12 @@
     </form>
     <div class="actions clearfix">
         <ul role="menu">
-            <li><a href="javascript:void(0)"
-                    (click)="(currentStep == 1) ? '' : (currentStep = currentStep - 1)">Trước</a></li>
-            <li><a href="javascript:void(0)"
+            <li>
+                <a href="javascript:void(0)"
+                    (click)="(currentStep == 1) ? '' : (currentStep = currentStep - 1)">Trước</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)"
                     (click)="(currentStep == 4) ? endStep() : validateStep()">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
             </li>
         </ul>

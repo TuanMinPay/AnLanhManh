@@ -33,6 +33,7 @@ export class StepComponent implements OnInit {
     weight: null,
     age: null,
     exerciseIntensity: null,
+    gender: 1,
     status: 1
   }
 

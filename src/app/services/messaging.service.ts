@@ -68,8 +68,4 @@ export class MessagingService {
         this.currentMessage.next(payload);
       })
   }
-
-  listenMessage() {
-    
-  }
 }
