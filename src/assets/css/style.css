@@ -6185,6 +6185,14 @@ only screen and (min-width: 768px) and (max-width: 991.98px) {
 	font-weight: 500;
 }
 
+.myaccount-content h4 {
+	font-size: 20px;
+	border-bottom: 1px dashed #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+	font-weight: 500;
+}
+
 .myaccount-content .welcome a {
 	color: #333333;
 }

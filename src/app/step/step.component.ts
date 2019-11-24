@@ -32,9 +32,13 @@ export class StepComponent implements OnInit {
     height: null,
     weight: null,
     age: null,
-    exerciseIntensity: null,
+    exerciseIntensity: 1.2,
     gender: 1,
     status: 1
+  }
+
+  benhLy = {
+    diseases: null
   }
 
   public getBenhly: Function = async => {
@@ -74,9 +78,11 @@ export class StepComponent implements OnInit {
             // handle error
             console.log(error);
           });
+      console.log(that.data)
     }
+
     if (invalid) {
-      if (this.currentStep == 4) {
+      if (this.currentStep == 3) {
         return;
       } else {
         console.log(this.data);
@@ -87,8 +93,7 @@ export class StepComponent implements OnInit {
   }
 
   endStep() {
-    alert(1);
-    return;
+    //alert(1)
   }
 
   goHome() {
@@ -97,6 +102,7 @@ export class StepComponent implements OnInit {
 
   ngOnInit() {
     this.getBenhly();
-    console.log(this.token)
+    //console.log(this.token)
+    console.log(this.currentStep)
   }
 }
