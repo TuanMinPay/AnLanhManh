@@ -1,97 +1,70 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import { AppComponent } from '../app.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor() { }
+  constructor(
+    private toastr: ToastrService
+  ) { }
 
+  removeItem(id: any) {
+    var listCart: any = JSON.parse(localStorage.getItem('listCart'));
+    listCart.products = listCart.products.filter(product => {
+      return product.id != id;
+    });
+    localStorage.setItem('listCart', JSON.stringify(listCart));
+  }
 
-  addToCart(product) {
+  addToCart(product: { id: any; }) {
     var listCart: any = localStorage.getItem('listCart');
-    var userId: any = localStorage.getItem('id');
-    const that = this;
     if (listCart == null) {
+      product['quantity'] = 1;
       listCart = {
-        'food': [
-          {
-            'userId': userId,
-            'id': product.id,
-            'name': product.name,
-            'description': product.description,
-            'image': product.image,
-            'price': product.price,
-            'carbonhydrates': product.carbonhydrates,
-            'protein': product.protein,
-            'lipid': product.lipid,
-            'xenluloza': product.xenluloza,
-            'canxi': product.canxi,
-            'iron': product.iron,
-            'zinc': product.zinc,
-            'vitaminA': product.vitaminA,
-            'vitaminB': product.vitaminB,
-            'vitaminC': product.vitaminC,
-            'vitaminD': product.vitaminD,
-            'vitaminE': product.vitaminE,
-            'calorie': product.calorie,
-            'weight': product.weight,
-            'status': product.status
-          }
-        ]
+        products: [product],
+        total: 1
       }
-      localStorage.setItem('cart', '1');
-      console.log(listCart);
+      localStorage.setItem('listCart', JSON.stringify(listCart));
+      AppComponent.totalCart = listCart.total;
+      this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!');
+      return;
+      // return {
+      //   code: 200,
+      //   message: "Đã thêm sản phẩm vào giỏ hàng"
+      // };
     } else {
       listCart = JSON.parse(listCart);
       if (listCart != null && listCart != undefined) {
         var existsItem = false;
-        var totalCart = listCart.food.length;
-        var cart = localStorage.getItem('cart');
-        if (cart == null) {
-          localStorage.setItem("cart", totalCart);
-        } else {
-          localStorage.setItem("cart", totalCart);
-        }
-        for (var i = 0; i < listCart.food.length; i++) {
-          if(listCart.food[i].id == product.id){
+        listCart.products.forEach((prd: { id: any; }) => {
+          if (prd.id == product.id) {
             existsItem = true;
-            console.log("food da ton tai!")
-            return;
           }
-        }
+        });
         if (!existsItem) {
-          listCart.food.push({
-            'userId': userId,
-            'id': product.id,
-            'name': product.name,
-            'description': product.description,
-            'image': product.image,
-            'price': product.price,
-            'carbonhydrates': product.carbonhydrates,
-            'protein': product.protein,
-            'lipid': product.lipid,
-            'xenluloza': product.xenluloza,
-            'canxi': product.canxi,
-            'iron': product.iron,
-            'zinc': product.zinc,
-            'vitaminA': product.vitaminA,
-            'vitaminB': product.vitaminB,
-            'vitaminC': product.vitaminC,
-            'vitaminD': product.vitaminD,
-            'vitaminE': product.vitaminE,
-            'calorie': product.calorie,
-            'weight': product.weight,
-            'status': product.status
-          });
-          localStorage.setItem("cart", totalCart + 1);
+          product['quantity'] = 1;
+          listCart.products.push(product);
+          listCart.total = listCart.products.length;
+          localStorage.setItem('listCart', JSON.stringify(listCart));
+          AppComponent.totalCart = listCart.total;
+          this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!');
+          return;
+          // return {
+          //   code: 200,
+          //   message: "Đã thêm sản phẩm vào giỏ hàng"
+          // };
+        } else {
+          this.toastr.error('Sản phẩm đã tồn tại trong giỏ hàng', 'Thông báo!');
+          return;
+          // return {
+          //   code: 400,
+          //   message: "Sản phẩm đã tồn tại trong giỏ hàng"
+          // };
         }
       }
-      //console.log(product.name);
     }
-    localStorage.setItem('listCart', JSON.stringify(listCart));
-    var abc = localStorage.getItem('listCart');
-    console.log(abc);
   }
 }

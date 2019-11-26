@@ -18,14 +18,23 @@ export class StepComponent implements OnInit {
 
   API_Benhly = "http://localhost:9000/api/category/parent/5";
 
+  API_GETME = "http://localhost:9000/api/auth/me";
+
+  API_UpdateCate = "http://localhost:9000/api/user-profile/{id_profile}/category";
+
   currentStep: any = 1;
 
   token = this.localStorage.getItem('token');
 
   listBenhly: any;
 
+  myInfo: any;
+
+  userDetails: any;
+
   changeStep(step) {
     this.currentStep = step;
+    console.log(this.currentStep);
   }
 
   data = {
@@ -37,9 +46,63 @@ export class StepComponent implements OnInit {
     status: 1
   }
 
-  benhLy = {
-    diseases: null
+  arrBl: any = [];
+  public changeModel(ev, id) {
+    if (id == 0) {
+      this.arrBl = [];
+      return;
+    }
+    if (ev.target.checked) {
+      this.arrBl.push(id);
+    } else {
+      let i = this.arrBl.indexOf(id);
+      this.arrBl.splice(i, 1);
+    }
+    console.log(this.arrBl);
+    
   }
+
+  // public getMe: Function = async => {
+  //   const that = this;
+  //   axios.get(that.API_GETME, { headers: { Authorization: that.token } })
+  //   .then(function (response){
+  //     that.myInfo = response.data.data;
+  //     that.getProfile(`${that.API_PROFILE}/${that.myInfo.id}`);
+  //     console.log(that.myInfo);
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   });
+  // }
+
+  // public getProfile: Function = async (url) => {
+  //   const that = this;
+  //   axios.get(url)
+  //   .then(function (response){
+  //     that.userDetails = response.data.data;
+  //     console.log(that.userDetails);
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   });
+  // }
+
+  public updateProfile: Function = async => {
+  }
+
+  // public updateCate: Function = async => {
+  //   const that = this;
+  //   axios.put(`http://localhost:9000/api/user-profile/${this.userDetails.id}/category`,that.arrBl, { headers: { Authorization: that.token } })
+  //   .then(function (response){
+  //     console.log(response.data.data)
+  //   })
+  //   .catch(function (error){
+  //     console.log(error);
+  //   })
+  // }
+
 
   public getBenhly: Function = async => {
     const that = this;
@@ -70,6 +133,7 @@ export class StepComponent implements OnInit {
     }
 
     if(this.currentStep == 2){
+      const that = this;
       axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } })
           .then(function (response) {
             console.log(response);
@@ -78,7 +142,8 @@ export class StepComponent implements OnInit {
             // handle error
             console.log(error);
           });
-      console.log(that.data)
+      //that.updateCate();
+      console.log(that.data);
     }
 
     if (invalid) {
@@ -103,6 +168,7 @@ export class StepComponent implements OnInit {
   ngOnInit() {
     this.getBenhly();
     //console.log(this.token)
-    console.log(this.currentStep)
+    // this.getMe();
+    // this.getProfile();
   }
 }

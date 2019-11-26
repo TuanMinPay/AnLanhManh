@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
     .then(function (response){
       that.myInfo = response.data.data;
       that.getProfile(`${that.API_PROFILE}/${that.myInfo.id}`);
-      //console.log(that.myInfo);
+      console.log(that.myInfo);
     })
     .catch(function (error) {
       // handle error
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
     axios.get(url)
     .then(function (response){
       that.userDetails = response.data.data;
-      //console.log(that.userDetails);
+      console.log(that.userDetails);
     })
     .catch(function (error) {
       // handle error

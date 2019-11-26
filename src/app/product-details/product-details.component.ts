@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import axios from "axios";
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -39,11 +40,16 @@ export class ProductDetailsComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cart: CartService
   ) {
   }
 
   id: number;
+
+  addToCart(product) {
+    this.cart.addToCart(product);
+  }
 
 
   ngOnInit() {
