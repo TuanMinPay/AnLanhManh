@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 import * as _ from 'underscore';
@@ -9,12 +9,6 @@ import * as _ from 'underscore';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  formatter = new Intl.NumberFormat('en-VN', {
-    style: 'currency',
-    currency: 'VND',
-    minimumFractionDigits: 0
-  });
 
   dataFood: any = [{
     id: null,
@@ -65,6 +59,8 @@ export class ProductComponent implements OnInit {
     parentId: null
   }];
 
+  dataCate2: any =[];
+  id: any = 1;
   @ViewChild("target", { static: false }) target: ElementRef;
 
   setPage(page: number) {
@@ -83,16 +79,37 @@ export class ProductComponent implements OnInit {
     }
     this.currentPage = this.page;
     this.loadPage(this.page);
+    
+    this.loadCategory(this.id);
+    this.chooseCategoryParent(this.id);
+  }
 
+  childCategory: any;
+
+  chooseCategoryParent(id) {
+      const that = this;
+    axios.get('http://localhost:9000/api/category/parent/' + id)
+      .then(function (response) {
+        if(that.childCategory = id){
+          that.dataCate2 = response.data.data;
+        }
+      })
+      .catch(function (error: any) {
+        // handle error
+        console.log(error);
+      });
+  }
+
+  loadCategory(id){
     const that = this;
-    axios.get('http://localhost:9000/api/category')
-    .then(function(response){
-      that.dataCate = response.data.data;
-      console.log(response.data.data);
-    })
-    .catch(function (error){
-      console.log(error);
-    });
+    axios.get('http://localhost:9000/api/category/parent/' + id)
+      .then(function (response) {
+        that.dataCate = response.data.data;
+      })
+      .catch(function (error: any) {
+        // handle error
+        console.log(error);
+      });
   }
 
   private loadPage(page: number) {
