@@ -43,7 +43,8 @@ export class StepComponent implements OnInit {
     age: null,
     exerciseIntensity: 1.2,
     gender: 1,
-    status: 1
+    status: 1,
+    bodyFat: null
   }
 
   arrBl: any = [];
@@ -59,7 +60,7 @@ export class StepComponent implements OnInit {
       this.arrBl.splice(i, 1);
     }
     console.log(this.arrBl);
-    
+
   }
 
   // public getMe: Function = async => {
@@ -107,13 +108,13 @@ export class StepComponent implements OnInit {
   public getBenhly: Function = async => {
     const that = this;
     axios.get(that.API_Benhly)
-    .then(function(response){
-      that.listBenhly = response.data.data;
-      console.log(response.data.data);
-    })
-    .catch(function (error){
-      console.log(error);
-    });
+      .then(function (response) {
+        that.listBenhly = response.data.data;
+        //console.log(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   validateStep(s) {
@@ -123,7 +124,7 @@ export class StepComponent implements OnInit {
     var invalid = true;
 
     // validate step 1
-    if(this.currentStep == 1){
+    if (this.currentStep == 1) {
       if (this.data.height && this.data.weight && this.data.age) {
         that.textError = null;
       } else {
@@ -132,9 +133,10 @@ export class StepComponent implements OnInit {
       }
     }
 
-    if(this.currentStep == 2){
-      const that = this;
-      axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } })
+    if (this.currentStep == 3) {
+      if (this.data.bodyFat) {
+        const that = this;
+        axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } })
           .then(function (response) {
             console.log(response);
           })
@@ -142,12 +144,17 @@ export class StepComponent implements OnInit {
             // handle error
             console.log(error);
           });
-      //that.updateCate();
-      console.log(that.data);
+        //that.updateCate();
+        console.log(that.data);
+        that.textError = null;
+      } else {
+        that.textError = "Vui lòng nhập đầy đủ thông tin !";
+        return;
+      }
     }
 
     if (invalid) {
-      if (this.currentStep == 3) {
+      if (this.currentStep == 4) {
         return;
       } else {
         console.log(this.data);
