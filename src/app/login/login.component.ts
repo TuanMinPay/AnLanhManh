@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import axios from "axios";
 import { Router } from "@angular/router";
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
       that.textError = "Please enter full infomation !";
     } else {
       that.textError = null;
-      await axios.post('http://localhost:9000/api/auth/signin', {
+      await axios.post(`${environment.api_url}/api/auth/signin`, {
         account: account,
         password: password
       }).then(function (response) {

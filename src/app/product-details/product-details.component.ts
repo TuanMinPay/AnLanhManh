@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import axios from "axios";
 import { CartService } from '../services/cart.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -55,7 +56,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     const that = this;
-    axios.get('http://localhost:9000/api/food/' + this.id).then(function (response: any) {
+    axios.get(`${environment.api_url}/api/food/${this.id}`).then(function (response: any) {
       if (response.data.status == 200) {
         that.dataFood = response.data.data;
       }

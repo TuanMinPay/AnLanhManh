@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import axios from 'axios';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
-import { async } from 'q';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-step',
@@ -14,13 +14,13 @@ export class StepComponent implements OnInit {
   ) { }
   textError: any = null;
 
-  API_PROFILE = 'http://localhost:9000/api/user-profile/create';
+  API_PROFILE = `${environment.api_url}/api/user-profile/create`;
 
-  API_Benhly = "http://localhost:9000/api/category/parent/5";
+  API_Benhly = `${environment.api_url}/api/category/parent/5`;
 
-  API_GETME = "http://localhost:9000/api/auth/me";
+  API_GETME = `${environment.api_url}/api/auth/me`;
 
-  API_UpdateCate = "http://localhost:9000/api/user-profile/{id_profile}/category";
+  API_UpdateCate = `${environment.api_url}/api/user-profile/{id_profile}/category`;
 
   currentStep: any = 1;
 
@@ -90,12 +90,12 @@ export class StepComponent implements OnInit {
   //   });
   // }
 
-  public updateProfile: Function = async => {
+  public updateProfile: Function = () => {
   }
 
   // public updateCate: Function = async => {
   //   const that = this;
-  //   axios.put(`http://localhost:9000/api/user-profile/${this.userDetails.id}/category`,that.arrBl, { headers: { Authorization: that.token } })
+  //   axios.put(`${environment.api_url}/api/user-profile/${this.userDetails.id}/category`,that.arrBl, { headers: { Authorization: that.token } })
   //   .then(function (response){
   //     console.log(response.data.data)
   //   })
@@ -105,7 +105,7 @@ export class StepComponent implements OnInit {
   // }
 
 
-  public getBenhly: Function = async => {
+  public getBenhly: Function = () => {
     const that = this;
     axios.get(that.API_Benhly)
       .then(function (response) {
@@ -117,7 +117,7 @@ export class StepComponent implements OnInit {
       });
   }
 
-  validateStep(s) {
+  validateStep() {
     const that = this;
     // validate here
 
@@ -136,14 +136,12 @@ export class StepComponent implements OnInit {
     if (this.currentStep == 3) {
       if (this.data.bodyFat) {
         const that = this;
-        axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          });
+        axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          // handle error
+          console.log(error);
+        });
         //that.updateCate();
         console.log(that.data);
         that.textError = null;
