@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 import * as _ from 'underscore';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-product',
@@ -88,7 +89,7 @@ export class ProductComponent implements OnInit {
 
   chooseProduct(id) {
     const that = this;
-    axios.get(`http://localhost:9000/api/category/${id}`).then(function (response) {
+    axios.get(`${environment.api_url}/api/category/${id}`).then(function (response) {
       that.dataFood = response.data.data.foods;
     }).catch(function (error: any) {
       console.log(error);
@@ -98,7 +99,7 @@ export class ProductComponent implements OnInit {
   childCategory: any;
   chooseCategoryParent(id) {
       const that = this;
-    axios.get('http://localhost:9000/api/category/parent/' + id)
+    axios.get(`${environment.api_url}/api/category/parent/${id}`)
       .then(function (response) {
         if(that.childCategory = id){
           that.dataCate2 = response.data.data;
@@ -112,7 +113,7 @@ export class ProductComponent implements OnInit {
 
   loadCategory(id){
     const that = this;
-    axios.get('http://localhost:9000/api/category/parent/' + id)
+    axios.get(`${environment.api_url}/api/category/parent/${id}`)
       .then(function (response) {
         that.dataCate = response.data.data;
       })
@@ -124,7 +125,7 @@ export class ProductComponent implements OnInit {
 
   private loadPage(page: number) {
     const that = this;
-    axios.get('http://localhost:9000/api/food/list?page=' + page)
+    axios.get(`${environment.api_url}/api/food/list?page=${page}`)
       .then(function (response) {
         if (response.data.status == 200) {
           that.dataFood = response.data.data;

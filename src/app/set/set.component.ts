@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 import * as _ from 'underscore';
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-set',
   templateUrl: './set.component.html',
@@ -9,14 +11,14 @@ import * as _ from 'underscore';
 })
 
 export class SetComponent implements OnInit {
- 
-  
+
+
   formatter = new Intl.NumberFormat('en-VN', {
     style: 'currency',
     currency: 'VND',
     minimumFractionDigits: 0
   });
-  
+
   constructor(
     private router: Router,
     private route: ActivatedRoute
@@ -46,7 +48,7 @@ export class SetComponent implements OnInit {
     cateId: null
   }];
 
-  // API_COMBO = "http://localhost:9000/api/combo";
+  // API_COMBO = `${environment.api_url}/api/combo`;
 
   pager: any = [{
     limit: null,
@@ -66,16 +68,15 @@ export class SetComponent implements OnInit {
 
   setCombo(page: number) {
     this.currentPage = page;
-    this.router.navigate( ['/product/combo'],  { queryParams: { page: page } });
+    this.router.navigate(['/product/combo'], { queryParams: { page: page } });
     this.loadCombo(page);
-    this.target.nativeElement.scrollIntoView({ block: 'start',  behavior: 'smooth', inline: 'nearest' });
+    this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
   }
 
-  public loadCombo(page: number){
+  public loadCombo(page: number) {
     const that = this;
-    axios.get('http://localhost:9000/api/combo?page=' + page)
-    .then(function (response) {
-      if(response.data.status = 200){
+    axios.get(`${environment.api_url}/api/combo?page=${page}`).then(function (response) {
+      if (response.data.status = 200) {
         that.dataCate = response.data.data;
         // that.pager = response.data.restPagination;
         // that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
@@ -95,10 +96,9 @@ export class SetComponent implements OnInit {
         //   }
         // }
         // that.pages = _.range(that.startPage, that.endPage + 1);
-      }  
+      }
       console.log(response.data.data);
-    })
-    .catch(function (error) {
+    }).catch(function (error) {
       // handle error
       console.log(error);
     });
