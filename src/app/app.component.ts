@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
-import { MessagingService } from './services/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +10,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     @Inject(WINDOW) private window: Window,
-    @Inject(LOCAL_STORAGE) private localStorage: any,
-    private messagingService: MessagingService) {
+    @Inject(LOCAL_STORAGE) private localStorage: any
+  ) {
   }
 
   public static totalCart: number = 0;
@@ -36,17 +35,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const userId = 'admin';
-    this.messagingService.requestPermission(userId);
-    this.messagingService.receiveMessage();
-    this.message = this.messagingService.currentMessage;
     var token = this.localStorage.getItem('token');
     if (token == null || token == undefined) {
       this.isLogin = false;
     } else {
       this.isLogin = true;
     }
-    
+
     var listCart = localStorage.getItem('listCart');
     if (listCart == null || listCart == undefined || listCart == '') {
       AppComponent.totalCart = 0;
