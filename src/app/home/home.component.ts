@@ -117,6 +117,7 @@ export class HomeComponent implements OnInit {
 
   addToCart(food) {
     this.cart.addToCart(food);
+    //console.log(food);
   }
 
   foodDetail(id: number) {

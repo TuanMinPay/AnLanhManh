@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class CartService {
-
+  
   constructor(
     private toastr: ToastrService
   ) { }

@@ -82,14 +82,9 @@
                             <!-- product list item start -->
                             <div class="product-list-item mb-30" *ngFor="let cate of dataCate">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
+                                    <a (click)="comboDetail(cate.id)">
                                         <img src="{{cate.image}}" alt="">
                                     </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
                                 </div>
                                 <div class="product-content-list">
                                     <div class="ratings">
