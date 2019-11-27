@@ -114,4 +114,8 @@ export class SetComponent implements OnInit {
     this.currentPage = this.page;
     this.loadCombo(this.page);
   }
+
+  comboDetail(id: number) {
+    this.router.navigate(["/product/combo/combo-detail", id]);
+  }
 }

@@ -158,6 +158,6 @@ export class ProductComponent implements OnInit {
   }
 
   foodDetail(id: number) {
-    this.router.navigate(["/product-detail/food", id]);
+    this.router.navigate(["product/food/food-detail", id]);
   }
 }

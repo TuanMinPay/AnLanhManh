@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
 import axios from 'axios'
 
 @Component({
@@ -8,14 +9,16 @@ import axios from 'axios'
 })
 export class SetDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   listProduct: any = [];
-  API_COMBO = "http://localhost:9000/api/combo/4";
+  API_COMBO = "http://localhost:9000/api/combo/";
 
+  id: number;
   public getSet: Function = async => {
+    this.id = this.route.snapshot.params['id'];
     const that = this;
-    axios.get(that.API_COMBO)
+    axios.get(that.API_COMBO + that.id)
     .then(function (response) {
       console.log(response.data.data);
       that.listProduct = response.data.data.foods;
