@@ -82,10 +82,20 @@ export class ProductComponent implements OnInit {
     
     this.loadCategory(this.id);
     this.chooseCategoryParent(this.id);
+
+    this.chooseProduct(this.id);
+  }
+
+  chooseProduct(id) {
+    const that = this;
+    axios.get(`http://localhost:9000/api/category/${id}`).then(function (response) {
+      that.dataFood = response.data.data.foods;
+    }).catch(function (error: any) {
+      console.log(error);
+    });
   }
 
   childCategory: any;
-
   chooseCategoryParent(id) {
       const that = this;
     axios.get('http://localhost:9000/api/category/parent/' + id)
