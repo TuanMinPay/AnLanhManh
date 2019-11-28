@@ -22,29 +22,6 @@ export class LoginComponent implements OnInit {
 
   textError: any = null;
 
-  // public getProfile: Function = async => {
-  //   const that = this;
-  //   axios.get(`${environment.api_url}/api/user-profile/2`)
-  //   .then(function (response){
-  //     that.userProfile = response.data.data;
-  //     console.log(response.data.data);
-  //     console.log(that.userProfile.weight);
-  //   })
-  //   .catch(function (error){
-  //     console.log(error);
-  //   })
-  // }
-
-  // checkProfile() {
-  //   const that = this;
-  //   this.checkProfile();
-  //   if(that.userProfile.weight == null && that.userProfile.height == null){
-  //     that.window.location.href = '/step';
-  //   }else{
-  //     that.window.location.href = '/';
-  //   }
-  // }
-
   public handleLogin: Function = async (account: any, password: any) => {
     const that = this;
     if (password.length == 0 || account.length == 0) {
