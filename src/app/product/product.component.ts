@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 import * as _ from 'underscore';
 import { environment } from '../../environments/environment';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-product',
@@ -37,7 +38,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private util: UtilService
   ) {
   }
 
@@ -66,7 +68,7 @@ export class ProductComponent implements OnInit {
 
   setPage(page: number) {
     this.currentPage = page;
-    this.router.navigate(['/product/food/list'], { queryParams: { page: page } });
+    this.router.navigate(['/pl/list'], { queryParams: { page: page } });
     this.loadPage(page);
     this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
   }
@@ -158,9 +160,5 @@ export class ProductComponent implements OnInit {
         // handle error
         console.log(error);
       });
-  }
-
-  foodDetail(id: number) {
-    this.router.navigate(["product/food/food-detail", id]);
   }
 }

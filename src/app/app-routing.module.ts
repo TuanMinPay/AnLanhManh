@@ -17,10 +17,10 @@ import { StepComponent } from './step/step.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'product/food/:page', component: ProductComponent },
-  { path: 'product/food/food-detail/:id', component: ProductDetailsComponent },
-  { path: 'product/combo', component: SetComponent },
-  { path: 'product/combo/combo-detail/:id', component: SetDetailsComponent },
+  { path: 'pl/:page', component: ProductComponent },
+  { path: 'p/:id', component: ProductDetailsComponent },
+  { path: 'cl', component: SetComponent },
+  { path: 'c/:id', component: SetDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },

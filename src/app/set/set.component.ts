@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import axios from "axios";
 import * as _ from 'underscore';
 import { environment } from '../../environments/environment';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-set',
@@ -12,16 +13,10 @@ import { environment } from '../../environments/environment';
 
 export class SetComponent implements OnInit {
 
-
-  formatter = new Intl.NumberFormat('en-VN', {
-    style: 'currency',
-    currency: 'VND',
-    minimumFractionDigits: 0
-  });
-
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private util: UtilService
   ) { }
 
   dataCate: any = [{
@@ -68,7 +63,7 @@ export class SetComponent implements OnInit {
 
   setCombo(page: number) {
     this.currentPage = page;
-    this.router.navigate(['/product/combo'], { queryParams: { page: page } });
+    this.router.navigate(['/cl'], { queryParams: { page: page } });
     this.loadCombo(page);
     this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
   }
@@ -113,9 +108,5 @@ export class SetComponent implements OnInit {
     }
     this.currentPage = this.page;
     this.loadCombo(this.page);
-  }
-
-  comboDetail(id: number) {
-    this.router.navigate(["/product/combo/combo-detail", id]);
   }
 }

@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import axios from "axios";
 import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,12 +12,6 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-
-  formatter = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-    minimumFractionDigits: 0
-  });
 
   dataFood: any = {
     id: null,
@@ -44,7 +39,9 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cart: CartService,
-    @Inject(DOCUMENT) private document: Document
+    private location: Location,
+    @Inject(DOCUMENT) private document: Document,
+    private util: UtilService
   ) {
   }
 
@@ -60,9 +57,11 @@ export class ProductDetailsComponent implements OnInit {
     this.cart.addToCart(product);
   }
 
+  currentURL: any;
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.currentURL = this.location.path();
+    this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
     const that = this;
     axios.get(`${environment.api_url}/api/food/${this.id}`).then(function (response: any) {
       if (response.data.status == 200) {

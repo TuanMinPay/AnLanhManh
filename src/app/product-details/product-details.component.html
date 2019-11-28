@@ -42,7 +42,7 @@
                             <h4 id="foodName" name="name"><strong>{{dataFood.name}}</strong></h4>
                         </div>
                         <div class="price-box">
-                            <span>Price: <span class="regular-price">{{formatter.format(dataFood.price)}}</span></span>
+                            <span>Price: <span class="regular-price">{{util.formatPrice(dataFood.price)}}</span></span>
                             <span class="old-price"><del></del></span>
                         </div>
                         <p>{{dataFood.description}}</p>
