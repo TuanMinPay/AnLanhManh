@@ -41,18 +41,6 @@
                                         <li><a href="javascript:void(0)">accessories</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">fruits</a>
-                                    
-                                </li>
-                                <li><a href="#">juice</a>
-                                    
-                                </li>
-                                <li><a href="#">meats</a>
-                                    
-                                </li>
-                                <li><a href="#">vegetables</a>
-                                    
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -82,7 +70,7 @@
                             <!-- product list item start -->
                             <div class="product-list-item mb-30" *ngFor="let cate of dataCate">
                                 <div class="product-thumb">
-                                    <a (click)="comboDetail(cate.id)">
+                                    <a (click)="comboDetail(cate.id)" href="javascript:void(0)">
                                         <img src="{{cate.image}}" alt="">
                                     </a>
                                 </div>
@@ -95,10 +83,10 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a href="product-details.html">{{cate.name}}</a></h4>
+                                        <h4><a (click)="comboDetail(cate.id)" href="javascript:void(0)">{{cate.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{formatter.format(cate.price)}} VND</span>
+                                        <span class="regular-price">{{formatter.format(cate.price)}}</span>
                                     </div>
                                     <div class="price-box">
                                         <span class="regular-price">{{cate.calorie}}calo / {{cate.weight}}g</span>

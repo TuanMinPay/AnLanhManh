@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, Router} from '@angular/router';
 import axios from 'axios';
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -10,9 +11,33 @@ import { environment } from '../../environments/environment';
 })
 export class SetDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE)
+    private router: Router,
+    private route: ActivatedRoute) { }
 
-  listProduct: any = [];
+  listProduct: any = [{
+    id: null,
+    name: null,
+    description: null,
+    image: null,
+    price: null,
+    carbonhydrates: null,
+    protein: null,
+    lipid: null,
+    xenluloza: null,
+    canxi: null,
+    iron: null,
+    zinc: null,
+    vitaminA: null,
+    vitaminB: null,
+    vitaminC: null,
+    vitaminD: null,
+    vitaminE: null,
+    calorie: null,
+    weight: null,
+    categories: null,
+    cateId: null
+  }];
   API_COMBO = `${environment.api_url}/api/combo/`;
 
   id: number;
@@ -32,4 +57,7 @@ export class SetDetailsComponent implements OnInit {
     this.getSet();
   }
 
+  comboDetail(id: number) {
+    this.router.navigate(["product/combo/combo-detail", id]);
+  }
 }
