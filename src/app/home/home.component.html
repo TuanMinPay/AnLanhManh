@@ -153,8 +153,11 @@
                         </li>
                     </ul>
                 </div>
+                <div class="tab-content loadcontent" *ngIf="dataFood == null">
+                    <img src="/assets/images/loading.gif">
+                </div>
                 <!-- product tab menu end -->
-                <div class="tab-content">
+                <div class="tab-content" *ngIf="dataFood != null">
                     <div *ngFor="let item of outProductData; let i = index;"
                         [class]="outProductTab == item.tab ? 'tab-pane fade active show' : 'tab-pane fade'">
                         <div class="product-tab-wrapper">
@@ -163,11 +166,11 @@
                                 <div *ngFor="let food of dataFood | slice:0:8" class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="product-item mb-50">
                                         <div class="product-thumb">
-                                            <a href="/product-detail/food/{{food.id}}">
+                                            <a href="/product/food/food-detail/{{food.id}}">
                                                 <img src={{food?.image}} alt="">
                                             </a>
                                             <div class="quick-view-link">
-                                                <a href="/product-detail/food/{{food.id}}" data-toggle=""
+                                                <a href="/product/food/food-detail/{{food.id}}" data-toggle=""
                                                     data-target=""> <span data-toggle="tooltip" title="Quick view"><i
                                                             class="ion-ios-eye-outline"></i></span>
                                                 </a>
@@ -183,7 +186,7 @@
                                             </div>
                                             <div class="product-name">
                                                 <h4 class="h5">
-                                                    <a href="/product-detail/food/{{food.id}}">{{food.name}}</a>
+                                                    <a href="/product/food/food-detail/{{food.id}}">{{food.name}}</a>
                                                     <p class="price-box"><span class="regular-price">{{food.calorie}}
                                                             calo/ {{food.weight}} g</span></p>
                                                 </h4>

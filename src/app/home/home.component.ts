@@ -55,11 +55,11 @@ export class HomeComponent implements OnInit {
   setPage(page: number) {
     this.currentPage = page;
     this.router.navigate(['/product/food/list'], { queryParams: { page: page } });
-    this.loadPage(page);
   }
 
-  getProductById(id) {
+  getProductById(id: any) {
     const that = this;
+    that.dataFood = null;
     axios.get(`${environment.api_url}/api/category/${id}`).then(function (response) {
       that.dataFood = response.data.data.foods;
     }).catch(function (error: any) {
@@ -75,12 +75,10 @@ export class HomeComponent implements OnInit {
       this.page = parseInt(this.page);
     }
     this.currentPage = this.page;
-    this.loadPage(this.page);
-
     const that = this;
     axios.get(`${environment.api_url}/api/category/parent/8`).then(function (response) {
       var data = response.data.data;
-      data.forEach(cate => {
+      data.forEach((cate: { id: any; name: any; }) => {
         let obj = {
           id: cate.id,
           name: cate.name,
@@ -95,24 +93,6 @@ export class HomeComponent implements OnInit {
     }).catch(function (error) {
       console.log(error);
     });
-  }
-
-  private loadPage(page: number) {
-    const that = this;
-    // axios.get(`${environment.api_url}/api/food/list?page=${page}&limit=8`)
-    //   .then(function (response) {
-    //     if (response.data.status == 200) {
-    //       that.dataFood = response.data.data;
-    //       that.pager = response.data.restPagination;
-    //       that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
-    //     }
-
-    //     console.log(response.data.data);
-    //     console.log(response.data.restPagination);
-    //   })
-    //   .catch(function (error: any) {
-    //     console.log(error);
-    //   });
   }
 
   addToCart(food) {
