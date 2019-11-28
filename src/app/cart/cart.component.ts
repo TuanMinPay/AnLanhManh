@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { async } from 'q';
 import { CartService } from '../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cart: CartService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private util: UtilService
   ) { }
 
   listCart: any;
@@ -23,12 +25,16 @@ export class CartComponent implements OnInit {
     that.listCart = JSON.parse(this.listCart);
   }
 
+  getTotalPriceCart() {
+    return this.util.formatPrice(this.listCart.products.reduce((a, b) => parseInt(a) + parseInt(b.price), 0));
+  }
+
   removeItem(id: any) {
-    this.listCart.products = this.listCart.products.filter(prd => {
+    this.listCart.products = this.listCart.products.filter((prd: { id: any; }) => {
       return prd.id != id;
     });
     localStorage.setItem('listCart', JSON.stringify(this.listCart));
-    this.toastr.success('Đã xoá khỏi giỏ hàng', 'Thông báo!');
+    this.toastr.success('Đã xoá sản phẩm khỏi giỏ hàng', 'Thông báo!');
   }
   ngOnInit() {
     this.checkOut();

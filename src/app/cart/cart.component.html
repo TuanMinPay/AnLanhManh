@@ -28,10 +28,10 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="pro-thumbnail">Thumbnail</th>
-                                    <th class="pro-title">Product</th>
-                                    <th class="pro-price">Price</th>
-                                    <th class="pro-remove">Remove</th>
+                                    <th class="pro-thumbnail">Ảnh</th>
+                                    <th class="pro-title">Tên sản phẩm</th>
+                                    <th class="pro-price">Giá</th>
+                                    <th class="pro-remove"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,7 +39,7 @@
                                     <td class="pro-thumbnail"><a href="#"><img class="img-fluid" [src]="item.image"
                                                 alt="Product" /></a></td>
                                     <td class="pro-title"><a href="javascrip:void(0)">{{item?.name}}</a></td>
-                                    <td class="pro-price"><span>{{item?.price}}</span></td>
+                                    <td class="pro-price"><span>{{util.formatPrice(item?.price)}}</span></td>
                                     <td class="pro-remove"><a (click)="removeItem(item?.id)"><i class="fa fa-trash-o"></i></a></td>
                                 </tr>
                             </tbody>
@@ -52,19 +52,19 @@
                     <!-- Cart Calculation Area -->
                     <div class="cart-calculator-wrapper">
                         <div class="cart-calculate-items">
-                            <h3>Cart Totals</h3>
+                            <h3>Tổng</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
-                                        <td>Sub Total</td>
-                                        <td>$230</td>
+                                        <td>Tổng đơn hàng</td>
+                                        <td>{{getTotalPriceCart()}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Shipping</td>
+                                        <td>Ship</td>
                                         <td>$70</td>
                                     </tr>
                                     <tr class="total">
-                                        <td>Total</td>
+                                        <td>Tổng thanh toán</td>
                                         <td class="total-amount">$300</td>
                                     </tr>
                                 </table>
