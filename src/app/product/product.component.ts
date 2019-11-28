@@ -60,15 +60,15 @@ export class ProductComponent implements OnInit {
     parentId: null
   }];
 
-  dataCate2: any =[];
+  dataCate2: any = [];
   id: any = 1;
   @ViewChild("target", { static: false }) target: ElementRef;
 
   setPage(page: number) {
     this.currentPage = page;
-    this.router.navigate( ['/product/food/list'],  { queryParams: { page: page } });
+    this.router.navigate(['/product/food/list'], { queryParams: { page: page } });
     this.loadPage(page);
-    this.target.nativeElement.scrollIntoView({ block: 'start',  behavior: 'smooth', inline: 'nearest' });
+    this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
   }
 
   ngOnInit() {
@@ -80,7 +80,7 @@ export class ProductComponent implements OnInit {
     }
     this.currentPage = this.page;
     this.loadPage(this.page);
-    
+
     this.loadCategory(this.id);
     this.chooseCategoryParent(this.id);
 
@@ -97,11 +97,12 @@ export class ProductComponent implements OnInit {
   }
 
   childCategory: any;
+
   chooseCategoryParent(id) {
-      const that = this;
+    const that = this;
     axios.get(`${environment.api_url}/api/category/parent/${id}`)
       .then(function (response) {
-        if(that.childCategory = id){
+        if (that.childCategory = id) {
           that.dataCate2 = response.data.data;
         }
       })
@@ -111,11 +112,12 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  loadCategory(id){
+  loadCategory(id) {
     const that = this;
     axios.get(`${environment.api_url}/api/category/parent/${id}`)
       .then(function (response) {
         that.dataCate = response.data.data;
+        that.chooseCategoryParent(that.dataCate[0].id);
       })
       .catch(function (error: any) {
         // handle error

@@ -1,5 +1,2 @@
-.product-thumb img{
-    /* width: 100%; */
-    height: 200px;
-    object-fit: contain;
-}
+.product-thumb img{height:200px;object-fit:contain}
+.banner-statistics{margin-top:3rem}

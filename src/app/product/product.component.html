@@ -7,8 +7,8 @@
                     <nav aria-label="breadcrumb">
                         <h2>shop</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Foods</li>
+                            <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Đồ Ăn Dinh Dưỡng</li>
                         </ul>
                     </nav>
                 </div>
@@ -28,17 +28,18 @@
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-title">
-                            <h3>categories</h3>
+                            <h3>Danh Mục</h3>
                         </div>
-                        <div class="sidebar-body" >
+                        <div class="sidebar-body">
                             <ul class="sidebar-category">
                                 <li *ngFor="let cate of dataCate">
-                                    <a data-toggle="collapse"
-                                    data-target="#collapseOne" href="javascript:void(0)" (click)="chooseCategoryParent(cate.id)">{{cate?.name}}</a>
-                                    <div *ngIf="childCategory == cate.id" >
-                                        <ul class="children" id="collapseOne" aria-labelledby="headingOne">
+                                    <a href="javascript:void(0)"
+                                        (click)="chooseCategoryParent(cate.id)">{{cate?.name}}</a>
+                                    <div *ngIf="childCategory == cate.id">
+                                        <ul class="children">
                                             <li *ngFor="let cate2 of dataCate2">
-                                                <a href="javascript:void(0)" (click)="chooseProduct(cate2.id)">{{cate2?.name}}</a>
+                                                <a href="javascript:void(0)"
+                                                    (click)="chooseProduct(cate2.id)">{{cate2?.name}}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -48,10 +49,10 @@
                     </div>
                     <!-- single sidebar end -->
                     <!-- single sidebar start -->
-                    
+
                     <!-- single sidebar end -->
                     <!-- single sidebar start -->
-                   
+
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-banner">
@@ -70,7 +71,7 @@
                     <!-- shop product top wrap start -->
                     <div class="shop-top-bar">
                         <div class="row">
-                        
+
                         </div>
                     </div>
                     <!-- shop product top wrap start -->
@@ -81,12 +82,13 @@
                             <!-- product grid item start -->
                             <div class="product-item mb-50">
                                 <div class="product-thumb">
-                                    <a (click)="foodDetail(food.id)" >
+                                    <a (click)="foodDetail(food.id)">
                                         <img src="{{food.image}}" alt="">
                                     </a>
                                     <div class="quick-view-link">
                                         <a (click)="foodDetail(food.id)" data-toggle="" data-target=""> <span
-                                                data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
+                                                data-toggle="tooltip" title="Quick view"><i
+                                                    class="ion-ios-eye-outline"></i></span>
                                         </a>
                                     </div>
                                 </div>
@@ -101,7 +103,8 @@
                                     <div class="product-name">
                                         <h4 class="h5">
                                             <a href="product-details.html">{{food.name}}</a>
-                                            <p class="price-box"><span class="regular-price">{{food.calorie}} calo/ {{food.weight}} g</span></p>
+                                            <p class="price-box"><span class="regular-price">{{food.calorie}} calo/
+                                                    {{food.weight}} g</span></p>
                                         </h4>
                                     </div>
                                     <div class="price-box">
@@ -109,24 +112,31 @@
                                         <span class="old-price"><del></del></span>
                                     </div>
                                     <div class="product-action-link">
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Add to cart"><i class="ion-bag"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
+                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i
+                                                class="ion-android-favorite-outline"></i></a>
+                                        <a href="#" data-toggle="tooltip" title="Add to cart"><i
+                                                class="ion-bag"></i></a>
+                                        <a href="#" data-toggle="tooltip" title="Compare"><i
+                                                class="ion-ios-shuffle"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <!-- product grid item end -->
                         </div>
-                        
+
                     </div>
                     <!-- product item list end -->
 
                     <!-- start pagination area -->
                     <div class="paginatoin-area text-center mt-30">
                         <ul class="pagination-box">
-                            <li [ngClass]="{disabled:currentPage === 1}"><a href="javascript:void(0)" class="Previous" (click)="setPage(currentPage - 1)"><i class="ion-ios-arrow-left"></i></a></li>
-                            <li *ngFor="let item of pages"> <a href="javascript:void(0)" (click)="setPage(item)" class="{{currentPage == item ? 'active-page' : ''}}">{{item}}</a></li>
-                            <li [ngClass]="{disabled:currentPage === pager.totalPages}"><a href="javascript:void(0)" class="Next" (click)="setPage(currentPage + 1)"><i class="ion-ios-arrow-right"></i></a></li> 
+                            <li [ngClass]="{disabled:currentPage === 1}"><a href="javascript:void(0)" class="Previous"
+                                    (click)="setPage(currentPage - 1)"><i class="ion-ios-arrow-left"></i></a></li>
+                            <li *ngFor="let item of pages"> <a href="javascript:void(0)" (click)="setPage(item)"
+                                    class="{{currentPage == item ? 'active-page' : ''}}">{{item}}</a></li>
+                            <li [ngClass]="{disabled:currentPage === pager.totalPages}"><a href="javascript:void(0)"
+                                    class="Next" (click)="setPage(currentPage + 1)"><i
+                                        class="ion-ios-arrow-right"></i></a></li>
                         </ul>
                     </div>
                     <!-- end pagination area -->

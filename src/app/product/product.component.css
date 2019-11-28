@@ -1,6 +1,3 @@
-div.product-thumb img{
-    height: 170px;
-}
-a :hover{
-    cursor: pointer;
-}
+div.product-thumb img{height:100%;width:100%;object-fit:cover}
+a :hover{cursor:pointer}
+.product-thumb{width:100%;height:15rem}

@@ -7,10 +7,10 @@
                     <div class="col-12">
                         <div class="content-inner">
                             <div class="slider-content">
-                                <h1>Great offers<br>on fruits <br>and vegetables </h1>
-                                <p>We supply highly quality, premium organic products</p>
+                                <h1>Ưu đãi tuyệt vời cho các sản phẩm dinh dưỡng</h1>
+                                <p>Chúng tôi luôn cung cấp các sản phẩm dinh dưỡng với chất lượng tốt nhất cho bạn</p>
                                 <a href="javascript:void(0)" [routerLink]="['/product/food/list']"
-                                    [queryParams]="{ page: 1}" class="btn">shop now</a>
+                                    [queryParams]="{ page: 1}" class="btn">Xem Ngay</a>
                             </div>
                             <div class="slider-img">
                                 <img src="assets/img/slider/slide_1.jpg" alt="">
@@ -33,8 +33,9 @@
                     <i class="ion-paper-airplane"></i>
                 </div>
                 <div class="features-content">
-                    <h5>Free Shipping</h5>
-                    <p>Free delivery on all orders over $99</p>
+                    <h5>Miễn Phí Vận CHuyển</h5>
+                    <p>Miễn phí vận chuyển với những</p>
+                    <p>đơn hàng trên 500.000<sup>đ</sup></p>
                 </div>
             </div>
             <div class="single-features-item">
@@ -42,8 +43,9 @@
                     <i class="ion-social-usd"></i>
                 </div>
                 <div class="features-content">
-                    <h5>Quick Refund</h5>
-                    <p>Quick refund if food is not guaranteed</p>
+                    <h5>Hoàn Tiền Nhanh Chóng</h5>
+                    <p>Cam kết hoàn lại 100% số tiền nếu bạn sử dụng</p>
+                    <p>sản phẩm của AnLanhManh không hiệu quả</p>
                 </div>
             </div>
             <div class="single-features-item">
@@ -51,8 +53,9 @@
                     <i class="ion-help-buoy"></i>
                 </div>
                 <div class="features-content">
-                    <h5>Online Support</h5>
-                    <p>We can help you anytime</p>
+                    <h5>Hỗ Trợ Trực Tuyến</h5>
+                    <p>Nếu bạn cần tư vấn về món ăn dinh dưỡng</p>
+                    <p>phù hợp với mình, chúng tôi luôn sẵn sàng!</p>
                 </div>
             </div>
         </div>
@@ -66,7 +69,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center pt-62">
-                    <h2>Popular Categories</h2>
+                    <h2>Nhóm Dinh Dưỡng Nổi Bật</h2>
                 </div>
             </div>
         </div>
@@ -138,7 +141,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
-                    <h2>Our Products</h2>
+                    <h2>Sản Phẩm Cho Bạn</h2>
                 </div>
             </div>
         </div>
@@ -192,13 +195,14 @@
                                                 </h4>
                                             </div>
                                             <div class="price-box">
-                                                <span class="regular-price">{{formatter.format(food.price)}} VND</span>
+                                                <span class="regular-price">{{formatter.format(food.price)}}</span>
                                                 <span class="old-price"><del></del></span>
                                             </div>
                                             <div class="product-action-link">
                                                 <a href="#" data-toggle="tooltip" title="Wishlist"><i
                                                         class="ion-android-favorite-outline"></i></a>
-                                                <a href="javascript:void(0)" (click)="addToCart(food)" data-toggle="tooltip" title="Add to cart"><i
+                                                <a href="javascript:void(0)" (click)="addToCart(food)"
+                                                    data-toggle="tooltip" title="Add to cart"><i
                                                         class="ion-bag"></i></a>
                                                 <a href="#" data-toggle="tooltip" title="Compare"><i
                                                         class="ion-ios-shuffle"></i></a>
@@ -224,7 +228,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title text-center">
-                            <h2>why choose us</h2>
+                            <h2>Chúng Tôi Có Gì?</h2>
                         </div>
                     </div>
                 </div>
@@ -239,7 +243,7 @@
                                                 data-target="#collapseOne" aria-expanded="true"
                                                 aria-controls="collapseOne">
                                                 <i class="ion-ribbon-b"></i>
-                                                100% fresh organic food
+                                                100% thực phẩm đều tươi ngon
                                             </button>
                                         </h5>
                                     </div>
@@ -247,11 +251,10 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                         data-parent="#choose-us">
                                         <div class="card-body">
-                                            This is our motto and we are experts in delivering the best 100%
-                                            organicfoods on the market. We work with more than 60 farms all
-                                            over the country. We’re a locally owned business with staff that
-                                            has decades of experiencein the field of health and firm roots in
-                                            the health food industry
+                                            Đây là phương châm của chúng tôi và chúng tôi là chuyên gia trong việc cung
+                                            cấp 100% thực phẩm dinh dưỡng tốt nhất trên thị trường. Chúng tôi là một
+                                            doanh nghiệp thuộc sở hữu địa phương với đội ngũ chuyên gia sẽ cung cấp cho
+                                            bạn một bữa ăn đủ chất và đúng nghĩa!
                                         </div>
                                     </div>
                                 </div>
@@ -261,7 +264,7 @@
                                             <button class="accordio-heading" type="button" data-toggle="collapse"
                                                 data-target="#collapseTwo" aria-controls="collapseTwo">
                                                 <i class="ion-android-car"></i>
-                                                Fast Free Delivery
+                                                Vận Chuyển Nhanh Chóng Và Miễn Phí
                                             </button>
                                         </h5>
                                     </div>
@@ -269,11 +272,9 @@
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                         data-parent="#choose-us">
                                         <div class="card-body">
-                                            This is our motto and we are experts in delivering the best 100%
-                                            organicfoods on the market. We work with more than 60 farms all
-                                            over the country. We’re a locally owned business with staff that
-                                            has decades of experiencein the field of health and firm roots in
-                                            the health food industry
+                                            Vì bữa ăn là cần thiết với mỗi người nên chúng tôi đặt tiêu chí nhanh chóng,
+                                            tiện lợi, dễ dàng lên hàng đầu. Với những đơn hàng có giá trị trên
+                                            500.000<sup>đ</sup> thì bạn sẽ được miễn phí hoàn toàn chi phí vận chuyển
                                         </div>
                                     </div>
                                 </div>
@@ -283,7 +284,7 @@
                                             <button class="accordio-heading" type="button" data-toggle="collapse"
                                                 data-target="#collapseThree" aria-controls="collapseThree">
                                                 <i class="ion-university"></i>
-                                                Rich Experience
+                                                Có Đội Ngũ Chuyên Gia Giàu Kinh Nghiệm
                                             </button>
                                         </h5>
                                     </div>
@@ -291,11 +292,9 @@
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                         data-parent="#choose-us">
                                         <div class="card-body">
-                                            This is our motto and we are experts in delivering the best 100%
-                                            organicfoods on the market. We work with more than 60 farms all
-                                            over the country. We’re a locally owned business with staff that
-                                            has decades of experiencein the field of health and firm roots in
-                                            the health food industry
+                                            Với đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực dinh dưỡng, sẽ cung
+                                            cấp cho bạn được một bữa ăn đầy đủ chất, tư vấn lộ trình điều trị bệnh cũng
+                                            như ăn uống điều độ.
                                         </div>
                                     </div>
                                 </div>
@@ -308,7 +307,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title text-center">
-                            <h2>What People Say</h2>
+                            <h2>Mọi Người Nói Gì?</h2>
                         </div>
                     </div>
                 </div>
@@ -320,19 +319,22 @@
                                     <li>
                                         <a data-toggle="tab" href="#testimonial_one">
                                             <img class="testimonial-thumb"
-                                                src="assets/img/testimonial/team-member-1.jpg" alt="">
+                                                src="https://graph.facebook.com/100006910593923/picture?width=200&height=200"
+                                                alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a class="active" data-toggle="tab" href="#testimonial_two">
                                             <img class="testimonial-thumb"
-                                                src="assets/img/testimonial/team-member-2.jpg" alt="">
+                                                src="https://graph.facebook.com/100009112376938/picture?width=200&height=200"
+                                                alt="">
                                         </a>
                                     </li>
                                     <li>
                                         <a data-toggle="tab" href="#testimonial_three">
                                             <img class="testimonial-thumb"
-                                                src="assets/img/testimonial/team-member-3.jpg" alt="">
+                                                src="https://graph.facebook.com/100009364495572/picture?width=200&height=200"
+                                                alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -341,11 +343,9 @@
                                 <div class="tab-content">
                                     <div class="tab-pane fade" id="testimonial_one">
                                         <div class="testimonial-content-inner">
-                                            <p>“ Great theme, excellent support. We had a few small issues with
-                                                getting the dropdown menus to work and support fixed them and
-                                                let us know which files were changed so that we could replicate
-                                                from dev to production. Very happy both with the theme and the
-                                                company. Highly recommended. ”</p>
+                                            <p>"Sản phẩm rất tuyệt vời, tươi ngon bổ dưỡng. Sau khi dùng lộ trình chữa
+                                                bệnh xxx bên AnLanhManh thì tôi đã hoàn toàn khỏi bệnh và có một sức
+                                                khỏe tốt. Cảm ơn AnLanhManh rất nhiều"</p>
                                             <div class="ratings">
                                                 <span><i class="ion-android-star"></i></span>
                                                 <span><i class="ion-android-star"></i></span>
@@ -354,17 +354,15 @@
                                                 <span><i class="ion-android-star"></i></span>
                                             </div>
                                             <div class="designation">
-                                                Raju Ahammad / <span>developer of HT</span>
+                                                Phan Hưng / <span>Dev AnLanhManh Group</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade active show" id="testimonial_two">
                                         <div class="testimonial-content-inner">
-                                            <p>“ Great theme, excellent support. We had a few small issues with
-                                                getting the dropdown menus to work and support fixed them and
-                                                let us know which files were changed so that we could replicate
-                                                from dev to production. Very happy both with the theme and the
-                                                company. Highly recommended. ”</p>
+                                            <p>"Sản phẩm rất tuyệt vời, tươi ngon bổ dưỡng. Sau khi dùng lộ trình chữa
+                                                bệnh xxx bên AnLanhManh thì tôi đã hoàn toàn khỏi bệnh và có một sức
+                                                khỏe tốt. Cảm ơn AnLanhManh rất nhiều"</p>
                                             <div class="ratings">
                                                 <span><i class="ion-android-star"></i></span>
                                                 <span><i class="ion-android-star"></i></span>
@@ -373,17 +371,15 @@
                                                 <span><i class="ion-android-star"></i></span>
                                             </div>
                                             <div class="designation">
-                                                Jenifer brown / <span>manager of HT</span>
+                                                Ngô Văn Tuấn / <span>Founder AnLanhManh Group</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="testimonial_three">
                                         <div class="testimonial-content-inner">
-                                            <p>“ Great theme, excellent support. We had a few small issues with
-                                                getting the dropdown menus to work and support fixed them and
-                                                let us know which files were changed so that we could replicate
-                                                from dev to production. Very happy both with the theme and the
-                                                company. Highly recommended. ”</p>
+                                            <p>"Sản phẩm rất tuyệt vời, tươi ngon bổ dưỡng. Sau khi dùng lộ trình chữa
+                                                bệnh xxx bên AnLanhManh thì tôi đã hoàn toàn khỏi bệnh và có một sức
+                                                khỏe tốt. Cảm ơn AnLanhManh rất nhiều"</p>
                                             <div class="ratings">
                                                 <span><i class="ion-android-star"></i></span>
                                                 <span><i class="ion-android-star"></i></span>
@@ -392,7 +388,7 @@
                                                 <span><i class="ion-android-star"></i></span>
                                             </div>
                                             <div class="designation">
-                                                erik jhonson / <span>designer of HT</span>
+                                                Đỗ Văn Quyến / <span>Co-Founder AnLanhManh Group</span>
                                             </div>
                                         </div>
                                     </div>
@@ -406,116 +402,6 @@
     </div>
 </section>
 <!-- choose us and testimonial area start -->
-
-<!-- best sellers area start -->
-<section class="best-sellers pt-60 pb-60 pb-lg-30 pb-md-30 pb-sm-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="best-sellers-banner">
-                    <img src="assets/img/banner/best-sellers.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="best-sellers-content pt-md-60 pt-sm-60">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="section-title section-title__2">
-                                <h2>best sellers</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="single-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i
-                                                    class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-description">
-                                    <div class="tag-cate">
-                                        <a href="product-details.html">fruits</a>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4 class="h5">
-                                            <a href="product-details.html">Condimentum food</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$160.00</span>
-                                        <span class="old-price"><del>$180.00</del></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-2.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i
-                                                    class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-description">
-                                    <div class="tag-cate">
-                                        <a href="product-details.html">fruits</a>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4 class="h5">
-                                            <a href="product-details.html">Tincidunt malesuada</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$130.00</span>
-                                        <span class="old-price"><del>$140.00</del></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-item mb-30">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/product/product-3.jpg" alt="">
-                                    </a>
-                                    <div class="quick-view-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick view"><i
-                                                    class="ion-ios-eye-outline"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-description">
-                                    <div class="tag-cate">
-                                        <a href="product-details.html">fruits</a>
-                                    </div>
-                                    <div class="product-name">
-                                        <h4 class="h5">
-                                            <a href="product-details.html">100% organic food</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$99.00</span>
-                                        <span class="old-price"><del></del></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- best sellers area end -->
 
 <!-- banner statistic area start -->
 <div class="banner-statistics">

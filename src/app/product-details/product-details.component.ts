@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from "axios";
 import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -11,12 +12,12 @@ import { environment } from '../../environments/environment';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  formatter = new Intl.NumberFormat('en-VN', {
+  formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',
     minimumFractionDigits: 0
   });
-  
+
   dataFood: any = {
     id: null,
     name: null,
@@ -42,8 +43,15 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cart: CartService
+    private cart: CartService,
+    @Inject(DOCUMENT) private document: Document
   ) {
+  }
+
+  currentTab: any = 1;
+
+  changeTab(tab) {
+    this.currentTab = tab;
   }
 
   id: number;
@@ -60,11 +68,26 @@ export class ProductDetailsComponent implements OnInit {
       if (response.data.status == 200) {
         that.dataFood = response.data.data;
       }
-      console.log(response.data.data);
     }).catch(function (error: any) {
       // handle error
       console.log(error);
     });
+  }
+
+  ngAfterViewInit() {
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2";
+
+      if (d.getElementById(id)) {
+        //if <script id="facebook-jssdk"> exists
+        delete (<any>window).FB;
+        fjs.parentNode.replaceChild(js, fjs);
+      } else {
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(this.document, 'script', 'facebook-jssdk'));
   }
 
 }

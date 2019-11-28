@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
 
-  formatter = new Intl.NumberFormat('en-VN', {
+  formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',
     minimumFractionDigits: 0
