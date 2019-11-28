@@ -3,6 +3,7 @@ import axios from "axios";
 import { Router } from "@angular/router";
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,33 @@ export class LoginComponent implements OnInit {
     
    }
 
+  userProfile: any;
+
   textError: any = null;
+
+  // public getProfile: Function = async => {
+  //   const that = this;
+  //   axios.get(`${environment.api_url}/api/user-profile/2`)
+  //   .then(function (response){
+  //     that.userProfile = response.data.data;
+  //     console.log(response.data.data);
+  //     console.log(that.userProfile.weight);
+  //   })
+  //   .catch(function (error){
+  //     console.log(error);
+  //   })
+  // }
+
+  // checkProfile() {
+  //   const that = this;
+  //   this.checkProfile();
+  //   if(that.userProfile.weight == null && that.userProfile.height == null){
+  //     that.window.location.href = '/step';
+  //   }else{
+  //     that.window.location.href = '/';
+  //   }
+  // }
+
   public handleLogin: Function = async (account: any, password: any) => {
     const that = this;
     if (password.length == 0 || account.length == 0) {
@@ -31,6 +58,7 @@ export class LoginComponent implements OnInit {
         if (response.data.status == 200) {
           that.localStorage.setItem("token", response.data.accessToken);
           that.window.location.href = '/step';
+          //that.checkProfile();
         }
       }).catch(function (error) {
         if (error.response.data.status == 401) {
@@ -47,6 +75,7 @@ export class LoginComponent implements OnInit {
     if (token != null || token != undefined) {
       this.window.location.href = '/';
     }
+    //this.getProfile();
   }
 
 }
