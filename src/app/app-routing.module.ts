@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'step', component: StepComponent },
+  {path: 'order', component: OrderComponent},
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 
