@@ -17,13 +17,9 @@ export class CartComponent implements OnInit {
     private util: UtilService
   ) { }
 
-  listCart: any;
+  listCart: any = null;
 
-  public checkOut: Function = (async: any) => {
-    const that = this;
-    that.listCart = localStorage.getItem('listCart');
-    that.listCart = JSON.parse(this.listCart);
-  }
+  textError: any = null;
 
   getTotalPriceCart() {
     return this.util.formatPrice(this.listCart.products.reduce((a, b) => parseInt(a) + parseInt(b.price), 0));
@@ -37,8 +33,8 @@ export class CartComponent implements OnInit {
     this.toastr.success('Đã xoá sản phẩm khỏi giỏ hàng', 'Thông báo!');
   }
   ngOnInit() {
-    this.checkOut();
-    console.log
+    this.listCart = localStorage.getItem('listCart');
+    this.listCart = JSON.parse(this.listCart);
   }
 
 }

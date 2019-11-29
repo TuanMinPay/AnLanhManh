@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
     const that = this;
     axios.get(that.API_GETME, { headers: { Authorization: that.token } }).then(function (response) {
       that.myInfo = response.data.data;
-      that.getProfile(`${that.API_PROFILE}/${that.myInfo.id}`);
+      //that.getProfile(`${that.API_PROFILE}/${that.myInfo.id}`);
       //console.log(that.myInfo);
     }).catch(function (error) {
       // handle error
@@ -39,17 +39,17 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  public getProfile: Function = async (url) => {
+  getLatestProfile(){
     const that = this;
-    axios.get(url).then(function (response) {
+    axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
+    .then(function (response){
+      //console.log(response.data.data);
       that.userDetails = response.data.data;
-      //console.log(that.userDetails);
-    }).catch(function (error) {
-      // handle error
+    })
+    .catch(function (error){
       console.log(error);
-    });
+    })
   }
-
 
   public changePassword: Function = async (oldPassword: any, password: any, confirmPassword: any) => {
     const that = this;
@@ -86,11 +86,14 @@ export class ProfileComponent implements OnInit {
     var token = this.localStorage.getItem('token');
     if (token != null || token != undefined) {
       this.localStorage.removeItem('token');
+      this.localStorage.removeItem('listCart');
       this.window.location.href = '/login';
     }
   }
 
   ngOnInit() {
     this.getMe();
+    this.getLatestProfile();
+    console.log(this.token);
   }
 }
