@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContacusComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'order/:id', component: OrderComponent },
+  { path: 'order', component: OrderComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
