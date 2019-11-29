@@ -3,7 +3,7 @@
         <h2>Đơn hàng của bạn</h2>
         <div class="order-summary-content">
             <!-- Order Summary Table -->
-            <div class="order-summary-table table-responsive text-center">
+            <div class="order-summary-table table-responsive text-center" *ngIf="listCart != null">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -12,23 +12,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="single-product.html">Suscipit Vestibulum <strong> × 1</strong></a></td>
-                            <td>$165.00</td>
-                        </tr>
-                        <tr>
-                            <td><a href="single-product.html">Ami Vestibulum suscipit <strong> × 4</strong></a></td>
-                            <td>$165.00</td>
-                        </tr>
-                        <tr>
-                            <td><a href="single-product.html">Vestibulum suscipit <strong> × 2</strong></a></td>
-                            <td>$165.00</td>
+                        <tr *ngFor="let item of listCart.products">
+                            <td><a href="single-product.html">{{item?.name}}</a></td>
+                            <td>{{item?.price}}</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td>Sub Total</td>
-                            <td><strong>$400</strong></td>
+                            <td>Tổng tiền sản phẩm</td>
+                            <td><strong>{{getTotalPriceCart()}}</strong></td>
                         </tr>
                         <tr>
                             <td>Shipping</td>
