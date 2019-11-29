@@ -14,7 +14,6 @@ export class SetDetailsComponent implements OnInit {
 
   constructor(
     @Inject(WINDOW) private window: Window,
-    @Inject(LOCAL_STORAGE),
     private route: ActivatedRoute,
     private util: UtilService
   ) { }
@@ -56,11 +55,13 @@ export class SetDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.getSet();
+  productImage: any ="assets/img/product/product-details-img1.jpg";
+
+  changeProductImage(img) {
+    this.productImage = img;
   }
 
-  comboDetail(id: number) {
-    this.router.navigate(["product/combo/combo-detail", id]);
+  ngOnInit() {
+    this.getSet();
   }
 }

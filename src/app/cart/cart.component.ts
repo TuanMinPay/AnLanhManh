@@ -3,6 +3,7 @@ import { async } from 'q';
 import { CartService } from '../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { UtilService } from '../services/util.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-cart',
@@ -29,7 +30,14 @@ export class CartComponent implements OnInit {
     this.listCart.products = this.listCart.products.filter((prd: { id: any; }) => {
       return prd.id != id;
     });
-    localStorage.setItem('listCart', JSON.stringify(this.listCart));
+    this.listCart.total = this.listCart.products.length;
+    AppComponent.totalCart = this.listCart.total;
+    if (this.listCart.total == 0) {
+      localStorage.removeItem('listCart');
+      this.listCart = null;
+    } else {
+      localStorage.setItem('listCart', JSON.stringify(this.listCart));
+    }
     this.toastr.success('Đã xoá sản phẩm khỏi giỏ hàng', 'Thông báo!');
   }
   ngOnInit() {

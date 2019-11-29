@@ -48,7 +48,7 @@
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-banner">
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                 <img src="assets/img/banner/banner_left.jpg" alt="">
                             </a>
                         </div>
@@ -83,20 +83,20 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a (click)="comboDetail(cate.id)" href="javascript:void(0)">{{cate.name}}</a></h4>
+                                        <h4><a href="/c/{{util.generateURL(cate.name, cate.id)}}">{{cate.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
                                         <span class="regular-price">{{util.formatPrice(cate.price)}}</span>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{cate.calorie}}calo / {{cate.weight}}g</span>
+                                        <span class="regular-price">{{cate.calorie}} calo / {{cate.weight}}g</span>
                                     </div>
                                     <p>{{cate.description}}</p>
                                     <div class="action-link">
-                                        <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
+                                        <a href="javascript:void(0)" (click)="addToCart(cate)" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
                                             to cart</a>
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -109,11 +109,11 @@
                     <!-- start pagination area -->
                     <div class="paginatoin-area text-center mt-30">
                         <ul class="pagination-box">
-                            <li><a class="Previous" href="#"><i class="ion-ios-arrow-left"></i></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a class="Next" href="#"><i class="ion-ios-arrow-right"></i></a></li>
+                            <li><a class="Previous" href="javascript:void(0)"><i class="ion-ios-arrow-left"></i></a></li>
+                            <li class="active"><a href="javascript:void(0)">1</a></li>
+                            <li><a href="javascript:void(0)">2</a></li>
+                            <li><a href="javascript:void(0)">3</a></li>
+                            <li><a class="Next" href="javascript:void(0)"><i class="ion-ios-arrow-right"></i></a></li>
                         </ul>
                     </div>
                     <!-- end pagination area -->

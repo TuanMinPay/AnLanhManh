@@ -27,33 +27,21 @@
                     <div class="vertical-first">
                         <div class="product-large-slider2">
                             <div class="pro-large-img">
-                                <img src="assets/img/product/product-details-img1.jpg" alt="" />
-                            </div>
-                            <div class="pro-large-img">
-                                <img src="assets/img/product/product-details-img2.jpg" alt="" />
-                            </div>
-                            <div class="pro-large-img">
-                                <img src="assets/img/product/product-details-img3.jpg" alt="" />
-                            </div>
-                            <div class="pro-large-img">
-                                <img src="assets/img/product/product-details-img4.jpg" alt="" />
-                            </div>
-                            <div class="pro-large-img">
-                                <img src="assets/img/product/product-details-img4.jpg" alt="" />
+                                <img [src]="productImage" alt="" />
                             </div>
                         </div>
                     </div>
                     <div class="vertical-second">
                         <div class="pro-nav2 slick-arrow-style">
-                            <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img1.jpg"
+                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img1.jpg')"><img src="assets/img/product/product-details-img1.jpg"
                                     alt="" /></div>
-                            <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img2.jpg"
+                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img2.jpg')"><img src="assets/img/product/product-details-img2.jpg"
                                     alt="" /></div>
-                            <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img3.jpg"
+                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img3.jpg')"><img src="assets/img/product/product-details-img3.jpg"
                                     alt="" /></div>
-                            <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img4.jpg"
+                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img4.jpg')"><img src="assets/img/product/product-details-img4.jpg"
                                     alt="" /></div>
-                            <div class="pro-nav-thumb"><img src="assets/img/product/product-details-img5.jpg"
+                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img5.jpg')"><img src="assets/img/product/product-details-img5.jpg"
                                     alt="" /></div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 import * as _ from 'underscore';
 import { environment } from '../../environments/environment';
 import { UtilService } from '../services/util.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -39,7 +40,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private util: UtilService
+    private util: UtilService,
+    private cart: CartService
   ) {
   }
 
@@ -87,6 +89,10 @@ export class ProductComponent implements OnInit {
     this.chooseCategoryParent(this.id);
 
     this.chooseProduct(this.id);
+  }
+
+  addToCart(food) {
+    this.cart.addToCart(food);
   }
 
   chooseProduct(id) {

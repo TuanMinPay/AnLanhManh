@@ -56,7 +56,7 @@
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-banner">
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                 <img src="assets/img/banner/banner_left.jpg" alt="">
                             </a>
                         </div>
@@ -108,15 +108,15 @@
                                         </h4>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{food.price | number}} VND</span>
+                                        <span class="regular-price">{{util.formatPrice(food.price)}}</span>
                                         <span class="old-price"><del></del></span>
                                     </div>
                                     <div class="product-action-link">
-                                        <a href="#" data-toggle="tooltip" title="Wishlist"><i
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
                                                 class="ion-android-favorite-outline"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Add to cart"><i
+                                        <a href="javascript:void(0)" (click)="addToCart(food)" data-toggle="tooltip" title="Add to cart"><i
                                                 class="ion-bag"></i></a>
-                                        <a href="#" data-toggle="tooltip" title="Compare"><i
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
                                                 class="ion-ios-shuffle"></i></a>
                                     </div>
                                 </div>

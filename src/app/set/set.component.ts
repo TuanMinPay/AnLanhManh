@@ -4,6 +4,7 @@ import axios from "axios";
 import * as _ from 'underscore';
 import { environment } from '../../environments/environment';
 import { UtilService } from '../services/util.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-set',
@@ -16,7 +17,8 @@ export class SetComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private util: UtilService
+    private util: UtilService,
+    private cart: CartService
   ) { }
 
   dataCate: any = [{
@@ -66,6 +68,10 @@ export class SetComponent implements OnInit {
     this.router.navigate(['/cl'], { queryParams: { page: page } });
     this.loadCombo(page);
     this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
+  }
+
+  addToCart(c) {
+    this.cart.addToCart(c);
   }
 
   public loadCombo(page: number) {
