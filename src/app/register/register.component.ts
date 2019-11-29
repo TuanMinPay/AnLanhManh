@@ -33,9 +33,7 @@ export class RegisterComponent implements OnInit {
   public handleRegister: Function = async (name: any, username: any, email: any, password: any, phone: any) => {
     const that = this;
     that.submitted = true;
-    if (this.registerForm.invalid) {
-      return;
-    }
+      
     await axios.post(`${environment.api_url}/api/auth/signup`, {
       name: name,
       username: username,

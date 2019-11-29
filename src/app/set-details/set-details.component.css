@@ -2,3 +2,6 @@
     max-width: 250px;
     height: auto;
 }
+
+.title-main{font-size:18px;font-weight:700;margin:1rem 0}
+.box_content{background-color:#f8f9fa;padding:10px}
