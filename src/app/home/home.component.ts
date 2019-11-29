@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import axios from "axios";
 import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,13 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
 
-  formatter = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-    minimumFractionDigits: 0
-  });
-
   dataFood: any = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private cart: CartService
+    private cart: CartService,
+    private util: UtilService
   ) { }
 
   pager: any = [{
@@ -54,7 +50,7 @@ export class HomeComponent implements OnInit {
 
   setPage(page: number) {
     this.currentPage = page;
-    this.router.navigate(['/product/food/list'], { queryParams: { page: page } });
+    this.router.navigate(['/pl/list'], { queryParams: { page: page } });
   }
 
   getProductById(id: any) {

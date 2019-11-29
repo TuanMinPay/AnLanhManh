@@ -3,6 +3,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 import axios from 'axios';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-set-details',
@@ -11,9 +12,12 @@ import { environment } from '../../environments/environment';
 })
 export class SetDetailsComponent implements OnInit {
 
-  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE)
-    private router: Router,
-    private route: ActivatedRoute) { }
+  constructor(
+    @Inject(WINDOW) private window: Window,
+    @Inject(LOCAL_STORAGE),
+    private route: ActivatedRoute,
+    private util: UtilService
+  ) { }
 
   listProduct: any = [{
     id: null,
@@ -42,10 +46,9 @@ export class SetDetailsComponent implements OnInit {
 
   id: number;
   public getSet: Function = async => {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
     const that = this;
     axios.get(`${that.API_COMBO}${that.id}`).then(function (response) {
-      console.log(response.data.data);
       that.listProduct = response.data.data.foods;
     }).catch(function (error) {
       // handle error

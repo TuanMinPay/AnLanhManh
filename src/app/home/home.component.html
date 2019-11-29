@@ -9,7 +9,7 @@
                             <div class="slider-content">
                                 <h1>Ưu đãi tuyệt vời cho các sản phẩm dinh dưỡng</h1>
                                 <p>Chúng tôi luôn cung cấp các sản phẩm dinh dưỡng với chất lượng tốt nhất cho bạn</p>
-                                <a href="javascript:void(0)" [routerLink]="['/product/food/list']"
+                                <a href="javascript:void(0)" [routerLink]="['/pl/list']"
                                     [queryParams]="{ page: 1}" class="btn">Xem Ngay</a>
                             </div>
                             <div class="slider-img">
@@ -169,11 +169,11 @@
                                 <div *ngFor="let food of dataFood | slice:0:8" class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="product-item mb-50">
                                         <div class="product-thumb">
-                                            <a href="/product/food/food-detail/{{food.id}}">
+                                            <a href="/p/{{util.generateURL(food.name, food.id)}}">
                                                 <img src={{food?.image}} alt="">
                                             </a>
                                             <div class="quick-view-link">
-                                                <a href="/product/food/food-detail/{{food.id}}" data-toggle=""
+                                                <a href="/p/{{util.generateURL(food.name, food.id)}}" data-toggle=""
                                                     data-target=""> <span data-toggle="tooltip" title="Quick view"><i
                                                             class="ion-ios-eye-outline"></i></span>
                                                 </a>
@@ -189,13 +189,13 @@
                                             </div>
                                             <div class="product-name">
                                                 <h4 class="h5">
-                                                    <a href="/product/food/food-detail/{{food.id}}">{{food.name}}</a>
+                                                    <a href="/p/{{util.generateURL(food.name, food.id)}}">{{food.name}}</a>
                                                     <p class="price-box"><span class="regular-price">{{food.calorie}}
                                                             calo/ {{food.weight}} g</span></p>
                                                 </h4>
                                             </div>
                                             <div class="price-box">
-                                                <span class="regular-price">{{formatter.format(food.price)}}</span>
+                                                <span class="regular-price">{{util.formatPrice(food.price)}}</span>
                                                 <span class="old-price"><del></del></span>
                                             </div>
                                             <div class="product-action-link">

@@ -7,7 +7,7 @@
                     <nav aria-label="breadcrumb">
                         <h2>shop</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Combo Food</li>
                         </ul>
                     </nav>
@@ -70,7 +70,7 @@
                             <!-- product list item start -->
                             <div class="product-list-item mb-30" *ngFor="let cate of dataCate">
                                 <div class="product-thumb">
-                                    <a (click)="comboDetail(cate.id)" href="javascript:void(0)">
+                                    <a href="/c/{{util.generateURL(cate.name, cate.id)}}">
                                         <img src="{{cate.image}}" alt="">
                                     </a>
                                 </div>
@@ -86,7 +86,7 @@
                                         <h4><a (click)="comboDetail(cate.id)" href="javascript:void(0)">{{cate.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{formatter.format(cate.price)}}</span>
+                                        <span class="regular-price">{{util.formatPrice(cate.price)}}</span>
                                     </div>
                                     <div class="price-box">
                                         <span class="regular-price">{{cate.calorie}}calo / {{cate.weight}}g</span>
