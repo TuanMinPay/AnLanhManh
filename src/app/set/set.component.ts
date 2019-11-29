@@ -17,7 +17,7 @@ export class SetComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private util: UtilService,
+    public util: UtilService,
     private cart: CartService
   ) { }
 

@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cart: CartService,
     private toastr: ToastrService,
-    private util: UtilService
+    public util: UtilService
   ) { }
 
   listCart: any = null;

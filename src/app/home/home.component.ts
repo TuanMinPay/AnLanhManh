@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private cart: CartService,
-    private util: UtilService
+    public util: UtilService
   ) { }
 
   pager: any = [{

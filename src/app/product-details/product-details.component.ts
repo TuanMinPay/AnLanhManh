@@ -41,7 +41,7 @@ export class ProductDetailsComponent implements OnInit {
     private cart: CartService,
     private location: Location,
     @Inject(DOCUMENT) private document: Document,
-    private util: UtilService
+    public util: UtilService
   ) {
   }
 

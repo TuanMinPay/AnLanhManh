@@ -15,7 +15,7 @@ export class SetDetailsComponent implements OnInit {
   constructor(
     @Inject(WINDOW) private window: Window,
     private route: ActivatedRoute,
-    private util: UtilService
+    public util: UtilService
   ) { }
 
   listProduct: any = [{
