@@ -78,8 +78,10 @@
                         <div class="table-responsive">
                             <form class="col-lg-10">
                                 <div class="single-input-item">
-                                    <label>Tỉnh/Thành Phố</label>
-                                    <input type="text" placeholder="Tỉnh/Thành Phố" />
+                                    <label for="country" class="required">Country</label>
+                                    <select name="country nice-select">
+                                        <option *ngFor="let item of dataTinhThanhPho" [value]="item.code">{{item?.name}}</option>
+                                    </select>
                                 </div>
                                 <div class="single-input-item">
                                     <label>Quận/Huyện</label>

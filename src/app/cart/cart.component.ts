@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from 'q';
 import { CartService } from '../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { UtilService } from '../services/util.service';
 import { AppComponent } from '../app.component';
+import axios from 'axios';
 
 @Component({
   selector: 'app-cart',
@@ -40,9 +40,24 @@ export class CartComponent implements OnInit {
     }
     this.toastr.success('Đã xoá sản phẩm khỏi giỏ hàng', 'Thông báo!');
   }
+
+  dataTinhThanhPho: any = [];
+  dataQuanHuyen: any = [];
+  dataPhuongXa: any = [];
+
   ngOnInit() {
+    const that = this;
     this.listCart = localStorage.getItem('listCart');
     this.listCart = JSON.parse(this.listCart);
+
+    axios.get('/resources/data/tinh_thanhpho.json').then(function (response) {
+      that.dataTinhThanhPho = response.data;
+      // handle success
+      console.log(response.data);
+    }).catch(function (error) {
+      // handle error
+      console.log(error);
+    });
   }
 
 }
