@@ -5,3 +5,11 @@
 .pro-remove .fa.fa-trash-o {
 cursor: pointer;
 }
+
+.table-responsive form {
+    margin-left: 20px;
+}
+
+.table-responsive button {
+    margin-bottom: 10px;
+}

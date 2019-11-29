@@ -1,1 +1,116 @@
-<p>order works!</p>
+<div class="orderPage col-lg-8">
+    <div class="order-summary-details mt-md-50 mt-sm-50">
+        <h2>Đơn hàng của bạn</h2>
+        <div class="order-summary-content">
+            <!-- Order Summary Table -->
+            <div class="order-summary-table table-responsive text-center">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Giá Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="single-product.html">Suscipit Vestibulum <strong> × 1</strong></a></td>
+                            <td>$165.00</td>
+                        </tr>
+                        <tr>
+                            <td><a href="single-product.html">Ami Vestibulum suscipit <strong> × 4</strong></a></td>
+                            <td>$165.00</td>
+                        </tr>
+                        <tr>
+                            <td><a href="single-product.html">Vestibulum suscipit <strong> × 2</strong></a></td>
+                            <td>$165.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Sub Total</td>
+                            <td><strong>$400</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Shipping</td>
+                            <td class="d-flex justify-content-center">
+                                <ul class="shipping-type">
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="flatrate" name="shipping"
+                                                class="custom-control-input" checked />
+                                            <label class="custom-control-label" for="flatrate">Flat
+                                                Rate: $70.00</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="freeshipping" name="shipping"
+                                                class="custom-control-input" />
+                                            <label class="custom-control-label" for="freeshipping">Free
+                                                Shipping</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền</td>
+                            <td><strong>$470</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- Order Payment Method -->
+            <div class="order-payment-method">
+                <div class="single-payment-method show">
+                    <div class="payment-method-name">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="cashon" name="paymentmethod" value="cash"
+                                class="custom-control-input" checked />
+                            <label class="custom-control-label" for="cashon">Thanh toán khi giao hàng</label>
+                        </div>
+                    </div>
+                    <div class="payment-method-details" data-method="cash">
+                        <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
+                    </div>
+                </div>
+                <div class="single-payment-method">
+                    <div class="payment-method-name">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="directbank" name="paymentmethod" value="bank"
+                                class="custom-control-input" />
+                            <label class="custom-control-label" for="directbank">
+                                    Chuyển khoản trực tiếp</label>
+                        </div>
+                    </div>
+                    <div class="payment-method-details" data-method="bank">
+                        <p>Thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Đơn hàng của bạn. ID là tài liệu tham khảo thanh toán. Đơn hàng của bạn sẽ không được giao cho đến khi tiền đã được xóa trong tài khoản của chúng tôi ..</p>
+                    </div>
+                </div>
+                <div class="single-payment-method">
+                    <div class="payment-method-name">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="paypalpayment" name="paymentmethod" value="paypal"
+                                class="custom-control-input" />
+                            <label class="custom-control-label" for="paypalpayment">Paypal <img
+                                    src="assets/img/paypal-card.jpg" class="img-fluid paypal-card"
+                                    alt="Paypal" /></label>
+                        </div>
+                    </div>
+                    <div class="payment-method-details" data-method="paypal">
+                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a
+                            PayPal account.</p>
+                    </div>
+                </div>
+                <div class="summary-footer-area">
+                    <div class="custom-control custom-checkbox mb-14">
+                        <input type="checkbox" class="custom-control-input" id="terms" required />
+                        <label class="custom-control-label" for="terms">I have read and agree to
+                            the website <a href="index.html">terms and conditions.</a></label>
+                    </div>
+                    <button type="submit" class="btn btn__bg">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

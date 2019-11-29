@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: localStorage.getItem('token') } })
     .then(function (response){
       console.log(response.data.data);
-      that.userDetails = response.data.data;
+      //that.userDetails = response.data.data;
       if(that.userDetails.height == null && that.userDetails.weight == null){
         that.window.location.href = '/step';
       }
