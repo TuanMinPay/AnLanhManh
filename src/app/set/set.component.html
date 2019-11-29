@@ -41,18 +41,6 @@
                                         <li><a href="javascript:void(0)">accessories</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">fruits</a>
-                                    
-                                </li>
-                                <li><a href="#">juice</a>
-                                    
-                                </li>
-                                <li><a href="#">meats</a>
-                                    
-                                </li>
-                                <li><a href="#">vegetables</a>
-                                    
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -95,7 +83,7 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a href="product-details.html">{{cate.name}}</a></h4>
+                                        <h4><a (click)="comboDetail(cate.id)" href="javascript:void(0)">{{cate.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
                                         <span class="regular-price">{{util.formatPrice(cate.price)}}</span>

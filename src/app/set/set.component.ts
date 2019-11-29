@@ -12,7 +12,7 @@ import { UtilService } from '../services/util.service';
 })
 
 export class SetComponent implements OnInit {
-
+  
   constructor(
     private router: Router,
     private route: ActivatedRoute,
