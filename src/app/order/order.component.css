@@ -9,3 +9,11 @@
 .billing-form-wrap form {
     margin-left: 20px;
 }
+
+.nice-select {
+    width: 100%;
+    border-radius: 0;
+    height: 48px;
+    border-color: #ccc;
+    background-color: #f7f7f7;
+}
