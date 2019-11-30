@@ -1,7 +1,11 @@
-.orderPage {
-    margin-left: 18%;
-}
-
 .orderPage h2 {
     margin-top: 30px;
+}
+
+.checkout-billing-details-wrap h2 {
+    margin-top: 30px;
+}
+
+.billing-form-wrap form {
+    margin-left: 20px;
 }

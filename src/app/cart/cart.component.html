@@ -71,40 +71,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="cart-calculator-wrapper">
-                    <div class="cart-calculate-items">
-                        <h3>Địa chỉ nhận hàng</h3>
-                        <div class="table-responsive">
-                            <form class="col-lg-10">
-                                <div class="single-input-item">
-                                    <label for="country" class="required">Country</label>
-                                    <select name="country nice-select">
-                                        <option *ngFor="let item of dataTinhThanhPho" [value]="item.code">{{item?.name}}</option>
-                                    </select>
-                                </div>
-                                <div class="single-input-item">
-                                    <label>Quận/Huyện</label>
-                                    <input type="text" placeholder="Quận/Huyện" />
-                                </div>
-                                <div class="single-input-item">
-                                    <label>Phường/Xã</label>
-                                    <input type="text" placeholder="Phường/Xã" />
-                                </div>
-                                <div class="single-input-item">
-                                    <label>Địa chỉ</label>
-                                    <input type="text" placeholder="Địa chỉ" />
-                                </div>
-                                <div class="single-input-item">
-                                    <button type="button" class="btn btn__bg btn__sqr">Cập nhật</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Cart Calculation Area -->
-            <div class="col-lg-6">
+            <div class="col-lg-5 ml-auto">
                 <div class="cart-calculator-wrapper">
                     <div class="cart-calculate-items">
                         <h3>Tổng</h3>
