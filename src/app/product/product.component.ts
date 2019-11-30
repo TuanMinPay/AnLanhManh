@@ -13,29 +13,7 @@ import { CartService } from '../services/cart.service';
 })
 export class ProductComponent implements OnInit {
 
-  dataFood: any = [{
-    id: null,
-    name: null,
-    description: null,
-    image: null,
-    price: null,
-    carbonhydrates: null,
-    protein: null,
-    lipid: null,
-    xenluloza: null,
-    canxi: null,
-    iron: null,
-    zinc: null,
-    vitaminA: null,
-    vitaminB: null,
-    vitaminC: null,
-    vitaminD: null,
-    vitaminE: null,
-    calorie: null,
-    weight: null,
-    categories: null,
-    cateId: null
-  }];
+  dataFood: any;
 
   constructor(
     private router: Router,

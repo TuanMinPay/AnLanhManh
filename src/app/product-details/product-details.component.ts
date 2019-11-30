@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from "axios";
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
 import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
@@ -13,30 +14,10 @@ import { UtilService } from '../services/util.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  dataFood: any = {
-    id: null,
-    name: null,
-    description: null,
-    image: null,
-    price: null,
-    carbonhydrates: null,
-    protein: null,
-    lipid: null,
-    xenluloza: null,
-    canxi: null,
-    iron: null,
-    zinc: null,
-    vitaminA: null,
-    vitaminB: null,
-    vitaminC: null,
-    vitaminD: null,
-    vitaminE: null,
-    calorie: null,
-    weight: null,
-    cateId: null
-  };
+  dataFood: any;
 
   constructor(
+    @Inject(WINDOW) private window: Window,
     private route: ActivatedRoute,
     private cart: CartService,
     private location: Location,

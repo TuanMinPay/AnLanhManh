@@ -7,8 +7,8 @@
                     <nav aria-label="breadcrumb">
                         <h2>shop</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">product details vertical tab</li>
+                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Chi tiết combo dinh dưỡng</li>
                         </ul>
                     </nav>
                 </div>
@@ -32,17 +32,12 @@
                         </div>
                     </div>
                     <div class="vertical-second">
-                        <div class="pro-nav2 slick-arrow-style">
-                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img1.jpg')"><img src="assets/img/product/product-details-img1.jpg"
-                                    alt="" /></div>
-                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img2.jpg')"><img src="assets/img/product/product-details-img2.jpg"
-                                    alt="" /></div>
-                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img3.jpg')"><img src="assets/img/product/product-details-img3.jpg"
-                                    alt="" /></div>
-                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img4.jpg')"><img src="assets/img/product/product-details-img4.jpg"
-                                    alt="" /></div>
-                            <div class="pro-nav-thumb" (click)="changeProductImage('assets/img/product/product-details-img5.jpg')"><img src="assets/img/product/product-details-img5.jpg"
-                                    alt="" /></div>
+                        <div class="pro-nav2 slick-arrow-style" *ngFor="let food of listProduct">
+                            <div class="pro-nav-thumb quick-view-link" >
+                                <a href="/p/{{util.generateURL(food.name, food.id)}}" >
+                                    <img data-toggle="tooltip" title="{{food.name}}" [src]="food.image" alt="" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,24 +53,17 @@
                             <span><i class="ion-android-star"></i></span>
                         </div>
                         <div class="product-name">
-                            <h4><a href="product-details.html">Condimentum organic vegetables</a></h4>
+                            <h4><a href="product-details.html" >{{dataCombo?.name}}</a></h4>
                         </div>
                         <div class="price-box">
-                            <span class="regular-price">$160.00</span>
-                            <span class="old-price"><del>$130.00</del></span>
+                            <span class="regular-price">{{util.formatPrice(dataCombo?.price)}}</span>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                            tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus
-                            quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu,
-                            suscipit id nulla.</p>
+                        <p>{{dataCombo?.description}}</p>
                         <div class="action-link mb-20">
                             <a href="#" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add to
                                 cart</a>
                             <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
                             <a href="#" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
-                        </div>
-                        <div class="quantity mb-20">
-                            <div class="pro-qty"><input type="text" value="1"></div>
                         </div>
                         <div class="availability mb-20">
                             <h5>Availability:</h5>
@@ -94,110 +82,30 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <!-- product details reviews start -->
-                <div class="product-details-reviews pt-40 pt-lg-60 pt-md-60 pt-sm-60">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product-review-info">
-                                <div class="review-tab">
-                                    <ul class="nav">
-                                        <li>
-                                            <a class="active" data-toggle="tab" href="#tab_one">description</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab_three">reviews</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-content reviews-tab">
-                                    <div class="tab-pane fade show active" id="tab_one">
-                                        <div class="tab-one">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                fringilla augue nec est tristique auctor. Ipsum metus feugiat
-                                                sem, quis fermentum turpis eros eget velit. Donec ac tempus
-                                                ante. Fusce ultricies massa massa. Fusce aliquam, purus eget
-                                                sagittis vulputate, sapien libero hendrerit est, sed commodo
-                                                augue nisi non neque
-                                                Cras neque metus, consequat et blandit et, luctus a nunc. Etiam
-                                                gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                                Pellentesque habitant morbi tristique senectus et netus et
-                                                malesuada fames ac turpis egestas</p>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab_three">
-                                        <form action="#" class="review-form">
-                                            <h5>1 review for <span>Chaz Kangeroo Hoodies</span></h5>
-                                            <div class="total-reviews">
-                                                <div class="rev-avatar">
-                                                    <img src="assets/img/about/avatar.jpg" alt="">
-                                                </div>
-                                                <div class="review-box">
-                                                    <div class="ratings">
-                                                        <span><i class="ion-android-star"></i></span>
-                                                        <span><i class="ion-android-star"></i></span>
-                                                        <span><i class="ion-android-star"></i></span>
-                                                        <span><i class="ion-android-star"></i></span>
-                                                        <span><i class="ion-android-star"></i></span>
-                                                    </div>
-                                                    <div class="post-author">
-                                                        <p><span>admin -</span> 30 Nov, 2018</p>
-                                                    </div>
-                                                    <p>Aliquam fringilla euismod risus ac bibendum. Sed sit
-                                                        amet sem varius ante feugiat lacinia. Nunc ipsum nulla,
-                                                        vulputate ut venenatis vitae, malesuada ut mi. Quisque
-                                                        iaculis, dui congue placerat pretium, augue erat
-                                                        accumsan lacus</p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label class="col-form-label"><span class="text-danger">*</span>
-                                                        Your Name</label>
-                                                    <input type="text" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label class="col-form-label"><span class="text-danger">*</span>
-                                                        Your Email</label>
-                                                    <input type="email" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label class="col-form-label"><span class="text-danger">*</span>
-                                                        Your Review</label>
-                                                    <textarea class="form-control" required></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col">
-                                                    <label class="col-form-label"><span class="text-danger">*</span>
-                                                        Rating</label>
-                                                    &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                                                    <input type="radio" value="1" name="rating">
-                                                    &nbsp;
-                                                    <input type="radio" value="2" name="rating">
-                                                    &nbsp;
-                                                    <input type="radio" value="3" name="rating">
-                                                    &nbsp;
-                                                    <input type="radio" value="4" name="rating">
-                                                    &nbsp;
-                                                    <input type="radio" value="5" name="rating" checked>
-                                                    &nbsp;Good
-                                                </div>
-                                            </div>
-                                            <div class="buttons">
-                                                <button class="btn btn__btn-gray" type="submit">Continue</button>
-                                            </div>
-                                        </form> <!-- end of review-form -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <label class="title-main">Hàm lượng dinh dưỡng trong combo</label>
+                <div class="box_content">
+                    <p>Chất bột đường (carbonhydrates): {{dataCombo?.carbonhydrates}} g</p>
+                    <p>Chất đạm (protein): {{dataCombo?.protein}} g</p>
+                    <p>Chất béo (lipid): {{dataCombo?.lipid}} g</p>
+                    <p>Chất xơ (cellulose): {{dataCombo?.xenluloza}} g</p>
+                    <p>Canxi: {{dataCombo?.canxi}} mg</p>
+                    <p>Sắt: {{dataCombo?.iron}} mg</p>
+                    <p>Kẽm: {{dataCombo?.zinc}} mg</p>
+                    <p>vitamin A: {{dataCombo?.vitaminA}} µg</p>
+                    <p>Vitamin B: {{dataCombo?.vitaminC}} µg</p>
+                    <p>vitaminC: {{dataCombo?.vitaminC}} µg</p>
+                    <p>vitaminD: {{dataCombo?.vitaminD}} µg</p>
+                    <p>vitaminE: {{dataCombo?.vitaminE}} µg</p>
+                    <p>Calories: {{dataCombo?.calorie}} calo</p>
+                    <p>Weigh: {{dataCombo?.weight}} g</p>
                 </div>
-                <!-- product details reviews end -->
+            </div>
+            <div class="col-lg-12">
+                <label class="title-main">Đánh Giá</label>
+                <div class="box_content">
+                    <div class="fb-comments" data-width="100%" data-numposts="20"></div>
+                </div>
+                <div id="fb-root"></div>
             </div>
         </div>
     </div>
