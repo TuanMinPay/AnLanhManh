@@ -1,19 +1,18 @@
 <!-- hero slider area start -->
-<section class="hero-slider-area">
-    <div class="hero-slider-active slider-arrow-style">
-        <div class="single-slider hero-bg hero-bg__1 d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="content-inner">
-                            <div class="slider-content">
-                                <h1>Ưu đãi tuyệt vời cho các sản phẩm dinh dưỡng</h1>
-                                <p>Chúng tôi luôn cung cấp các sản phẩm dinh dưỡng với chất lượng tốt nhất cho bạn</p>
-                                <a href="javascript:void(0)" [routerLink]="['/pl/list']"
-                                    [queryParams]="{ page: 1}" class="btn">Xem Ngay</a>
-                            </div>
-                            <div class="slider-img">
-                                <img src="assets/img/slider/slide_1.jpg" alt="">
+<section class="hero-slider-area pt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-slider-active slider-arrow-style">
+                    <div class="single-slider">
+                        <div class="hero-bg hero-bg__2 hero-bg__4"
+                            style="background-image:url(assets/img/slider/slide_11.jpg)">
+                            <div class="content-inner">
+                                <div class="slider-content text-center">
+                                    <h1>Đồ Ăn Tươi Ngon Và Bổ Dưỡng</h1>
+                                    <p>AnLanhManh sẽ cung cấp cho bạn tất cả thứ đó</p>
+                                    <a href="/pl/list?page=1" class="btn btn__bg">Khám Phá Ngay</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -23,6 +22,40 @@
     </div>
 </section>
 <!-- hero slider area start -->
+
+<!-- banner statistic area start -->
+<div class="banner-statistics pt-30">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-6 col-md-6">
+                <div class="img-container mb-sm-30">
+                    <a href="/pl/list?page=1">
+                        <img src="assets/img/banner/banner-6.jpg" alt="banner-image">
+                    </a>
+                    <div class="banner-text text-black text-center">
+                        <h4>Chúng tôi có nhiều lựa chọn cho bạn</h4>
+                        <h2>100% Dinh Dưỡng</h2>
+                        <a href="/pl/list?page=1" class="btn btn__shop">Khám Phá Ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="img-container mb-sm-30">
+                    <a href="product-details.html">
+                        <img src="assets/img/banner/banner-7.jpg" alt="banner-image">
+                    </a>
+                    <div class="banner-text pl-60 pl-xs-0">
+                        <h4>Vì sức khỏe của bạn nên chúng tôi muốn cung cấp</h4>
+                        <h2>Lộ trình ăn uống</h2>
+                        <h4>Cho bạn</h4>
+                        <a href="javascript:void(0)" class="btn btn__shop">Khám Phá Lộ Trình</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner statistic area end -->
 
 <!-- service features start -->
 <section class="service-features pt-30">
@@ -189,7 +222,8 @@
                                             </div>
                                             <div class="product-name">
                                                 <h4 class="h5">
-                                                    <a href="/p/{{util.generateURL(food.name, food.id)}}">{{food.name}}</a>
+                                                    <a
+                                                        href="/p/{{util.generateURL(food.name, food.id)}}">{{food.name}}</a>
                                                     <p class="price-box"><span class="regular-price">{{food.calorie}}
                                                             calo/ {{food.weight}} g</span></p>
                                                 </h4>

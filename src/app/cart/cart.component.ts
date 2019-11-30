@@ -26,6 +26,12 @@ export class CartComponent implements OnInit {
     return this.util.formatPrice(this.listCart.products.reduce((a, b) => parseInt(a) + parseInt(b.price), 0));
   }
 
+  removeAllItem() {
+    localStorage.removeItem('listCart');
+    this.listCart = null;
+    this.toastr.success('Đã xoá trống giỏ hàng', 'Thông báo!');
+  }
+
   removeItem(id: any) {
     this.listCart.products = this.listCart.products.filter((prd: { id: any; }) => {
       return prd.id != id;
