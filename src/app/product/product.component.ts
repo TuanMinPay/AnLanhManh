@@ -36,13 +36,8 @@ export class ProductComponent implements OnInit {
   pages: any = [];
   startPage: number; endPage: number;
 
-  dataCate: any = [{
-    id: null,
-    name: null,
-    parentId: null
-  }];
-
-  dataCate2: any = [];
+  dataCate: any;
+  dataCate2: any;
   id: any = 1;
   @ViewChild("target", { static: false }) target: ElementRef;
 

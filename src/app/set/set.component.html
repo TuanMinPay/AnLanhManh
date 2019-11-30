@@ -7,8 +7,8 @@
                     <nav aria-label="breadcrumb">
                         <h2>shop</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Combo Food</li>
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Bữa ăn dinh dưỡng</li>
                         </ul>
                     </nav>
                 </div>
@@ -28,21 +28,24 @@
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-title">
-                            <h3>categories</h3>
+                            <h3>Danh mục</h3>
                         </div>
                         <div class="sidebar-body">
-                            <ul class="sidebar-category">
-                                <li>
-                                    <a href="javascript:void(0)" data-toggle="collapse"
-                                    data-target="#collapseOne" class="collapsed">accessories</a>
-                                    <ul class="children collapsed" id="collapseOne" aria-labelledby="headingOne">
-                                        <li><a href="javascript:void(0)">skateboard</a></li>
-                                        <li><a href="javascript:void(0)">surfboard</a></li>
-                                        <li><a href="javascript:void(0)">accessories</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                                <ul class="sidebar-category">
+                                    <li *ngFor="let cate of dataCate">
+                                        <a href="javascript:void(0)"
+                                            (click)="chooseCategoryParent(cate.id)">{{cate?.name}}</a>
+                                        <div *ngIf="childCategory == cate.id">
+                                            <ul class="children">
+                                                <li *ngFor="let cate2 of dataCate2">
+                                                    <a href="javascript:void(0)"
+                                                        (click)="chooseProduct(cate2.id)">{{cate2?.name}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                     </div>
                     <!-- single sidebar end -->
                     <!-- single sidebar start -->
@@ -68,10 +71,10 @@
                     <div class="shop-product-wrap list-view row">
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <!-- product list item start -->
-                            <div class="product-list-item mb-30" *ngFor="let cate of dataCate">
+                            <div class="product-list-item mb-30" *ngFor="let combo of dataCombo">
                                 <div class="product-thumb">
-                                    <a href="/c/{{util.generateURL(cate.name, cate.id)}}">
-                                        <img src="{{cate.image}}" alt="">
+                                    <a href="/c/{{util.generateURL(combo.name, combo.id)}}">
+                                        <img src="{{combo.image}}" alt="">
                                     </a>
                                 </div>
                                 <div class="product-content-list">
@@ -83,18 +86,17 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a href="/c/{{util.generateURL(cate.name, cate.id)}}">{{cate.name}}</a></h4>
+                                        <h4><a href="/c/{{util.generateURL(combo.name, combo.id)}}">{{combo.name}}</a></h4>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{util.formatPrice(cate.price)}}</span>
+                                        <span class="regular-price">{{util.formatPrice(combo.price)}}</span>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">{{cate.calorie}} calo / {{cate.weight}}g</span>
+                                        <span class="regular-price">{{combo.calorie}} calo / {{combo.weight}}g</span>
                                     </div>
-                                    <p>{{cate.description}}</p>
+                                    <p>{{combo.description}}</p>
                                     <div class="action-link">
-                                        <a href="javascript:void(0)" (click)="addToCart(cate)" data-toggle="tooltip" title="Add to cart" class="add-to-cart">add
-                                            to cart</a>
+                                        <a href="javascript:void(0)" (click)="addToCart(combo)" data-toggle="tooltip" title="Add to cart" class="add-to-cart">Thêm vào giỏ hàng</a>
                                         <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                         <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
                                     </div>
