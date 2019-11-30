@@ -7,7 +7,7 @@
                         <h2>Cửa Hàng</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{dataFood.name}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{dataFood?.name}}</li>
                         </ul>
                     </nav>
                 </div>
@@ -24,7 +24,7 @@
             <div class="col-lg-5 col-md-6">
                 <div class="product-large-slider img-zoom mb-20 slider-arrow-style slider-arrow-style__style-2">
                     <div class="pro-large-img">
-                        <img src="{{dataFood.image}}" alt="" />
+                        <img src="{{dataFood?.image}}" alt="" />
                     </div>
                 </div>
             </div>
@@ -39,13 +39,13 @@
                             <span><i class="ion-android-star"></i></span>
                         </div>
                         <div class="product-name">
-                            <h4 id="foodName" name="name"><strong>{{dataFood.name}}</strong></h4>
+                            <h4 id="foodName" name="name"><strong>{{dataFood?.name}}</strong></h4>
                         </div>
                         <div class="price-box">
-                            <span>Price: <span class="regular-price">{{util.formatPrice(dataFood.price)}}</span></span>
+                            <span>Price: <span class="regular-price">{{util.formatPrice(dataFood?.price)}}</span></span>
                             <span class="old-price"><del></del></span>
                         </div>
-                        <p>{{dataFood.description}}</p>
+                        <p>{{dataFood?.description}}</p>
                         <div class="action-link mb-20">
                             <a href="javascript:void(0)" (click)="addToCart(dataFood)" data-toggle="tooltip"
                                 title="Add to cart" class="add-to-cart">Thêm Vào Giỏ Hàng</a>
@@ -69,20 +69,20 @@
             <div class="col-lg-12">
                 <label class="title-main">Hàm lượng dinh dưỡng trong món ăn</label>
                 <div class="box_content">
-                    <p>Chất bột đường (carbonhydrates): {{dataFood.carbonhydrates}} g</p>
-                    <p>Chất đạm (protein): {{dataFood.protein}} g</p>
-                    <p>Chất béo (lipid): {{dataFood.lipid}} g</p>
-                    <p>Chất xơ (cellulose): {{dataFood.xenluloza}} g</p>
-                    <p>Canxi: {{dataFood.canxi}} mg</p>
-                    <p>Sắt: {{dataFood.iron}} mg</p>
-                    <p>Kẽm: {{dataFood.zinc}} mg</p>
-                    <p>vitamin A: {{dataFood.vitaminA}} µg</p>
-                    <p>Vitamin B: {{dataFood.vitaminC}} µg</p>
-                    <p>vitaminC: {{dataFood.vitaminC}} µg</p>
-                    <p>vitaminD: {{dataFood.vitaminD}} µg</p>
-                    <p>vitaminE: {{dataFood.vitaminE}} µg</p>
-                    <p>Calories: {{dataFood.calorie}} calo</p>
-                    <p>Weigh: {{dataFood.weight}} g</p>
+                    <p>Chất bột đường (carbonhydrates): {{dataFood?.carbonhydrates}} g</p>
+                    <p>Chất đạm (protein): {{dataFood?.protein}} g</p>
+                    <p>Chất béo (lipid): {{dataFood?.lipid}} g</p>
+                    <p>Chất xơ (cellulose): {{dataFood?.xenluloza}} g</p>
+                    <p>Canxi: {{dataFood?.canxi}} mg</p>
+                    <p>Sắt: {{dataFood?.iron}} mg</p>
+                    <p>Kẽm: {{dataFood?.zinc}} mg</p>
+                    <p>vitamin A: {{dataFood?.vitaminA}} µg</p>
+                    <p>Vitamin B: {{dataFood?.vitaminC}} µg</p>
+                    <p>vitaminC: {{dataFood?.vitaminC}} µg</p>
+                    <p>vitaminD: {{dataFood?.vitaminD}} µg</p>
+                    <p>vitaminE: {{dataFood?.vitaminE}} µg</p>
+                    <p>Calories: {{dataFood?.calorie}} calo</p>
+                    <p>Weigh: {{dataFood?.weight}} g</p>
                 </div>
             </div>
             <div class="col-lg-12">
