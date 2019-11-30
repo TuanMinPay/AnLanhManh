@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { StepComponent } from './step/step.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SetDetailsComponent,
     StepComponent,
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

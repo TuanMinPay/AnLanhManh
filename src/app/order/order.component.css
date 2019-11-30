@@ -17,3 +17,7 @@
     border-color: #ccc;
     background-color: #f7f7f7;
 }
+
+.order-summary-table .table tr td a, .order-summary-table .table tr th a, .order-summary-table table tr td a, .order-summary-table table tr th a {
+    color: #007ff0;
+}

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class CartService {
       }
       localStorage.setItem('listCart', JSON.stringify(listCart));
       AppComponent.totalCart = listCart.total;
-      this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!');
+      this.toastr.success('Xem giỏ hàng và thanh toán', 'Thêm vào giỏ hàng thành công!').onTap.pipe(take(1)).subscribe(() => window.location.href = '/cart');
       return;
       // return {
       //   code: 200,
-      //   message: "Đã thêm sản phẩm vào giỏ hàng"
+      //   message: "Xem giỏ hàng và thanh toán"
       // };
     } else {
       listCart = JSON.parse(listCart);
@@ -40,14 +41,14 @@ export class CartService {
           listCart.total = listCart.products.length;
           localStorage.setItem('listCart', JSON.stringify(listCart));
           AppComponent.totalCart = listCart.total;
-          this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!');
+          this.toastr.success('Xem giỏ hàng và thanh toán', 'Thêm vào giỏ hàng thành công!').onTap.pipe(take(1)).subscribe(() => window.location.href = '/cart');
           return;
           // return {
           //   code: 200,
-          //   message: "Đã thêm sản phẩm vào giỏ hàng"
+          //   message: "Xem giỏ hàng và thanh toán"
           // };
         } else {
-          this.toastr.error('Sản phẩm đã tồn tại trong giỏ hàng', 'Thông báo!');
+          this.toastr.error('Sản phẩm đã tồn tại trong giỏ hàng', 'Thêm vào giỏ hàng thất bại!');
           return;
           // return {
           //   code: 400,

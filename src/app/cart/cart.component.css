@@ -3,7 +3,7 @@
 }
 
 .pro-remove .fa.fa-trash-o {
-cursor: pointer;
+    cursor: pointer;
 }
 
 .table-responsive form {
@@ -12,4 +12,8 @@ cursor: pointer;
 
 .table-responsive button {
     margin-bottom: 10px;
+}
+
+.r-2 {
+    margin: 2rem 0;
 }

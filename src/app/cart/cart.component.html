@@ -31,7 +31,9 @@
                         <div class="text col-lg-12 text-center">
                             <h5>Không có sản phẩm nào trong giỏ hàng của bạn.</h5>
                         </div>
-
+                        <div class="col-lg-12 text-center r-2">
+                            <a href="/" class="btn">Tiếp tục đặt hàng</a>
+                        </div>
                     </table>
                 </div>
             </div>
@@ -52,14 +54,16 @@
                                 <th class="pro-thumbnail">Ảnh</th>
                                 <th class="pro-title">Tên sản phẩm</th>
                                 <th class="pro-price">Giá</th>
-                                <th class="pro-remove"></th>
+                                <th class="pro-remove"><a (click)="removeAllItem()"><i class="fa fa-trash-o"></i></a>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of listCart.products">
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" [src]="item.image"
-                                            alt="Product" /></a></td>
-                                <td class="pro-title"><a href="javascrip:void(0)">{{item?.name}}</a></td>
+                                <td class="pro-thumbnail"><a href="/p/{{util.generateURL(item.name, item.id)}}"><img
+                                            class="img-fluid" [src]="item.image" alt="Product" /></a></td>
+                                <td class="pro-title"><a
+                                        href="/p/{{util.generateURL(item.name, item.id)}}">{{item?.name}}</a></td>
                                 <td class="pro-price"><span>{{util.formatPrice(item?.price)}}</span></td>
                                 <td class="pro-remove"><a (click)="removeItem(item?.id)"><i
                                             class="fa fa-trash-o"></i></a></td>
@@ -89,7 +93,7 @@
                             </table>
                         </div>
                     </div>
-                    <a href="/order" class="btn btn__bg d-block">Thanh Toán</a>
+                    <a href="/order" class="btn btn__bg d-block">Tiến hành đặt hàng</a>
                 </div>
             </div>
         </div>
