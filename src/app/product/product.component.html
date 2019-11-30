@@ -134,9 +134,11 @@
                                     (click)="setPage(currentPage - 1)"><i class="ion-ios-arrow-left"></i></a></li>
                             <li *ngFor="let item of pages"> <a href="javascript:void(0)" (click)="setPage(item)"
                                     class="{{currentPage == item ? 'active-page' : ''}}">{{item}}</a></li>
-                            <li [ngClass]="{disabled:currentPage === pager.totalPages}"><a href="javascript:void(0)"
-                                    class="Next" (click)="setPage(currentPage + 1)"><i
-                                        class="ion-ios-arrow-right"></i></a></li>
+                            <li [ngClass]="{disabled:currentPage === pager.totalPages}">
+                                <a href="javascript:void(0)" class="Next" (click)="setPage(currentPage + 1)">
+                                    <i class="ion-ios-arrow-right"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- end pagination area -->

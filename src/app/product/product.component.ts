@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 import { environment } from '../../environments/environment';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -30,7 +31,7 @@ export class ProductComponent implements OnInit {
     totalPages: null
   }];
 
-  pageOfItems: any = [];
+  pageOfItems: any;
   currentPage: number = 1;
   page: any;
   pages: any = [];
@@ -42,10 +43,14 @@ export class ProductComponent implements OnInit {
   @ViewChild("target", { static: false }) target: ElementRef;
 
   setPage(page: number) {
+    if(page < 1 || page > this.pager.totalPages){
+      return;
+    } 
     this.currentPage = page;
     this.router.navigate(['/pl/list'], { queryParams: { page: page } });
     this.loadPage(page);
     this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
+    
   }
 
   ngOnInit() {
@@ -72,6 +77,10 @@ export class ProductComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/category/${id}`).then(function (response) {
       that.dataFood = response.data.data.foods;
+      console.log(that.dataFood);
+      if(that.dataFood.length == 0){
+        $('.paginatoin-area').hide();
+      }
     }).catch(function (error: any) {
       console.log(error);
     });
@@ -97,8 +106,9 @@ export class ProductComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/category/parent/${id}`)
       .then(function (response) {
+        if(response.data.status == 200){
         that.dataCate = response.data.data;
-        that.chooseCategoryParent(that.dataCate[0].id);
+        }
       })
       .catch(function (error: any) {
         // handle error
@@ -112,6 +122,9 @@ export class ProductComponent implements OnInit {
       .then(function (response) {
         if (response.data.status == 200) {
           that.dataFood = response.data.data;
+          if(that.dataFood == null){
+            $('pagination-box').hide()
+          }
           that.pager = response.data.restPagination;
           that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
           if (that.pageOfItems <= 10) {
