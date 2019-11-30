@@ -1,5 +1,5 @@
 <!-- Start Header Area -->
-<header class="header-area">
+<header class="header-area" #top>
   <!-- header top start -->
   <div class="header-top">
     <div class="container">
@@ -344,7 +344,7 @@
 <!--== End Footer Area Wrapper ==-->
 
 <!-- Scroll to top start -->
-<div class="scroll-top not-visible">
+<div class="scroll-top not-visible" (click)="scrollTop()">
   <i class="fa fa-angle-up"></i>
 </div>
 <!-- Scroll to Top End -->
