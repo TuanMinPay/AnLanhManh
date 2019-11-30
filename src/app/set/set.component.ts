@@ -21,29 +21,9 @@ export class SetComponent implements OnInit {
     private cart: CartService
   ) { }
 
-  dataCate: any = [{
-    id: null,
-    name: null,
-    description: null,
-    image: null,
-    price: null,
-    carbonhydrates: null,
-    protein: null,
-    lipid: null,
-    xenluloza: null,
-    canxi: null,
-    iron: null,
-    zinc: null,
-    vitaminA: null,
-    vitaminB: null,
-    vitaminC: null,
-    vitaminD: null,
-    vitaminE: null,
-    calorie: null,
-    weight: null,
-    categories: null,
-    cateId: null
-  }];
+  dataCate: any;
+  dataCate2: any;
+  dataCombo: any;
 
   // API_COMBO = `${environment.api_url}/api/combo`;
 
@@ -54,7 +34,7 @@ export class SetComponent implements OnInit {
     totalPages: null
   }];
 
-  id: number;
+  id: any = 1;
   pageOfItems: any = [];
   currentPage: number = 1;
   page: any;
@@ -78,7 +58,7 @@ export class SetComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/combo?page=${page}`).then(function (response) {
       if (response.data.status = 200) {
-        that.dataCate = response.data.data;
+        that.dataCombo = response.data.data;
         // that.pager = response.data.restPagination;
         // that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
         // if (that.pageOfItems <= 10) {
@@ -114,5 +94,37 @@ export class SetComponent implements OnInit {
     }
     this.currentPage = this.page;
     this.loadCombo(this.page);
+    
+    this.loadCategory(this.id);
+    this.chooseCategoryParent(this.id);
   }
+
+  childCategory: any;
+  chooseCategoryParent(id) {
+    const that = this;
+    axios.get(`${environment.api_url}/api/category/parent/${id}`)
+      .then(function (response) {
+        if (that.childCategory = id) {
+          that.dataCate2 = response.data.data;
+        }
+      })
+      .catch(function (error: any) {
+        // handle error
+        console.log(error);
+      });
+  }
+
+  loadCategory(id) {
+    const that = this;
+    axios.get(`${environment.api_url}/api/category/parent/${id}`)
+      .then(function (response) {
+        that.dataCate = response.data.data;
+        that.chooseCategoryParent(that.dataCate[0].id);
+      })
+      .catch(function (error: any) {
+        // handle error
+        console.log(error);
+      });
+  }
+
 }
