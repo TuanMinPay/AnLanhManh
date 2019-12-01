@@ -37,6 +37,7 @@ export class ProductComponent implements OnInit {
   pages: any = [];
   startPage: number; endPage: number;
 
+
   dataCate: any;
   dataCate2: any;
   id: any = 1;
@@ -64,9 +65,9 @@ export class ProductComponent implements OnInit {
     this.loadPage(this.page);
 
     this.loadCategory(this.id);
-    this.chooseCategoryParent(this.id);
-
-    this.chooseProduct(this.id);
+    if(this.chooseCategoryParent == this.id){
+      this.chooseProduct = this.id;
+    }
   }
 
   addToCart(food) {
@@ -77,9 +78,9 @@ export class ProductComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/category/${id}`).then(function (response) {
       that.dataFood = response.data.data.foods;
-      console.log(that.dataFood);
       if(that.dataFood.length == 0){
         $('.paginatoin-area').hide();
+
       }
     }).catch(function (error: any) {
       console.log(error);
@@ -116,7 +117,7 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  private loadPage(page: number) {
+  loadPage(page: number) {
     const that = this;
     axios.get(`${environment.api_url}/api/food/list?page=${page}`)
       .then(function (response) {
