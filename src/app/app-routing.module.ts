@@ -13,7 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
 import { SetDetailsComponent} from './set-details/set-details.component';
 import { StepComponent } from './step/step.component';
-
+import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleDetailsComponent } from './schedule-details/schedule-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,7 +30,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'step', component: StepComponent },
-  {path: 'order', component: OrderComponent},
+  { path: 'order', component: OrderComponent},
+  { path: 'schedule', component: ScheduleComponent},
+  { path: 'schedule-details', component: ScheduleDetailsComponent},
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 

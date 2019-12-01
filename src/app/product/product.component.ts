@@ -123,9 +123,6 @@ export class ProductComponent implements OnInit {
       .then(function (response) {
         if (response.data.status == 200) {
           that.dataFood = response.data.data;
-          if(that.dataFood == null){
-            $('pagination-box').hide()
-          }
           that.pager = response.data.restPagination;
           that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
           if (that.pageOfItems <= 10) {
