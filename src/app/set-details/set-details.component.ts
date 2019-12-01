@@ -20,6 +20,12 @@ export class SetDetailsComponent implements OnInit {
 
   dataCombo: any;
 
+  quickViewData: any = null;
+
+  openQuickView(food: any) {
+    this.quickViewData = food;
+  }
+
   listProduct: any;
   API_COMBO = `${environment.api_url}/api/combo/`;
 
