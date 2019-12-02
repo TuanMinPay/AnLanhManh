@@ -48,12 +48,13 @@ export class AppComponent implements OnInit {
 
   checkProfile() {
     const that = this;
-    axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: localStorage.getItem('token') } })
+    var token = localStorage.getItem('token');
+    axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: token } })
       .then(function (response) {
-        console.log(response.data.data);
-        //that.userDetails = response.data.data;
-        if (that.userDetails.height == null && that.userDetails.weight == null) {
-          that.window.location.href = '/step';
+        that.userDetails = response.data.data;
+        //console.log(that.userDetails);
+        if(that.userDetails.height == null || that.userDetails.weight == null){
+          that.window.location.href = '/step'
         }
       })
       .catch(function (error) {
@@ -67,7 +68,6 @@ export class AppComponent implements OnInit {
       this.isLogin = false;
     } else {
       this.isLogin = true;
-      //this.checkProfile();
       this.checkProfile();
     }
 

@@ -6,3 +6,7 @@
     color: red;
     margin-top: 35px;
 }
+
+.welcome a{
+    font-weight: bold;
+}

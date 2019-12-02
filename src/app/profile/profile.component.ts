@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import axios from 'axios';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,8 @@ export class ProfileComponent implements OnInit {
   userDetails: any;
 
   myInfo: any;
+
+  listCart: any = null;
 
   textError: any = null;
 
