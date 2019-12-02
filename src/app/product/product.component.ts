@@ -44,14 +44,14 @@ export class ProductComponent implements OnInit {
   @ViewChild("target", { static: false }) target: ElementRef;
 
   setPage(page: number) {
-    if(page < 1 || page > this.pager.totalPages){
+    if (page < 1 || page > this.pager.totalPages) {
       return;
-    } 
+    }
     this.currentPage = page;
     this.router.navigate(['/pl/list'], { queryParams: { page: page } });
     this.loadPage(page);
     this.target.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
-    
+
   }
 
   ngOnInit() {
@@ -65,7 +65,7 @@ export class ProductComponent implements OnInit {
     this.loadPage(this.page);
 
     this.loadCategory(this.id);
-    if(this.chooseCategoryParent == this.id){
+    if (this.chooseCategoryParent == this.id) {
       this.chooseProduct = this.id;
     }
   }
@@ -78,7 +78,7 @@ export class ProductComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/category/${id}`).then(function (response) {
       that.dataFood = response.data.data.foods;
-      if(that.dataFood.length == 0){
+      if (that.dataFood.length == 0) {
         $('.paginatoin-area').hide();
 
       }
@@ -107,8 +107,8 @@ export class ProductComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/category/parent/${id}`)
       .then(function (response) {
-        if(response.data.status == 200){
-        that.dataCate = response.data.data;
+        if (response.data.status == 200) {
+          that.dataCate = response.data.data;
         }
       })
       .catch(function (error: any) {
@@ -117,38 +117,35 @@ export class ProductComponent implements OnInit {
       });
   }
 
+  paginationCurrentPage: any = null;
+  totalPage: any = null;
+
+  loadMoreData(page: any) {
+    const that = this;
+    axios.get(`${environment.api_url}/api/food/list?page=${page}`).then(function (response) {
+      if (response.data.status == 200) {
+        var newArr = [...that.dataFood, ...response.data.data];
+        that.dataFood = newArr;
+        that.totalPage = response.data.restPagination.totalPages;
+        that.paginationCurrentPage = response.data.restPagination.page;
+      }
+    }).catch(function (error: any) {
+      // handle error
+      console.log(error);
+    });
+  }
+
   loadPage(page: number) {
     const that = this;
-    axios.get(`${environment.api_url}/api/food/list?page=${page}`)
-      .then(function (response) {
-        if (response.data.status == 200) {
-          that.dataFood = response.data.data;
-          that.pager = response.data.restPagination;
-          that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
-          if (that.pageOfItems <= 10) {
-            that.startPage = 1;
-            that.endPage = that.pageOfItems;
-          } else {
-            if (that.currentPage <= 6) {
-              that.startPage = 1;
-              that.endPage = 10;
-            } else if (that.currentPage + 4 >= that.pageOfItems) {
-              that.startPage = that.pageOfItems - 9;
-              that.endPage = that.pageOfItems;
-            } else {
-              that.startPage = that.currentPage - 5;
-              that.endPage = that.currentPage + 4;
-            }
-          }
-          that.pages = _.range(that.startPage, that.endPage + 1);
-        }
-
-        console.log(response.data.data);
-        console.log(response.data.restPagination);
-      })
-      .catch(function (error: any) {
-        // handle error
-        console.log(error);
-      });
+    axios.get(`${environment.api_url}/api/food/list?page=${page}`).then(function (response) {
+      if (response.data.status == 200) {
+        that.dataFood = response.data.data;
+        that.totalPage = response.data.restPagination.totalPages;
+        that.paginationCurrentPage = response.data.restPagination.page;
+      }
+    }).catch(function (error: any) {
+      // handle error
+      console.log(error);
+    });
   }
 }

@@ -86,8 +86,8 @@
                                         <img src="{{food.image}}" alt="">
                                     </a>
                                     <div class="quick-view-link">
-                                        <a href="/p/{{util.generateURL(food.name, food.id)}}" data-toggle="" data-target=""> <span
-                                                data-toggle="tooltip" title="Chi tiết"><i
+                                        <a href="/p/{{util.generateURL(food.name, food.id)}}" data-toggle=""
+                                            data-target=""> <span data-toggle="tooltip" title="Chi tiết"><i
                                                     class="ion-ios-eye-outline"></i></span>
                                         </a>
                                     </div>
@@ -114,8 +114,8 @@
                                     <div class="product-action-link">
                                         <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
                                                 class="ion-android-favorite-outline"></i></a>
-                                        <a href="javascript:void(0)" (click)="addToCart(food)" data-toggle="tooltip" title="Add to cart"><i
-                                                class="ion-bag"></i></a>
+                                        <a href="javascript:void(0)" (click)="addToCart(food)" data-toggle="tooltip"
+                                            title="Add to cart"><i class="ion-bag"></i></a>
                                         <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
                                                 class="ion-ios-shuffle"></i></a>
                                     </div>
@@ -128,18 +128,8 @@
                     <!-- product item list end -->
 
                     <!-- start pagination area -->
-                    <div class="paginatoin-area text-center mt-30">
-                        <ul class="pagination-box">
-                            <li [ngClass]="{disabled:currentPage === 1}"><a href="javascript:void(0)" class="Previous"
-                                    (click)="setPage(currentPage - 1)"><i class="ion-ios-arrow-left"></i></a></li>
-                            <li *ngFor="let item of pages"> <a href="javascript:void(0)" (click)="setPage(item)"
-                                    class="{{currentPage == item ? 'active-page' : ''}}">{{item}}</a></li>
-                            <li [ngClass]="{disabled:currentPage === pager.totalPages}">
-                                <a href="javascript:void(0)" class="Next" (click)="setPage(currentPage + 1)">
-                                    <i class="ion-ios-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="paginatoin-area text-center mt-30" *ngIf="paginationCurrentPage != null && totalPage != 1 && paginationCurrentPage != totalPage">
+                        <button (click)="loadMoreData(paginationCurrentPage + 1)">Xem Thêm</button>
                     </div>
                     <!-- end pagination area -->
                 </div>
