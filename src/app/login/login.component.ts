@@ -12,7 +12,8 @@ import { async } from '@angular/core/testing';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, 
+  constructor(@Inject(WINDOW) private window: Window,
+   @Inject(LOCAL_STORAGE) private localStorage: any, 
     private router: Router,
   ) {
     
@@ -34,8 +35,7 @@ export class LoginComponent implements OnInit {
       }).then(function (response) {
         if (response.data.status == 200) {
           that.localStorage.setItem("token", response.data.accessToken);
-          that.window.location.href = '/step';
-          //that.checkProfile();
+          that.window.location.href = '/';
         }
       }).catch(function (error) {
         if (error.response.data.status == 401) {

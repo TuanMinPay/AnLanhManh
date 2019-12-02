@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder) { }
+  
+    textError: any = null;
 
 
   ngOnInit() {
@@ -41,16 +43,16 @@ export class RegisterComponent implements OnInit {
       password: password,
       phone: phone
     }).then(function (response) {
-      console.log(response);
+      //console.log(response);
       if (response.data.status == 201) {
         that.router.navigate(['/login'])
       }
     }).catch(function (error) {
-      // if(error.response.status == 400){
-      //   this.errorMessage = error.response.message;
-      // }
-
-      console.log(error.response.data);
+      if(error.response.data.status = 400){
+        that.textError = error.response.data.message;
+        console.log(that.textError);
+      }
+      //console.log(error.response.data);
     });
   }
 }

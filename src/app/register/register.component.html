@@ -70,9 +70,14 @@
                   <div *ngIf="submitted && registerForm.controls.phone.errors" class="text-danger">
                     <div *ngIf="registerForm.controls.phone.errors.required">Số điện thoại không được để trống!</div>
                     <div *ngIf="registerForm.controls.phone.errors.pattern">Số điện thoại không hợp lệ!</div>
-                    <div *ngIf="registerForm.controls.phone.errors.maxlength">Số điện thoạt tối đa 40 kí tự!</div>
                   </div>
                 </div>
+              </div>
+              <div class="single-input-item">
+                <a href="/login" class="forget-pwd">Bạn đã có tài khoản? Đặng nhập tại đây!</a>
+              </div>
+              <div style="margin-top: 10px">
+                <span class="textError">{{textError}}</span>
               </div>
               <div class="single-input-item">
                 <button  type="button" class="btn btn__bg btn__sqr" (click)="handleRegister(name.value,username.value,email.value,password.value,phone.value)">

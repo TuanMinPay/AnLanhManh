@@ -51,10 +51,12 @@ export class StepComponent implements OnInit {
   public changeModel(ev, id) {
     if (id == 0) {
       this.arrBl = [];
-      return;
     }
     if (ev.target.checked) {
       this.arrBl.push(id);
+      if(id == 0){
+        this.arrBl = [];
+      }
     } else {
       let i = this.arrBl.indexOf(id);
       this.arrBl.splice(i, 1);
@@ -62,47 +64,6 @@ export class StepComponent implements OnInit {
     console.log(this.arrBl);
 
   }
-
-  // public getMe: Function = async => {
-  //   const that = this;
-  //   axios.get(that.API_GETME, { headers: { Authorization: that.token } })
-  //   .then(function (response){
-  //     that.myInfo = response.data.data;
-  //     that.getProfile(`${that.API_PROFILE}/${that.myInfo.id}`);
-  //     console.log(that.myInfo);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   });
-  // }
-
-  // public getProfile: Function = async (url) => {
-  //   const that = this;
-  //   axios.get(url)
-  //   .then(function (response){
-  //     that.userDetails = response.data.data;
-  //     console.log(that.userDetails);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   });
-  // }
-
-  public updateProfile: Function = () => {
-  }
-
-  // public updateCate: Function = async => {
-  //   const that = this;
-  //   axios.put(`${environment.api_url}/api/user-profile/${this.userDetails.id}/category`,that.arrBl, { headers: { Authorization: that.token } })
-  //   .then(function (response){
-  //     console.log(response.data.data)
-  //   })
-  //   .catch(function (error){
-  //     console.log(error);
-  //   })
-  // }
 
 
   public getBenhly: Function = () => {
@@ -115,6 +76,18 @@ export class StepComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  getLatestProfile(){
+    const that = this;
+    axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
+    .then(function (response){
+      //console.log(response.data.data);
+      that.userDetails = response.data.data;
+    })
+    .catch(function (error){
+      console.log(error);
+    })
   }
 
   validateStep() {
@@ -131,6 +104,16 @@ export class StepComponent implements OnInit {
         that.textError = "Vui lòng nhập đầy đủ thông tin !";
         return;
       }
+    }
+
+    if(this.currentStep == 2){
+      axios.put(`${environment.api_url}/api/user-profile/${this.userDetails.id}/category`, this.arrBl, {headers: {Authorization: that.token}})
+      .then(function (response){
+        console.log(response.data.data);
+      })
+      .catch(function (error){
+        console.log(error);
+      })
     }
 
     if (this.currentStep == 3) {
@@ -172,6 +155,7 @@ export class StepComponent implements OnInit {
 
   ngOnInit() {
     this.getBenhly();
+    this.getLatestProfile();
     //console.log(this.token)
     // this.getMe();
     // this.getProfile();

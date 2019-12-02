@@ -10,7 +10,7 @@
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
-                <li role="tab">
+                <li role="tab" (click)="changeStep(2)">
                     <a href="javascript:void(0)">
                         <img [src]="(currentStep == 2) ? '/assets/images/step-2-active.png' : '/assets/images/step-2.png'"
                             alt="">
