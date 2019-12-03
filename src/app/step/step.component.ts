@@ -41,6 +41,10 @@ export class StepComponent implements OnInit {
     console.log(this.currentStep);
   }
 
+  goHome() {
+    this.window.location.href = '/';
+  }
+
   data = {
     height: null,
     weight: null,

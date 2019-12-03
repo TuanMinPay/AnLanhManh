@@ -170,7 +170,7 @@
             </li>
             <li>
                 <a href="javascript:void(0)"
-                    (click)="(currentStep == 4) ? endStep() : validateStep()">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
+                    (click)="(currentStep == 4) ? endStep() : validateStep()" *ngIf="currentStep != 4">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
             </li>
         </ul>
     </div>

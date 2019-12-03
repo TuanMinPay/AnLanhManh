@@ -54,6 +54,10 @@ export class SetComponent implements OnInit {
     this.cart.addToCart(c);
   }
 
+  loadMoreData() {
+    alert("Hi");
+  }
+
   public loadCombo(page: number) {
     const that = this;
     axios.get(`${environment.api_url}/api/combo?page=${page}`).then(function (response) {
