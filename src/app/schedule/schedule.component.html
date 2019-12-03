@@ -23,76 +23,29 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="blog-item-wrapper mb-30">
+                <div class="blog-item-wrapper mb-30" *ngFor="let schedule of dataSchedule">
                     <div class="blog-img blog-img__full-width">
                         <div class="blog-gallery-slider slider-arrow-style slider-arrow-style__style-2">
                             <div class="blog-single-slide">
-                                <img src="https://media.ex-cdn.com/EXP/media.giadinhmoi.vn/files/nguyenquyet/2017/10/08/chuan-bi-thuc-an-cho-ca-tuan-0846.jpg" alt="">
+                                <img [src]="schedule.image" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="blog-inner-content">
-                        <h3><a href="/schedule-details">Tuần ăn dinh dưỡng</a></h3>
+                        <h3><a href="/schedule-details">{{schedule.name}}</a></h3>
                         <ul class="blog-meta">
                             <li>Post by: <span>Admin</span></li>
                             <li>March 10 2019</li>
                         </ul>
-                        <p>Cung cấp đầy đủ calo, vitamin và dinh dưỡng giúp cơ thể vui chơi và làm việc trong 1 tuần đầy mệt nhọc. </p>
-                        <a href="/schedule-details" class="btn btn__bg">Xem chi tiết</a>
-                        <div class="blog-share-link">
-                            <h5>share this post</h5>
-                            <div class="blog-social-icon">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
+                        <p>{{schedule.description}}</p>
+                        <div class="action-link mb-20">
+                            <a href="/schedule-details" data-toggle="tooltip" class="add-to-cart">Xem chi tiết</a>
+                            <a href="javascript:void(0)" data-toggle="tooltip" title="Thêm vào lịch trình"><i
+                                class="ion-ios-shuffle"></i></a>
+                            <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
+                                    class="ion-android-favorite-outline"></i></a>
+                            
                         </div>
-                    </div>
-                </div>
-                <div class="blog-item-wrapper mb-30">
-                    <div class="blog-img blog-img__full-width">
-                        <a href="blog-details.html">
-                            <img src="https://bongrotv.net/wp-content/uploads/2019/03/che-do-dinh-duong-cho-nguoi-choi-the-thao.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-inner-content">
-                        <h5 class="cat-name"><a href="#">fruits</a></h5>
-                        <h3><a href="/schedule-details">Tháng ăn dinh dưỡng</a></h3>
-                        <ul class="blog-meta">
-                            <li>Post by: <span>Admin</span></li>
-                            <li>March 10 2019</li>
-                        </ul>
-                        <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
-                            posuere libero eu augue condimentum rhoncus. Praesent ornare tortor, vitae
-                            hendrerit arcu, sit amet faucibus nisl. </p>
-                        <a href="/schedule-details" class="btn btn__bg">Xem chi tiết</a>
-                        <div class="blog-share-link">
-                            <h5>share this post</h5>
-                            <div class="blog-social-icon">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-item-wrapper mb-30">
-                    <div class="blog-img blog-img__full-width">
-                        <a href="blog-details.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLjiSs6toqfSHue2C4oa9ZzDsE-dIDiaezw3z3wRQVdOlBn6h9&s" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-inner-content">
-                        <h3><a href="blog-details.html">Dinh dưỡng cho bà bầu</a></h3>
-                        <ul class="blog-meta">
-                            <li>Post by: <span>Admin</span></li>
-                            <li>March 10 2019</li>
-                        </ul>
-                        <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean
-                            posuere libero eu augue condimentum rhoncus. Praesent ornare tortor</p>
-                        <a href="blog-details.html" class="btn btn__bg">xem chi tiết</a>
                         <div class="blog-share-link">
                             <h5>share this post</h5>
                             <div class="blog-social-icon">

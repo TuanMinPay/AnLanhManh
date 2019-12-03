@@ -74,9 +74,6 @@
                 </li>
                 <li><a href="javascript:void(0)">Sản Phẩm <i class="fa fa-angle-down"></i></a>
                   <ul class="dropdown">
-                    <!-- <li>
-                      <a href="javascript:void(0)" [routerLink]="['/product-detail/food']" [queryParams]="{ page: 1}">products details</a>
-                    </li> -->
                     <li>
                       <a [routerLink]="['/pl/list']" [queryParams]="{ page: 1}">Đồ Ăn Dinh Dưỡng</a>
                     </li>
@@ -85,6 +82,8 @@
                     </li>
                   </ul>
                 </li>
+                <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+                  [routerLink]="['schedule']">Lịch trình ăn uống</a></li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
                     [routerLink]="['about']">Về Chúng Tôi</a></li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
