@@ -97,6 +97,5 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.getMe();
     this.getLatestProfile();
-    console.log(this.token);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import axios from 'axios';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-step',
@@ -10,7 +11,10 @@ import { environment } from '../../environments/environment';
 })
 export class StepComponent implements OnInit {
 
-  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any
+  constructor(
+    private toastr: ToastrService,
+    @Inject(WINDOW) private window: Window,
+    @Inject(LOCAL_STORAGE) private localStorage: any
   ) { }
   textError: any = null;
 
@@ -54,7 +58,7 @@ export class StepComponent implements OnInit {
     }
     if (ev.target.checked) {
       this.arrBl.push(id);
-      if(id == 0){
+      if (id == 0) {
         this.arrBl = [];
       }
     } else {
@@ -78,16 +82,16 @@ export class StepComponent implements OnInit {
       });
   }
 
-  getLatestProfile(){
+  getLatestProfile() {
     const that = this;
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
-    .then(function (response){
-      //console.log(response.data.data);
-      that.userDetails = response.data.data;
-    })
-    .catch(function (error){
-      console.log(error);
-    })
+      .then(function (response) {
+        //console.log(response.data.data);
+        that.userDetails = response.data.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   validateStep() {
@@ -104,16 +108,6 @@ export class StepComponent implements OnInit {
         that.textError = "Vui lòng nhập đầy đủ thông tin !";
         return;
       }
-    }
-
-    if(this.currentStep == 2){
-      axios.put(`${environment.api_url}/api/user-profile/${this.userDetails.id}/category`, this.arrBl, {headers: {Authorization: that.token}})
-      .then(function (response){
-        console.log(response.data.data);
-      })
-      .catch(function (error){
-        console.log(error);
-      })
     }
 
     if (this.currentStep == 3) {
@@ -136,6 +130,7 @@ export class StepComponent implements OnInit {
 
     if (invalid) {
       if (this.currentStep == 4) {
+
         return;
       } else {
         console.log(this.data);
@@ -146,18 +141,20 @@ export class StepComponent implements OnInit {
   }
 
   endStep() {
-    //alert(1)
-  }
-
-  goHome() {
-    this.window.location.href = '/';
+    const that = this;
+    axios.put(`${environment.api_url}/api/user-profile/${this.userDetails.id}/category`, this.arrBl, { headers: { Authorization: that.token } })
+      .then(function (response) {
+        console.log(response.data.data);
+        that.toastr.success('oke');
+        that.window.location.href = '/profile';
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   ngOnInit() {
     this.getBenhly();
     this.getLatestProfile();
-    //console.log(this.token)
-    // this.getMe();
-    // this.getProfile();
   }
 }
