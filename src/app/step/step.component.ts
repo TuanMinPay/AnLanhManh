@@ -90,15 +90,13 @@ export class StepComponent implements OnInit {
         that.userDetails = response.data.data;
       })
       .catch(function (error) {
-        console.log(error);
+        //console.log(error);
       })
   }
 
   validateStep() {
     const that = this;
     // validate here
-
-    var invalid = true;
 
     // validate step 1
     if (this.currentStep == 1) {
@@ -112,9 +110,14 @@ export class StepComponent implements OnInit {
 
     if (this.currentStep == 3) {
       if (this.data.bodyFat) {
-        const that = this;
         axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } }).then(function (response) {
-          console.log(response);
+          that.userDetails = response.data.data;
+          axios.put(`${environment.api_url}/api/user-profile/${that.userDetails.id}/category`, that.arrBl, { headers: { Authorization: that.token } }).then(function (res) {
+            console.log(res.data.data);
+            that.toastr.success('oke');
+          }).catch(function (error) {
+            console.log(error);
+          });
         }).catch(function (error) {
           // handle error
           console.log(error);
@@ -128,33 +131,22 @@ export class StepComponent implements OnInit {
       }
     }
 
-    if (invalid) {
-      if (this.currentStep == 4) {
-
-        return;
-      } else {
-        console.log(this.data);
-        this.currentStep = this.currentStep + 1;
-        invalid = false;
-      }
+    if (this.currentStep == 4) {
+      return;
+    } else {
+      console.log(this.data);
+      this.currentStep = this.currentStep + 1;
     }
   }
 
   endStep() {
-    const that = this;
-    axios.put(`${environment.api_url}/api/user-profile/${this.userDetails.id}/category`, this.arrBl, { headers: { Authorization: that.token } })
-      .then(function (response) {
-        console.log(response.data.data);
-        that.toastr.success('oke');
-        that.window.location.href = '/profile';
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    window.location.href = '/';
   }
 
   ngOnInit() {
+    if (this.token == null || this.token == undefined) {
+      this.window.location.href = '/login'
+    }
     this.getBenhly();
-    this.getLatestProfile();
   }
 }

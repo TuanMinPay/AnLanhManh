@@ -46,11 +46,32 @@ export class AppComponent implements OnInit {
     this.top.nativeElement.scrollIntoView({ block: 'start',  behavior: 'smooth', inline: 'nearest' });
   }
 
+  checkProfile() {
+    const that = this;
+    var token = localStorage.getItem('token');
+    axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: token } })
+      .then(function (response) {
+        that.userDetails = response.data.data;
+        console.log(that.userDetails);
+        if((that.userDetails.height != null || that.userDetails.weight != null) && (window.location.href.indexOf('/step') != -1)){
+          window.location.href = '/';
+          return;
+        }
+      })
+      .catch(function (error) {
+        if(error.response.data.status == 404 && (window.location.href.indexOf('/step') == -1)){
+          window.location.href = '/step';
+        }
+        console.log(error);
+      });
+  }
+
   ngOnInit() {
     var token = this.localStorage.getItem('token');
     if (token == null || token == undefined) {
       this.isLogin = false;
     } else {
+      this.checkProfile();
       this.isLogin = true;
     }
 

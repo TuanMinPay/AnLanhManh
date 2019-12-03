@@ -1,8 +1,9 @@
 <div class="wrapper">
+    <h3>Vui lòng nhập đầy đủ thông tin dưới đây để chúng tôi có thể phục vụ bạn tốt nhất!</h3>
     <form action="" id="wizard" class="ng-untouched ng-pristine ng-valid wizard clearfix">
         <div class="steps clearfix">
             <ul role="tablist">
-                <li role="tab">
+                <li role="tab" (click)="changeStep(1)">
                     <a href="javascript:void(0)">
                         <img [src]="(currentStep == 1) ? '/assets/images/step-1-active.png' : '/assets/images/step-1.png'"
                             alt="">
@@ -10,7 +11,7 @@
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
-                <li role="tab">
+                <li role="tab" (click)="changeStep(2)">
                     <a href="javascript:void(0)">
                         <img [src]="(currentStep == 2) ? '/assets/images/step-2-active.png' : '/assets/images/step-2.png'"
                             alt="">
@@ -18,7 +19,7 @@
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
-                <li role="tab">
+                <li role="tab" (click)="changeStep(3)">
                     <a href="javascript:void(0)">
                         <img [src]="(currentStep == 3) ? '/assets/images/step-3-active.png' : '/assets/images/step-3.png'"
                             alt="">
@@ -26,7 +27,7 @@
                     </a>
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
-                <li role="tab">
+                <li role="tab" (click)="changeStep(4)">
                     <a href="javascript:void(0)">
                         <img [src]="(currentStep == 4) ? '/assets/images/step-4-active.png' : '/assets/images/step-4.png'"
                             alt="">
@@ -78,18 +79,10 @@
         <!-- SECTION 2 -->
         <section *ngIf="currentStep == 2">
             <div class="myaccount-content">
-                <h3>Mức độ vận động và bệnh lí</h3>
-                <br>
-                <div class="single-input-item">
-                    <h4 class="required">Cường độ vận động</h4>
-                    <select [(ngModel)]="data.exerciseIntensity" name="exerciseIntensity" class="form-control col-lg-8">
-                        <option value="1.2">Ít Vận Động</option>
-                        <option value="1.4">Hoạt động nhẹ</option>
-                        <option value="1.6">Hoạt động vừa phải</option>
-                        <option value="1.8">Hoạt động nhiều</option>
-                        <option value="2.0">Hoạt động rất nhiều</option>
-                    </select>
-                </div>
+                <h3>Mức độ vận động</h3>
+                <span>Vận động đóng vai trò phụ trợ cho việc ăn uống hợp lý. Khi bạn vận động lượng calo đươc tiêu thụ
+                    sẽ tăng lên kéo theo lượng calo cần nhập vào cơ thể
+                    sẽ tăng. Hãy xem gợi ý dưới đây để lựa chọn cường độ vận động của bạn chính xác nhất!</span>
                 <div class="single-input-item">
                     <fieldset>
                         <legend>
@@ -97,7 +90,6 @@
                         </legend>
                         <ul>
                             <li>Ít Hoạt động : Không vận đông nhiều</li>
-                            <li>Hoạt động rất nhẹ: Công việc bàn giấy, không tập thể thao, đi bộ nhẹ.</li>
                             <li>Hoạt động nhẹ: Không vận động thể thao, công việc cần 1 số vận đông thể chất nhẹ.</li>
                             <li>Hoạt động vừa phải: 1 công việc không yêu cầu quá nhiều thể chất, nhưng tập gym thường
                                 xuyên.</li>
@@ -107,6 +99,16 @@
                         </ul>
                     </fieldset>
                 </div>
+                <div class="single-input-item">
+                    <h4 class="required">Hãy chọn cường độ vận động của bạn</h4>
+                    <select [(ngModel)]="data.exerciseIntensity" name="exerciseIntensity" class="form-control col-lg-8">
+                        <option value="1.2">Ít Vận Động</option>
+                        <option value="1.4">Hoạt động nhẹ</option>
+                        <option value="1.6">Hoạt động vừa phải</option>
+                        <option value="1.8">Hoạt động nhiều</option>
+                        <option value="2.0">Hoạt động rất nhiều</option>
+                    </select>
+                </div>
             </div>
 
         </section>
@@ -114,8 +116,13 @@
         <!-- SECTION 3 -->
         <section *ngIf="currentStep == 3">
             <div class="myaccount-content">
-                <h3>Độ mỡ cơ thể</h3>
-                <br>
+                <h3>Độ mỡ cơ thể và Bệnh lí</h3>
+                <span>- Vui lòng nhập độ mỡ của bạn để chúng tôi hỗ trợ cũng như tính toán sức khoẻ của bạn một cách tốt
+                    nhất.
+                    Bạn có thể xem ảnh gợi ý dưới đây xem độ mỡ của cơ thể.
+                    <br>
+                    (Nếu như bạn không có mỡ hoặc rất ít vui lòng nhập 0 vào thanh bên dưới giúp chúng tôi.Hi ^^)
+                </span>
                 <div class="single-input-item">
                     <label class="required">Nhập độ mỡ cơ thể của bạn</label>
                     <br>
@@ -130,19 +137,8 @@
                 <div class="error">
                     <span>{{textError}}</span>
                 </div>
-            </div>
-
-        </section>
-
-        <!-- SECTION 4 -->
-        <section *ngIf="currentStep == 4">
-            <div class="myaccount-content">
+                <br>
                 <div class="single-input-item">
-                    <!-- <label class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</label>
-                <select class="form-control col-lg-8">
-                    <option value="none">Không</option>
-                    <option *ngFor="let benhly of listBenhly" value="Sedentary">{{benhly?.name}}</option>
-                </select> -->
                     <h4 class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</h4>
                     <div class="form-check">
                         <input type="checkbox" value="0" class="form-check-input" (change)="changeModel($event, 0)"
@@ -155,10 +151,14 @@
                         <label class="form-check-label" for="materialChecked2">{{benhly?.name}}</label>
                     </div>
                 </div>
-                <div class="single-input-item">
-                    <button (click)="goHome()" class="btn btn__bg btn__sqr">Trang chủ</button>
-                </div>
             </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section *ngIf="currentStep == 4">
+            <span>Qua những thông tin bạn cho biết chúng tôi đã tính toán cho thấy lượng calo tiêu thụ trong 1 ngày của
+                bạn khoảng: {{userDetails?.caloriesConsumed}} </span>
+            Bấm "Hoàn Thành" để tiến hành lựa chọn món bạn thích.
         </section>
 
     </form>
