@@ -1,8 +1,2 @@
-.loginForm {
-    margin-left: 25%;
-}
-
-.error{
-    color: red;
-    margin-top: 20px;
-}
+.loginForm{margin-left:25%}
+.error{color:red;margin-top:15px;display:block}

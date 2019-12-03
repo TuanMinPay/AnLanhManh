@@ -7,7 +7,7 @@ export class UtilService {
 
   constructor() { }
 
-  formatPrice(price) {
+  formatPrice(price: any) {
     var pri: any = new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND',
@@ -23,7 +23,7 @@ export class UtilService {
     return url.pop();
   };
 
-  generateURL(title, id): any {
+  generateURL(title: any, id: any): any {
     if (title) {
       let str = title;
       str = str.toLowerCase();

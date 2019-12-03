@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   public handleLogin: Function = async (account: any, password: any) => {
     const that = this;
     if (password.length == 0 || account.length == 0) {
-      that.textError = "Please enter full infomation !";
+      that.textError = "Tài khoản và mật khẩu là bắt buộc";
     } else {
       that.textError = null;
       await axios.post(`${environment.api_url}/api/auth/signin`, {
