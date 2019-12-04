@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { AppComponent } from "../app.component"
 import { UtilService } from '../services/util.service';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
+import { withLatestFrom } from 'rxjs/operators';
+import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-order',
@@ -13,14 +15,24 @@ import { environment } from 'src/environments/environment';
 export class OrderComponent implements OnInit {
 
   constructor(
-    public util: UtilService
+    public util: UtilService,
+    @Inject(WINDOW) private window: Window,
+    @Inject(LOCAL_STORAGE) private localStorage: any
   ) { }
 
   listCart: any = null;
 
   listProductOrder: any = null;
-  
+
   textError: any = null;
+
+  token = this.localStorage.getItem('token');
+
+  addressId: any = [];
+
+  userAddress: any;
+
+  isShowForm = false;
 
   getTotalPriceCart() {
     return this.util.formatPrice(this.listCart.products.reduce((a, b) => parseInt(a) + parseInt(b.price), 0));
@@ -55,7 +67,7 @@ export class OrderComponent implements OnInit {
   }
 
   addressPost: any = {
-    title : null
+    title: null
   }
 
   selectTinhThanhPho(alm) {
@@ -86,6 +98,28 @@ export class OrderComponent implements OnInit {
     });
   }
 
+  public getAddress() {
+    const that = this;
+    axios.get(`${environment.api_url}/api/address`, { headers: { Authorization: that.token } })
+      .then(function (response) {
+        //console.log(response);
+        that.addressId = response.data.data[0].id;
+        //console.log(that.addressId)
+        axios.get(`${environment.api_url}/api/address/${that.addressId}`, { headers: { Authorization: that.token } })
+          .then(function (response) {
+            that.userAddress = response.data.data;
+            console.log("Get address success!");
+            that.isShowForm = false;
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      })
+      .catch(function (error) {
+        console.log(error);
+        that.isShowForm = true;
+      })
+  }
   @ViewChild('quanhuyen', { static: false }) quanhuyen: ElementRef;
   @ViewChild('xaphuong', { static: false }) xaphuong: ElementRef;
   @ViewChild('city', { static: false }) city: ElementRef;
@@ -102,28 +136,37 @@ export class OrderComponent implements OnInit {
       phone: that.address.phone,
       addressDetails: that.address.addressDetails
     }
-    if(that.address.city == null || that.address.city == undefined || that.address.quanhuyen == null || that.address.quanhuyen == undefined || that.address.phuongxa == null || that.address.phuongxa == undefined || that.address.phone == null || that.address.addressDetails == null){
+    if (that.address.city == null || that.address.city == undefined || that.address.quanhuyen == null || that.address.quanhuyen == undefined || that.address.phuongxa == null || that.address.phuongxa == undefined || that.address.phone == null || that.address.addressDetails == null) {
       that.textError = "Vui lòng nhập đầy đủ thông tin trước khi thanh toán."
     }
-    else{
-      var token: any = localStorage.getItem('token');
-        that.addressPost = {
-          title : `Thành Phố: ${that.address.city}, Quận/Huyện: ${that.address.quanhuyen}, Phường/Xã: ${that.address.phuongxa}, Địa chỉ cụ thể : ${that.address.addressDetails}, Số Điện Thoại: ${that.address.phone}, Ghi Chú: ${that.address.ordernote}`
-        }
-        axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: token } })
-        .then(function (response){
+    else {
+      that.addressPost = {
+        title: that.userAddress
+      }
+      axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: that.token } })
+        .then(function (response) {
+          //save order tai day
           console.log("save address success!");
-          that.listProductOrder = that.listCart;
-          localStorage.setItem('listProductOrder', that.listProductOrder);
-          console.log("save product order success!");
+          localStorage.removeItem('listCart');
+          that.window.location.href = that.window.location.href;
         })
-        .catch(function (error){
+        .catch(function (error) {
           console.log(error);
         })
       that.textError = null;
     }
   }
+
+  saveAddress1() {
+    this.getAddress();
+    const that = this;
+    that.addressPost = {
+      title: that.userAddress
+    }
+    console.log(that.addressPost.title);
+  }
   ngOnInit() {
+    this.getAddress();
     const that = this;
     this.getProduct();
     axios.get('/resources/data/tinh_thanhpho.json').then(function (response) {

@@ -11,10 +11,12 @@ import { AppComponent } from '../app.component';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, ) {
+  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any ) {
   }
 
   token: any = this.localStorage.getItem('token');
+
+  listProductOrder: any [];
 
   editAddress:boolean = false;
 
@@ -100,9 +102,9 @@ export class ProfileComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/address`, {headers : { Authorization : that.token}})
     .then(function (response){
-      console.log(response);
+      //console.log(response);
       that.addressId = response.data.data[0].id;
-      console.log(that.addressId)
+      //console.log(that.addressId)
       axios.get(`${environment.api_url}/api/address/${that.addressId}`, {headers : { Authorization : that.token}})
       .then(function (response){
         that.userAddress = response.data.data;
@@ -121,7 +123,7 @@ export class ProfileComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
     .then(function (response){
-      console.log(response.data.data);
+      //console.log(response.data.data);
       that.userDetails = response.data.data;
       that.getAddress();
     })
@@ -197,6 +199,12 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  getProductOrder(){
+    // const that = this;
+    // that.listProductOrder = JSON.parse(localStorage.getItem('listProductOrder'));
+    // console.log(that.listProductOrder);
+  }
+
   logout() {
     var token = this.localStorage.getItem('token');
     if (token != null || token != undefined) {
@@ -219,5 +227,6 @@ export class ProfileComponent implements OnInit {
       // handle error
       console.log(error);
     });
+    this.getProductOrder();
   }
 }

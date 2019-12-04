@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: token } })
       .then(function (response) {
         that.userDetails = response.data.data;
-        console.log(that.userDetails);
+        //console.log(that.userDetails);
         if((that.userDetails.height != null || that.userDetails.weight != null) && (window.location.href.indexOf('/step') != -1)){
           window.location.href = '/';
           return;
