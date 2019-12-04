@@ -100,6 +100,7 @@ export class StepComponent implements OnInit {
 
   validateStep() {
     const that = this;
+    var invalid = true;
     // validate here
 
     // validate step 1
