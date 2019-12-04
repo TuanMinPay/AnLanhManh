@@ -68,31 +68,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  checkProfile() {
-    const that = this;
-    var token = localStorage.getItem('token');
-    axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: token } })
-      .then(function (response) {
-        that.userDetails = response.data.data;
-        console.log(that.userDetails);
-        if(that.userDetails.height != null || that.userDetails.weight != null){
-          return;
-        }
-      })
-      .catch(function (error) {
-        if(error.response.data.status == 404){
-          window.location.href = '/step';
-        }
-        console.log(error);
-      });
-  }
+  
 
   ngOnInit() {
-    var token = this.localStorage.getItem('token');
-    var isLogin: boolean = false;
-    if(token != null || token != undefined){
-      this.checkProfile();
-    }
     this.page = this.route.snapshot.queryParamMap.get('page');
     if (this.page == null) {
       this.page = 1;

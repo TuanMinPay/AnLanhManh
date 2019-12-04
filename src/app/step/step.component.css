@@ -1,5 +1,6 @@
 .wrapper {
-    background-image: url("../../assets/images/form-wizard-bg.jpg")
+    background-image: url("../../assets/images/form-wizard-bg.jpg");
+    background-size: 100%;
 }
 
 select{
