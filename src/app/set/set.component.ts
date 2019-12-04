@@ -51,7 +51,7 @@ export class SetComponent implements OnInit {
   }
 
   addToCart(c) {
-    this.cart.addToCart(c);
+    this.cart.addToCart(c, 'comboId');
   }
 
   loadMoreData() {

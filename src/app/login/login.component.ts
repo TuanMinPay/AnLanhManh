@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import axios from "axios";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
 import { async } from '@angular/core/testing';
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(@Inject(WINDOW) private window: Window,
    @Inject(LOCAL_STORAGE) private localStorage: any, 
-    private router: Router,
+   private route: ActivatedRoute
   ) {
     
    }
@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit {
       }).then(function (response) {
         if (response.data.status == 200) {
           that.localStorage.setItem("token", response.data.accessToken);
-          that.window.location.href = '/';
+          if (that.backURL == null) {
+            that.window.location.href = '/';
+          } else {
+            that.window.location.href = that.backURL;
+          }
         }
       }).catch(function (error) {
         if (error.response.data.status == 401) {
@@ -47,8 +51,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  backURL: any = null;
+
   ngOnInit() {
     var token: any = this.localStorage.getItem('token');
+    this.backURL = this.route.snapshot.queryParamMap.get("back");
     if (token != null || token != undefined) {
       this.window.location.href = '/';
     }

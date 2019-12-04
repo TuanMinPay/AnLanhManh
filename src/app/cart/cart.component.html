@@ -54,6 +54,8 @@
                                 <th class="pro-thumbnail">Ảnh</th>
                                 <th class="pro-title">Tên sản phẩm</th>
                                 <th class="pro-price">Giá</th>
+                                <th class="pro-quantity">Số lượng</th>
+                                <th class="pro-subtotal">Tổng</th>
                                 <th class="pro-remove"><a (click)="removeAllItem()"><i class="fa fa-trash-o"></i></a>
                                 </th>
                             </tr>
@@ -65,6 +67,12 @@
                                 <td class="pro-title"><a
                                         href="/p/{{util.generateURL(item.name, item.id)}}">{{item?.name}}</a></td>
                                 <td class="pro-price"><span>{{util.formatPrice(item?.price)}}</span></td>
+                                <td class="pro-quantity">
+                                    <div class="pro-qty"><input type="number" #qtt
+                                            (keyup)="sumItem(qtt.value, item?.id)" min="1" [value]="item?.quantity"></div>
+                                </td>
+                                <td class="pro-subtotal">
+                                    <span>{{util.formatPrice(totalPrice(qtt.value, item?.price))}}</span></td>
                                 <td class="pro-remove"><a (click)="removeItem(item?.id)"><i
                                             class="fa fa-trash-o"></i></a></td>
                             </tr>
@@ -84,16 +92,16 @@
                             <table class="table">
                                 <tr>
                                     <td>Tổng đơn hàng</td>
-                                    <td>{{getTotalPriceCart()}}</td>
+                                    <td>{{util.formatPrice(getTotalPriceCart())}}</td>
                                 </tr>
                                 <tr class="total">
                                     <td>Tổng thanh toán</td>
-                                    <td class="total-amount">{{getTotalPriceCart()}}</td>
+                                    <td class="total-amount">{{util.formatPrice(getTotalPriceCart())}}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    <a (click)="checkLogin()" class="btn btn__bg d-block">Tiến hành đặt hàng</a>
+                    <a (click)="checkLogin()" class="btn btn__bg d-block" style="color: #fff;">Tiến hành đặt hàng</a>
                 </div>
             </div>
         </div>

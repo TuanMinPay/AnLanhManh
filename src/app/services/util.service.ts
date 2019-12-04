@@ -42,4 +42,8 @@ export class UtilService {
       return `${str}-${id}.html`;
     }
   }
+
+  getTotalCart(arr: { reduce: (arg0: (a: any, b: any) => number, arg1: number) => void; }) {
+    return arr.reduce((a, b) => parseInt(a) + (parseInt(b.price) * parseInt(b.quantity)), 0)
+  }
 }
