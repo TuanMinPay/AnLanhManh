@@ -24,36 +24,44 @@
                     <div class="billing-form-wrap">
                         <form>
                             <div class="single-input-item">
-                                <label for="country" class="required">Thành phố</label>
-                                <select name="country" #country class="nice-select" id="country" (change)="selectTinhThanhPho(country.value)">
-                                    <option *ngFor="let item of dataTinhThanhPho" [value]="item.code">{{item.name}}</option>
+                                <label for="city" class="required">Thành phố</label>
+                                <select name="city" #city class="nice-select" id="city" (change)="selectTinhThanhPho(city.value)">
+                                    <option *ngFor="let item of dataTinhThanhPho" value="{{item.code}}@alm;{{item.name}}">{{item.name}}</option>
                                 </select>
                             </div>
 
                             <div class="single-input-item">
                                 <label for="street-address" class="required mt-20">Quận/Huyện</label>
                                 <select name="quanhuyen" #quanhuyen class="nice-select" id="street-address" (change)="selectQuanHuyen(quanhuyen.value)">
-                                    <option *ngFor="let item of dataQuanHuyen" [value]="item.code">{{item.name}}</option>
+                                    <option *ngFor="let item of dataQuanHuyen" value="{{item.code}}@alm;{{item.name}}">{{item.name}}</option>
                                 </select>
                             </div>
 
                             <div class="single-input-item">
                                 <label for="street-address" class="required mt-20">Phường/Xã</label>
-                                <select name="quanhuyen" class="nice-select" id="street-address">
-                                    <option *ngFor="let item of dataPhuongXa" [value]="item.code">{{item.name}}</option>
+                                <select name="quanhuyen" #xaphuong class="nice-select" id="street-address">
+                                    <option *ngFor="let item of dataPhuongXa" value="{{item.code}}@alm;{{item.name}}">{{item.name}}</option>
                                 </select>
+                            </div>
+                            <div class="single-input-item">
+                                <label style="margin-top: 10px" for="phone">Địa chỉ cụ thể</label>
+                                <input type="text" [(ngModel)]="address.addressDetails" name="addressDetails" placeholder="Đạ chỉ cụ thể của bạn" />
                             </div>
 
                             <div class="single-input-item">
                                 <label for="phone">Điện thoại</label>
-                                <input type="text" id="phone" placeholder="Phone" />
+                                <input type="text" [(ngModel)]="address.phone" name="phone" id="phone" placeholder="Vui lòng xác minh lại số điện thoại của bạn" />
                             </div>
 
                             <div class="single-input-item">
                                 <label for="ordernote">Ghi chú</label>
-                                <textarea name="ordernote" id="ordernote" cols="30" rows="3"
-                                    placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                <textarea [(ngModel)]="address.ordernote" name="ordernote" id="ordernote" cols="30" rows="3"
+                                    placeholder="Bạn có ghi chú gì đó cho chúng tôi. Hãy viết nó tại đây."></textarea>
                             </div>
+                            <div class="error">
+                                <span *ngIf="textError != null">{{textError}}</span>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -124,7 +132,7 @@
                                 </div>
                             </div>
                             <div class="summary-footer-area">
-                                <button type="submit" class="btn btn__bg">Đặt Mua</button>
+                                <button type="button" (click)="saveAddress()" class="btn btn__bg">Đặt Mua</button>
                                 <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
                             </div>
                         </div>

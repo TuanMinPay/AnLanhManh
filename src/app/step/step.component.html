@@ -157,8 +157,10 @@
         <!-- SECTION 4 -->
         <section *ngIf="currentStep == 4">
             <span>Qua những thông tin bạn cho biết chúng tôi đã tính toán cho thấy lượng calo tiêu thụ trong 1 ngày của
-                bạn khoảng: {{userDetails?.caloriesConsumed}} </span>
-            Bấm "Hoàn Thành" để tiến hành lựa chọn món bạn thích.
+                bạn khoảng: "{{userDetails?.caloriesConsumed}}" </span>
+                <br>
+            <span class="hoanthanh">Bấm "Hoàn Thành" để tiến hành lựa chọn món bạn thích.</span>
+            
         </section>
 
     </form>
@@ -170,7 +172,7 @@
             </li>
             <li>
                 <a href="javascript:void(0)"
-                    (click)="(currentStep == 4) ? endStep() : validateStep()" *ngIf="currentStep != 4">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
+                    (click)="(currentStep == 4) ? endStep() : validateStep()">{{(currentStep == 4) ? 'Hoàn Thành' : 'Sau'}}</a>
             </li>
         </ul>
     </div>
