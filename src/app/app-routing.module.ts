@@ -15,6 +15,8 @@ import { SetDetailsComponent} from './set-details/set-details.component';
 import { StepComponent } from './step/step.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleDetailsComponent } from './schedule-details/schedule-details.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent},
   { path: 'schedule', component: ScheduleComponent},
   { path: 'schedule-details', component: ScheduleDetailsComponent},
+  { path: 'payment', component: PaymentComponent },
+  { path: 'shipping', component: ShippingComponent },
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 
