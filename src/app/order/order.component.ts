@@ -62,7 +62,8 @@ export class OrderComponent implements OnInit {
     xaphuong: null,
     ordernote: null,
     phone: null,
-    addressDetails: null
+    addressDetails: null,
+    type: 1
   }
 
   addressPost: any = {
@@ -97,7 +98,7 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  public getAddress() {
+  getAddress() {
     const that = this;
     axios.get(`${environment.api_url}/api/address`, { headers: { Authorization: that.token } })
       .then(function (response) {
@@ -127,14 +128,10 @@ export class OrderComponent implements OnInit {
   //validate form
   saveAddress() {
     const that = this;
-    that.address = {
-      city: that.city.nativeElement.value.split('@alm;')[1],
-      quanhuyen: that.quanhuyen.nativeElement.value.split('@alm;')[1],
-      phuongxa: that.xaphuong.nativeElement.value.split('@alm;')[1],
-      ordernote: that.address.ordernote,
-      phone: that.address.phone,
-      addressDetails: that.address.addressDetails
-    }
+    this.address.city = that.city.nativeElement.value.split('@alm;')[1];
+    this.address.quanhuyen = that.quanhuyen.nativeElement.value.split('@alm;')[1];
+    this.address.xaphuong = that.xaphuong.nativeElement.value.split('@alm;')[1];
+
     var check = true;
     for (var key in this.address) {
       if (this.address[key] == null && key != 'ordernote') check = false;
@@ -142,14 +139,15 @@ export class OrderComponent implements OnInit {
     if (check) {
       var token: any = localStorage.getItem('token');
       that.addressPost = {
-        title: `${that.address.addressDetails}, ${that.address.phuongxa}, ${that.address.quanhuyen}, ${that.address.city}`,
+        title: `${that.address.addressDetails}, ${that.address.xaphuong}, ${that.address.quanhuyen}, ${that.address.city}`,
         phone: that.address.phone
       }
       axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: token } }).then(function (response) {
         let obj = {
           addressId: response.data.data.id,
           orderDetails: [],
-          notes: that.address.ordernote
+          note: that.address.ordernote,
+          type: that.address.type
         }
         let prm = that.listCart.products.map((prd: { quantity: any; price: any; type: string | number; id: any; }) => {
           new Promise((resolve, reject) => {
@@ -165,9 +163,19 @@ export class OrderComponent implements OnInit {
           });
         });
         Promise.all(prm).then(() => {
+          axios.post(`${environment.api_url}/api/order`, obj, { headers: { Authorization: token } }).then((rs) => {
+            if (obj.type == 2) {
+              window.location.href = rs.data.data.urlPayment;
+            } else {
+              window.location.href = `/shipping?orderId=${rs.data.data.id}`;
+            }
+            localStorage.removeItem('listCart');
+          }).catch((err) => {
+            console.log(err);
+          })
           console.log(obj);
         });
-        console.log("save product order success!");
+        that.localStorage.removeItem('listCart');
       }).catch(function (error) {
         console.log(error);
       });
@@ -183,14 +191,15 @@ export class OrderComponent implements OnInit {
     that.addressPost = {
       title: that.userAddress
     }
-    console.log(that.addressPost.title);
+    console.log(that.addressPost.title)
+    this.localStorage.removeItem('listCart');
+    this.window.location.href = this.window.location.href;
   }
   ngOnInit() {
-    this.getAddress();
+    // this.getAddress();
     const that = this;
     this.getProduct();
-    var token = this.localStorage.getItem('token');
-    if (token == null || token == undefined) {
+    if (this.token == null || this.token == undefined) {
       window.location.href = `/login?back=${window.location.pathname}`;
     } else {
       setTimeout(() => {

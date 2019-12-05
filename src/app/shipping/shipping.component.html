@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 hh-grayBox pt45 pb20">
+            <div class="row justify-content-between">
+                <div class="order-tracking {{(orderData?.status > 0) ? 'completed' : ''}}">
+                    <span class="is-complete"></span>
+                    <p>Đã đặt hàng<br><span>Mon, June 24</span></p>
+                </div>
+                <div class="order-tracking {{(orderData?.status > 1) ? 'completed' : ''}}">
+                    <span class="is-complete"></span>
+                    <p>Đang giao<br><span>Tue, June 25</span></p>
+                </div>
+                <div class="order-tracking {{(orderData?.status == 3) ? 'completed' : ''}}">
+                    <span class="is-complete"></span>
+                    <p>Đã nhận hàng<br><span>Fri, June 28</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="shipping container">
+    <h2>Thông tin đơn hàng</h2>
+    <p><strong>Địa chỉ</strong>: {{orderData?.address}}</p>
+    <p><strong>Điện thoại</strong>: {{orderData?.phone}} (bạn vui lòng để ý điện thoại để nhận hàng)</p>
+    <p><strong>Ghi chú</strong>: {{orderData?.note}}</p>
+    <p><strong>Hình thức thanh toán</strong>:
+        {{(orderData?.type == 1) ? 'Thanh toán tiền mặt' : 'Thanh toán qua VNPay'}}</p>
+    <div class="orderPage">
+        <div class="order-summary-details mt-md-50 mt-sm-50">
+            <div class="order-summary-content">
+                <!-- Order Summary Table -->
+                <div class="order-summary-table table-responsive text-center">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Giá Tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orderData?.orderDetail">
+                                <td><a href="/p/{{util.generateURL((item?.food) ? item?.food.name : item?.combo.name, item?.id)}}"
+                                        target="_blank">{{(item?.food) ? item?.food.name : item?.combo.name}}</a>
+                                </td>
+                                <td>{{item?.quantity}} x {{util.formatPrice(item?.price)}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot-shipping">
+        <h6>Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của AnLanhManh.Com</h6>
+        <p>Chúc bạn một bữa ăn ngon miệng.</p>
+    </div>
+</div>

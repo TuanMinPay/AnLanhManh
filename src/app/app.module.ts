@@ -26,6 +26,8 @@ import { StepComponent } from './step/step.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleDetailsComponent } from './schedule-details/schedule-details.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ScheduleDetailsComponent } from './schedule-details/schedule-details.co
     ProductComponent,
     ProductDetailsComponent,
     ScheduleComponent,
-    ScheduleDetailsComponent
+    ScheduleDetailsComponent,
+    PaymentComponent,
+    ShippingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

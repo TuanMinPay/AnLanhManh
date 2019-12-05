@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div *ngIf="isShowForm != false" class="checkout-billing-details-wrap">
+                <div class="checkout-billing-details-wrap">
                     <h2>Thông tin nhận hàng</h2>
                     <div class="billing-form-wrap">
                         <form>
@@ -116,8 +116,8 @@
                             <div class="single-payment-method">
                                 <div class="payment-method-name">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="cashon" name="paymentmethod" value="cash"
-                                            class="custom-control-input" checked/>
+                                        <input type="radio" id="cashon" [(ngModel)]="address.type" name="type" [value]="1"
+                                            class="custom-control-input"/>
                                         <label class="custom-control-label" for="cashon">Thanh toán bằng tiền mặt</label>
                                     </div>
                                 </div>
@@ -125,14 +125,14 @@
                             <div class="single-payment-method">
                                 <div class="payment-method-name">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="vnpay" name="paymentmethod" value="vnpay"
+                                        <input type="radio" id="vnpay" [(ngModel)]="address.type" name="type" [value]="2"
                                             class="custom-control-input"/>
                                         <label class="custom-control-label" for="vnpay">Thanh toán bằng VNPAY</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="summary-footer-area">
-                                <button type="button" (click)="(isShowForm != false) ? saveAddress() : saveAddress1()" class="btn btn__bg">Đặt Mua</button>
+                                <button type="button" (click)="saveAddress()" class="btn btn__bg">Đặt Mua</button>
                                 <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
                             </div>
                         </div>

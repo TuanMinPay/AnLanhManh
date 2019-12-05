@@ -208,9 +208,7 @@ export class ProfileComponent implements OnInit {
   logout() {
     var token = this.localStorage.getItem('token');
     if (token != null || token != undefined) {
-      this.localStorage.removeItem('token');
-      this.localStorage.removeItem('listCart');
-      this.window.location.href = '/login';
+      this.localStorage.clear();
     }
   }
 

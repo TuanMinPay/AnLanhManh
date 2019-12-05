@@ -52,7 +52,7 @@ export class StepComponent implements OnInit {
     exerciseIntensity: 1.2,
     gender: 1,
     status: 1,
-    bodyFat: null
+    bodyFat: 0
   }
 
   arrBl: any = [];
@@ -69,8 +69,6 @@ export class StepComponent implements OnInit {
       let i = this.arrBl.indexOf(id);
       this.arrBl.splice(i, 1);
     }
-    console.log(this.arrBl);
-
   }
 
 
@@ -118,8 +116,7 @@ export class StepComponent implements OnInit {
         axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } }).then(function (response) {
           that.userDetails = response.data.data;
           axios.put(`${environment.api_url}/api/user-profile/${that.userDetails.id}/category`, that.arrBl, { headers: { Authorization: that.token } }).then(function (res) {
-            console.log(res.data.data);
-            that.toastr.success('oke');
+            this.currentStep = this.currentStep + 1;
           }).catch(function (error) {
             console.log(error);
           });
@@ -128,7 +125,6 @@ export class StepComponent implements OnInit {
           console.log(error);
         });
         //that.updateCate();
-        console.log(that.data);
         that.textError = null;
       } else {
         that.textError = "Vui lòng nhập đầy đủ thông tin !";
@@ -138,8 +134,7 @@ export class StepComponent implements OnInit {
 
     if (this.currentStep == 4) {
       return;
-    } else {
-      console.log(this.data);
+    } else if (this.currentStep != 3) {
       this.currentStep = this.currentStep + 1;
     }
   }
