@@ -13,4 +13,4 @@
 .order-tracking.completed:before{background-color:#27aa80}
 .shipping a{color:#007ff0}
 .shipping h2{margin:1.2rem 0}
-.shipping h4{width:100%;text-align:center;margin:4rem 0 2rem 0}
+.shipping .foot-shipping{width:100%;text-align:center;margin:4rem 0 2rem 0;line-height:2.5}

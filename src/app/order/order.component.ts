@@ -164,7 +164,6 @@ export class OrderComponent implements OnInit {
         });
         Promise.all(prm).then(() => {
           axios.post(`${environment.api_url}/api/order`, obj, { headers: { Authorization: token } }).then((rs) => {
-            console.log(rs.data.data);
             if (obj.type == 2) {
               window.location.href = rs.data.data.urlPayment;
             } else {

@@ -21,7 +21,7 @@
 <div class="shipping container">
     <h2>Thông tin đơn hàng</h2>
     <p><strong>Địa chỉ</strong>: {{orderData?.address}}</p>
-    <p><strong>Điện thoại</strong>: {{orderData?.phone}}</p>
+    <p><strong>Điện thoại</strong>: {{orderData?.phone}} (bạn vui lòng để ý điện thoại để nhận hàng)</p>
     <p><strong>Ghi chú</strong>: {{orderData?.note}}</p>
     <p><strong>Hình thức thanh toán</strong>:
         {{(orderData?.type == 1) ? 'Thanh toán tiền mặt' : 'Thanh toán qua VNPay'}}</p>
@@ -50,5 +50,8 @@
             </div>
         </div>
     </div>
-    <h4>Cảm ơn bạn đã tin tưởng AnLanhManh.Com</h4>
+    <div class="foot-shipping">
+        <h6>Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của AnLanhManh.Com</h6>
+        <p>Chúc bạn một bữa ăn ngon miệng.</p>
+    </div>
 </div>
