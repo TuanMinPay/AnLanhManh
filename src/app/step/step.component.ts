@@ -88,7 +88,7 @@ export class StepComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
       .then(function (response) {
-        //console.log(response.data.data);
+        console.log(response.data.data);
         that.userDetails = response.data.data;
       })
       .catch(function (error) {
@@ -112,11 +112,12 @@ export class StepComponent implements OnInit {
     }
 
     if (this.currentStep == 3) {
-      if (this.data.bodyFat) {
+      if (this.data.bodyFat != null) {
         axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } }).then(function (response) {
           that.userDetails = response.data.data;
+          console.log(that.userDetails);
           axios.put(`${environment.api_url}/api/user-profile/${that.userDetails.id}/category`, that.arrBl, { headers: { Authorization: that.token } }).then(function (res) {
-            this.currentStep = this.currentStep + 1;
+            that.currentStep = that.currentStep + 1;
           }).catch(function (error) {
             console.log(error);
           });
@@ -134,7 +135,7 @@ export class StepComponent implements OnInit {
 
     if (this.currentStep == 4) {
       return;
-    } else if (this.currentStep != 3) {
+    } else if(this.currentStep != 3){
       this.currentStep = this.currentStep + 1;
     }
   }

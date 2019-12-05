@@ -114,23 +114,60 @@
         <!-- product details inner end -->
         <div class="row">
             <div class="col-lg-12">
-                <label class="title-main">Hàm lượng dinh dưỡng trong combo</label>
-                <div class="box_content">
-                    <p>Chất bột đường (carbonhydrates): {{dataCombo?.carbonhydrates}} g</p>
-                    <p>Chất đạm (protein): {{dataCombo?.protein}} g</p>
-                    <p>Chất béo (lipid): {{dataCombo?.lipid}} g</p>
-                    <p>Chất xơ (cellulose): {{dataCombo?.xenluloza}} g</p>
-                    <p>Canxi: {{dataCombo?.canxi}} mg</p>
-                    <p>Sắt: {{dataCombo?.iron}} mg</p>
-                    <p>Kẽm: {{dataCombo?.zinc}} mg</p>
-                    <p>vitamin A: {{dataCombo?.vitaminA}} µg</p>
-                    <p>Vitamin B: {{dataCombo?.vitaminC}} µg</p>
-                    <p>vitaminC: {{dataCombo?.vitaminC}} µg</p>
-                    <p>vitaminD: {{dataCombo?.vitaminD}} µg</p>
-                    <p>vitaminE: {{dataCombo?.vitaminE}} µg</p>
-                    <p>Calories: {{dataCombo?.calorie}} calo</p>
-                    <p>Weigh: {{dataCombo?.weight}} g</p>
-                </div>
+                
+                <div class="myaccount-table table-responsive text-center">
+                    <br>
+                    <br>
+                        <h3>Hàm lượng dinh dưỡng trong combo đồ ăn</h3>
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Chất bột đường (carbonhydrates)</th>
+                                    <th>Chất đạm (protein)</th>
+                                    <th>Độ béo (lipid)</th>
+                                    <th>Chất xơ (cellulose)</th>
+                                    <th>Canxi</th>
+                                    <th>Sắt</th>
+                                    <th>Kẽm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{dataCombo?.carbonhydrates}} g</td>
+                                    <td>{{dataCombo?.protein}} g</td>
+                                    <td>{{dataCombo?.lipid}} g</td>
+                                    <td>{{dataCombo?.xenluloza}} g</td>
+                                    <td>{{dataCombo?.canxi}} g</td>
+                                    <td>{{dataCombo?.iron}} g</td>
+                                    <td>{{dataCombo?.zinc}} g</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>vitamin A</th>
+                                    <th>Vitamin B</th>
+                                    <th>Vitamin C</th>
+                                    <th>Vitamin D</th>
+                                    <th>Vitamin E</th>
+                                    <th>Caloriesẽm</th>
+                                    <th>Trọng lượng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{dataCombo?.vitaminA}} g</td>
+                                    <td>{{dataCombo?.vitaminB}} g</td>
+                                    <td>{{dataCombo?.vitaminC}} g</td>
+                                    <td>{{dataCombo?.vitaminD}} g</td>
+                                    <td>{{dataCombo?.vitaminE}} g</td>
+                                    <td>{{dataCombo?.calorie}} calo</td>
+                                    <td>{{dataCombo?.weight}} g</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
             <div class="col-lg-12">
                 <label class="title-main">Đánh Giá</label>
@@ -181,7 +218,7 @@
                             </h4>
                         </div>
                         <div class="price-box">
-                            <span class="regular-price">{{item?.price}} ₫</span>
+                            <span class="regular-price">{{util.formatPrice(item?.price)}}</span>
                             <span class="old-price"><del></del></span>
                         </div>
                         <div class="product-action-link">

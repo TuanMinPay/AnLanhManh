@@ -176,19 +176,22 @@ export class ProfileComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/order`, { headers: { Authorization: that.token } })
       .then(function (response) {
-        console.log(response);
+        //console.log(response);
         that.listProductOrder = response.data.data;
-        console.log(that.listProductOrder);
+        //console.log(that.listProductOrder);
         if (that.listProductOrder == null || that.listProductOrder == undefined) {
-          that.isShowForm = false;
+          that.isShowForm = true;
         }
-        that.isShowForm = true;
-        that.stt = that.stt + 1;
+        that.isShowForm = false;
       })
       .catch(function (error) {
         console.log(error);
 
       })
+  }
+
+  goHome(){
+    this.window.location.href = '/'
   }
 
   getStatus(stt) {
