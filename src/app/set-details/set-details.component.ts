@@ -4,6 +4,7 @@ import axios from 'axios';
 import { environment } from '../../environments/environment';
 import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
 import { UtilService } from '../services/util.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-set-details',
@@ -15,7 +16,8 @@ export class SetDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,
-    public util: UtilService
+    public util: UtilService,
+    private cart: CartService
   ) { }
 
   dataCombo: any;
@@ -57,6 +59,10 @@ export class SetDetailsComponent implements OnInit {
     .catch(function (error){
       console.log(error);
     })
+  }
+
+  addToCart(combo) {
+    this.cart.addToCart(combo, 'comboId');
   }
 
   productImage: any;
