@@ -152,65 +152,25 @@
           <div class="col-lg-3 col-md-6">
             <div class="footer-widget">
               <div class="footer-widget-title">
-                <h4>new arrivals</h4>
+                <h4>Đồ Ăn Mới</h4>
               </div>
               <div class="footer-widget-body">
                 <ul class="category-list">
-                  <li>
+                  <li *ngFor="let item of dataFood | slice:8:11">
                     <div class="single-item single-item__footer-category">
                       <div class="product-thumb">
-                        <a href="product-details.html">
-                          <img src="assets/img/product/product-2.jpg" alt="">
+                        <a href="/p/{{util.generateURL(item.name, item.id)}}">
+                          <img [src]="item?.image" alt="">
                         </a>
                       </div>
                       <div class="product-description">
                         <div class="product-name">
                           <h4 class="h5">
-                            <a href="product-details.html">natural fresh berries</a>
+                            <a href="/p/{{util.generateURL(item.name, item.id)}}">{{item?.name}}</a>
                           </h4>
                         </div>
                         <div class="price-box">
-                          <span class="regular-price">$99.00</span>
-                          <span class="old-price"><del></del></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="single-item single-item__footer-category">
-                      <div class="product-thumb">
-                        <a href="product-details.html">
-                          <img src="assets/img/product/product-3.jpg" alt="">
-                        </a>
-                      </div>
-                      <div class="product-description">
-                        <div class="product-name">
-                          <h4 class="h5">
-                            <a href="product-details.html">organic fresh juice</a>
-                          </h4>
-                        </div>
-                        <div class="price-box">
-                          <span class="regular-price">$99.00</span>
-                          <span class="old-price"><del></del></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="single-item single-item__footer-category">
-                      <div class="product-thumb">
-                        <a href="product-details.html">
-                          <img src="assets/img/product/product-4.jpg" alt="">
-                        </a>
-                      </div>
-                      <div class="product-description">
-                        <div class="product-name">
-                          <h4 class="h5">
-                            <a href="product-details.html">100% organic food</a>
-                          </h4>
-                        </div>
-                        <div class="price-box">
-                          <span class="regular-price">$99.00</span>
+                          <span class="regular-price">{{item?.price}} ₫</span>
                           <span class="old-price"><del></del></span>
                         </div>
                       </div>
@@ -223,65 +183,25 @@
           <div class="col-lg-3 col-md-6">
             <div class="footer-widget">
               <div class="footer-widget-title">
-                <h4>top rated product</h4>
+                <h4>Combo Đồ Ăn Mới</h4>
               </div>
               <div class="footer-widget-body">
                 <ul class="category-list">
-                  <li>
+                  <li *ngFor="let combo of dataCombo | slice:3:6">
                     <div class="single-item single-item__footer-category">
                       <div class="product-thumb">
-                        <a href="product-details.html">
-                          <img src="assets/img/product/product-12.jpg" alt="">
+                        <a href="/p/{{util.generateURL(combo.name, combo.id)}}">
+                          <img [src]="combo?.image" alt="">
                         </a>
                       </div>
                       <div class="product-description">
                         <div class="product-name">
                           <h4 class="h5">
-                            <a href="product-details.html">natural fresh berries</a>
+                            <a href="/p/{{util.generateURL(combo.name, combo.id)}}">{{combo?.name}}</a>
                           </h4>
                         </div>
                         <div class="price-box">
-                          <span class="regular-price">$99.00</span>
-                          <span class="old-price"><del></del></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="single-item single-item__footer-category">
-                      <div class="product-thumb">
-                        <a href="product-details.html">
-                          <img src="assets/img/product/product-13.jpg" alt="">
-                        </a>
-                      </div>
-                      <div class="product-description">
-                        <div class="product-name">
-                          <h4 class="h5">
-                            <a href="product-details.html">organic fresh juice</a>
-                          </h4>
-                        </div>
-                        <div class="price-box">
-                          <span class="regular-price">$99.00</span>
-                          <span class="old-price"><del></del></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="single-item single-item__footer-category">
-                      <div class="product-thumb">
-                        <a href="product-details.html">
-                          <img src="assets/img/product/product-14.jpg" alt="">
-                        </a>
-                      </div>
-                      <div class="product-description">
-                        <div class="product-name">
-                          <h4 class="h5">
-                            <a href="product-details.html">100% organic food</a>
-                          </h4>
-                        </div>
-                        <div class="price-box">
-                          <span class="regular-price">$99.00</span>
+                          <span class="regular-price">{{combo?.price}} ₫</span>
                           <span class="old-price"><del></del></span>
                         </div>
                       </div>
