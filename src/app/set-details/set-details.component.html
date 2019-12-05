@@ -60,7 +60,7 @@
                         </div>
                         <p>{{dataCombo?.description}}</p>
                         <div class="action-link mb-20">
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Thêm" class="add-to-cart">Thêm vào
+                            <a href="javascript:void(0)" data-toggle="tooltip" title="Thêm" (click)="addToCart(dataCombo)" class="add-to-cart">Thêm vào
                                 giỏ hàng</a>
                             <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
                                     class="ion-android-favorite-outline"></i></a>
@@ -80,7 +80,7 @@
         </div>
         <!-- product details inner end -->
         <div class="product-details-inner" *ngIf="quickViewData != null">
-            <button type="button" class="close-quick-view btn" (click)="quickViewData = null">Close</button>
+            <button type="button" class="close-quick-view btn" (click)="quickViewData = null">Đóng</button>
             <div class="row">
                 <div class="col-lg-5 col-md-6">
                     <div class="pro-nav slick-padding_2 slider-arrow-style slider-arrow-style__style-2">

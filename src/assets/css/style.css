@@ -633,7 +633,6 @@ fieldset legend {
 	font-size: 14px;
 	padding: 8px 0 5px;
 	right: 0 !important;
-	min-width: 120px;
 	text-transform: capitalize;
 	border: none;
 	-webkit-transform: translate3d(0, 32px, 0px) !important;
