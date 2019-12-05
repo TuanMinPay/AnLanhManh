@@ -28,13 +28,26 @@ export class CartComponent implements OnInit {
   token: any = this.localStorage.getItem('token');
 
   getTotalPriceCart() {
-    return this.util.formatPrice(this.listCart.products.reduce((a, b) => parseInt(a) + parseInt(b.price), 0));
+    return this.util.getTotalCart(this.listCart.products);
   }
 
   removeAllItem() {
     localStorage.removeItem('listCart');
     this.listCart = null;
     this.toastr.success('Đã xoá trống giỏ hàng', 'Thông báo!');
+  }
+
+  totalPrice(qtt: string, price: string) {
+    return parseInt(price) * parseInt(qtt);
+  }
+
+  sumItem(qtt: string, id: any) {
+    this.listCart.products.forEach((prd: { id: any; quantity: number; }) => {
+      if (prd.id == id) {
+        prd.quantity = parseInt(qtt);
+      };
+    });
+    localStorage.setItem('listCart', JSON.stringify(this.listCart));
   }
 
   removeItem(id: any) {
@@ -52,19 +65,11 @@ export class CartComponent implements OnInit {
     this.toastr.success('Đã xoá sản phẩm khỏi giỏ hàng', 'Thông báo!');
   }
 
-  checkLogin(){
-    const that = this;
-    if(that.token == null || that.token == undefined){
-      that.toastr.error('Vui lòng đăng nhập trước khi thanh toán!');
-      setTimeout(() => that.window.location.href = '/login', 1000);
-      
-    }else{
-      that.window.location.href = '/order';
-    }
+  checkLogin() {
+    this.window.location.href = '/order';
   }
 
   ngOnInit() {
-    const that = this;
     this.listCart = localStorage.getItem('listCart');
     this.listCart = JSON.parse(this.listCart);
   }

@@ -12,8 +12,10 @@ export class CartService {
     private toastr: ToastrService
   ) { }
 
-  addToCart(product: { id: any; }) {
+  addToCart(product: { id: any; }, type: any) {
     var listCart: any = localStorage.getItem('listCart');
+    product['type'] = type;
+    product['quantity'] = 1;
     if (listCart == null) {
       listCart = {
         products: [product],
@@ -48,11 +50,11 @@ export class CartService {
           //   message: "Xem giỏ hàng và thanh toán"
           // };
         } else {
-          this.toastr.error('Sản phẩm đã tồn tại trong giỏ hàng', 'Thêm vào giỏ hàng thất bại!');
+          this.toastr.error('Thêm số lượng trong giỏ hàng bạn nhé', 'Oops...');
           return;
           // return {
           //   code: 400,
-          //   message: "Sản phẩm đã tồn tại trong giỏ hàng"
+          //   message: "Thêm số lượng trong giỏ hàng bạn nhé"
           // };
         }
       }

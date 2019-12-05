@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div *ngIf="isShowForm != false" class="checkout-billing-details-wrap">
-                    <h2>Thông tin đơn hàng</h2>
+                    <h2>Thông tin nhận hàng</h2>
                     <div class="billing-form-wrap">
                         <form>
                             <div class="single-input-item">
@@ -44,7 +44,7 @@
                                 </select>
                             </div>
                             <div class="single-input-item">
-                                <label style="margin-top: 10px" for="phone">Địa chỉ cụ thể</label>
+                                <label style="margin-top: 10px" for="phone">Số Nhà/Đường Phố</label>
                                 <input type="text" [(ngModel)]="address.addressDetails" name="addressDetails" placeholder="Đạ chỉ cụ thể của bạn" />
                             </div>
 
@@ -82,13 +82,13 @@
                                 <tbody>
                                     <tr *ngFor="let item of listCart.products">
                                         <td><a href="/p/{{util.generateURL(item?.name, item?.id)}}">{{item?.name}}</a></td>
-                                        <td>{{util.formatPrice(item?.price)}}</td>
+                                        <td>{{item?.quantity}} x {{util.formatPrice(item?.price)}}</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td>Tổng tiền sản phẩm</td>
-                                        <td><strong>{{getTotalPriceCart()}}</strong></td>
+                                        <td><strong>{{util.formatPrice(getTotalPriceCart())}}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>VAT</td>
@@ -106,7 +106,7 @@
                                     </tr>
                                     <tr>
                                         <td>Thành tiền</td>
-                                        <td><strong class="total-price">{{getTotalPriceCart()}}</strong><br><em>(Đã bao gồm VAT nếu có)</em></td>
+                                        <td><strong class="total-price">{{util.formatPrice(getTotalPriceCart())}}</strong><br><em>(Đã bao gồm VAT nếu có)</em></td>
                                     </tr>
                                 </tfoot>
                             </table>

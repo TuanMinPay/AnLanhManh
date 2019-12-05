@@ -35,7 +35,7 @@ export class OrderComponent implements OnInit {
   isShowForm = false;
 
   getTotalPriceCart() {
-    return this.util.formatPrice(this.listCart.products.reduce((a, b) => parseInt(a) + parseInt(b.price), 0));
+    return this.util.getTotalCart(this.listCart.products);
   }
 
   getProduct() {
@@ -44,7 +44,6 @@ export class OrderComponent implements OnInit {
     if (that.listCart != null || that.listCart != undefined) {
       that.listCart = localStorage.getItem('listCart');
       that.listCart = JSON.parse(that.listCart);
-      console.log(that.listCart);
     } else {
       localStorage.removeItem('listCart');
       that.listCart == null;
@@ -136,24 +135,45 @@ export class OrderComponent implements OnInit {
       phone: that.address.phone,
       addressDetails: that.address.addressDetails
     }
-    if (that.address.city == null || that.address.city == undefined || that.address.quanhuyen == null || that.address.quanhuyen == undefined || that.address.phuongxa == null || that.address.phuongxa == undefined || that.address.phone == null || that.address.addressDetails == null) {
-      that.textError = "Vui lòng nhập đầy đủ thông tin trước khi thanh toán."
+    var check = true;
+    for (var key in this.address) {
+      if (this.address[key] == null && key != 'ordernote') check = false;
     }
-    else {
+    if (check) {
+      var token: any = localStorage.getItem('token');
       that.addressPost = {
-        title: that.userAddress
+        title: `${that.address.addressDetails}, ${that.address.phuongxa}, ${that.address.quanhuyen}, ${that.address.city}`,
+        phone: that.address.phone
       }
-      axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: that.token } })
-        .then(function (response) {
-          //save order tai day
-          console.log("save address success!");
-          localStorage.removeItem('listCart');
-          that.window.location.href = that.window.location.href;
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
+      axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: token } }).then(function (response) {
+        let obj = {
+          addressId: response.data.data.id,
+          orderDetails: [],
+          notes: that.address.ordernote
+        }
+        let prm = that.listCart.products.map((prd: { quantity: any; price: any; type: string | number; id: any; }) => {
+          new Promise((resolve, reject) => {
+            let _obj = {
+              foodId: null,
+              comboId: null,
+              scheduleId: null,
+              quantity: prd.quantity
+            }
+            _obj[prd.type] = prd.id;
+            obj.orderDetails.push(_obj);
+            resolve();
+          });
+        });
+        Promise.all(prm).then(() => {
+          console.log(obj);
+        });
+        console.log("save product order success!");
+      }).catch(function (error) {
+        console.log(error);
+      });
       that.textError = null;
+    } else {
+      that.textError = "Vui lòng nhập đầy đủ thông tin trước khi thanh toán.";
     }
   }
 
@@ -169,6 +189,18 @@ export class OrderComponent implements OnInit {
     this.getAddress();
     const that = this;
     this.getProduct();
+    var token = this.localStorage.getItem('token');
+    if (token == null || token == undefined) {
+      window.location.href = `/login?back=${window.location.pathname}`;
+    } else {
+      setTimeout(() => {
+        var user = this.localStorage.getItem('user');
+        if (user != null || user != undefined) {
+          user = JSON.parse(user);
+          this.address.phone = user.user.phone;
+        }
+      }, 2000);
+    }
     axios.get('/resources/data/tinh_thanhpho.json').then(function (response) {
       that.dataTinhThanhPho = response.data;
     }).catch(function (error) {

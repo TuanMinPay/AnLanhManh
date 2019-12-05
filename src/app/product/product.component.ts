@@ -71,7 +71,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(food) {
-    this.cart.addToCart(food);
+    this.cart.addToCart(food, 'foodId');
   }
 
   chooseProduct(id) {

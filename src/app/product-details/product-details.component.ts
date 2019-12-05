@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
   id: number;
 
   addToCart(product) {
-    this.cart.addToCart(product);
+    this.cart.addToCart(product, 'foodId');
   }
 
   currentURL: any;

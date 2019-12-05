@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   @ViewChild('top', { static: true }) top: ElementRef;
 
   scrollTop() {
-    this.top.nativeElement.scrollIntoView({ block: 'start',  behavior: 'smooth', inline: 'nearest' });
+    this.top.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth', inline: 'nearest' });
   }
 
   checkProfile() {
@@ -52,14 +52,14 @@ export class AppComponent implements OnInit {
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: token } })
       .then(function (response) {
         that.userDetails = response.data.data;
-        //console.log(that.userDetails);
-        if((that.userDetails.height != null || that.userDetails.weight != null) && (window.location.href.indexOf('/step') != -1)){
+        localStorage.setItem('user', JSON.stringify(that.userDetails));
+        if ((that.userDetails.height != null || that.userDetails.weight != null) && (window.location.href.indexOf('/step') != -1)) {
           window.location.href = '/';
           return;
         }
       })
       .catch(function (error) {
-        if(error.response.data.status == 404 && (window.location.href.indexOf('/step') == -1)){
+        if (error.response.data.status == 404 && (window.location.href.indexOf('/step') == -1)) {
           window.location.href = '/step';
         }
         console.log(error);
@@ -68,14 +68,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     var token = this.localStorage.getItem('token');
+    var user = this.localStorage.getItem('user');
+    var listCart = localStorage.getItem('listCart');
     if (token == null || token == undefined) {
       this.isLogin = false;
     } else {
-      this.checkProfile();
+      if (user == null || user == undefined) {
+        this.checkProfile();
+      };
       this.isLogin = true;
     }
-
-    var listCart = localStorage.getItem('listCart');
     if (listCart == null || listCart == undefined || listCart == '') {
       AppComponent.totalCart = 0;
     } else {

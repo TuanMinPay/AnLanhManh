@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(food) {
-    this.cart.addToCart(food);
+    this.cart.addToCart(food, 'foodId');
     //console.log(food);
   }
 
