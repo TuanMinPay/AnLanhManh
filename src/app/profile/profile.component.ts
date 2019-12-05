@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
 
   userAddress: any;
 
-  addressId: any = [];
+  listAddress: any = [];
 
   myInfo: any;
 
@@ -98,34 +98,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  public getAddress() {
-    const that = this;
-    axios.get(`${environment.api_url}/api/address`, {headers : { Authorization : that.token}})
-    .then(function (response){
-      //console.log(response);
-      that.addressId = response.data.data[0].id;
-      //console.log(that.addressId)
-      axios.get(`${environment.api_url}/api/address/${that.addressId}`, {headers : { Authorization : that.token}})
-      .then(function (response){
-        that.userAddress = response.data.data;
-        console.log("Get address success!");
-      })
-      .catch(function (error){
-        console.log(error);
-      })
-    })
-    .catch(function (error){
-      console.log(error);
-    })
-  }
-
   getLatestProfile(){
     const that = this;
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
     .then(function (response){
       //console.log(response.data.data);
       that.userDetails = response.data.data;
-      that.getAddress();
     })
     .catch(function (error){
       console.log(error);
@@ -161,42 +139,6 @@ export class ProfileComponent implements OnInit {
         });
     }
 
-  }
-
-  hideFormEdit(){
-    this.editAddress = false;
-  }
-
-  showFormEdit(){
-    this.editAddress = true;
-  }
-
-  saveAddress() {
-    const that = this;
-    that.address = {
-      city: that.city.nativeElement.value.split('@alm;')[1],
-      quanhuyen: that.quanhuyen.nativeElement.value.split('@alm;')[1],
-      phuongxa: that.xaphuong.nativeElement.value.split('@alm;')[1],
-      phone: that.address.phone,
-      addressDetails: that.address.addressDetails
-    }
-    if(that.address.city == null || that.address.city == undefined || that.address.quanhuyen == null || that.address.quanhuyen == undefined || that.address.phuongxa == null || that.address.phuongxa == undefined || that.address.addressDetails == null){
-      that.textError = "Vui lòng nhập đầy đủ thông tin."
-    }
-    else{
-        that.addressPost = {
-          title : `Thành Phố: ${that.address.city}, Quận/Huyện: ${that.address.quanhuyen}, Phường/Xã: ${that.address.phuongxa}, Địa chỉ cụ thể : ${that.address.addressDetails}, Số Điện Thoại: ${that.address.phone}`
-        }
-        axios.put(`${environment.api_url}/api/address/${that.addressId}`, that.addressPost, { headers: { Authorization: that.token } })
-        .then(function (response){
-          console.log("save address success!");
-          window.location.href = '/profile';
-        })
-        .catch(function (error){
-          console.log(error);
-        })
-      that.textError = null;
-    }
   }
 
   getProductOrder(){
