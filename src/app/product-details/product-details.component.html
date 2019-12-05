@@ -67,23 +67,49 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <label class="title-main">Hàm lượng dinh dưỡng trong món ăn</label>
-                <div class="box_content">
-                    <p>Chất bột đường (carbonhydrates): {{dataFood?.carbonhydrates}} g</p>
-                    <p>Chất đạm (protein): {{dataFood?.protein}} g</p>
-                    <p>Chất béo (lipid): {{dataFood?.lipid}} g</p>
-                    <p>Chất xơ (cellulose): {{dataFood?.xenluloza}} g</p>
-                    <p>Canxi: {{dataFood?.canxi}} mg</p>
-                    <p>Sắt: {{dataFood?.iron}} mg</p>
-                    <p>Kẽm: {{dataFood?.zinc}} mg</p>
-                    <p>vitamin A: {{dataFood?.vitaminA}} µg</p>
-                    <p>Vitamin B: {{dataFood?.vitaminC}} µg</p>
-                    <p>vitaminC: {{dataFood?.vitaminC}} µg</p>
-                    <p>vitaminD: {{dataFood?.vitaminD}} µg</p>
-                    <p>vitaminE: {{dataFood?.vitaminE}} µg</p>
-                    <p>Calories: {{dataFood?.calorie}} calo</p>
-                    <p>Trọng lượng: {{dataFood?.weight}} g</p>
-                </div>
+                <div class="myaccount-table table-responsive text-center">
+                    <br>
+                    <br>
+                        <h3>Hàm lượng dinh dưỡng trong món ăn</h3>
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Chất bột đường (carbonhydrates)</th>
+                                    <th>Chất đạm (protein)</th>
+                                    <th>Độ béo (lipid)</th>
+                                    <th>Chất xơ (cellulose)</th>
+                                    <th>Canxi</th>
+                                    <th>Sắt</th>
+                                    <th>Kẽm</th>
+                                    <th>vitamin A</th>
+                                    <th>Vitamin B</th>
+                                    <th>Vitamin C</th>
+                                    <th>Vitamin D</th>
+                                    <th>Vitamin E</th>
+                                    <th>Caloriesẽm</th>
+                                    <th>Trọng lượng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{dataFood?.carbonhydrates}} g</td>
+                                    <td>{{dataFood?.protein}} g</td>
+                                    <td>{{dataFood?.lipid}} g</td>
+                                    <td>{{dataFood?.xenluloza}} g</td>
+                                    <td>{{dataFood?.canxi}} g</td>
+                                    <td>{{dataFood?.iron}} g</td>
+                                    <td>{{dataFood?.zinc}} g</td>
+                                    <td>{{dataFood?.vitaminA}} g</td>
+                                    <td>{{dataFood?.vitaminB}} g</td>
+                                    <td>{{dataFood?.vitaminC}} g</td>
+                                    <td>{{dataFood?.vitaminD}} g</td>
+                                    <td>{{dataFood?.vitaminE}} g</td>
+                                    <td>{{dataFood?.calorie}} calo</td>
+                                    <td>{{dataFood?.weight}} g</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
             <div class="col-lg-12">
                 <label class="title-main">Đánh Giá</label>
@@ -127,7 +153,7 @@
                             </h4>
                         </div>
                         <div class="price-box">
-                            <span class="regular-price">{{item?.price}} ₫</span>
+                            <span class="regular-price">{{util.formatPrice(item?.price)}}</span>
                             <span class="old-price"><del></del></span>
                         </div>
                         <div class="product-action-link">

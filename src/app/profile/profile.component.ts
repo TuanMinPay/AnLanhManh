@@ -3,6 +3,9 @@ import axios from 'axios';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
 import { AppComponent } from '../app.component';
+import { UtilService } from '../services/util.service';
+import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,14 +14,22 @@ import { AppComponent } from '../app.component';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any ) {
+  constructor(@Inject(WINDOW) private window: Window,
+    @Inject(LOCAL_STORAGE) private localStorage: any,
+    public util: UtilService,
+    private cart: CartService,
+    private route: ActivatedRoute) {
   }
 
   token: any = this.localStorage.getItem('token');
 
-  listProductOrder: any [];
+  listProductOrder: any[];
 
-  editAddress:boolean = false;
+  stt = 0;
+
+  isShowForm: boolean = false;
+
+  editAddress: boolean = false;
 
   userDetails: any;
 
@@ -51,7 +62,7 @@ export class ProfileComponent implements OnInit {
   }
 
   addressPost: any = {
-    title : null
+    title: null
   }
 
   selectTinhThanhPho(alm) {
@@ -98,16 +109,16 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getLatestProfile(){
+  getLatestProfile() {
     const that = this;
     axios.get(`${environment.api_url}/api/user-profile/latest`, { headers: { Authorization: that.token } })
-    .then(function (response){
-      //console.log(response.data.data);
-      that.userDetails = response.data.data;
-    })
-    .catch(function (error){
-      console.log(error);
-    })
+      .then(function (response) {
+        //console.log(response.data.data);
+        that.userDetails = response.data.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   public changePassword: Function = async (oldPassword: any, password: any, confirmPassword: any) => {
@@ -141,21 +152,72 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  getProductOrder(){
-    // const that = this;
-    // that.listProductOrder = JSON.parse(localStorage.getItem('listProductOrder'));
-    // console.log(that.listProductOrder);
+  reOrder(listPrd: { map: (arg0: (prd: any) => void) => void; }) {
+    listPrd.map((prd) => {
+      if (prd.food) {
+        this.cart.addToCart(prd.food, 'foodId');
+        return;
+      }
+      if (prd.combo) {
+        this.cart.addToCart(prd.combo, 'comboId');
+      }
+    });
+    
+  }
+
+  detailModal: any = null;
+
+  openDetail(dataDetail) {
+    this.detailModal = dataDetail;
+    localStorage.setItem('detailModal', JSON.stringify(this.detailModal));
+  }
+
+  getListProductOrder() {
+    const that = this;
+    axios.get(`${environment.api_url}/api/order`, { headers: { Authorization: that.token } })
+      .then(function (response) {
+        console.log(response);
+        that.listProductOrder = response.data.data;
+        console.log(that.listProductOrder);
+        if (that.listProductOrder == null || that.listProductOrder == undefined) {
+          that.isShowForm = false;
+        }
+        that.isShowForm = true;
+        that.stt = that.stt + 1;
+      })
+      .catch(function (error) {
+        console.log(error);
+
+      })
+  }
+
+  getStatus(stt) {
+    switch (stt) {
+      case 1:
+        return "<span class='text-warning'>Chờ xác nhận</span>";
+      case 2:
+        return "<span class='text-success'>Đã xác nhận</span>";
+      case 3:
+        return "<span class='text-warning'>Đang giao</span>";
+      case 4:
+        return "<span class='text-success'>Giao thành công</span>";
+      case 5:
+        return "<span class='text-danger'>Giao thất bại</span>";
+      default:
+        break;
+    }
   }
 
   logout() {
     var token = this.localStorage.getItem('token');
     if (token != null || token != undefined) {
       this.localStorage.clear();
+      this.window.location.href  = '/login';
     }
   }
 
   ngOnInit() {
-    if(this.token == null || this.token == undefined){
+    if (this.token == null || this.token == undefined) {
       window.location.href = '/login'
     }
     const that = this;
@@ -167,6 +229,6 @@ export class ProfileComponent implements OnInit {
       // handle error
       console.log(error);
     });
-    this.getProductOrder();
+    this.getListProductOrder();
   }
 }
