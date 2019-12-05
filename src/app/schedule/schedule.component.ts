@@ -21,7 +21,7 @@ export class ScheduleComponent implements OnInit {
   id: any;
   public loadSchedule: Function = () => {
     const that = this;
-    axios.get(`http://localhost:9000/api/suggest/schedule`, { headers: { Authorization: that.token } })
+    axios.get(`${environment.api_url}/api/suggest/schedule`, { headers: { Authorization: that.token } })
       .then(function (response) {
         if(response.data.status == 200){
         that.dataSchedule = response.data.data;
