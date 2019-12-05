@@ -15,7 +15,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   dataSchedule : any;
-
+  id: any;
   loadSchedule() {
     const that = this;
     axios.get(`${environment.api_url}/api/schedule/`)
