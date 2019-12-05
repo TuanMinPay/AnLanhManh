@@ -168,6 +168,8 @@ export class OrderComponent implements OnInit {
           console.log(obj);
         });
         console.log("save product order success!");
+        that.localStorage.removeItem('listCart');
+
       }).catch(function (error) {
         console.log(error);
       });
@@ -183,7 +185,9 @@ export class OrderComponent implements OnInit {
     that.addressPost = {
       title: that.userAddress
     }
-    console.log(that.addressPost.title);
+    console.log(that.addressPost.title)
+    this.localStorage.removeItem('listCart');
+    this.window.location.href = this.window.location.href;
   }
   ngOnInit() {
     this.getAddress();
