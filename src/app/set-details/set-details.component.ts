@@ -36,6 +36,7 @@ export class SetDetailsComponent implements OnInit {
   id: number;
   public getSet: Function = async => {
     this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
+    console.log(this.id);
     const that = this;
     axios.get(`${that.API_COMBO}${that.id}`).then(function (response) {
       that.dataCombo = response.data.data;
