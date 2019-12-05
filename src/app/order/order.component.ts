@@ -4,6 +4,7 @@ import { AppComponent } from "../app.component"
 import { UtilService } from '../services/util.service';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
+import { withLatestFrom } from 'rxjs/operators';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Component({
@@ -24,6 +25,14 @@ export class OrderComponent implements OnInit {
   listProductOrder: any = null;
 
   textError: any = null;
+
+  token = this.localStorage.getItem('token');
+
+  addressId: any = [];
+
+  userAddress: any;
+
+  isShowForm = false;
 
   getTotalPriceCart() {
     return this.util.getTotalCart(this.listCart.products);
@@ -88,6 +97,28 @@ export class OrderComponent implements OnInit {
     });
   }
 
+  public getAddress() {
+    const that = this;
+    axios.get(`${environment.api_url}/api/address`, { headers: { Authorization: that.token } })
+      .then(function (response) {
+        //console.log(response);
+        that.addressId = response.data.data[0].id;
+        //console.log(that.addressId)
+        axios.get(`${environment.api_url}/api/address/${that.addressId}`, { headers: { Authorization: that.token } })
+          .then(function (response) {
+            that.userAddress = response.data.data;
+            console.log("Get address success!");
+            that.isShowForm = false;
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      })
+      .catch(function (error) {
+        console.log(error);
+        that.isShowForm = true;
+      })
+  }
   @ViewChild('quanhuyen', { static: false }) quanhuyen: ElementRef;
   @ViewChild('xaphuong', { static: false }) xaphuong: ElementRef;
   @ViewChild('city', { static: false }) city: ElementRef;
@@ -145,7 +176,17 @@ export class OrderComponent implements OnInit {
       that.textError = "Vui lòng nhập đầy đủ thông tin trước khi thanh toán.";
     }
   }
+
+  saveAddress1() {
+    this.getAddress();
+    const that = this;
+    that.addressPost = {
+      title: that.userAddress
+    }
+    console.log(that.addressPost.title);
+  }
   ngOnInit() {
+    this.getAddress();
     const that = this;
     this.getProduct();
     var token = this.localStorage.getItem('token');

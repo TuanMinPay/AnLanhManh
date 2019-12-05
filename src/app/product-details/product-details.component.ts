@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     this.currentTab = tab;
   }
 
+  foodInCate:any = [];
   id: number;
 
   addToCart(product) {
@@ -46,7 +47,16 @@ export class ProductDetailsComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/food/${this.id}`).then(function (response: any) {
       if (response.data.status == 200) {
+        console.log(response.data.data)
         that.dataFood = response.data.data;
+        axios.get(`${environment.api_url}/api/food/category/${that.dataFood.categories[0].id}`)
+        .then(function (response){
+          that.foodInCate = response.data.data;
+          console.log(response);
+        })
+        .catch(function (error){
+          console.log(error);
+        })
       }
     }).catch(function (error: any) {
       // handle error

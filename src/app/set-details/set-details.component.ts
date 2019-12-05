@@ -20,6 +20,8 @@ export class SetDetailsComponent implements OnInit {
 
   dataCombo: any;
 
+  dataCombo2: any;
+
   quickViewData: any = null;
 
   openQuickView(food: any) {
@@ -45,10 +47,23 @@ export class SetDetailsComponent implements OnInit {
     });
   }
 
+  public getCombo(){
+    const that = this;
+    axios.get(`${environment.api_url}/api/combo`)
+    .then(function (response){
+      that.dataCombo2 = response.data.data;
+      console.log(that.dataCombo2);
+    })
+    .catch(function (error){
+      console.log(error);
+    })
+  }
+
   productImage: any;
 
   ngOnInit() {
     this.getSet();
+    this.getCombo();
   }
 
   ngAfterViewInit() {
