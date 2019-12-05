@@ -28,9 +28,9 @@ export class ScheduleDetailsComponent implements OnInit {
   dataGet: any;
   id: number;
   loadScheduleDetail(){
-    //this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
+    this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
     const that = this;
-    axios.get(`${environment.api_url}/api/schedule-combo/schedule/1`)
+    axios.get(`${environment.api_url}/api/schedule-combo/schedule/${this.id}`)
       .then(function (response) {
         if(response.data.status == 200){
         that.dataSchedule = response.data.data;

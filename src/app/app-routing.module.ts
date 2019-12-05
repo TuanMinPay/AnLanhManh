@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'step', component: StepComponent },
   { path: 'order', component: OrderComponent},
   { path: 'schedule', component: ScheduleComponent},
-  { path: 'schedule-details', component: ScheduleDetailsComponent},
+  { path: 'schedule-details/:id', component: ScheduleDetailsComponent},
   { path: 'payment', component: PaymentComponent },
   { path: 'shipping', component: ShippingComponent },
   { path: '**', component: HomeComponent, redirectTo: '' }
