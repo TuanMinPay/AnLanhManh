@@ -36,10 +36,6 @@
 
                                 <a href="#changepassword" data-toggle="tab"><i class="fa fa-key"></i>
                                     Thay đổi mật khẩu</a>
-                                <a href="#payment-method" data-toggle="tab"><i class="fa fa-credit-card"></i>
-                                    Thanh toán</a>
-                                <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i>
-                                    Địa chỉ</a>
                                     <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                         Lịch sử mua hàng</a>
 
@@ -116,85 +112,6 @@
                                         <h3>Payment Method</h3>
                                         <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
                                     </div>
-                                </div>
-                                <!-- Single Tab Content End -->
-
-                                <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade" id="address-edit" role="tabpanel">
-                                    <div class="myaccount-content">
-                                        <h3>Địa chỉ thanh toán</h3>
-                                        <address>
-                                            <p><strong>{{userDetails?.username}}</strong></p>
-                                            <p><br>
-                                                {{userAddress?.title}}</p>
-                                            <p>{{userDetails?.phone}}</p>
-                                            <span *ngIf="userAddress?.title == null">Bạn chưa có thông tin về địa chỉ thanh toán. hãy nhập nó khi bạn thanh toán và sau đó bạn có thể xem chi tiết và sửa nó tại đây.</span>
-                                        </address>
-                                        <div (click)="showFormEdit()">
-                                            <a *ngIf="userAddress?.title != null" class="btn btn__bg btn__sqr"><i class="fa fa-edit"></i>Edit Address</a>
-                                        </div>
-                                        <div *ngIf="editAddress != false" class="billing-form-wrap">
-                                            <form style="margin-top: 10px">
-                                                <div class="single-input-item">
-                                                    <label for="city" class="required">Thành phố</label>
-                                                    <select name="city" #city class="nice-select" id="city"
-                                                        (change)="selectTinhThanhPho(city.value)">
-                                                        <option *ngFor="let item of dataTinhThanhPho"
-                                                            value="{{item.code}}@alm;{{item.name}}">{{item.name}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="single-input-item">
-                                                    <label for="street-address"
-                                                        class="required mt-20">Quận/Huyện</label>
-                                                    <select name="quanhuyen" #quanhuyen class="nice-select"
-                                                        id="street-address" (change)="selectQuanHuyen(quanhuyen.value)">
-                                                        <option *ngFor="let item of dataQuanHuyen"
-                                                            value="{{item.code}}@alm;{{item.name}}">{{item.name}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="single-input-item">
-                                                    <label for="street-address" class="required mt-20">Phường/Xã</label>
-                                                    <select name="quanhuyen" #xaphuong class="nice-select"
-                                                        id="street-address">
-                                                        <option *ngFor="let item of dataPhuongXa"
-                                                            value="{{item.code}}@alm;{{item.name}}">{{item.name}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="single-input-item">
-                                                    <label style="margin-top: 10px" for="phone">Địa chỉ cụ thể</label>
-                                                    <input type="text" [(ngModel)]="address.addressDetails"
-                                                        name="addressDetails" placeholder="Đạ chỉ cụ thể của bạn" />
-                                                </div>
-
-                                                <div class="single-input-item">
-                                                    <label for="phone">Điện thoại</label>
-                                                    <input type="text" [(ngModel)]="address.phone" name="phone"
-                                                        id="phone"
-                                                        placeholder="Vui lòng xác minh lại số điện thoại của bạn" />
-                                                </div>
-                                                <div class="error">
-                                                    <span *ngIf="textError != null">{{textError}}</span>
-                                                </div>
-                                                <div class="single-input-item">
-                                                    <div class="row">
-                                                        <div class="container">
-                                                            <button type="button" class="btn btn__bg btn__sqr"
-                                                                (click)="saveAddress()">Lưu thông tin</button>
-                                                            <button style="margin-left: 45%" type="button" class="btn btn__bg btn__sqr"
-                                                                (click)="hideFormEdit()">Huỷ</button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
                                 </div>
                                 <!-- Single Tab Content End -->
 
