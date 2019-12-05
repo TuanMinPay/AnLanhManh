@@ -33,10 +33,9 @@ export class PaymentComponent implements OnInit {
     } else {
       axios.get(`${environment.api_url}/api/payment/return?${paramerers}`, { headers: { Authorization: this.token } }).then((response) => {
         if (response.data.status == 200) {
-          console.log("Success");
+          that.orderId = response.data.data.id;
           that.paymentSuccess = true;
         } else {
-          console.log("Error");
           that.paymentSuccess = false;
         }
         that.isLoading = false;
