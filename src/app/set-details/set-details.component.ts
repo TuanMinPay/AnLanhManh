@@ -36,7 +36,6 @@ export class SetDetailsComponent implements OnInit {
   id: number;
   public getSet: Function = async => {
     this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
-    console.log(this.id);
     const that = this;
     axios.get(`${that.API_COMBO}${that.id}`).then(function (response) {
       that.dataCombo = response.data.data;
@@ -52,10 +51,9 @@ export class SetDetailsComponent implements OnInit {
 
   public getCombo(){
     const that = this;
-    axios.get(`${environment.api_url}/api/combo`)
+    axios.get(`${environment.api_url}/api/combo/list?limit=5`)
     .then(function (response){
       that.dataCombo2 = response.data.data;
-      console.log(that.dataCombo2);
     })
     .catch(function (error){
       console.log(error);

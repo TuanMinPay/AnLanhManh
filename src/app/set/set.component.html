@@ -31,20 +31,20 @@
                             <h3>Danh mục</h3>
                         </div>
                         <div class="sidebar-body">
-                                <ul class="sidebar-category">
-                                    <li *ngFor="let cate of dataCate">
-                                        <a href="javascript:void(0)"
-                                            (click)="chooseCategoryParent(cate.id)">{{cate?.name}}</a>
-                                        <div *ngIf="childCategory == cate.id">
-                                            <ul class="children">
-                                                <li *ngFor="let cate2 of dataCate2">
-                                                    <a href="javascript:void(0)">{{cate2?.name}}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="sidebar-category">
+                                <li *ngFor="let cate of dataCate">
+                                    <a href="javascript:void(0)"
+                                        (click)="chooseCategoryParent(cate.id)">{{cate?.name}}</a>
+                                    <div *ngIf="childCategory == cate.id">
+                                        <ul class="children">
+                                            <li *ngFor="let cate2 of dataCate2">
+                                                <a href="javascript:void(0)">{{cate2?.name}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <!-- single sidebar end -->
                     <!-- single sidebar start -->
@@ -63,7 +63,7 @@
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="shop-product-wrapper">
                     <!-- shop product top wrap start -->
-                    
+
                     <!-- shop product top wrap start -->
 
                     <!-- product item list start -->
@@ -85,7 +85,8 @@
                                         <span><i class="ion-android-star"></i></span>
                                     </div>
                                     <div class="product-name">
-                                        <h4><a href="/c/{{util.generateURL(combo.name, combo.id)}}">{{combo.name}}</a></h4>
+                                        <h4><a href="/c/{{util.generateURL(combo.name, combo.id)}}">{{combo.name}}</a>
+                                        </h4>
                                     </div>
                                     <div class="price-box">
                                         <span class="regular-price">{{util.formatPrice(combo.price)}}</span>
@@ -95,21 +96,25 @@
                                     </div>
                                     <p>{{combo.description}}</p>
                                     <div class="action-link">
-                                        <a href="javascript:void(0)" (click)="addToCart(combo)" data-toggle="tooltip" title="Add to cart" class="add-to-cart">Thêm vào giỏ hàng</a>
-                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i class="ion-ios-shuffle"></i></a>
+                                        <a href="javascript:void(0)" (click)="addToCart(combo)" data-toggle="tooltip"
+                                            title="Add to cart" class="add-to-cart">Thêm vào giỏ hàng</a>
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
+                                                class="ion-android-favorite-outline"></i></a>
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
+                                                class="ion-ios-shuffle"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <!-- product list item start -->
                         </div>
-                        
+
                     </div>
                     <!-- product item list end -->
 
                     <!-- start pagination area -->
-                    <div class="paginatoin-area text-center mt-30">
-                        <button (click)="loadMoreData()">Xem Thêm</button>
+                    <div class="paginatoin-area text-center mt-30"
+                        *ngIf="paginationCurrentPage != null && totalPage != 1 && paginationCurrentPage != totalPage">
+                        <button (click)="loadMoreData(paginationCurrentPage + 1)">Xem Thêm</button>
                     </div>
                     <!-- end pagination area -->
                 </div>

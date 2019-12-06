@@ -70,56 +70,56 @@
                 <div class="myaccount-table table-responsive text-center">
                     <br>
                     <br>
-                        <h3>Hàm lượng dinh dưỡng trong món ăn</h3>
-                        <table class="table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Chất bột đường (carbonhydrates)</th>
-                                    <th>Chất đạm (protein)</th>
-                                    <th>Độ béo (lipid)</th>
-                                    <th>Chất xơ (cellulose)</th>
-                                    <th>Canxi</th>
-                                    <th>Sắt</th>
-                                    <th>Kẽm</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{dataFood?.carbonhydrates}} g</td>
-                                    <td>{{dataFood?.protein}} g</td>
-                                    <td>{{dataFood?.lipid}} g</td>
-                                    <td>{{dataFood?.xenluloza}} g</td>
-                                    <td>{{dataFood?.canxi}} g</td>
-                                    <td>{{dataFood?.iron}} g</td>
-                                    <td>{{dataFood?.zinc}} g</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>vitamin A</th>
-                                    <th>Vitamin B</th>
-                                    <th>Vitamin C</th>
-                                    <th>Vitamin D</th>
-                                    <th>Vitamin E</th>
-                                    <th>Caloriesẽm</th>
-                                    <th>Trọng lượng</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{dataFood?.vitaminA}} g</td>
-                                    <td>{{dataFood?.vitaminB}} g</td>
-                                    <td>{{dataFood?.vitaminC}} g</td>
-                                    <td>{{dataFood?.vitaminD}} g</td>
-                                    <td>{{dataFood?.vitaminE}} g</td>
-                                    <td>{{dataFood?.calorie}} calo</td>
-                                    <td>{{dataFood?.weight}} g</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h3>Hàm lượng dinh dưỡng trong món ăn</h3>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Chất bột đường (carbonhydrates)</th>
+                                <th>Chất đạm (protein)</th>
+                                <th>Độ béo (lipid)</th>
+                                <th>Chất xơ (cellulose)</th>
+                                <th>Canxi</th>
+                                <th>Sắt</th>
+                                <th>Kẽm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{dataFood?.carbonhydrates}} g</td>
+                                <td>{{dataFood?.protein}} g</td>
+                                <td>{{dataFood?.lipid}} g</td>
+                                <td>{{dataFood?.xenluloza}} g</td>
+                                <td>{{dataFood?.canxi}} g</td>
+                                <td>{{dataFood?.iron}} g</td>
+                                <td>{{dataFood?.zinc}} g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>vitamin A</th>
+                                <th>Vitamin B</th>
+                                <th>Vitamin C</th>
+                                <th>Vitamin D</th>
+                                <th>Vitamin E</th>
+                                <th>Caloriesẽm</th>
+                                <th>Trọng lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{dataFood?.vitaminA}} g</td>
+                                <td>{{dataFood?.vitaminB}} g</td>
+                                <td>{{dataFood?.vitaminC}} g</td>
+                                <td>{{dataFood?.vitaminD}} g</td>
+                                <td>{{dataFood?.vitaminE}} g</td>
+                                <td>{{dataFood?.calorie}} calo</td>
+                                <td>{{dataFood?.weight}} g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col-lg-12">
                 <label class="title-main">Đánh Giá</label>
@@ -151,8 +151,8 @@
                             <img [src]="item?.image" alt="">
                         </a>
                         <div class="quick-view-link">
-                            <a href="/p/{{util.generateURL(item.name, item.id)}}" data-toggle="modal" data-target="#quick_view"> <span
-                                    data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
+                            <a href="/p/{{util.generateURL(item.name, item.id)}}"> <span data-toggle="tooltip"
+                                    title="Quick view"><i class="ion-ios-eye-outline"></i></span>
                             </a>
                         </div>
                     </div>
@@ -169,8 +169,8 @@
                         <div class="product-action-link">
                             <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
                                     class="ion-android-favorite-outline"></i></a>
-                            <a href="javascript:void(0)" (click)="addToCart(item)" data-toggle="tooltip" title="Add to cart"><i
-                                    class="ion-bag"></i></a>
+                            <a href="javascript:void(0)" (click)="addToCart(item)" data-toggle="tooltip"
+                                title="Add to cart"><i class="ion-bag"></i></a>
                             <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
                                     class="ion-ios-shuffle"></i></a>
                         </div>

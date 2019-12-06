@@ -41,26 +41,26 @@ export class AppComponent implements OnInit {
     }
   }
 
-  getFood(){
+  getFood() {
     const that = this;
-    axios.get(`${environment.api_url}/api/food/list?page=1`)
-    .then(function (response){
-      that.dataFood = response.data.data;
-    })
-    .catch(function (error){
-      console.log(error);
-    })
+    axios.get(`${environment.api_url}/api/food/list?limit=3`)
+      .then(function (response) {
+        that.dataFood = response.data.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
-  getComboFood(){
+  getComboFood() {
     const that = this;
-    axios.get(`${environment.api_url}/api/combo/`)
-    .then(function (response){
-      that.dataCombo = response.data.data;
-    })
-    .catch(function (error){
-      console.log(error);
-    })
+    axios.get(`${environment.api_url}/api/combo/list?limit=3`)
+      .then(function (response) {
+        that.dataCombo = response.data.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   getTotalCart() {

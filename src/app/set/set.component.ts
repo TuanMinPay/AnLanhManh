@@ -13,7 +13,7 @@ import { CartService } from '../services/cart.service';
 })
 
 export class SetComponent implements OnInit {
-  
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -54,35 +54,30 @@ export class SetComponent implements OnInit {
     this.cart.addToCart(c, 'comboId');
   }
 
-  loadMoreData() {
-    alert("Hi");
+  paginationCurrentPage: any = null;
+  totalPage: any = null;
+
+  loadMoreData(page) {
+    const that = this;
+    axios.get(`${environment.api_url}/api/combo/list?page=${page}`).then(function (response) {
+      if (response.data.status == 200) {
+        var newArr = [...that.dataCombo, ...response.data.data];
+        that.dataCombo = newArr;
+        that.totalPage = response.data.restPagination.totalPages;
+        that.paginationCurrentPage = response.data.restPagination.page;
+      }
+    }).catch(function (error: any) {
+      // handle error
+      console.log(error);
+    });
   }
 
   public loadCombo(page: number) {
     const that = this;
-    axios.get(`${environment.api_url}/api/combo?page=${page}`).then(function (response) {
-      if (response.data.status = 200) {
-        that.dataCombo = response.data.data;
-        // that.pager = response.data.restPagination;
-        // that.pageOfItems = Math.ceil(response.data.restPagination.totalItems / response.data.restPagination.limit);
-        // if (that.pageOfItems <= 10) {
-        //   that.startPage = 1;
-        //   that.endPage = that.pageOfItems;
-        // } else {
-        //   if (that.currentPage <= 6) {
-        //     that.startPage = 1;
-        //     that.endPage = 10;
-        //   } else if (that.currentPage + 4 >= that.pageOfItems) {
-        //     that.startPage = that.pageOfItems - 9;
-        //     that.endPage = that.pageOfItems;
-        //   } else {
-        //     that.startPage = that.currentPage - 5;
-        //     that.endPage = that.currentPage + 4;
-        //   }
-        // }
-        // that.pages = _.range(that.startPage, that.endPage + 1);
-      }
-      console.log(response.data.data);
+    axios.get(`${environment.api_url}/api/combo/list?page=${page}`).then(function (response) {
+      that.dataCombo = response.data.data;
+      that.totalPage = response.data.restPagination.totalPages;
+      that.paginationCurrentPage = response.data.restPagination.page;
     }).catch(function (error) {
       // handle error
       console.log(error);
@@ -98,7 +93,7 @@ export class SetComponent implements OnInit {
     }
     this.currentPage = this.page;
     this.loadCombo(this.page);
-    
+
     this.loadCategory(this.id);
     this.chooseCategoryParent(this.id);
   }

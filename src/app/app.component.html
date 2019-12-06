@@ -156,7 +156,7 @@
               </div>
               <div class="footer-widget-body">
                 <ul class="category-list">
-                  <li *ngFor="let item of dataFood | slice:8:11">
+                  <li *ngFor="let item of dataFood">
                     <div class="single-item single-item__footer-category">
                       <div class="product-thumb">
                         <a href="/p/{{util.generateURL(item.name, item.id)}}">
@@ -183,11 +183,11 @@
           <div class="col-lg-3 col-md-6">
             <div class="footer-widget">
               <div class="footer-widget-title">
-                <h4>Combo Đồ Ăn Mới</h4>
+                <h4>Set Đồ Ăn Mới</h4>
               </div>
               <div class="footer-widget-body">
                 <ul class="category-list">
-                  <li *ngFor="let combo of dataCombo | slice:3:6">
+                  <li *ngFor="let combo of dataCombo">
                     <div class="single-item single-item__footer-category">
                       <div class="product-thumb">
                         <a href="/p/{{util.generateURL(combo.name, combo.id)}}">

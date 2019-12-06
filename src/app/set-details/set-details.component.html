@@ -187,19 +187,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
-                    <h2>Combo Liên Quan</h2>
+                    <h2>Set Đồ Ăn Cho Bạn</h2>
                 </div>
             </div>
         </div>
         <div class="row related-product-active slick-arrow-style">
-            <div *ngFor="let item of dataCombo2 | slice:3:8" class="col">
+            <div *ngFor="let item of dataCombo2" class="col">
                 <div class="product-item mb-50">
                     <div class="product-thumb">
                         <a href="/c/{{util.generateURL(item?.name, item?.id)}}">
                             <img [src]="item?.image" alt="">
                         </a>
                         <div class="quick-view-link">
-                            <a href="/c/{{util.generateURL(item.name, item.id)}}" data-toggle="modal" data-target="#quick_view"> <span
+                            <a href="/c/{{util.generateURL(item.name, item.id)}}"> <span
                                     data-toggle="tooltip" title="Quick view"><i class="ion-ios-eye-outline"></i></span>
                             </a>
                         </div>
