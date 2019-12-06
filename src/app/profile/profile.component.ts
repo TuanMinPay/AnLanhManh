@@ -212,11 +212,8 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-    var token = this.localStorage.getItem('token');
-    if (token != null || token != undefined) {
       this.localStorage.clear();
       this.window.location.href  = '/login';
-    }
   }
 
   ngOnInit() {
