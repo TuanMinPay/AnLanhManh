@@ -84,7 +84,7 @@
                   </ul>
                 </li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
-                  [routerLink]="['schedule']">Lịch trình ăn uống</a></li>
+                    [routerLink]="['schedule']" *ngIf="isLogin">Lịch trình ăn uống</a></li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
                     [routerLink]="['about']">Về Chúng Tôi</a></li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
@@ -190,14 +190,14 @@
                   <li *ngFor="let combo of dataCombo">
                     <div class="single-item single-item__footer-category">
                       <div class="product-thumb">
-                        <a href="/p/{{util.generateURL(combo.name, combo.id)}}">
+                        <a href="/c/{{util.generateURL(combo.name, combo.id)}}">
                           <img [src]="combo?.image" alt="">
                         </a>
                       </div>
                       <div class="product-description">
                         <div class="product-name">
                           <h4 class="h5">
-                            <a href="/p/{{util.generateURL(combo.name, combo.id)}}">{{combo?.name}}</a>
+                            <a href="/c/{{util.generateURL(combo.name, combo.id)}}">{{combo?.name}}</a>
                           </h4>
                         </div>
                         <div class="price-box">
