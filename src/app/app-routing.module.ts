@@ -17,6 +17,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleDetailsComponent } from './schedule-details/schedule-details.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { AteComponent } from './ate/ate.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'schedule-details/:id', component: ScheduleDetailsComponent},
   { path: 'payment', component: PaymentComponent },
   { path: 'shipping', component: ShippingComponent },
+  { path: 'ate-form', component: AteComponent},
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 
