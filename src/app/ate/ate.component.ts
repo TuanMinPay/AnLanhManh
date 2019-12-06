@@ -13,6 +13,8 @@ export class AteComponent implements OnInit {
 
   listFood: any [];
 
+  textError: any = null;
+
   isShowForm = false;
 
   getFood(){

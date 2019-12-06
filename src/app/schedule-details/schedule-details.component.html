@@ -28,38 +28,42 @@
                         <table class="table table-bordered mb-0">
                             <tbody>
                                 <tr>
-                                    <td class="first-column">Ngày</td>
-                                    <td class="first-column">
+                                    <td class="first-column" width="20%">Ngày</td>
+                                    <td class="first-column" width="25%">
                                         <p class="title ">Sáng</p>
                                     </td>
-                                    <td class="first-column">
+                                    <td class="first-column" width="25%">
                                         <p class="title">Trưa</p>
                                     </td>
-                                    <td class="first-column">
-                                        <p  class="title">Tối</p>
+                                    <td class="first-column" width="25%">
+                                        <p class="title">Tối</p>
                                     </td>
-                                    <td class="first-column">
+                                    <td class="first-column" width="15%">
                                         <p>Thêm vào giỏ hàng</p>
                                     </td>
                                 </tr>
                                 <tr *ngFor="let schedule of dataGet">
-                                    <td   class="first-column"> Day {{schedule?.day}}</td>
+                                    <td class="first-column"> Day {{schedule?.day}}</td>
                                     <td *ngFor="let schedule2 of schedule.data" class="pro-stock">
-                                        <a href="/c/{{util.generateURL(schedule2.name, schedule2.id)}}">{{schedule2?.combo?.name}}</a>
+                                        <a href="/c/{{util.generateURL(schedule2?.combo.name, schedule2?.combo.id)}}"
+                                            target="_blank">{{schedule2?.combo?.name}}</a>
                                         <div>
-                                            <div class="product-large-slider img-zoom mb-20 slider-arrow-style slider-arrow-style__style-2">
+                                            <div
+                                                class="product-large-slider img-zoom mb-20 slider-arrow-style slider-arrow-style__style-2">
                                                 <div class="pro-large-img">
-                                                    <img src="{{schedule2.combo.image}}" alt="" />
+                                                    <a href="/c/{{util.generateURL(schedule2?.combo.name, schedule2?.combo.id)}}"
+                                                        target="_blank"><img src="{{schedule2.combo.image}}"
+                                                            alt="{{schedule2?.combo?.name}}" /></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="action-link mb-20">
-                                                <a href="javascript:void(0)" (click)="addToCart(food)" data-toggle="tooltip"
-                                                title="Add to cart"><i class="ion-bag"></i></a>
+                                            <a href="javascript:void(0)" (click)="addToCart(schedule.data)"
+                                                data-toggle="tooltip" title="Add to cart"><i class="ion-bag"></i></a>
                                         </div>
-                                        
+
                                     </td>
                                 </tr>
                             </tbody>

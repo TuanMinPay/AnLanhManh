@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { environment } from '../../environments/environment';
 import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
@@ -34,30 +34,28 @@ export class SetDetailsComponent implements OnInit {
   API_COMBO = `${environment.api_url}/api/combo/`;
 
   id: number;
-  public getSet: Function = async => {
+  getSet() {
     this.id = this.util.getIDfromURL(this.route.snapshot.params['id']);
     const that = this;
     axios.get(`${that.API_COMBO}${that.id}`).then(function (response) {
       that.dataCombo = response.data.data;
       that.productImage = response.data.data.image;
       that.listProduct = response.data.data.foods;
-      // console.log(that.dataCombo);
-      // console.log(that.listProduct);
     }).catch(function (error) {
       // handle error
       console.log(error);
     });
   }
 
-  public getCombo(){
+  public getCombo() {
     const that = this;
     axios.get(`${environment.api_url}/api/combo/list?limit=5`)
-    .then(function (response){
-      that.dataCombo2 = response.data.data;
-    })
-    .catch(function (error){
-      console.log(error);
-    })
+      .then(function (response) {
+        that.dataCombo2 = response.data.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   addToCart(combo) {
