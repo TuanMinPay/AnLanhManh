@@ -18,6 +18,12 @@ export class StepComponent implements OnInit {
   ) { }
   textError: any = null;
 
+  bmiIndex: any;
+
+  bodyStatus:any;
+
+  textStatus : any;
+
   API_PROFILE = `${environment.api_url}/api/user-profile/create`;
 
   API_Benhly = `${environment.api_url}/api/category/parent/5`;
@@ -115,6 +121,24 @@ export class StepComponent implements OnInit {
       if (this.data.bodyFat != null) {
         axios.post(that.API_PROFILE, that.data, { headers: { Authorization: that.token } }).then(function (response) {
           that.userDetails = response.data.data;
+          that.bmiIndex = that.userDetails.bmiIndex;
+          localStorage.setItem('bmi', that.userDetails.bmiIndex);
+          if(that.bmiIndex < 18.5){
+            that.bodyStatus = "Gầy";
+            that.textStatus = "Bạn nên ăn quá lượng calo tiêu thụ khoảng 500 calo để tăng cân!";
+          }else if(that.bmiIndex > 18.5 && that.bmiIndex < 23){
+            that.bodyStatus = "Bình thường";
+            that.textStatus = "Bạn nên giữ chế độ ăn uống bằng lượng calo chúng tôi đã tính toán giúp bạn để duy trì cân nặng này.";
+          }else if(that.bmiIndex > 23 && that.bmiIndex < 25){
+            that.bodyStatus = "Thừa cân";
+            that.textStatus = "Bạn nên uống khoảng 500ml nước khoảng 30 phút trước khi ăn và ăn ít đồ ăn có đường";
+          }else if(that.bmiIndex > 25 && that.bmiIndex < 30){
+            that.bodyStatus = "Béo phì cấp độ 1";
+            that.textStatus = "Bạn nên hạn chế ăn đồ ăn có nhiều tinh bột, đường, trái cây có nhiều đường,…Ăn đồ ăn chứa nhiều xơ và rau xanh và kết hợp với tập luyện thể thao.";
+          }else if(that.bmiIndex > 30){
+            that.bodyStatus = "Béo phì cấp độ 2";
+            that.textStatus = "Bạn nên hạn chế ăn đồ ăn có nhiều tinh bột, đường, trái cây có nhiều đường,…Ăn đồ ăn chứa nhiều xơ và rau xanh và kết hợp với tập luyện thể thao thường xuyên.";
+          }
           console.log(that.userDetails);
           axios.put(`${environment.api_url}/api/user-profile/${that.userDetails.id}/category`, that.arrBl, { headers: { Authorization: that.token } }).then(function (res) {
             that.currentStep = that.currentStep + 1;
@@ -137,6 +161,34 @@ export class StepComponent implements OnInit {
       return;
     } else if(this.currentStep != 3){
       this.currentStep = this.currentStep + 1;
+    }
+  }
+
+  getStatus(stt) {
+    if(stt < 18.5){
+      return "<span class='text-warning'>"+ this.bmiIndex +"</span>";
+    }else if(stt > 18.5 && stt < 23){
+      return "<span class='text-success'>"+ this.bmiIndex +"</span>";
+    }else if(stt > 23 && stt < 25){
+      return "<span class='text-warning'>"+ this.bmiIndex +"</span>";
+    }else if(stt > 25 && stt < 35){
+      return "<span class='text-danger'>"+ this.bmiIndex +"</span>";
+    }else if(stt > 30){
+      return "<span class='text-danger'>"+ this.bmiIndex +"</span>";
+    }
+  }
+
+  getStatus1(stt2){
+    if(stt2 = "Gầy"){
+      return "<span class='text-warning'>"+ this.bodyStatus +"</span>";
+    }else if(stt2 = "Bình thường"){
+      return "<span class='text-success'>"+ this.bodyStatus +"</span>";
+    }else if(stt2 = "Thừa cân"){
+      return "<span class='text-warning'>"+ this.bodyStatus +"</span>";
+    }else if(stt2 = "Béo phì cấp độ 1"){
+      return "<span class='text-danger'>"+ this.bodyStatus +"</span>";
+    }else if(stt2 = "Béo phì cấp độ 2"){
+      return "<span class='text-danger'>"+ this.bodyStatus +"</span>";
     }
   }
 
