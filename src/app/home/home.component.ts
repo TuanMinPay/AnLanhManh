@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
 
   userDetails: any;
 
+  dataCombo: any = [];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -68,9 +70,22 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getCombo(){
+    const that = this;
+    axios.get(`${environment.api_url}/api/combo`)
+    .then(function (response){
+      console.log(response);
+      that.dataCombo = response.data.data;
+    })
+    .catch(function (error){
+      console.log(error);
+    })
+  }
+
   
 
   ngOnInit() {
+    this.getCombo();
     this.page = this.route.snapshot.queryParamMap.get('page');
     if (this.page == null) {
       this.page = 1;
