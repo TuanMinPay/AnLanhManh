@@ -22,9 +22,14 @@ export class SearchComponent implements OnInit {
 
   listCombo: any;
 
+  textError:any = null;
+
+  isFood: boolean = false;
+
+  isCombo:boolean = false;
+
   addToCart(food, type) {
     this.cart.addToCart(food, type);
-    //console.log(food);
   }
 
   searchFood() {
@@ -33,6 +38,12 @@ export class SearchComponent implements OnInit {
       .then(function (response) {
         console.log(response);
         that.listFood = response.data.data;
+        if(that.listFood == null || that.listFood == '' || that.listFood.length == 0){
+          that.textError = "Không tìm thấy sản phẩm nào.";
+          that.isFood = true;
+        }else{
+          that.isFood = false;
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -45,6 +56,11 @@ export class SearchComponent implements OnInit {
       .then(function (response) {
         console.log(response);
         that.listCombo = response.data.data;
+        if(that.listCombo == null || that.listCombo == '' || that.listCombo.length == 0){
+            that.isCombo = true
+        }else{
+          that.isCombo = false;
+        }
       })
       .catch(function (error) {
         console.log(error);
