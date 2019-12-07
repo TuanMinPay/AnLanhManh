@@ -81,8 +81,9 @@
                                     Thay đổi mật khẩu</a>
                                 <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                     Lịch sử mua hàng</a>
-
-                                <a (click)="logout()"><i class="fa fa-sign-out"></i>Đăng
+                                <a href="#history" data-toggle="tab"><i class="fa fa-history"></i>
+                                        Lịch sử ăn uống</a>
+                                <a (click)="logout()" href="/login"><i class="fa fa-sign-out"></i>Đăng
                                     xuất</a>
                             </div>
                         </div>
@@ -241,6 +242,7 @@
                                                                 <th>Chiều Cao</th>
                                                                 <th>Cân Nặng</th>
                                                                 <th>Độ béo</th>
+                                                                <th>BMI</th>
                                                                 <th>Calo tiêu thụ hàng ngày</th>
                                                             </tr>
                                                         </thead>
@@ -249,6 +251,7 @@
                                                                 <td>{{userDetails?.height}}</td>
                                                                 <td>{{userDetails?.weight}}</td>
                                                                 <td>{{userDetails?.bodyFat}}%</td>
+                                                                <td [innerHTML]="getStatus2(userDetails?.bmi)"></td>
                                                                 <td>{{userDetails?.caloriesConsumed}}</td>
                                                             </tr>
                                                         </tbody>
@@ -258,6 +261,36 @@
                                         </div>
                                     </div>
                                 </div> <!-- Single Tab Content End -->
+
+                                <div class="tab-pane fade" id="history" role="tabpanel">
+                                        <div class="myaccount-content">
+                                            <h3>Lịch sử ăn uống</h3>
+                                            <div class="account-details-form">
+                                                <form action="#">
+                                                    <div class="myaccount-table table-responsive text-center">
+                                                        <table class="table table-bordered">
+                                                            <thead class="thead-light">
+                                                                <tr>
+                                                                    <th>Chiều Cao</th>
+                                                                    <th>Cân Nặng</th>
+                                                                    <th>Độ béo</th>
+                                                                    <th>Calo tiêu thụ hàng ngày</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{{userDetails?.height}}</td>
+                                                                    <td>{{userDetails?.weight}}</td>
+                                                                    <td>{{userDetails?.bodyFat}}%</td>
+                                                                    <td>{{userDetails?.caloriesConsumed}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> <!-- Single Tab Content End -->
                             </div>
                         </div> <!-- My Account Tab Content End -->
                     </div>

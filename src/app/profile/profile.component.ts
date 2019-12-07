@@ -27,6 +27,10 @@ export class ProfileComponent implements OnInit {
 
   stt = 0;
 
+  bmi: any;
+
+  bodyStatus: any;
+
   isShowForm: boolean = false;
 
   editAddress: boolean = false;
@@ -115,6 +119,7 @@ export class ProfileComponent implements OnInit {
       .then(function (response) {
         //console.log(response.data.data);
         that.userDetails = response.data.data;
+        that.bmi = that.userDetails.bmiIndex;
       })
       .catch(function (error) {
         console.log(error);
@@ -162,7 +167,7 @@ export class ProfileComponent implements OnInit {
         this.cart.addToCart(prd.combo, 'comboId');
       }
     });
-    
+
   }
 
   detailModal: any = null;
@@ -178,20 +183,20 @@ export class ProfileComponent implements OnInit {
       .then(function (response) {
         //console.log(response);
         that.listProductOrder = response.data.data;
-        console.log(that.listProductOrder);
+        //console.log(that.listProductOrder);
         if (that.listProductOrder == null || that.listProductOrder.length == 0) {
           that.isShowForm = true;
-        }else{
+        } else {
           that.isShowForm = false;
         }
-        
+
       })
       .catch(function (error) {
         console.log(error);
       })
   }
 
-  goHome(){
+  goHome() {
     this.window.location.href = '/'
   }
 
@@ -212,9 +217,23 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  getStatus2(stt){
+    const that = this;
+    if(that.bmi < 18.5){
+      return "<span class='text-warning'>"+ that.bmi + " (Gầy)</span>";
+    }else if(that.bmi > 18.5 && that.bmi < 23){
+      return "<span class='text-success'>"+ that.bmi +" (Bình thường)</span>";
+    }else if(that.bmi > 23 && that.bmi < 25){
+      return "<span class='text-warning'>"+ that.bmi +" (Thừa cân)</span>";
+    }else if(that.bmi > 25 && that.bmi < 30){
+      return "<span class='text-danger'>"+ that.bmi + "(Béo phì cấp độ 1)</span>";
+    }else if(that.bmi > 30){
+      return "<span class='text-danger'>"+ that.bmi +" (Béo phì cấp độ 2)</span>";
+    }
+  }
+
   logout() {
-      this.localStorage.clear();
-      this.window.location.href  = '/login';
+    localStorage.clear();
   }
 
   ngOnInit() {
