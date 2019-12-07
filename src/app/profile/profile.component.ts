@@ -199,7 +199,7 @@ export class ProfileComponent implements OnInit {
 
   getHistory(){
     const that = this;
-    axios.get(`${environment.api_url}/api/history`)
+    axios.get(`${environment.api_url}/api/history`, {headers : { Authorization : that.token}})
     .then(function (response){
       console.log(response);
       that.listFoodHistory = response.data.data;
@@ -264,5 +264,6 @@ export class ProfileComponent implements OnInit {
       console.log(error);
     });
     this.getListProductOrder();
+    this.getHistory();
   }
 }

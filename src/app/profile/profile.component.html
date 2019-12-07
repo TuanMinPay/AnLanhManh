@@ -241,16 +241,14 @@
                                                             <tr>
                                                                 <th>Chiều Cao</th>
                                                                 <th>Cân Nặng</th>
-                                                                <th>Độ béo</th>
                                                                 <th>BMI</th>
                                                                 <th>Calo tiêu thụ hàng ngày</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>{{userDetails?.height}}</td>
-                                                                <td>{{userDetails?.weight}}</td>
-                                                                <td>{{userDetails?.bodyFat}}%</td>
+                                                                <td>{{userDetails?.height}} cm</td>
+                                                                <td>{{userDetails?.weight}} kg</td>
                                                                 <td [innerHTML]="getStatus2(userDetails?.bmi)"></td>
                                                                 <td>{{userDetails?.caloriesConsumed}}</td>
                                                             </tr>
@@ -271,16 +269,18 @@
                                                         <table class="table table-bordered">
                                                             <thead class="thead-light">
                                                                 <tr>
-                                                                    <th>FoodId</th>
+                                                                    <th>Tên món</th>
+                                                                    <th>Ảnh</th>
                                                                     <th>Bình luận</th>
-                                                                    <th>Type</th>
+                                                                    <th>Calo</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>{{listFoodHistory?.foodId}}</td>
-                                                                    <td>{{listFoodHistory?.comment}}</td>
-                                                                    <td>{{listFoodHistory?.type}}</td>
+                                                                <tr *ngFor="let item of listFoodHistory">
+                                                                    <td><a href="{{(item?.food) ? '/p/' + util.generateURL(item.food.name, item.food.id) : '/c/' + util.generateURL(item.combos.name, item.combos.id)}}">{{(item?.food) ? item?.food.name : item?.combo.name}}</a></td>
+                                                                    <td><img src="{{(item?.food) ? item?.food.image : item?.combo.image}}"></td>
+                                                                    <td>{{item?.comment}}</td>
+                                                                    <td>{{item?.calorie}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
