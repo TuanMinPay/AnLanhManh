@@ -179,16 +179,21 @@ export class StepComponent implements OnInit {
   }
 
   getStatus1(stt2){
-    if(stt2 = "Gầy"){
-      return "<span class='text-warning'>"+ this.bodyStatus +"</span>";
-    }else if(stt2 = "Bình thường"){
-      return "<span class='text-success'>"+ this.bodyStatus +"</span>";
-    }else if(stt2 = "Thừa cân"){
-      return "<span class='text-warning'>"+ this.bodyStatus +"</span>";
-    }else if(stt2 = "Béo phì cấp độ 1"){
-      return "<span class='text-danger'>"+ this.bodyStatus +"</span>";
-    }else if(stt2 = "Béo phì cấp độ 2"){
-      return "<span class='text-danger'>"+ this.bodyStatus +"</span>";
+    switch (stt2) {
+      case "Gầy":
+        return "<span class='text-warning'>"+ this.bodyStatus +"</span>";
+    
+      case "Bình thường":
+        return "<span class='text-success'>"+ this.bodyStatus +"</span>";
+        
+        case "Thừa cân":
+          return "<span class='text-warning'>"+ this.bodyStatus +"</span>";
+
+        case "Béo phì cấp độ 1":
+          return "<span class='text-danger'>"+ this.bodyStatus +"</span>";
+
+        case "Béo phì cấp độ 2":
+          return "<span class='text-danger'>"+ this.bodyStatus +"</span>";
     }
   }
 

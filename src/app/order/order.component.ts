@@ -22,6 +22,8 @@ export class OrderComponent implements OnInit {
 
   listCart: any = null;
 
+  listAddress: any;
+
   listProductOrder: any = null;
 
   textError: any = null;
@@ -66,6 +68,8 @@ export class OrderComponent implements OnInit {
     type: 1
   }
 
+  currentAddress: any = null;
+
   addressPost: any = {
     title: null
   }
@@ -103,17 +107,19 @@ export class OrderComponent implements OnInit {
     axios.get(`${environment.api_url}/api/address`, { headers: { Authorization: that.token } })
       .then(function (response) {
         //console.log(response);
-        that.addressId = response.data.data[0].id;
+        that.listAddress = response.data.data;
+        that.currentAddress = that.listAddress[0].title;
+        console.log(that.listAddress);
+        that.isShowForm = true;
         //console.log(that.addressId)
-        axios.get(`${environment.api_url}/api/address/${that.addressId}`, { headers: { Authorization: that.token } })
-          .then(function (response) {
-            that.userAddress = response.data.data;
-            console.log("Get address success!");
-            that.isShowForm = false;
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+        // axios.get(`${environment.api_url}/api/address/${that.addressId}`, { headers: { Authorization: that.token } })
+        //   .then(function (response) {
+        //     that.userAddress = response.data.data;
+        //     console.log("Get address success!");
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   })
       })
       .catch(function (error) {
         console.log(error);
@@ -186,7 +192,7 @@ export class OrderComponent implements OnInit {
   }
 
   saveAddress1() {
-    this.getAddress();
+    //this.getAddress();
     const that = this;
     that.addressPost = {
       title: that.userAddress
@@ -195,8 +201,21 @@ export class OrderComponent implements OnInit {
     this.localStorage.removeItem('listCart');
     this.window.location.href = this.window.location.href;
   }
+
+  addAddr(){
+    this.isShowForm = false;
+  }
+
+  back(){
+    this.isShowForm = true;
+  }
+
+  saveAddr(){
+
+  }
+
   ngOnInit() {
-    // this.getAddress();
+    this.getAddress();
     const that = this;
     this.getProduct();
     if (this.token == null || this.token == undefined) {
