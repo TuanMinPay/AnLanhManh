@@ -62,8 +62,6 @@ export class OrderComponent implements OnInit {
     city: null,
     quanhuyen: null,
     xaphuong: null,
-    ordernote: null,
-    phone: null,
     addressDetails: null,
     type: 1
   }
@@ -181,18 +179,18 @@ export class OrderComponent implements OnInit {
 
   saveAddr() {
     const that = this;
-    this.address.city = that.city.nativeElement.value.split('@alm;')[1];
-    this.address.quanhuyen = that.quanhuyen.nativeElement.value.split('@alm;')[1];
-    this.address.xaphuong = that.xaphuong.nativeElement.value.split('@alm;')[1];
-
+    that.address.city = that.city.nativeElement.value.split('@alm;')[1];
+    that.address.quanhuyen = that.quanhuyen.nativeElement.value.split('@alm;')[1];
+    that.address.xaphuong = that.xaphuong.nativeElement.value.split('@alm;')[1];
     var check = true;
     for (var key in this.address) {
       if (this.address[key] == null) check = false;
     }
+    console.log(that.currentAddress);
     if (check) {
       that.addressPost = {
         title: `${that.address.addressDetails}, ${that.address.xaphuong}, ${that.address.quanhuyen}, ${that.address.city}`,
-        phone: that.address.phone
+        phone: that.currentAddress.phone
       }
       axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: that.token } })
         .then(function (response) {
@@ -203,7 +201,7 @@ export class OrderComponent implements OnInit {
           console.log((error));
         })
     } else {
-      that.textError = "Vui lòng nhập đầy đủ thông tin trước khi thanh toán.";
+      that.textError = "Vui lòng nhập đầy đủ thông tin.";
     }
   }
 

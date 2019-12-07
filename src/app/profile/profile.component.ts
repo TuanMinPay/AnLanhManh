@@ -29,6 +29,8 @@ export class ProfileComponent implements OnInit {
 
   bmi: any;
 
+  listFoodHistory: any = [];
+
   bodyStatus: any;
 
   isShowForm: boolean = false;
@@ -61,8 +63,7 @@ export class ProfileComponent implements OnInit {
     city: null,
     quanhuyen: null,
     xaphuong: null,
-    addressDetails: null,
-    phone: null
+    addressDetails: null
   }
 
   addressPost: any = {
@@ -194,6 +195,19 @@ export class ProfileComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
       })
+  }
+
+  getHistory(){
+    const that = this;
+    axios.get(`${environment.api_url}/api/history`)
+    .then(function (response){
+      console.log(response);
+      that.listFoodHistory = response.data.data;
+    })
+    .catch(function (error){
+      console.log(error);
+      
+    })
   }
 
   goHome() {
