@@ -21,3 +21,13 @@ select{
     margin-left: 30%;
     margin-top: 35px;
 }
+
+h2 {
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 29px;
+    font-weight: 900;
+}

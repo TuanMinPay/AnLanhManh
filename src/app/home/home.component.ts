@@ -113,8 +113,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addToCart(food) {
-    this.cart.addToCart(food, 'foodId');
+  addToCart(food, type) {
+    this.cart.addToCart(food, type);
     //console.log(food);
   }
 
