@@ -27,14 +27,29 @@
                                 <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                     <div class="remember-meta">
                                         <div class="custom-control custom-radio" *ngFor="let addr of listAddress">
-                                            <input type="radio" [value]="addr?.title" class="custom-control-input"
-                                                id="{{addr?.id}}" [(ngModel)]="currentAddress" name="currentAddress">
-                                            <label class="custom-control-label title"
+                                            <input type="radio" [value]="addr?.id" class="custom-control-input"
+                                                id="{{addr?.id}}" [(ngModel)]="currentAddress.address" name="address">
+                                            <label (click)="logAddr()" class="custom-control-label title"
                                                 for="{{addr?.id}}">{{addr?.title}}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="single-input-item">
+                                    <label for="phone">Điện thoại</label>
+                                    <input type="text" [(ngModel)]="currentAddress.phone" name="phone" id="phone"
+                                        placeholder="Vui lòng xác minh lại số điện thoại của bạn" />
+                                </div>
+    
+                                <div class="single-input-item">
+                                    <label for="ordernote">Ghi chú</label>
+                                    <textarea [(ngModel)]="currentAddress.note" name="note" id="note" cols="30"
+                                        rows="3"
+                                        placeholder="Bạn có ghi chú gì đó cho chúng tôi. Hãy viết nó tại đây."></textarea>
+                                </div>
+                                <div class="error">
+                                        <span *ngIf="textError != null">{{textError}}</span>
+                                </div>
                             <div class="single-input-item">
                                 <div class="summary-footer-area">
                                     <button (click)="addAddr()" type="button" class="btn btn__bg">Thêm Địa Chỉ</button>
@@ -74,25 +89,12 @@
                                 <input type="text" [(ngModel)]="address.addressDetails" name="addressDetails"
                                     placeholder="Đạ chỉ cụ thể của bạn" />
                             </div>
-
-                            <div class="single-input-item">
-                                <label for="phone">Điện thoại</label>
-                                <input type="text" [(ngModel)]="address.phone" name="phone" id="phone"
-                                    placeholder="Vui lòng xác minh lại số điện thoại của bạn" />
-                            </div>
-
-                            <div class="single-input-item">
-                                <label for="ordernote">Ghi chú</label>
-                                <textarea [(ngModel)]="address.ordernote" name="ordernote" id="ordernote" cols="30"
-                                    rows="3"
-                                    placeholder="Bạn có ghi chú gì đó cho chúng tôi. Hãy viết nó tại đây."></textarea>
-                            </div>
                             <div class="error">
                                 <span *ngIf="textError != null">{{textError}}</span>
                             </div>
                             <div class="single-input-item">
                                 <div class="summary-footer-area">
-                                    <button type="button" class="btn btn__bg">Lưu</button>
+                                    <button type="button" (click)="saveAddr()" class="btn btn__bg">Lưu</button>
                                     <button (click)="back()" type="button" class="btn btn__bg ml-100">Huỷ</button>
                                 </div>
                             </div>
@@ -171,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="summary-footer-area">
-                                <button type="button" (click)="saveAddress()" class="btn btn__bg">Đặt Mua</button>
+                                <button type="button" (click)="payNow()" class="btn btn__bg">Đặt Mua</button>
                                 <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
                             </div>
                         </div>

@@ -68,7 +68,11 @@ export class OrderComponent implements OnInit {
     type: 1
   }
 
-  currentAddress: any = null;
+  currentAddress: any = {
+    address: null,
+    phone: null,
+    note: null
+  };
 
   addressPost: any = {
     title: null
@@ -108,18 +112,9 @@ export class OrderComponent implements OnInit {
       .then(function (response) {
         //console.log(response);
         that.listAddress = response.data.data;
-        that.currentAddress = that.listAddress[0].title;
+        that.currentAddress.address = that.listAddress[0].id;
         console.log(that.listAddress);
         that.isShowForm = true;
-        //console.log(that.addressId)
-        // axios.get(`${environment.api_url}/api/address/${that.addressId}`, { headers: { Authorization: that.token } })
-        //   .then(function (response) {
-        //     that.userAddress = response.data.data;
-        //     console.log("Get address success!");
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   })
       })
       .catch(function (error) {
         console.log(error);
@@ -132,7 +127,59 @@ export class OrderComponent implements OnInit {
 
 
   //validate form
-  saveAddress() {
+  payNow() {
+    const that = this;
+    var token: any = localStorage.getItem('token');
+    if(that.currentAddress.phone == null || that.currentAddress.phone == ''){
+      that.textError = "Vui lòng nhập số điện thoại của bạn."
+    }else{
+      let obj = {
+        addressId: that.currentAddress.address,
+        orderDetails: [],
+        note: that.currentAddress.note,
+        type: that.address.type
+      }
+      let prm = that.listCart.products.map((prd: { quantity: any; price: any; type: string | number; id: any; }) => {
+        new Promise((resolve, reject) => {
+          let _obj = {
+            foodId: null,
+            comboId: null,
+            scheduleId: null,
+            quantity: prd.quantity
+          }
+          _obj[prd.type] = prd.id;
+          obj.orderDetails.push(_obj);
+          resolve();
+        });
+      });
+      Promise.all(prm).then(() => {
+        axios.post(`${environment.api_url}/api/order`, obj, { headers: { Authorization: token } }).then((rs) => {
+          if (obj.type == 2) {
+            window.location.href = rs.data.data.urlPayment;
+          } else {
+            window.location.href = `/shipping?orderId=${rs.data.data.id}`;
+          }
+          localStorage.removeItem('listCart');
+        }).catch((err) => {
+          console.log(err);
+        })
+        console.log(obj);
+      });
+      that.localStorage.removeItem('listCart');
+      that.textError = null;
+    }
+  }
+
+  addAddr() {
+    this.isShowForm = false;
+  }
+
+  back() {
+    this.isShowForm = true;
+    this.textError = null;
+  }
+
+  saveAddr() {
     const that = this;
     this.address.city = that.city.nativeElement.value.split('@alm;')[1];
     this.address.quanhuyen = that.quanhuyen.nativeElement.value.split('@alm;')[1];
@@ -140,78 +187,28 @@ export class OrderComponent implements OnInit {
 
     var check = true;
     for (var key in this.address) {
-      if (this.address[key] == null && key != 'ordernote') check = false;
+      if (this.address[key] == null) check = false;
     }
     if (check) {
-      var token: any = localStorage.getItem('token');
       that.addressPost = {
         title: `${that.address.addressDetails}, ${that.address.xaphuong}, ${that.address.quanhuyen}, ${that.address.city}`,
         phone: that.address.phone
       }
-      axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: token } }).then(function (response) {
-        let obj = {
-          addressId: response.data.data.id,
-          orderDetails: [],
-          note: that.address.ordernote,
-          type: that.address.type
-        }
-        let prm = that.listCart.products.map((prd: { quantity: any; price: any; type: string | number; id: any; }) => {
-          new Promise((resolve, reject) => {
-            let _obj = {
-              foodId: null,
-              comboId: null,
-              scheduleId: null,
-              quantity: prd.quantity
-            }
-            _obj[prd.type] = prd.id;
-            obj.orderDetails.push(_obj);
-            resolve();
-          });
-        });
-        Promise.all(prm).then(() => {
-          axios.post(`${environment.api_url}/api/order`, obj, { headers: { Authorization: token } }).then((rs) => {
-            if (obj.type == 2) {
-              window.location.href = rs.data.data.urlPayment;
-            } else {
-              window.location.href = `/shipping?orderId=${rs.data.data.id}`;
-            }
-            localStorage.removeItem('listCart');
-          }).catch((err) => {
-            console.log(err);
-          })
-          console.log(obj);
-        });
-        that.localStorage.removeItem('listCart');
-      }).catch(function (error) {
-        console.log(error);
-      });
-      that.textError = null;
+      axios.post(`${environment.api_url}/api/address`, that.addressPost, { headers: { Authorization: that.token } })
+        .then(function (response) {
+          console.log(response);
+          that.window.location.href = that.window.location.href;
+        })
+        .catch(function (error) {
+          console.log((error));
+        })
     } else {
       that.textError = "Vui lòng nhập đầy đủ thông tin trước khi thanh toán.";
     }
   }
 
-  saveAddress1() {
-    //this.getAddress();
-    const that = this;
-    that.addressPost = {
-      title: that.userAddress
-    }
-    console.log(that.addressPost.title)
-    this.localStorage.removeItem('listCart');
-    this.window.location.href = this.window.location.href;
-  }
-
-  addAddr(){
-    this.isShowForm = false;
-  }
-
-  back(){
-    this.isShowForm = true;
-  }
-
-  saveAddr(){
-
+  logAddr() {
+    console.log(this.currentAddress.address);
   }
 
   ngOnInit() {
@@ -225,7 +222,7 @@ export class OrderComponent implements OnInit {
         var user = this.localStorage.getItem('user');
         if (user != null || user != undefined) {
           user = JSON.parse(user);
-          this.address.phone = user.user.phone;
+          this.currentAddress.phone = user.user.phone;
         }
       }, 2000);
     }

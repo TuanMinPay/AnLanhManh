@@ -153,13 +153,13 @@
                                 <div class="tab-pane fade" id="orders" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Lịch sử mua hàng</h3>
-                                        <div *ngIf="isShowForm == false">
+                                        <div *ngIf="isShowForm != false">
                                             <span class="textOrder">Bạn chưa mua sản phẩm nào.</span>
                                             <br>
                                             <button (click)="goHome()" class="btn btn btn__bg btn__sqr buttonOrder">Tiến hành mua
                                                 hàng.</button>
                                         </div>
-                                        <div *ngIf="isShowForm != false" class="myaccount-table table-responsive text-center">
+                                        <div *ngIf="isShowForm == false" class="myaccount-table table-responsive text-center">
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">
                                                     <tr>
