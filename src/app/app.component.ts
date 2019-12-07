@@ -94,6 +94,10 @@ export class AppComponent implements OnInit {
       });
   }
 
+  searchFunc(keyword: any){
+    window.location.href = `/search?q=${keyword}`;
+  }
+
   ngOnInit() {
     var token = this.localStorage.getItem('token');
     var user = this.localStorage.getItem('user');
