@@ -20,7 +20,7 @@
                     <img src="/assets/images/step-arrow.png" alt="" class="step-arrow">
                 </li>
                 <li role="tab">
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" (click)="changeStep(3)">
                         <img [src]="(currentStep == 3) ? '/assets/images/step-3-active.png' : '/assets/images/step-3.png'"
                             alt="">
                         <span class="step-order">Step 03</span>
@@ -115,32 +115,15 @@
 
         <!-- SECTION 3 -->
         <section *ngIf="currentStep == 3">
+            <h2>Bệnh lí</h2>
             <div class="myaccount-content">
-                <h3>Độ mỡ cơ thể và Bệnh lí</h3>
-                <span>- Vui lòng nhập độ mỡ của bạn để chúng tôi hỗ trợ cũng như tính toán sức khoẻ của bạn một cách tốt
-                    nhất.
-                    Bạn có thể xem ảnh gợi ý dưới đây xem độ mỡ của cơ thể.
-                </span>
                 <div class="single-input-item">
-                    <label class="required">Nhập độ mỡ cơ thể của bạn</label>
-                    <br>
-                    <input name="bodyFat" [(ngModel)]="data.bodyFat" class="col-lg-8" type="text" placeholder="Độ mỡ">
-                </div>
-                <div class="single-input-item">
-                    <label class="required">Gợi ý</label>
-                    <br>
-                    <img
-                        src="https://vignette.wikia.nocookie.net/4chanfit/images/4/4d/Bf.jpg/revision/latest?cb=20130101174645">
-                </div>
-                <div class="error">
-                    <span>{{textError}}</span>
-                </div>
-                <br>
-                <div class="single-input-item">
-                    <h4 class="required">Ngoài ra bạn có mắc bệnh nào có dưới đây không ?</h4>
+                    <h5 class="required">Bạn có mắc bệnh nào dưới đây không?</h5>
+                    <span>(Nếu bạn không mắc bệnh nào dưới đây hãy chọn "không")</span>
+                    <h4></h4>
                     <div class="form-check">
-                        <input type="checkbox" value="0" class="form-check-input" (change)="changeModel($event, 0)"
-                            [checked]="arrBl.includes()">
+                        <input type="checkbox" value="0" class="form-check-input" checked
+                            (change)="changeModel($event, 0)" [checked]="arrBl.includes()">
                         <label class="form-check-label" for="materialChecked2">Không</label>
                     </div>
                     <div *ngFor="let benhly of listBenhly" class="form-check">
@@ -156,11 +139,14 @@
         <section *ngIf="currentStep == 4">
             <span>Qua những thông tin bạn cho biết chúng tôi đã tính toán cho thấy lượng calo tiêu thụ trong 1 ngày của
                 bạn khoảng: "{{userDetails?.caloriesConsumed}}" </span>
-                <br>
-                <span class="mt-20">Chỉ số BMI của bạn là <span style="font-weight: bold" [innerHTML]="getStatus(bmiIndex)"></span> cho thấy bạn đang ở mức : <span style="font-weight: bold"><span [innerHTML]="getStatus1(bodyStatus)"></span>. {{textStatus}}</span></span>
-                <br>
-                <span class="mt-20">Cảm ơn bạn đã dành thời gian cho chúng tôi biết được tình trạng sức khỏe của bạn.</span>
-            
+            <br>
+            <span class="mt-20">Chỉ số BMI của bạn là <span style="font-weight: bold"
+                    [innerHTML]="getStatus(bmiIndex)"></span> cho thấy bạn đang ở mức : <span
+                    style="font-weight: bold"><span [innerHTML]="getStatus1(bodyStatus)"></span>.
+                    {{textStatus}}</span></span>
+            <br>
+            <span class="mt-20">Cảm ơn bạn đã dành thời gian cho chúng tôi biết được tình trạng sức khỏe của bạn.</span>
+
         </section>
 
     </form>

@@ -235,7 +235,7 @@
                                             <div class="product-action-link">
                                                 <a href="#" data-toggle="tooltip" title="Wishlist"><i
                                                         class="ion-android-favorite-outline"></i></a>
-                                                <a href="javascript:void(0)" (click)="addToCart(combo)"
+                                                <a href="javascript:void(0)" (click)="addToCart(combo, 'foodId')"
                                                     data-toggle="tooltip" title="Add to cart"><i
                                                         class="ion-bag"></i></a>
                                                 <a href="#" data-toggle="tooltip" title="Compare"><i
@@ -307,7 +307,7 @@
                                                 <div class="product-action-link">
                                                     <a href="#" data-toggle="tooltip" title="Wishlist"><i
                                                             class="ion-android-favorite-outline"></i></a>
-                                                    <a href="javascript:void(0)" (click)="addToCart(combo)"
+                                                    <a href="javascript:void(0)" (click)="addToCart(combo, 'comboId')"
                                                         data-toggle="tooltip" title="Add to cart"><i
                                                             class="ion-bag"></i></a>
                                                     <a href="#" data-toggle="tooltip" title="Compare"><i
@@ -320,9 +320,6 @@
                             </div>
                     </div>
                 </div>
-            </div>
-            <div class="text-center viewmore">
-                <a [routerLink]="['/cl']" [queryParams]="{ page: 1}" class="btn btn__learn-more">Xem Thêm</a>
             </div>
         </div>
     </section>

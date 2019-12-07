@@ -178,15 +178,16 @@ export class ProfileComponent implements OnInit {
       .then(function (response) {
         //console.log(response);
         that.listProductOrder = response.data.data;
-        //console.log(that.listProductOrder);
-        if (that.listProductOrder == null || that.listProductOrder == undefined) {
+        console.log(that.listProductOrder);
+        if (that.listProductOrder == null || that.listProductOrder.length == 0) {
           that.isShowForm = true;
+        }else{
+          that.isShowForm = false;
         }
-        that.isShowForm = false;
+        
       })
       .catch(function (error) {
         console.log(error);
-
       })
   }
 
