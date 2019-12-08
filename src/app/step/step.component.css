@@ -31,3 +31,10 @@ h2 {
     margin-bottom: 29px;
     font-weight: 900;
 }
+
+.itemName {
+	color: #333333;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+}
