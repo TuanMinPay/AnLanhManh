@@ -187,12 +187,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
-                    <h2>Set Đồ Ăn Cho Bạn</h2>
+                    <h2>Combo Liên Quan</h2>
                 </div>
             </div>
         </div>
         <div class="row related-product-active slick-arrow-style">
-            <div *ngFor="let item of dataCombo2" class="col">
+            <div *ngFor="let item of dataCombo2" class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product-item mb-50">
                     <div class="product-thumb">
                         <a href="/c/{{util.generateURL(item?.name, item?.id)}}">
@@ -213,7 +213,7 @@
                             <span><i class="ion-android-star"></i></span>
                         </div>
                         <div class="product-name">
-                            <h4 class="h5">
+                            <h4 class="h5 itemName">
                                 <a href="product-details.html">{{item?.name}}</a>
                             </h4>
                         </div>
@@ -224,7 +224,7 @@
                         <div class="product-action-link">
                             <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
                                     class="ion-android-favorite-outline"></i></a>
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Add to cart"><i
+                            <a href="javascript:void(0)" data-toggle="tooltip" (click)="addToCart(item)" title="Add to cart"><i
                                     class="ion-bag"></i></a>
                             <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
                                     class="ion-ios-shuffle"></i></a>

@@ -2597,7 +2597,7 @@ fieldset legend {
 
 .product-content .product-name h4 a {
 	color: #333333;
-	white-space: pre;
+	white-space: unset;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	width: 100%;
