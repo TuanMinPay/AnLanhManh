@@ -1,14 +1,14 @@
 <section class="product-tab pt-60 pb-30">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngIf="isFood == false && isCombo == false">
                 <div class="section-title text-center">
                     <h2>Kết Quả Tìm Kiếm</h2>
                 </div>
             </div>
             <div class="col-12">
                     <div *ngIf="isFood != false && isCombo != false" class="section-title text-center">
-                        <h4>Không tìm thấy sản phẩm nào</h4>
+                        <h2>Không tìm thấy sản phẩm nào</h2>
                     </div>
                 </div>
         </div>

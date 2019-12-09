@@ -19,6 +19,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { AteComponent } from './ate/ate.component';
 import { SearchComponent } from "./search/search.component";
+import { SuggestComponent } from './suggest/suggest.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'shipping', component: ShippingComponent },
   { path: 'user/eat', component: AteComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'suggest', component: SuggestComponent},
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 

@@ -62,7 +62,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of listCart.products">
-                                <td class="pro-thumbnail"><a href="/p/{{util.generateURL(item.name, item.id)}}"><img
+                                <td class="pro-thumbnail"><a href="{{(item?.combos) ? '/p/' + util.generateURL(item.name, item.id) : '/c/' + util.generateURL(item.name, item.id)}}"><img
                                             class="img-fluid" [src]="item.image" alt="Product" /></a></td>
                                 <td class="pro-title"><a
                                         href="{{(item?.combos) ? '/p/' + util.generateURL(item.name, item.id) : '/c/' + util.generateURL(item.name, item.id)}}" target="_blank">{{item?.name}}</a></td>
