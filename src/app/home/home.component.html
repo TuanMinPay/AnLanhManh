@@ -332,7 +332,7 @@
                     <div class="call-to-action-content text-center">
                         <h1>Rất Nhiều Đồ Ăn Bổ Dưỡng Tốt Cho Sức Khỏe</h1>
                         <h1>Đang Chờ Bạn Khám Phá</h1>
-                        <a href="javascript:void(0)" class="btn btn__learn-more">Khám Phá Ngay</a>
+                        <a [href]="token ? '/suggest' : '/login?back=/suggest'" class="btn btn__learn-more">Khám Phá Ngay</a>
                     </div>
                 </div>
             </div>

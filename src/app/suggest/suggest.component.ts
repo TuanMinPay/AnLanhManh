@@ -25,11 +25,9 @@ export class SuggestComponent implements OnInit {
     axios.get(`${environment.api_url}/api/suggest/food`, { headers : { Authorization: that.token}})
     .then(function (response){
       that.listFood = response.data.data;
-      console.log(that.listFood);
     })
     .catch(function (error){
       console.log(error);
-      
     })
   }
 
@@ -38,7 +36,6 @@ export class SuggestComponent implements OnInit {
     axios.get(`${environment.api_url}/api/suggest/combo`, { headers : { Authorization: that.token}})
     .then(function (response){
       that.listCombo = response.data.data;
-      console.log(that.listFood);
     })
     .catch(function (error){
       console.log(error);
@@ -46,7 +43,7 @@ export class SuggestComponent implements OnInit {
   }
   ngOnInit() {
     if(this.token == null || this.token == undefined){
-      window.location.href = '/login';
+      window.location.href = '/login?back=/suggest';
     }
     this.getComboSuggest();
     this.getFoodSuggest();

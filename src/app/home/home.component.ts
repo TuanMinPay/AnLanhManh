@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
     totalPages: null
   }];
 
+  token: any = this.localStorage.getItem('token');
+
   dataCate: any = [{
     id: null,
     name: null,
@@ -74,7 +76,6 @@ export class HomeComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/combo`)
     .then(function (response){
-      console.log(response);
       that.dataCombo = response.data.data;
     })
     .catch(function (error){
