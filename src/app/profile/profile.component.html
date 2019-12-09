@@ -172,7 +172,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let product of listProductOrder">
-                                                        <td><a href="javascrip:void(0)">{{product?.id}}</a></td>
+                                                        <td>#{{product?.code}}</td>
                                                         <td [innerHTML]="getStatus(product?.status)"></td>
                                                         <td>{{util.formatPrice(product?.totalPrice)}}</td>
                                                         <td><a data-toggle="modal" data-target="#myModal"

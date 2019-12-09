@@ -4,15 +4,15 @@
             <div class="row justify-content-between">
                 <div class="order-tracking {{(orderData?.status > 0) ? 'completed' : ''}}">
                     <span class="is-complete"></span>
-                    <p>Đã đặt hàng<br><span>Mon, June 24</span></p>
+                    <p>Đã đặt hàng</p>
                 </div>
-                <div class="order-tracking {{(orderData?.status > 1) ? 'completed' : ''}}">
+                <div class="order-tracking {{(orderData?.status >= 3) ? 'completed' : ''}}">
                     <span class="is-complete"></span>
-                    <p>Đang giao<br><span>Tue, June 25</span></p>
+                    <p>Đang giao</p>
                 </div>
-                <div class="order-tracking {{(orderData?.status == 3) ? 'completed' : ''}}">
+                <div class="order-tracking {{(orderData?.status == 4) ? 'completed' : ''}}">
                     <span class="is-complete"></span>
-                    <p>Đã nhận hàng<br><span>Fri, June 28</span></p>
+                    <p>Đã nhận hàng</p>
                 </div>
             </div>
         </div>

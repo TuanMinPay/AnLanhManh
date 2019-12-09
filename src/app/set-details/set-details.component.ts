@@ -49,7 +49,7 @@ export class SetDetailsComponent implements OnInit {
 
   public getCombo() {
     const that = this;
-    axios.get(`${environment.api_url}/api/combo/list?limit=4`)
+    axios.get(`${environment.api_url}/api/combo/list?limit=8`)
       .then(function (response) {
         that.dataCombo2 = response.data.data;
       })
