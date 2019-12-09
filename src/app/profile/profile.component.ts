@@ -29,6 +29,8 @@ export class ProfileComponent implements OnInit {
 
   bmi: any;
 
+  isHistory: boolean = false;
+
   listFoodHistory: any = [];
 
   bodyStatus: any;
@@ -203,6 +205,10 @@ export class ProfileComponent implements OnInit {
     .then(function (response){
       console.log(response);
       that.listFoodHistory = response.data.data;
+      if(that.listFoodHistory == null || that.listFoodHistory == '' || that.listFoodHistory.length == 0){
+        that.isHistory = true;
+      }
+      that.isHistory = false;
     })
     .catch(function (error){
       console.log(error);

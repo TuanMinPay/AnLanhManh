@@ -263,7 +263,14 @@
                                 <div class="tab-pane fade" id="history" role="tabpanel">
                                         <div class="myaccount-content">
                                             <h3>Lịch sử ăn uống</h3>
-                                            <div class="account-details-form">
+                                            <div *ngIf="isHistory == false" class="account-details-form">
+                                                <form action="#">
+                                                    <div class="myaccount-table table-responsive text-center">
+                                                        <span style="font-size: 17px" class="mt-50">Lịch sử của bạn đang trống!</span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div *ngIf="isHistory != false" class="account-details-form">
                                                 <form action="#">
                                                     <div class="myaccount-table table-responsive text-center">
                                                         <table class="table table-bordered">

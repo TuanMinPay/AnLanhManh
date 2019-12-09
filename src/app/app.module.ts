@@ -31,6 +31,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { AteComponent } from './ate/ate.component';
 import { SearchComponent } from './search/search.component';
+import { SuggestComponent } from './suggest/suggest.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { SearchComponent } from './search/search.component';
     PaymentComponent,
     ShippingComponent,
     AteComponent,
-    SearchComponent
+    SearchComponent,
+    SuggestComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
