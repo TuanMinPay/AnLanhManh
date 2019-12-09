@@ -11,7 +11,7 @@ import { UtilService } from '../services/util.service';
 export class SuggestComponent implements OnInit {
 
   constructor(
-    private util: UtilService
+    public util: UtilService
   ) { }
 
   token: any = localStorage.getItem('token');
