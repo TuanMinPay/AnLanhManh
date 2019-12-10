@@ -53,7 +53,7 @@ export class AteComponent implements OnInit {
       return;
     };
     let obj = {
-      foodId: that.selectedItems.map((item) => { return item.id }),
+      foodIds: that.selectedItems.map((item) => { return item.id }),
       comment: null,
       type: parseInt(buaan)
     }
