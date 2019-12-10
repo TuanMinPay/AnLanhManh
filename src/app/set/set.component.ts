@@ -95,9 +95,27 @@ export class SetComponent implements OnInit {
     this.loadCombo(this.page);
 
     this.loadCategory(this.id);
-    this.chooseCategoryParent(this.id);
+    // this.chooseCategoryParent(this.id);
+    if (this.chooseCategoryParent == this.id) {
+      this.chooseProduct = this.id;
+    }
   }
 
+  chooseProduct(id){
+    const that = this;
+    axios.get(`${environment.api_url}/api/combo/category/${id}`)
+      .then(function (response) {
+          that.dataCombo = response.data.data;
+          if (that.dataCombo.length = 0 || that.dataCombo) {
+            $('.paginatoin-area').hide();
+    
+          }
+      })
+      .catch(function (error: any) {
+        // handle error
+        console.log(error);
+      });
+  }
   childCategory: any;
   chooseCategoryParent(id) {
     const that = this;
