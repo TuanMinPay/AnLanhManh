@@ -214,25 +214,25 @@
                                                     <div class="col-lg-6">
                                                         <div class="single-input-item">
                                                             <label for="first-name" class="required">Tên</label>
-                                                            <input type="text" id="first-name" value={{myInfo?.name}} />
+                                                            <input disabled type="text" id="first-name" value={{myInfo?.name}} />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="single-input-item">
                                                             <label for="last-name" class="required">Tên người
                                                                 dùng</label>
-                                                            <input type="text" id="last-name"
+                                                            <input disabled type="text" id="last-name"
                                                                 value={{myInfo?.username}} />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="single-input-item">
                                                     <label for="display-name" class="required">Email</label>
-                                                    <input type="text" id="display-name" value={{myInfo?.email}} />
+                                                    <input disabled type="text" id="display-name" value={{myInfo?.email}} />
                                                 </div>
                                                 <div class="single-input-item">
                                                     <label for="email" class="required">Số điện thoại</label>
-                                                    <input type="email" id="email" value={{myInfo?.phone}} />
+                                                    <input disabled type="email" id="email" value={{myInfo?.phone}} />
                                                 </div>
                                                 <div class="myaccount-table table-responsive text-center">
                                                     <h3>Thể trạng cơ thể</h3>
@@ -263,14 +263,14 @@
                                 <div class="tab-pane fade" id="history" role="tabpanel">
                                         <div class="myaccount-content">
                                             <h3>Lịch sử ăn uống</h3>
-                                            <div *ngIf="isHistory == false" class="account-details-form">
+                                            <div *ngIf="isHistory" class="account-details-form">
                                                 <form action="#">
                                                     <div class="myaccount-table table-responsive text-center">
                                                         <span style="font-size: 17px" class="mt-50">Lịch sử của bạn đang trống!</span>
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div *ngIf="isHistory != false" class="account-details-form">
+                                            <div *ngIf="!isHistory" class="account-details-form">
                                                 <form action="#">
                                                     <div class="myaccount-table table-responsive text-center">
                                                         <table class="table table-bordered">
@@ -278,16 +278,16 @@
                                                                 <tr>
                                                                     <th>Tên món</th>
                                                                     <th>Ảnh</th>
-                                                                    <th>Bình luận</th>
                                                                     <th>Calo</th>
+                                                                    <th>Ngày Đặt</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr *ngFor="let item of listFoodHistory">
                                                                     <td><a href="{{(item?.food) ? '/p/' + util.generateURL(item.food.name, item.food.id) : '/c/' + util.generateURL(item.combos.name, item.combos.id)}}">{{(item?.food) ? item?.food.name : item?.combo.name}}</a></td>
                                                                     <td><img src="{{(item?.food) ? item?.food.image : item?.combo.image}}"></td>
-                                                                    <td>{{item?.comment}}</td>
                                                                     <td>{{item?.calorie}}</td>
+                                                                    <td>{{item?.createdAt.split(' ')[0]}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>

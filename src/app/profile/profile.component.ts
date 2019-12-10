@@ -207,8 +207,9 @@ export class ProfileComponent implements OnInit {
     .then(function (response){
       console.log(response);
       that.listFoodHistory = response.data.data;
-      if(that.listFoodHistory == null || that.listFoodHistory == '' || that.listFoodHistory.length == 0){
+      if(that.listFoodHistory.length == 0){
         that.isHistory = true;
+        return;
       }
       that.isHistory = false;
     })
