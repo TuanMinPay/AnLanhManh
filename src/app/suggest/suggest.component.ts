@@ -18,9 +18,9 @@ export class SuggestComponent implements OnInit {
 
   token: any = localStorage.getItem('token');
 
-  listFood: any;
+  listFood:any = null;
 
-  listCombo: any;
+  listCombo: any = null;
 
   addToCart(prd, type) {
     this.cart.addToCart(prd, type);
