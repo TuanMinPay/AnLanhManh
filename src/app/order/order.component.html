@@ -39,26 +39,20 @@
                                             <input type="radio" [value]="addr?.id" class="custom-control-input"
                                                 id="{{addr?.id}}" [(ngModel)]="currentAddress.address" name="address">
                                             <label (click)="logAddr()" class="custom-control-label title"
-                                                for="{{addr?.id}}">{{addr?.title}}</label>
+                                                for="{{addr?.id}}">{{addr?.phone}} - {{addr?.title}}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="single-input-item">
-                                    <label for="phone">Điện thoại</label>
-                                    <input type="text" [(ngModel)]="currentAddress.phone" name="phone" id="phone"
-                                        placeholder="Vui lòng xác minh lại số điện thoại của bạn" />
-                                </div>
-    
-                                <div class="single-input-item">
-                                    <label for="ordernote">Ghi chú</label>
-                                    <textarea [(ngModel)]="currentAddress.note" name="note" id="note" cols="30"
-                                        rows="3"
-                                        placeholder="Bạn có ghi chú gì đó cho chúng tôi. Hãy viết nó tại đây."></textarea>
-                                </div>
-                                <div class="error">
-                                        <span *ngIf="textError != null">{{textError}}</span>
-                                </div>
+                                <label for="ordernote">Ghi chú</label>
+                                <textarea [(ngModel)]="currentAddress.note" name="note" id="note" cols="30" rows="3"
+                                    placeholder="Bạn có ghi chú gì đó cho chúng tôi. Hãy viết nó tại đây."></textarea>
+                            </div>
+                            <div class="error">
+                                <span *ngIf="textError != null">{{textError}}</span>
+                            </div>
                             <div class="single-input-item">
                                 <div class="summary-footer-area">
                                     <button (click)="addAddr()" type="button" class="btn btn__bg">Thêm Địa Chỉ</button>
@@ -97,6 +91,11 @@
                                 <label style="margin-top: 10px" for="phone">Số Nhà/Đường Phố</label>
                                 <input type="text" [(ngModel)]="address.addressDetails" name="addressDetails"
                                     placeholder="Đạ chỉ cụ thể của bạn" />
+                            </div>
+                            <div class="single-input-item">
+                                <label for="phone">Điện thoại</label>
+                                <input type="text" [(ngModel)]="currentAddress.phone" name="phone" id="phone"
+                                    placeholder="Vui lòng xác minh lại số điện thoại của bạn" />
                             </div>
                             <div class="error">
                                 <span *ngIf="textError != null">{{textError}}</span>
@@ -184,7 +183,8 @@
                             <div class="summary-footer-area">
                                 <button type="button" (click)="payNow()" class="btn btn__bg">Đặt Mua</button>
                                 <p class="mt-20">(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
-                                <span *ngIf="errorOrder != null" class="error mt-20">Bạn chưa có địa chỉ nhận hàng.Vui lòng thêm địa chỉ ở khung bên trái</span>
+                                <span *ngIf="errorOrder != null" class="error mt-20">Bạn chưa có địa chỉ nhận hàng.Vui
+                                    lòng thêm địa chỉ ở khung bên trái</span>
                             </div>
                         </div>
                     </div>
