@@ -20,6 +20,8 @@ export class OrderComponent implements OnInit {
     @Inject(LOCAL_STORAGE) private localStorage: any
   ) { }
 
+  errorListcart: any = null;
+
   listCart: any = null;
 
   listAddress: any;
@@ -27,6 +29,8 @@ export class OrderComponent implements OnInit {
   listProductOrder: any = null;
 
   textError: any = null;
+
+  errorOrder: any = null;
 
   token = this.localStorage.getItem('token');
 
@@ -111,7 +115,7 @@ export class OrderComponent implements OnInit {
         //console.log(response);
         that.listAddress = response.data.data;
         that.currentAddress.address = that.listAddress[0].id;
-        console.log(that.listAddress);
+        //console.log(that.listAddress);
         that.isShowForm = true;
       })
       .catch(function (error) {
@@ -128,43 +132,49 @@ export class OrderComponent implements OnInit {
   payNow() {
     const that = this;
     var token: any = localStorage.getItem('token');
-    if(that.currentAddress.phone == null || that.currentAddress.phone == ''){
-      that.textError = "Vui lòng nhập số điện thoại của bạn."
+    console.log(that.currentAddress.address);
+    if(that.currentAddress.address == null || that.currentAddress.address == ''){
+      that.errorOrder = '.';
     }else{
-      let obj = {
-        addressId: that.currentAddress.address,
-        orderDetails: [],
-        note: that.currentAddress.note,
-        type: that.address.type
-      }
-      let prm = that.listCart.products.map((prd: { quantity: any; price: any; type: string | number; id: any; }) => {
-        new Promise((resolve, reject) => {
-          let _obj = {
-            foodId: null,
-            comboId: null,
-            scheduleId: null,
-            quantity: prd.quantity
-          }
-          _obj[prd.type] = prd.id;
-          obj.orderDetails.push(_obj);
-          resolve();
+      if(that.currentAddress.phone == null || that.currentAddress.phone == ''){
+        that.textError = "Vui lòng nhập số điện thoại"
+      }else{
+        let obj = {
+          addressId: that.currentAddress.address,
+          orderDetails: [],
+          note: that.currentAddress.note,
+          type: that.address.type
+        }
+        let prm = that.listCart.products.map((prd: { quantity: any; price: any; type: string | number; id: any; }) => {
+          new Promise((resolve, reject) => {
+            let _obj = {
+              foodId: null,
+              comboId: null,
+              scheduleId: null,
+              quantity: prd.quantity
+            }
+            _obj[prd.type] = prd.id;
+            obj.orderDetails.push(_obj);
+            resolve();
+          });
         });
-      });
-      Promise.all(prm).then(() => {
-        axios.post(`${environment.api_url}/api/order`, obj, { headers: { Authorization: token } }).then((rs) => {
-          if (obj.type == 2) {
-            window.location.href = rs.data.data.urlPayment;
-          } else {
-            window.location.href = `/shipping?orderId=${rs.data.data.id}`;
-          }
-          localStorage.removeItem('listCart');
-        }).catch((err) => {
-          console.log(err);
-        })
-        console.log(obj);
-      });
-      that.localStorage.removeItem('listCart');
-      that.textError = null;
+        Promise.all(prm).then(() => {
+          axios.post(`${environment.api_url}/api/order`, obj, { headers: { Authorization: token } }).then((rs) => {
+            if (obj.type == 2) {
+              window.location.href = rs.data.data.urlPayment;
+            } else {
+              window.location.href = `/shipping?orderId=${rs.data.data.id}`;
+            }
+            localStorage.removeItem('listCart');
+          }).catch((err) => {
+            console.log(err);
+          })
+          console.log(obj);
+        });
+        that.localStorage.removeItem('listCart');
+        that.errorOrder = null;
+  
+      }
     }
   }
 
@@ -186,7 +196,6 @@ export class OrderComponent implements OnInit {
     for (var key in this.address) {
       if (this.address[key] == null) check = false;
     }
-    console.log(that.currentAddress);
     if (check) {
       that.addressPost = {
         title: `${that.address.addressDetails}, ${that.address.xaphuong}, ${that.address.quanhuyen}, ${that.address.city}`,
@@ -230,6 +239,12 @@ export class OrderComponent implements OnInit {
       // handle error
       console.log(error);
     });
+
+    if(localStorage.getItem('listCart') == null || localStorage.getItem('listCart') == ''){
+      that.errorListcart = "Vui lòng đặt hàng trước khi tiến tới thanh toán."
+    }else{
+      that.errorListcart = null;
+    }
   }
 
 }
