@@ -55,7 +55,7 @@ export class AteComponent implements OnInit {
     let obj = {
       foodId: that.selectedItems.map((item) => { return item.id }),
       comment: null,
-      type: buaan
+      type: parseInt(buaan)
     }
     axios.post(`${environment.api_url}/api/history`, obj, { headers: { Authorization: `Bearer ${that.token}` } }).then((response) => {
       that.textSuccess = "Lưu thành công";
