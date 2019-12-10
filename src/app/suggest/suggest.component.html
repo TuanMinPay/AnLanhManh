@@ -5,19 +5,19 @@
                 <div class="section-title text-center">
                     <h2>Sản phẩm dành riêng cho bạn.</h2>
                 </div>
+
+                <div class="tab-content loadcontent" *ngIf="listCombo == null && listFood == null">
+                    <img src="/assets/images/loading.gif">
+                </div>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="listCombo != null" class="row">
             <div class="col-12 mt-50">
                 <div class="section-title text-center">
                     <h2>Combo đồ ăn</h2>
                 </div>
             </div>
             <div class="col-12">
-                <div class="tab-content loadcontent" *ngIf="listCombo == null">
-                    <img src="/assets/images/loading.gif">
-                </div>
-                <!-- product tab menu end -->
                 <div class="tab-content">
                     <div class="product-tab-wrapper">
                         <div class="row">
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="listFood != null" class="row">
                 <div class="col-12 mt-50">
                     <div class="section-title text-center">
                         <h2>Đồ ăn lẻ</h2>
