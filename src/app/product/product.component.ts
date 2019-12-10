@@ -78,7 +78,7 @@ export class ProductComponent implements OnInit {
     const that = this;
     axios.get(`${environment.api_url}/api/category/${id}`).then(function (response) {
       that.dataFood = response.data.data.foods;
-      if (that.dataFood) {
+      if (that.dataFood.length = 0 || that.dataFood) {
         $('.paginatoin-area').hide();
 
       }
