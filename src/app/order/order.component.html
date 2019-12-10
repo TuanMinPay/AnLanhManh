@@ -15,7 +15,16 @@
         </div>
     </div>
 </div>
-<div class="checkout-page-wrapper pt-60 pb-54">
+<div *ngIf="errorListcart != null" class="row">
+    <div class="col-12">
+        <div class="breadcrumb-wrap text-center mt-50">
+            <nav aria-label="breadcrumb">
+                <h2>{{errorListcart}}</h2>
+            </nav>
+        </div>
+    </div>
+</div>
+<div *ngIf="errorListcart == null" class="checkout-page-wrapper pt-60 pb-54">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -174,7 +183,8 @@
                             </div>
                             <div class="summary-footer-area">
                                 <button type="button" (click)="payNow()" class="btn btn__bg">Đặt Mua</button>
-                                <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+                                <p class="mt-20">(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+                                <span *ngIf="errorOrder != null" class="error mt-20">Bạn chưa có địa chỉ nhận hàng.Vui lòng thêm địa chỉ ở khung bên trái</span>
                             </div>
                         </div>
                     </div>
