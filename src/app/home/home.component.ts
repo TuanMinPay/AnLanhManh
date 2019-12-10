@@ -5,6 +5,7 @@ import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
 import { UtilService } from '../services/util.service';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
     private cart: CartService,
     public util: UtilService,
     @Inject(WINDOW) private window: Window,
-    @Inject(LOCAL_STORAGE) private localStorage: any
+    @Inject(LOCAL_STORAGE) private localStorage: any,
+    private title: Title
   ) { }
 
   pager: any = [{
@@ -86,6 +88,7 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit() {
+    this.title.setTitle('AnLanhManh.Com | Safe, Clean and Nutritious')
     this.getCombo();
     this.page = this.route.snapshot.queryParamMap.get('page');
     if (this.page == null) {

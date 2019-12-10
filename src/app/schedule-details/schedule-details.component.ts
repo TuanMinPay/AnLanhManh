@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 import { UtilService } from '../services/util.service';
 import { pipe } from 'rxjs';
 import { CartService } from '../services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-schedule-details',
@@ -18,10 +19,12 @@ export class ScheduleDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public util: UtilService,
-    private cart: CartService
+    private cart: CartService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Lịch trình ăn uống | AnLanhManh.Com');
     this.loadScheduleDetail();
   }
 

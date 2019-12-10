@@ -3,6 +3,7 @@ import axios from 'axios';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-step',
@@ -14,7 +15,8 @@ export class StepComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     @Inject(WINDOW) private window: Window,
-    @Inject(LOCAL_STORAGE) private localStorage: any
+    @Inject(LOCAL_STORAGE) private localStorage: any,
+    private title: Title
   ) { }
   textError: any = null;
 
@@ -205,6 +207,7 @@ export class StepComponent implements OnInit {
     if (this.token == null || this.token == undefined) {
       this.window.location.href = '/login'
     }
+    this.title.setTitle('Thông tin sức khoẻ của bạn | AnLanhManh.Com')
     this.getBenhly();
   }
 }

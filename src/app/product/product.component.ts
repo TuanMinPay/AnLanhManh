@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
 import { empty } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +21,8 @@ export class ProductComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public util: UtilService,
-    private cart: CartService
+    private cart: CartService,
+    private title: Title
   ) {
   }
 
@@ -62,6 +64,7 @@ export class ProductComponent implements OnInit {
       this.page = parseInt(this.page);
     }
     this.currentPage = this.page;
+    this.title.setTitle('Đồ ăn dinh dưỡng | AnLanhManh.Com');
     this.loadPage(this.page);
 
     this.loadCategory(this.id);
@@ -109,6 +112,7 @@ export class ProductComponent implements OnInit {
       .then(function (response) {
         if (response.data.status == 200) {
           that.dataCate = response.data.data;
+          that.chooseCategoryParent(that.dataCate[0].id);
         }
       })
       .catch(function (error: any) {
