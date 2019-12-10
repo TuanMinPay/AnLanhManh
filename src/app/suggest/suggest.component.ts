@@ -3,6 +3,7 @@ import axios from 'axios';
 import { environment } from 'src/environments/environment';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-suggest',
@@ -13,7 +14,8 @@ export class SuggestComponent implements OnInit {
 
   constructor(
     public util: UtilService,
-    private cart: CartService
+    private cart: CartService,
+    private title: Title
   ) { }
 
   token: any = localStorage.getItem('token');
@@ -51,6 +53,7 @@ export class SuggestComponent implements OnInit {
     if (this.token == null || this.token == undefined) {
       window.location.href = '/login?back=/suggest';
     }
+    this.title.setTitle('Sản phẩm dinh dưỡng dành riêng cho bạn | AnLanhManh.Com');
     this.getComboSuggest();
     this.getFoodSuggest();
   }

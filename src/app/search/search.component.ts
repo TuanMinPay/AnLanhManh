@@ -4,6 +4,7 @@ import axios from 'axios';
 import { environment } from 'src/environments/environment';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +16,8 @@ export class SearchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public util: UtilService,
-    private cart: CartService
+    private cart: CartService,
+    private title: Title
   ) { }
 
   listFood: any;
@@ -69,6 +71,8 @@ export class SearchComponent implements OnInit {
   keyword: any;
   ngOnInit() {
     this.keyword = this.route.snapshot.queryParamMap.get("q");
+    if (this.keyword == null || this.keyword == undefined) window.location.href = '/';
+    this.title.setTitle(`Kết quả tìm kiếm cho từ khoá "${this.keyword}" | AnLanhManh.Com`);
     this.searchFood();
     this.searchCombo();
   }

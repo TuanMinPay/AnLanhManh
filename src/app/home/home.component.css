@@ -9,3 +9,7 @@
 .viewmore a {
     color: #fff;
 }
+
+.category-content h2 {
+    cursor: default;
+}

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-set-details',
@@ -17,7 +18,8 @@ export class SetDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,
     public util: UtilService,
-    private cart: CartService
+    private cart: CartService,
+    private titleService: Title
   ) { }
 
   dataCombo: any;
@@ -41,6 +43,7 @@ export class SetDetailsComponent implements OnInit {
       that.dataCombo = response.data.data;
       that.productImage = response.data.data.image;
       that.listProduct = response.data.data.foods;
+      that.titleService.setTitle(`${that.dataCombo.name} | AnLanhManh.Com`);
     }).catch(function (error) {
       // handle error
       console.log(error);

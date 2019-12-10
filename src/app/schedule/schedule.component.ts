@@ -4,6 +4,7 @@ import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { UtilService } from '../services/util.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-schedule',
@@ -14,7 +15,8 @@ export class ScheduleComponent implements OnInit {
 
   constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any,
   private route: ActivatedRoute,
-  public util: UtilService
+  public util: UtilService,
+  private titleService: Title
   ) {
     
    }
@@ -22,7 +24,8 @@ export class ScheduleComponent implements OnInit {
   token: any = this.localStorage.getItem('token');
 
   ngOnInit() {
-    this.loadSchedule()
+    this.titleService.setTitle('Lộ trình ăn uống | AnLanhManh.Com');
+    this.loadSchedule();
   }
 
   dataSchedule : any;

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { environment } from 'src/environments/environment';
 import { withLatestFrom } from 'rxjs/operators';
 import { WINDOW, LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-order',
@@ -17,7 +18,8 @@ export class OrderComponent implements OnInit {
   constructor(
     public util: UtilService,
     @Inject(WINDOW) private window: Window,
-    @Inject(LOCAL_STORAGE) private localStorage: any
+    @Inject(LOCAL_STORAGE) private localStorage: any,
+    private title: Title
   ) { }
 
   errorListcart: any = null;
@@ -219,6 +221,7 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle('Thanh toán | AnLanhManh.Com');
     this.getAddress();
     const that = this;
     this.getProduct();

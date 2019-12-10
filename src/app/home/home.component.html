@@ -111,12 +111,10 @@
                 <div class="category-single-item mb-md-30 mb-sm-30">
                     <div class="category-item-inner color1 text-center">
                         <div class="category-content">
-                            <h2><a href="javascript:void(0)">Vitamin và khoáng chất</a></h2>
+                            <h2>Vitamin và khoáng chất</h2>
                         </div>
                         <div class="category-thumb">
-                            <a href="javascript:void(0)">
-                                <img src="assets/img/category/cat-1.png" alt="">
-                            </a>
+                            <img src="assets/img/category/cat-1.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -125,12 +123,10 @@
                 <div class="category-single-item mb-md-30 mb-sm-30">
                     <div class="category-item-inner color2 text-center">
                         <div class="category-content">
-                            <h2><a href="javascript:void(0)">Chất bột đường</a></h2>
+                            <h2>Chất bột đường</h2>
                         </div>
                         <div class="category-thumb">
-                            <a href="javascript:void(0)">
-                                <img src="assets/img/category/cat-2.png" alt="">
-                            </a>
+                            <img src="assets/img/category/cat-2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -139,12 +135,10 @@
                 <div class="category-single-item mb-md-30 mb-sm-30">
                     <div class="category-item-inner color3 text-center">
                         <div class="category-content">
-                            <h2><a href="javascript:void(0)">Chất béo</a></h2>
+                            <h2>Chất béo</h2>
                         </div>
                         <div class="category-thumb">
-                            <a href="javascript:void(0)">
-                                <img src="assets/img/category/cat-3.png" alt="">
-                            </a>
+                            <img src="assets/img/category/cat-3.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -153,12 +147,10 @@
                 <div class="category-single-item mb-md-30 mb-sm-30">
                     <div class="category-item-inner color4 text-center">
                         <div class="category-content">
-                            <h2><a href="javascript:void(0)">Chất đạm</a></h2>
+                            <h2>Chất đạm</h2>
                         </div>
                         <div class="category-thumb">
-                            <a href="javascript:void(0)">
-                                <img src="assets/img/category/cat-4.png" alt="">
-                            </a>
+                            <img src="assets/img/category/cat-4.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -254,75 +246,74 @@
 </section>
 <!-- product tab area end -->
 <section class="product-tab pt-60 pb-30 comboList">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title text-center">
-                        <h2>Combo đồ ăn cho bạn</h2>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h2>Combo đồ ăn cho bạn</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="tab-content loadcontent" *ngIf="dataCombo == null">
-                        <img src="/assets/images/loading.gif">
-                    </div>
-                    <!-- product tab menu end -->
-                    <div class="tab-content" *ngIf="dataCombo != null">
-                            <div class="product-tab-wrapper">
-                                <div class="row">
-                                    <div *ngFor="let combo of dataCombo | slice:0:8" class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="product-item mb-50">
-                                            <div class="product-thumb">
-                                                <a href="/c/{{util.generateURL(combo.name, combo.id)}}">
-                                                    <img src={{combo?.image}} alt="">
-                                                </a>
-                                                <div class="quick-view-link">
-                                                    <a href="/c/{{util.generateURL(combo.name, combo.id)}}" data-toggle=""
-                                                        data-target=""> <span data-toggle="tooltip" title="Quick view"><i
-                                                                class="ion-ios-eye-outline"></i></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content text-center">
-                                                <div class="ratings">
-                                                    <span><i class="ion-android-star"></i></span>
-                                                    <span><i class="ion-android-star"></i></span>
-                                                    <span><i class="ion-android-star"></i></span>
-                                                    <span><i class="ion-android-star"></i></span>
-                                                    <span><i class="ion-android-star"></i></span>
-                                                </div>
-                                                <div class="product-name">
-                                                    <h4 class="h5">
-                                                        <a
-                                                            href="/c/{{util.generateURL(combo.name, combo.id)}}">{{combo.name}}</a>
-                                                        <p class="price-box"><span class="regular-price">{{combo.calorie}}
-                                                                calo/ {{combo.weight}} g</span></p>
-                                                    </h4>
-                                                </div>
-                                                <div class="price-box">
-                                                    <span class="regular-price">{{util.formatPrice(combo.price)}}</span>
-                                                    <span class="old-price"><del></del></span>
-                                                </div>
-                                                <div class="product-action-link">
-                                                    <a href="#" data-toggle="tooltip" title="Wishlist"><i
-                                                            class="ion-android-favorite-outline"></i></a>
-                                                    <a href="javascript:void(0)" (click)="addToCart(combo, 'comboId')"
-                                                        data-toggle="tooltip" title="Add to cart"><i
-                                                            class="ion-bag"></i></a>
-                                                    <a href="#" data-toggle="tooltip" title="Compare"><i
-                                                            class="ion-ios-shuffle"></i></a>
-                                                </div>
-                                            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content loadcontent" *ngIf="dataCombo == null">
+                    <img src="/assets/images/loading.gif">
+                </div>
+                <!-- product tab menu end -->
+                <div class="tab-content" *ngIf="dataCombo != null">
+                    <div class="product-tab-wrapper">
+                        <div class="row">
+                            <div *ngFor="let combo of dataCombo | slice:0:8" class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="product-item mb-50">
+                                    <div class="product-thumb">
+                                        <a href="/c/{{util.generateURL(combo.name, combo.id)}}">
+                                            <img src={{combo?.image}} alt="">
+                                        </a>
+                                        <div class="quick-view-link">
+                                            <a href="/c/{{util.generateURL(combo.name, combo.id)}}" data-toggle=""
+                                                data-target=""> <span data-toggle="tooltip" title="Quick view"><i
+                                                        class="ion-ios-eye-outline"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <div class="ratings">
+                                            <span><i class="ion-android-star"></i></span>
+                                            <span><i class="ion-android-star"></i></span>
+                                            <span><i class="ion-android-star"></i></span>
+                                            <span><i class="ion-android-star"></i></span>
+                                            <span><i class="ion-android-star"></i></span>
+                                        </div>
+                                        <div class="product-name">
+                                            <h4 class="h5">
+                                                <a
+                                                    href="/c/{{util.generateURL(combo.name, combo.id)}}">{{combo.name}}</a>
+                                                <p class="price-box"><span class="regular-price">{{combo.calorie}}
+                                                        calo/ {{combo.weight}} g</span></p>
+                                            </h4>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">{{util.formatPrice(combo.price)}}</span>
+                                            <span class="old-price"><del></del></span>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <a href="#" data-toggle="tooltip" title="Wishlist"><i
+                                                    class="ion-android-favorite-outline"></i></a>
+                                            <a href="javascript:void(0)" (click)="addToCart(combo, 'comboId')"
+                                                data-toggle="tooltip" title="Add to cart"><i class="ion-bag"></i></a>
+                                            <a href="#" data-toggle="tooltip" title="Compare"><i
+                                                    class="ion-ios-shuffle"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <!-- call to action area start -->
 <section class="call-to-action">
     <div class="container">
@@ -331,8 +322,9 @@
                 <div class="col-12">
                     <div class="call-to-action-content text-center">
                         <h1>Rất Nhiều Đồ Ăn Bổ Dưỡng Tốt Cho Sức Khỏe</h1>
-                        <h1>Đang Chờ Bạn Khám Phá</h1>
-                        <a [href]="token ? '/suggest' : '/login?back=/suggest'" class="btn btn__learn-more">Khám Phá Ngay</a>
+                        <h1>Dành Riêng Cho Bạn</h1>
+                        <a [href]="token ? '/suggest' : '/login?back=/suggest'" class="btn btn__learn-more">Khám Phá
+                            Ngay</a>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import { AppComponent } from '../app.component';
 import { UtilService } from '../services/util.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -17,6 +18,7 @@ export class ProfileComponent implements OnInit {
   constructor(@Inject(WINDOW) private window: Window,
     @Inject(LOCAL_STORAGE) private localStorage: any,
     public util: UtilService,
+    private title: Title,
     private cart: CartService,
     private route: ActivatedRoute) {
   }
@@ -260,6 +262,7 @@ export class ProfileComponent implements OnInit {
     if (this.token == null || this.token == undefined) {
       window.location.href = '/login'
     }
+    this.title.setTitle('Trang cá nhân | AnLanhManh.Com');
     const that = this;
     this.getMe();
     this.getLatestProfile();

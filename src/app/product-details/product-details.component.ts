@@ -6,6 +6,8 @@ import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
 import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
 import { UtilService } from '../services/util.service';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-product-details',
@@ -22,7 +24,8 @@ export class ProductDetailsComponent implements OnInit {
     private cart: CartService,
     private location: Location,
     @Inject(DOCUMENT) private document: Document,
-    public util: UtilService
+    public util: UtilService,
+    private titleService: Title
   ) {
   }
 
@@ -48,6 +51,7 @@ export class ProductDetailsComponent implements OnInit {
     axios.get(`${environment.api_url}/api/food/${this.id}`).then(function (response: any) {
       if (response.data.status == 200) {
         that.dataFood = response.data.data;
+        that.titleService.setTitle(`${that.dataFood.name} | AnLanhManh.Com`);
         axios.get(`${environment.api_url}/api/food/category/${that.dataFood.categories[0].id}`)
         .then(function (response){
           that.foodInCate = response.data.data;

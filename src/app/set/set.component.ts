@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 import { environment } from '../../environments/environment';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-set',
@@ -18,7 +19,8 @@ export class SetComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public util: UtilService,
-    private cart: CartService
+    private cart: CartService,
+    private title: Title
   ) { }
 
   dataCate: any;
@@ -92,6 +94,7 @@ export class SetComponent implements OnInit {
       this.page = parseInt(this.page);
     }
     this.currentPage = this.page;
+    this.title.setTitle('Set đồ ăn dinh dưỡng | AnLanhManh.Com');
     this.loadCombo(this.page);
 
     this.loadCategory(this.id);

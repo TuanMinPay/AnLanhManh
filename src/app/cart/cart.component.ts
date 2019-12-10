@@ -5,6 +5,7 @@ import { UtilService } from '../services/util.service';
 import { AppComponent } from '../app.component';
 import axios from 'axios';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit {
     private toastr: ToastrService,
     public util: UtilService,
     @Inject(WINDOW) private window: Window,
-    @Inject(LOCAL_STORAGE) private localStorage: any
+    @Inject(LOCAL_STORAGE) private localStorage: any,
+    private title: Title
   ) { }
 
   listCart: any = null;
@@ -72,6 +74,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.listCart = localStorage.getItem('listCart');
     this.listCart = JSON.parse(this.listCart);
+    this.title.setTitle('Giỏ hàng | AnLanhManh.Com');
   }
 
 }

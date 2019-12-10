@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="breadcrumb-wrap text-center">
                     <nav aria-label="breadcrumb">
-                        <h2>Cửa Hàng</h2>
+                        <h2>Đồ Ăn Dinh Dưỡng</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{dataFood?.name}}</li>
@@ -74,24 +74,24 @@
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
+                                <th>Calorie</th>
+                                <th>Trọng lượng</th>
                                 <th>Chất bột đường (carbonhydrates)</th>
                                 <th>Chất đạm (protein)</th>
                                 <th>Độ béo (lipid)</th>
                                 <th>Chất xơ (cellulose)</th>
                                 <th>Canxi</th>
-                                <th>Sắt</th>
-                                <th>Kẽm</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>{{dataFood?.calorie}} calo</td>
+                                <td>{{dataFood?.weight}} g</td>
                                 <td>{{dataFood?.carbonhydrates}} g</td>
                                 <td>{{dataFood?.protein}} g</td>
                                 <td>{{dataFood?.lipid}} g</td>
                                 <td>{{dataFood?.xenluloza}} g</td>
                                 <td>{{dataFood?.canxi}} g</td>
-                                <td>{{dataFood?.iron}} g</td>
-                                <td>{{dataFood?.zinc}} g</td>
                             </tr>
                         </tbody>
                     </table>
@@ -103,8 +103,8 @@
                                 <th>Vitamin C</th>
                                 <th>Vitamin D</th>
                                 <th>Vitamin E</th>
-                                <th>Calorie</th>
-                                <th>Trọng lượng</th>
+                                <th>Sắt</th>
+                                <th>Kẽm</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,8 +114,8 @@
                                 <td>{{dataFood?.vitaminC}} g</td>
                                 <td>{{dataFood?.vitaminD}} g</td>
                                 <td>{{dataFood?.vitaminE}} g</td>
-                                <td>{{dataFood?.calorie}} calo</td>
-                                <td>{{dataFood?.weight}} g</td>
+                                <td>{{dataFood?.iron}} g</td>
+                                <td>{{dataFood?.zinc}} g</td>
                             </tr>
                         </tbody>
                     </table>
