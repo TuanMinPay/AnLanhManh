@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SetComponent } from './set/set.component';
-import { SetDetailsComponent} from './set-details/set-details.component';
+import { SetDetailsComponent } from './set-details/set-details.component';
 import { StepComponent } from './step/step.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleDetailsComponent } from './schedule-details/schedule-details.component';
@@ -20,6 +20,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { AteComponent } from './ate/ate.component';
 import { SearchComponent } from "./search/search.component";
 import { SuggestComponent } from './suggest/suggest.component';
+import { CompareComponent } from './compare/compare.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,14 +36,15 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'step', component: StepComponent },
-  { path: 'order', component: OrderComponent},
-  { path: 'schedule', component: ScheduleComponent},
-  { path: 's/:id', component: ScheduleDetailsComponent},
+  { path: 'order', component: OrderComponent },
+  { path: 'schedule', component: ScheduleComponent },
+  { path: 's/:id', component: ScheduleDetailsComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'shipping', component: ShippingComponent },
-  { path: 'user/eat', component: AteComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'suggest', component: SuggestComponent},
+  { path: 'user/eat', component: AteComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'suggest', component: SuggestComponent },
+  { path: 'compare', component: CompareComponent },
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 

@@ -63,17 +63,14 @@
                             <a href="javascript:void(0)" data-toggle="tooltip" title="Thêm"
                                 (click)="addToCart(dataCombo)" class="add-to-cart">Thêm vào
                                 giỏ hàng</a>
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
-                                    class="ion-android-favorite-outline"></i></a>
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
+                            <!-- <a href="javascript:void(0)" data-toggle="tooltip" title="Yêu thích"><i
+                                    class="ion-android-favorite-outline"></i></a> -->
+                            <a href="/compare?id={{dataCombo.id}}&type=combo" data-toggle="tooltip" title="So sánh"><i
                                     class="ion-ios-shuffle"></i></a>
                         </div>
                         <div class="share-icon">
-                            <h5>share:</h5>
-                            <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-                            <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a>
-                            <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
+                            <h5>Chia Sẻ:</h5>
+                            <div class="addthis_inline_share_toolbox_5izj"></div>
                         </div>
                     </div>
                 </div>
@@ -201,7 +198,7 @@
                         </a>
                         <div class="quick-view-link">
                             <a href="/c/{{util.generateURL(item.name, item.id)}}"> <span data-toggle="tooltip"
-                                    title="Quick view"><i class="ion-ios-eye-outline"></i></span>
+                                    title="Xem chi tiết"><i class="ion-ios-eye-outline"></i></span>
                             </a>
                         </div>
                     </div>
@@ -223,11 +220,11 @@
                             <span class="old-price"><del></del></span>
                         </div>
                         <div class="product-action-link">
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Wishlist"><i
+                            <a href="javascript:void(0)" data-toggle="tooltip" title="Yêu thích"><i
                                     class="ion-android-favorite-outline"></i></a>
                             <a href="javascript:void(0)" data-toggle="tooltip" (click)="addToCart(item)"
-                                title="Add to cart"><i class="ion-bag"></i></a>
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Compare"><i
+                                title="Thêm vào giỏ hàng"><i class="ion-bag"></i></a>
+                            <a href="/compare?id={{item?.id}}&type=combo" data-toggle="tooltip" title="So sánh"><i
                                     class="ion-ios-shuffle"></i></a>
                         </div>
                     </div>

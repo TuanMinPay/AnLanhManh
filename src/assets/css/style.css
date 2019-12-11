@@ -4905,7 +4905,7 @@ fieldset legend {
 	text-transform: capitalize;
 }
 
-.product-details-des .share-icon a {
+/* .product-details-des .share-icon a {
 	width: 40px;
 	height: 40px;
 	color: #666666;
@@ -4923,7 +4923,7 @@ fieldset legend {
 	color: #fff;
 	border-color: #62d2a2;
 	background-color: #62d2a2;
-}
+} */
 
 .product-details-des .color-option {
 	display: -webkit-box;

@@ -26,13 +26,13 @@
                 <div class="cart-table table-responsive">
                     <table class="row table table-bordered" style="margin: 3rem 0;">
                         <div class="col-lg-12 text-center ml-auto">
-                            <img src="https://salt.tikicdn.com/desktop/img/mascot@2x.png" width="20%">
+                            <img src="assets/img/cart/cart.png" width="20%">
                         </div>
                         <div class="text col-lg-12 text-center">
                             <h5>Không có sản phẩm nào trong giỏ hàng của bạn.</h5>
                         </div>
                         <div class="col-lg-12 text-center r-2">
-                            <a href="/" class="btn">Tiếp tục đặt hàng</a>
+                            <a href="/" class="btn">Tiếp tục chọn món</a>
                         </div>
                     </table>
                 </div>
@@ -62,14 +62,17 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of listCart.products">
-                                <td class="pro-thumbnail"><a href="{{(item?.combos) ? '/p/' + util.generateURL(item.name, item.id) : '/c/' + util.generateURL(item.name, item.id)}}"><img
+                                <td class="pro-thumbnail"><a
+                                        href="{{(item?.combos) ? '/p/' + util.generateURL(item.name, item.id) : '/c/' + util.generateURL(item.name, item.id)}}"><img
                                             class="img-fluid" [src]="item.image" alt="Product" /></a></td>
                                 <td class="pro-title"><a
-                                        href="{{(item?.combos) ? '/p/' + util.generateURL(item.name, item.id) : '/c/' + util.generateURL(item.name, item.id)}}" target="_blank">{{item?.name}}</a></td>
+                                        href="{{(item?.combos) ? '/p/' + util.generateURL(item.name, item.id) : '/c/' + util.generateURL(item.name, item.id)}}"
+                                        target="_blank">{{item?.name}}</a></td>
                                 <td class="pro-price"><span>{{util.formatPrice(item?.price)}}</span></td>
                                 <td class="pro-quantity">
                                     <div class="pro-qty"><input type="number" #qtt
-                                            (keyup)="sumItem(qtt.value, item?.id)" min="1" [value]="item?.quantity"></div>
+                                            (keyup)="sumItem(qtt.value, item?.id)" min="1" [value]="item?.quantity">
+                                    </div>
                                 </td>
                                 <td class="pro-subtotal">
                                     <span>{{util.formatPrice(totalPrice(qtt.value, item?.price))}}</span></td>
@@ -93,6 +96,10 @@
                                 <tr>
                                     <td>Tổng đơn hàng</td>
                                     <td>{{util.formatPrice(getTotalPriceCart())}}</td>
+                                </tr>
+                                <tr class="total">
+                                    <td>VAT</td>
+                                    <td>{{util.formatPrice(0)}}</td>
                                 </tr>
                                 <tr class="total">
                                     <td>Tổng thanh toán</td>
