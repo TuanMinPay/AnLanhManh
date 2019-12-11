@@ -17,3 +17,7 @@
 .total-price {
     color: #ee2347;
 }
+
+.compare-page-content-wrap .text-success {
+    font-weight: bold!important;
+}

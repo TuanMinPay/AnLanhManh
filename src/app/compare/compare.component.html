@@ -87,73 +87,73 @@
                                 </tr>
                                 <tr>
                                     <td class="first-column">Calorie</td>
-                                    <td class="pro-color">{{firstProduct?.calorie}} calo</td>
-                                    <td class="pro-color">{{secondProduct?.calorie}} calo</td>
+                                    <td class="pro-color {{(firstProduct?.calorie > secondProduct?.calorie) ? 'text-success' : ''}}">{{firstProduct?.calorie}} calo</td>
+                                    <td class="pro-color {{(secondProduct?.calorie > firstProduct?.calorie) ? 'text-success' : ''}}">{{secondProduct?.calorie}} calo</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Trọng lượng</td>
-                                    <td class="pro-stock">{{firstProduct?.weight}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.weight}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.weight > secondProduct?.weight) ? 'text-success' : ''}}">{{firstProduct?.weight}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.weight > firstProduct?.weight) ? 'text-success' : ''}}">{{secondProduct?.weight}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Chất bột đường (carbonhydrates)</td>
-                                    <td class="pro-stock">{{firstProduct?.carbonhydrates}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.carbonhydrates}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.carbonhydrates > secondProduct?.carbonhydrates) ? 'text-success' : ''}}">{{firstProduct?.carbonhydrates}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.carbonhydrates > firstProduct?.carbonhydrates) ? 'text-success' : ''}}">{{secondProduct?.carbonhydrates}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Chất đạm (protein)</td>
-                                    <td class="pro-stock">{{firstProduct?.protein}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.protein}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.protein > secondProduct?.protein) ? 'text-success' : ''}}">{{firstProduct?.protein}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.protein > firstProduct?.protein) ? 'text-success' : ''}}">{{secondProduct?.protein}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Độ béo (lipid)</td>
-                                    <td class="pro-stock">{{firstProduct?.lipid}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.lipid}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.lipid > secondProduct?.lipid) ? 'text-success' : ''}}">{{firstProduct?.lipid}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.lipid > firstProduct?.lipid) ? 'text-success' : ''}}">{{secondProduct?.lipid}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Chất xơ (cellulose)</td>
-                                    <td class="pro-stock">{{firstProduct?.xenluloza}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.xenluloza}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.xenluloza > secondProduct?.xenluloza) ? 'text-success' : ''}}">{{firstProduct?.xenluloza}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.xenluloza > firstProduct?.xenluloza) ? 'text-success' : ''}}">{{secondProduct?.xenluloza}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Canxi</td>
-                                    <td class="pro-stock">{{firstProduct?.canxi}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.canxi}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.canxi > secondProduct?.canxi) ? 'text-success' : ''}}">{{firstProduct?.canxi}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.canxi > firstProduct?.canxi) ? 'text-success' : ''}}">{{secondProduct?.canxi}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Vitamin A</td>
-                                    <td class="pro-stock">{{firstProduct?.vitaminA}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.vitaminA}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.vitaminA > secondProduct?.vitaminA) ? 'text-success' : ''}}">{{firstProduct?.vitaminA}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.vitaminA > firstProduct?.vitaminA) ? 'text-success' : ''}}">{{secondProduct?.vitaminA}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Vitamin B</td>
-                                    <td class="pro-stock">{{firstProduct?.vitaminB}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.vitaminB}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.vitaminB > secondProduct?.vitaminB) ? 'text-success' : ''}}">{{firstProduct?.vitaminB}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.vitaminB > firstProduct?.vitaminB) ? 'text-success' : ''}}">{{secondProduct?.vitaminB}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Vitamin C</td>
-                                    <td class="pro-stock">{{firstProduct?.vitaminC}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.vitaminC}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.vitaminC > secondProduct?.vitaminC) ? 'text-success' : ''}}">{{firstProduct?.vitaminC}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.vitaminC > firstProduct?.vitaminC) ? 'text-success' : ''}}">{{secondProduct?.vitaminC}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Vitamin D</td>
-                                    <td class="pro-stock">{{firstProduct?.vitaminD}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.vitaminD}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.vitaminD > secondProduct?.vitaminD) ? 'text-success' : ''}}">{{firstProduct?.vitaminD}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.vitaminD > firstProduct?.vitaminD) ? 'text-success' : ''}}">{{secondProduct?.vitaminD}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Vitamin E</td>
-                                    <td class="pro-stock">{{firstProduct?.vitaminE}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.vitaminE}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.vitaminE > secondProduct?.vitaminE) ? 'text-success' : ''}}">{{firstProduct?.vitaminE}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.vitaminE > firstProduct?.vitaminE) ? 'text-success' : ''}}">{{secondProduct?.vitaminE}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Sắt</td>
-                                    <td class="pro-stock">{{firstProduct?.iron}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.iron}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.iron > secondProduct?.iron) ? 'text-success' : ''}}">{{firstProduct?.iron}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.iron > firstProduct?.iron) ? 'text-success' : ''}}">{{secondProduct?.iron}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Kẽm</td>
-                                    <td class="pro-stock">{{firstProduct?.zinc}} g</td>
-                                    <td class="pro-stock">{{secondProduct?.zinc}} g</td>
+                                    <td class="pro-stock {{(firstProduct?.zinc > secondProduct?.zinc) ? 'text-success' : ''}}">{{firstProduct?.zinc}} g</td>
+                                    <td class="pro-stock {{(secondProduct?.zinc > firstProduct?.zinc) ? 'text-success' : ''}}">{{secondProduct?.zinc}} g</td>
                                 </tr>
                                 <tr>
                                     <td class="first-column">Thêm vào giỏ hàng</td>
