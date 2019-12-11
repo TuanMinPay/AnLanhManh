@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
 import { environment } from '../../environments/environment';
-import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { UtilService } from '../services/util.service';
 import { CartService } from '../services/cart.service';
 import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-set-details',
@@ -19,7 +20,8 @@ export class SetDetailsComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     public util: UtilService,
     private cart: CartService,
-    private titleService: Title
+    private titleService: Title,
+    private meta: Meta
   ) { }
 
   dataCombo: any;
@@ -44,6 +46,13 @@ export class SetDetailsComponent implements OnInit {
       that.productImage = response.data.data.image;
       that.listProduct = response.data.data.foods;
       that.titleService.setTitle(`${that.dataCombo.name} | AnLanhManh.Com`);
+      that.meta.addTags([
+        { property: 'og:url', content: window.location.href },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:title', content: `${that.dataCombo.name} | AnLanhManh.Com` },
+        { property: 'og:description', content: that.dataCombo.description },
+        { property: 'og:image', content: that.dataCombo.image }
+      ]);
     }).catch(function (error) {
       // handle error
       console.log(error);

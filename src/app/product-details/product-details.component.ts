@@ -1,12 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from "axios";
-import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import { WINDOW } from '@ng-toolkit/universal';
 import { CartService } from '../services/cart.service';
 import { environment } from '../../environments/environment';
-import { DOCUMENT, Location, isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import { UtilService } from '../services/util.service';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
@@ -19,13 +19,13 @@ export class ProductDetailsComponent implements OnInit {
   dataFood: any;
 
   constructor(
-    @Inject(WINDOW) private window: Window,
     private route: ActivatedRoute,
     private cart: CartService,
     private location: Location,
     @Inject(DOCUMENT) private document: Document,
     public util: UtilService,
-    private titleService: Title
+    private titleService: Title,
+    private meta: Meta
   ) {
   }
 
@@ -52,6 +52,13 @@ export class ProductDetailsComponent implements OnInit {
       if (response.data.status == 200) {
         that.dataFood = response.data.data;
         that.titleService.setTitle(`${that.dataFood.name} | AnLanhManh.Com`);
+        that.meta.addTags([
+          {property: 'og:url', content: window.location.href},
+          {property: 'og:type', content: 'article'},
+          {property: 'og:title', content: `${that.dataFood.name} | AnLanhManh.Com`},
+          { property: 'og:description', content: that.dataFood.description },
+          { property: 'og:image', content: that.dataFood.image }
+        ]);
         axios.get(`${environment.api_url}/api/food/category/${that.dataFood.categories[0].id}`)
         .then(function (response){
           that.foodInCate = response.data.data;
