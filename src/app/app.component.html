@@ -89,6 +89,11 @@
                     [routerLink]="['about']">Về Chúng Tôi</a></li>
                 <li><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
                     [routerLink]="['contact']">Liên Hệ</a></li>
+                <div class="mini-cart-wrap sticky-logo">
+                  <a href="/cart"><i class="ion-bag"></i>
+                    <span class="notification">{{getTotalCart()}}</span>
+                  </a>
+                </div>
               </ul>
             </nav>
             <!-- main menu navbar end -->
