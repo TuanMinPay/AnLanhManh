@@ -38,7 +38,7 @@
     "express": "^4.15.2",
     "firebase": "^7.5.0",
     "i": "^0.3.6",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-multiselect-dropdown": "^0.2.10",
     "ngx-pipes": "^2.6.0",
     "ngx-toastr": "^11.2.1",
